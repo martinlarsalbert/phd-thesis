@@ -295,10 +295,10 @@
     #4 \par                   % authors again
     \vspace{3pc}
   \end{center}
-  \begin{refsection}          % start of biblatex's refsection for sub-bibliography
+%  \begin{refsection}          % start of biblatex's refsection for sub-bibliography
   \input{#7}                  % paper itself, starting from abstract (no title)
-  \printbibliography[heading=subbibintoc] % biblatex bibliography
-  \end{refsection}            % end of biblatex refsection
+%  \printbibliography[heading=subbibintoc] % biblatex bibliography
+%  \end{refsection}            % end of biblatex refsection
 }
 
 \newcommand{\reformatted}{The paper was reformatted for uniformity, but otherwise is unchanged.}
@@ -306,21 +306,38 @@
 \part{Appended papers}        % in this part one chapter = one paper
 
 % Example of using the command \paper defined above: 
-\paper{SAT-solving in practice, with a tutorial example from supervisory control}
-      {SAT-solving in practice, with a SCT example}
-      {pap:supervisory}
-      {Koen~Claessen, Niklas~Een, Mary~Sheeran, Niklas~Sörensson, Alexey~Voronov and Knut~Åkesson}
-      {Journal of Discrete Event Dynamic Systems (2009), 19(4): 495--524.}
-      {Reproduced with kind permission from Springer Science+Business Media. \reformatted}
+\paper{Analysis of roll damping model scale data}
+      { }
+      {pap:rolldamping}
+      {Martin Alexandersson, Wengang Mao and Jonas Ringsberg}
+      {Ships and Offshore Structures 16.sup1. Publisher: Taylor & Francis}
+      { }
       {paper-supervisory/body}
 
-\paper{The same paper, inserted second time for illustration}
-      {SAT-solving in practice, with a SCT example}
-      {pap:another-one}
-      {Koen~Claessen, Niklas~Een, Mary~Sheeran, Niklas~Sörensson, Alexey~Voronov and Knut~Åkesson}
-      {Journal of Discrete Event Dynamic Systems (2009), 19(4): 495--524.}
-      {Reproduced with kind permission from Springer Science+Business Media. \reformatted}
+\paper{Prediction of roll motion using fully nonlinear potential flow and Ikeda's method}
+      { }
+      {pap:motions}
+      {Martin Alexandersson, Martin Kjellberg, Wengang Mao and Jonas Ringsberg}
+      {ISOPE Conference}
+      {}
       {paper-supervisory/body}
       
-\printbibliography
+\paper{A comparison of ship manoeuvrability models to approximate ship navigation trajectories}
+      { }
+      {pap:daiyong}
+      {Martin Alexandersson, Daiyong Zhang, Wengang Mao and Jonas Ringsberg}
+      {Ships and Offshore Structures}
+      {}
+      {paper-supervisory/body}
+      
+\paper{System identification of {Vessel} {Manoeuvring} {Models}}
+      { }
+      {pap:pit}
+      {Martin Alexandersson, Wengang Mao and Jonas Ringsberg}
+      {Ocean Engineering}
+      {}
+      {paper-supervisory/body}
+
+\printbibliography[heading=subbibintoc] % biblatex bibliography
+
 \end{document}
