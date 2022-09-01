@@ -4,8 +4,26 @@
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
+Modeling of ship’s dynamics has a wide range of useful applications. This can be categorized as: white-box, black-box or grey-box modeling \cite{leifsson_grey-box_2008}. All models in this thesis fall under the grey-box category.
+
+\begin{itemize}
+    \item White-box modeling \\
+    involves applying physical principles, so that no observed data is required. Computational Fluid Dynamics (CFD) is one example from ship hydrodynamics. Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
+
+    \item Black-box modeling \\
+    mean that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
+    
+    \item Grey-box modeling \\
+    is a combination of white-box and black-box modeling methods, so that observed data is required. This concept is also referred to as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008}. 
+\end{itemize}
+
+The black-box modeling is entirely data driven, which means that no prior understanding of the system that generated the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
+In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}. 
+Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections before or after the white-box in a serial approach. 
+Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
 
 \section{Literature review}
+
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
