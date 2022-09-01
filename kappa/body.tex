@@ -43,10 +43,16 @@ The ship's dynamics comprises the forces and motions in the six degrees of freed
 
 \section{Roll motion} \label{sec:roll}
 
-\cite{
-\begin{equation} \label{eq:roll_decay_equation_himeno_linear}
-A_{44} \ddot{\phi} + B_{1} \dot{\phi} + C_{1} \phi = 0
-\end{equation}
+The roll motion on a straight course in calm water with no external forces can be expressed with Eq.\ref{eq:roll_decay_equation_general_himeno} \cite{himeno_prediction_1981}.
+\input{equations/roll_decay_equation_general_himeno}
+
+where $B_{44}$ can be expressed as expansion series:  
+$ B_{44} = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n$. Most often, the so-called ``linear model'', ``quadratic model'' and ``cubic model'' are used to represent $B_{44}(\dot{\phi})$ in Eq.(\ref{eq:roll_decay_equation_general_himeno}) by truncating the series to keep only linear, quadratic and cubic terms,
+
+\input{equations/roll_decay_equation_himeno_linear}
+\input{equations/roll_decay_equation_himeno_quadratic_b}
+\input{equations/roll_decay_equation_cubic}
+
 
 \section{Vessel Manoeuvring Model} \label{sec:VMM}
 
