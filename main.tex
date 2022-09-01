@@ -77,7 +77,13 @@
 ]{hyperref}                   % links in pdf document
 
 \usepackage{bookmark}         % Create pdf bookmarks in one go
-
+\usepackage{nomencl}
+\makenomenclature
+% This will add the units
+%----------------------------------------------
+\newcommand{\nomunit}[1]{%
+\renewcommand{\nomentryend}{\hspace*{\fill}#1}}
+%----------------------------------------------
 
 % % % Biblatex
 
@@ -218,6 +224,7 @@
 \addcontentsline{toc}{chapter}{List of Publications}  % add toc line with target at the last anchor
 \chapter*{List of Publications}
 \input{frontmatter/publications-list}
+\input{nomenclature}
 
 \cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
