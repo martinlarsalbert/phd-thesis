@@ -1,67 +1,64 @@
 %!TEX root = ../main.tex
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Background}
+Modeling of ship’s dynamics has a wide range of useful applications. This can be categorized as: white-box, black-box or grey-box modeling \cite{leifsson_grey-box_2008}. All models in this thesis fall under the grey-box category.
 
-\lipsum[10-20]  % fill-in text for this template
+\begin{itemize}
+    \item White-box modeling \\
+    involves applying physical principles, so that no observed data is required. Computational Fluid Dynamics (CFD) is one example from ship hydrodynamics. Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
 
-Random citations: \cite{Amilhastre2002,Sinz2003,Astesana2010a,Astesana2010b}.
+    \item Black-box modeling \\
+    mean that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
+    
+    \item Grey-box modeling \\
+    is a combination of white-box and black-box modeling methods, so that observed data is required. This concept is also referred to as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008}. 
+\end{itemize}
 
-This thesis consists of two parts. Part I is a general introduction to the field and puts the appended papers into context. Part II contains the appended papers.
+The black-box modeling is entirely data driven, which means that no prior understanding of the system that generated the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
+In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}. 
+Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections before or after the white-box in a serial approach. 
+Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
 
-
-
-
-%
-%   .--~*teu.
-%  dF     988Nx
-% d888b   `8888>
-% ?8888>  98888F
-%  "**"  x88888~
-%       d8888*`
-%     z8**"`   :
-%   :?.....  ..F
-%  <""888888888~
-%  8:  "888888*
-%  ""    "**"`
-%
-% http://patorjk.com/software/taag/#p=display&f=Fraktur  --  Text to ASCII graphics
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Background and Challenges\label{ch:bg}}
-
-\lipsum[5]
+\section{Literature review}
 
 
-\section{Some section}
+%"Critic" to what has been done before
+\section{Motivation and objective}
 
-\lipsum[3]
+\section{Assumptions and limitations}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.8\textwidth]{kappa/images/supervisor}
-\caption{An example of a supervisor.\label{fig:kappa-sup}}
-\end{figure}
-
-\lipsum[10-15]
+\section{Outline of the paper}
 
 
-
-%   .x~~"*Weu.
-%  d8Nu.  9888c
-%  88888  98888
-%  "***"  9888%
-%       ..@8*"
-%    ````"8Weu
-%   ..    ?8888L
-% :@88N   '8888N
-% *8888~  '8888F
-% '*8"`   9888%
-%   `~===*%"`
-%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\lipsum
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Results\label{ch:results}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary of paper \ref{pap:rolldamping}}
+\subsection*{"\nameref{pap:rolldamping}"}
+
+\section{Summary of paper \ref{pap:daiyong}}
+\subsection*{"\nameref{pap:daiyong}"}
+
+\section{Summary of paper \ref{pap:pit}}
+\subsection*{"\nameref{pap:pit}"}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusions\label{ch:conclusions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Future work\label{ch:future_work}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
