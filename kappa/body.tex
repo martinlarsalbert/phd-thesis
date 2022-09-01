@@ -11,13 +11,13 @@ Modeling of ship’s dynamics has a wide range of useful applications. This can 
     involves applying physical principles, so that no observed data is required. Computational Fluid Dynamics (CFD) is one example from ship hydrodynamics. Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
 
     \item Black-box modeling \\
-    mean that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
+    means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
     
     \item Grey-box modeling \\
     is a combination of white-box and black-box modeling methods, so that observed data is required. This concept is also referred to as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008}. 
 \end{itemize}
 
-The black-box modeling is entirely data driven, which means that no prior understanding of the system that generated the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
+\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
 In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}. 
 Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections before or after the white-box in a serial approach. 
 Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
@@ -39,20 +39,23 @@ crawling, walking, running...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The ship's dynamics comprises the forces and motions in the six degrees of freedoms (6DOF): surge, sway, heave, roll, pitch and yaw. Heave and pitch motions are often neglected in calm water conditions, so that only four degrees of freedom (4DOF) model is sufficient to express the ship's dynamics. A physically parameterized models for roll and the remaining DOFs are presented in section \ref{sec:roll} and as the Vessel Manoeuvring Model (VMM) in section \ref{sec:VMM}. 
+The ship's dynamics comprises the forces and motions in the six degrees of freedoms (6DOF): surge, sway, heave, roll, pitch and yaw. Heave and pitch motions are often neglected in calm water conditions, so that only four degrees of freedom (4DOF) model is sufficient to express the ship's dynamics. Physically parameterized models for roll and the Vessel Manoeuvring Model (VMM) for the remaining DOFs are presented in section \ref{sec:roll} and section \ref{sec:VMM}. 
 
 \section{Roll motion} \label{sec:roll}
 
-The roll motion on a straight course in calm water with no external forces can be expressed with Eq.\ref{eq:roll_decay_equation_general_himeno} \cite{himeno_prediction_1981}.
+The roll motion on a straight course in calm water with no external forces can be expressed with Eq.\ref{eq:roll_decay_equation_general_himeno} \cite{himeno_prediction_1981},
 \input{equations/roll_decay_equation_general_himeno}
 
-where $B_{44}\left(\dot{\phi}\right)$ can be expressed as expansion series:  
-$ B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n$. Most often, the so-called ``linear model'', ``quadratic model'' and ``cubic model'' are used to represent $B_{44}(\dot{\phi})$ in Eq.(\ref{eq:roll_decay_equation_general_himeno}) by truncating the series to keep only linear, quadratic and cubic terms,
+\noindent where $B_{44}\left(\dot{\phi}\right)$ can be expressed as expansion series:  
+$ B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n$. Most often, the so-called ``linear model'' (Eq.\ref{eq:roll_decay_equation_himeno_linear}), ``quadratic model'' (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and ``cubic model'' (Eq.\ref{eq:roll_decay_equation_cubic}) are used to represent $B_{44}(\dot{\phi})$ in by truncating the series to keep only linear, quadratic and cubic terms,
 
 \input{equations/roll_decay_equation_himeno_linear}
 \input{equations/roll_decay_equation_himeno_quadratic_b}
 \input{equations/roll_decay_equation_cubic}
 
+\noindent A Parameter Identification Technique (PIT) can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic} which is presented in the next section.
+
+\subsection{Roll damping Parameter Identification}
 
 \section{Vessel Manoeuvring Model} \label{sec:VMM}
 
