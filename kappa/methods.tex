@@ -1,0 +1,14 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Methods\label{ch:methods}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Parameter Identification Techniques (PIT)}
+
+\subsection{Roll damping Parameter Identification} \label{sec:PIT_roll}
+\noindent A Parameter Identification Technique (PIT) can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic}. These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions, by normalizing the equations by the total roll inertia $A_{44}$.
+The normalized damping and stiffness parameters identified by a PIT can then be expressed in dimensional units by multiplication of $A_{44}$. If $A_{44}$ is not known before hand, it can be calculated using Eq.\ref{eq:A_44_eq} \cite{piehl_ship_2016}, assuming that the $GM$ is known.
+\input{equations/A_44_eq}
+\noindent The frequency $\omega_0$ can be obtained with Fast Fourier Transform (FFT) of the roll signal. 
+
+Two different PIT methods have been investigated: the ``derivation approach'' (referred to as PIT in \parencite{imo_1200_2006}) and the ``integration approach'' which is similar to what \parencite{soder_assessment_2019} used. In the derivation approach the first and second roll time derivatives are calculated numerically so that the parameters in the models are the only unknowns. A least squares fit could be used on the roll motion equation to identify any parameter, including nonlinear or frequency parameter. In the integration approach, the parameters are found by solving a nonlinear problem using the least-square method. This approach requires that an ordinary differential equation to be solved for many estimated sets of parameters until the solution converges.

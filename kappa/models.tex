@@ -1,0 +1,21 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Parameterized Models for ship dynamics \label{ch:models}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The ship's dynamics comprises the forces and motions in the six degrees of freedoms (6DOF): surge, sway, heave, roll, pitch and yaw. Heave and pitch motions are often neglected in calm water conditions, so that only four degrees of freedom (4DOF) model is sufficient to express the ship's dynamics. Physically parameterized models for roll and the Vessel Manoeuvring Model (VMM) for the remaining DOFs are presented in section \ref{sec:roll} and section \ref{sec:VMM}. How the parameters in these models can be identified is presented in \ref{sec:PIT_roll}.
+
+\section{Roll motion} \label{sec:roll}
+
+The roll motion on a straight course in calm water with no external forces can be expressed with Eq.\ref{eq:roll_decay_equation_general_himeno} \cite{himeno_prediction_1981},
+\input{equations/roll_decay_equation_general_himeno}
+
+\noindent where $B_{44}\left(\dot{\phi}\right)$ can be expressed as expansion series:  
+$ B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n$. Most often, the so-called ``linear model'' (Eq.\ref{eq:roll_decay_equation_himeno_linear}), ``quadratic model'' (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and ``cubic model'' (Eq.\ref{eq:roll_decay_equation_cubic}) are used to represent $B_{44}(\dot{\phi})$ in by truncating the series to keep only linear, quadratic and cubic terms,
+
+\input{equations/roll_decay_equation_himeno_linear}
+\input{equations/roll_decay_equation_himeno_quadratic_b}
+\input{equations/roll_decay_equation_cubic}
+
+\input{kappa/VMM}
+\input{kappa/propeller_model}

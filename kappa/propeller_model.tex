@@ -1,0 +1,29 @@
+\subsection{The propeller model}
+\label{\detokenize{02.10_propeller_model:the-propeller-model}}\label{\detokenize{02.10_propeller_model::doc}}
+\sphinxAtStartPar
+The propeller model is developed based on Manoeuvring Modeling Group (MMG) model \cite{yasukawa_introduction_2015-1} where the thrust is expressed as:
+\begin{equation}\label{equation:02.10_propeller_model:eqT}
+\begin{split}\displaystyle thrust = D^{4} K_{T} n^{2} \rho\end{split}
+\end{equation}
+\sphinxAtStartPar
+and the thrust coefficient \(K_T\) is modelled as a second order polynomial:
+\begin{equation}\label{equation:02.10_propeller_model:eqkt}
+\begin{split}\displaystyle K_{T} = J^{2} k_{2} + J k_{1} + k_{0}\end{split}
+\end{equation}
+\sphinxAtStartPar
+The advance ration \(J\) is calculated as:
+\begin{equation}\label{equation:02.10_propeller_model:eqJ}
+\begin{split}\displaystyle J = \frac{u \left(1 - w_{p}\right)}{D n}\end{split}
+\end{equation}
+\sphinxAtStartPar
+where \(D\) is propeller diameter, \(n\) is propeller speed and \(w_p\) is the wake fraction at an oblique inflow to the propeller from the drift angle and the yaw rate. A semi\sphinxhyphen{}empirical formula for \(w_p\) is provided in the MMG model. As an alternative, a simple polynomial is proposed in \autoref{equation:02.10_propeller_model:eqpropellermodel}.
+\begin{equation}\label{equation:02.10_propeller_model:eqpropellermodel}
+\begin{split}\displaystyle w_{p} = C_{1} \delta + C_{2} \delta^{2} + C_{3} \beta_{p}^{2} + C_{4} u + w_{p0}\end{split}
+\end{equation}
+\sphinxAtStartPar
+\(w_p\) is modeled as a function of rudder angle \(\delta\), to include wake influence from the rudder and ship speed \(u\), to include a speed dependency. The influence from drift angle \(\beta\) and yaw rate \(r\) is expressed by \(\beta_p\) in \autoref{equation:02.10_propeller_model:eqbetap}.
+\begin{equation}\label{equation:02.10_propeller_model:eqbetap}
+\begin{split}\beta_p=\beta - \frac{r}{V} \cdot x_p \end{split}
+\end{equation}
+\sphinxAtStartPar
+Where \(x_p\) is the propeller longitudinal position and \(w_{p0}\) is the regular Taylor wake fraction, applicable to straight ahead steaming with no rudder angle. Similar to the MMG propeller model, two sets of parameters \(C_1\)\sphinxhyphen{}\(C_4\) should be used in the propeller model depending on the sign of \(\beta_p\).
