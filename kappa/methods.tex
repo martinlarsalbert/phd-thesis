@@ -2,13 +2,41 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The system identification of ship dynamics can be simplified into parameter identification if parameterized physical models can be assumed. Parameter Identification Techniques (PIT) for roll motion an manoeuvring is presented in \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
 
 \section{Parameter Identification Techniques (PIT)}
 
 \subsection{Roll damping Parameter Identification} \label{sec:PIT_roll}
-\noindent A Parameter Identification Technique (PIT) can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic}. These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions, by normalizing the equations by the total roll inertia $A_{44}$.
+\noindent The PIT can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic}. These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions, by normalizing the equations by the total roll inertia $A_{44}$.
 The normalized damping and stiffness parameters identified by a PIT can then be expressed in dimensional units by multiplication of $A_{44}$. If $A_{44}$ is not known before hand, it can be calculated using Eq.\ref{eq:A_44_eq} \cite{piehl_ship_2016}, assuming that the $GM$ is known.
 \input{equations/A_44_eq}
 \noindent The frequency $\omega_0$ can be obtained with Fast Fourier Transform (FFT) of the roll signal. 
 
 Two different PIT methods have been investigated: the ``derivation approach'' (referred to as PIT in \parencite{imo_1200_2006}) and the ``integration approach'' which is similar to what \parencite{soder_assessment_2019} used. In the derivation approach the first and second roll time derivatives are calculated numerically so that the parameters in the models are the only unknowns. A least squares fit could be used on the roll motion equation to identify any parameter, including nonlinear or frequency parameter. In the integration approach, the parameters are found by solving a nonlinear problem using the least-square method. This approach requires that an ordinary differential equation to be solved for many estimated sets of parameters until the solution converges.
+
+\subsection{VMM Parameter Identification} \label{sec:PIT_VMM}
+In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known ship manoeuverability. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics. The Ordinary Least Square (OLS) method regresses the hydrodynamic derivatives. 
+
+\subsubsection{Inverse dynamics and regression}
+\label{\detokenize{03.01_inverse_dynamics:inverse-dynamics-and-regression}}\label{\detokenize{03.01_inverse_dynamics::doc}}
+\sphinxAtStartPar
+Each manoeuvring model has some hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) that are defined as polynomials. The hydrodynamic derivatives in these polynomials can be identified with force regression of measured forces and moments. The measured forces and moments are usually taken from Captive Model Tests (CMT), Planar Motion Mechanism (PMM) tests or Virtual Captive Tests (VCT). When the ship is free in all degrees of freedom, as in the present model tests, only
+motions are recorded however. Hence, forces and moments causing ship motions need to be estimated by
+solving the inverse dynamics problem.
+The inverse dynamics is solved by restructuring the system equation (\autoref{equation:02.01_VMMs:eqqsystem}) to get the hydrodynamics functions on the left\sphinxhyphen{}hand side. If the mass and inertia of the ship including added masses: \(X_{\dot{u}}\), \(Y_{\dot{v}}\), \(Y_{\dot{r}}\), \(N_{\dot{v}}\) and \(N_{\dot{r}}\), are known, the forces in Prime system can be calculated using \autoref{equation:03.01_inverse_dynamics:eqxd}, \autoref{equation:03.01_inverse_dynamics:eqyd} and \autoref{equation:03.01_inverse_dynamics:eqnd}.
+\begin{equation}\label{equation:03.01_inverse_dynamics:eqxd}
+\begin{split}\displaystyle \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = - X_{\dot{u}}' \dot{u}' + \dot{u}' m' - m' r'^{2} x_{G}' - m' r' v'\end{split}
+\end{equation}\begin{equation}\label{equation:03.01_inverse_dynamics:eqyd}
+\begin{split}\displaystyle \operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = - Y_{\dot{r}}' \dot{r}' - Y_{\dot{v}}' \dot{v}' + \dot{r}' m' x_{G}' + \dot{v}' m' + m' r' u'\end{split}
+\end{equation}\begin{equation}\label{equation:03.01_inverse_dynamics:eqnd}
+\begin{split}\displaystyle \operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = I_{z}' \dot{r}' - N_{\dot{r}}' \dot{r}' - N_{\dot{v}}' \dot{v}' + \dot{v}' m' x_{G}' + m' r' u' x_{G}'\end{split}
+\end{equation}
+\sphinxAtStartPar
+An example of forces calculated with inverse dynamics from motions in a turning circle test can be seen in \hyperref[\detokenize{03.01_inverse_dynamics:fig-inverse}]{Fig.\@ \ref{\detokenize{03.01_inverse_dynamics:fig-inverse}}}. The forces have been converted to SI units.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{ka}
+    \caption{Example of forces and moments calculated with inverse dynamics on data from a turning circle test.}
+    \label{\detokenize{03.01_inverse_dynamics:fig-inverse}}
+\end{figure}
