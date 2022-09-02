@@ -53,7 +53,8 @@ $ B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\
 \input{equations/roll_decay_equation_himeno_quadratic_b}
 \input{equations/roll_decay_equation_cubic}
 
-\section{Vessel Manoeuvring Model} \label{sec:VMM}
+\section{Vessel Manoeuvring Models} \label{sec:VMM}
+\input{kappa/VMM}
 
 \section{Parameter Identification Techniques (PIT)}
 
@@ -87,7 +88,9 @@ Both the ''derivation approach'' and ''integration approach'' was attempted for 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusions\label{ch:conclusions}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The PIT ''derivation approach'' that was attempted in Paper \ref{pap:rolldamping}, was again attempted for the VMM PIT in Paper \ref{pap:pit}, where the velocities and accelerations are estimated with the EKF + RTS smoother, instead of the numeric differentiation that was used in Paper \ref{pap:rolldamping}.
+The PIT ''integration approach'' produced better models than the ''derivation approach'' for the roll motion models in Paper \ref{pap:rolldamping}. The ''integration approach'' is very slow and relies on optimization that may or may not converge.
+The numerical differentiation used to estimate the velocities and accelerations, is believed to be the main cause of the poor performance of the much faster and more reliable ''derivation approach''. The introduction of EKF + RTS smoother in the PIT presented in Paper \ref{pap:pit}, solved this issue, so that the ''derivation approach'' could be used.  
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
