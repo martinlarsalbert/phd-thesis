@@ -18,9 +18,51 @@ Modeling of ship’s dynamics has a wide range of useful applications. This can 
 \end{itemize}
 
 \noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
-In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}. 
-Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections before or after the white-box in a serial approach. 
-Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
+In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (white-box) [white-box] {White-box};
+    \node (black-box) [black-box, right of=white-box, xshift=2cm] {Black-box};
+    \draw [arrow] (white-box) -- (black-box);
+    \end{tikzpicture}
+    \caption{Serial grey-box}
+    \label{fig:serial1}
+    \end{subfigure}
+
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (black-box) [black-box] {Black-box};
+    \node (white-box) [white-box, right of=black-box, xshift=2cm] {White-box};
+    \draw [arrow] (black-box) -- (white-box);
+    \end{tikzpicture}
+    \caption{Serial grey-box}
+    \label{fig:serial2}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (black-box) [black-box] {Black-box};
+    \node (white-box) [white-box, below of=black-box] {White-box};
+    \node (join) [process, right of=black-box, xshift=2cm, yshift=-1cm] {join};
+    \draw [arrow] (black-box) -- (join);
+    \draw [arrow] (white-box) -- (join);
+    \end{tikzpicture}
+    \caption{Parallel grey-box}
+    \label{fig:parallel}
+    \end{subfigure}
+    \caption{Several ways to combine white- and black-box models in grey box models.}
+    \label{fig:greycombinations}
+\end{figure}
+
+\noindent Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections after (Fig.\ref{fig:serial1}) or before (Fig.\ref{fig:serial2}) the white-box in a serial approach. 
+Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach (Fig.\ref{fig:parallel}) where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
 
 \section{Literature review}
 

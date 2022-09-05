@@ -5,9 +5,6 @@
 
 \section{Paper \ref{pap:rolldamping}}
 \subsection*{"\nameref{pap:rolldamping}"}
-A serial grey-box model for ship roll damping is developed in Paper \ref{pap:rolldamping}. Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
-A roll damping dataset is used to train the black-box part of the grey-box model.
-250 roll decay tests assembled from the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}) are used to build the dataset. The roll damping parameters are found by applying a PIT (see Section \ref{sec:PIT_roll}) on the parameterized roll motion models (see Section \ref{sec:roll}).
 Both the ''derivation approach'' and ''integration approach'' is attempted for the roll damping PIT, where the ''integration approach'' gives the most accurate models, and is therefore used to build the roll damping dataset. A quadratic damping model (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) is sufficient to reproduce most of the roll decay tests and is therefore used to build the roll damping dataset. 
 The roll damping dataset is used to fit the grey-box model. The black-box correction model of the output components from the SI method are shown in (Eq.\ref{eq:polynom_correction}),
 \input{equations/polynom_correction}
@@ -24,6 +21,8 @@ The roll damping dataset is used to fit the grey-box model. The black-box correc
 \subsection*{"\nameref{pap:pit}"}
 A method for System Identification of ship manoeuvring dynamics is developed in Paper \ref{pap:pit}. 
 
-It is shown in Paper \ref{pap:pit} that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
+It is shown that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
 
-It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. 
+It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning.
+
+The new method can predict Turning circles with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases, which should be considered sufficient considering the margin to the corresponding limits in the IMO standard for both ships.

@@ -12,8 +12,87 @@ The normalized damping and stiffness parameters identified by a PIT can be expre
 
 Two different PIT methods have been investigated: the ``derivation approach'' (referred to as PIT in \parencite{imo_1200_2006}) and the ``integration approach'' which is similar to what \parencite{soder_assessment_2019} used. In the derivation approach the first and second roll time derivatives are calculated numerically so that the parameters in the models are the only unknowns. A least squares fit is applied on the roll motion equation to identify any parameter, including nonlinear or frequency parameter. In the integration approach, the parameters are found by solving a nonlinear problem using the least-square method. This approach requires that an ordinary differential equation to be solved for many estimated sets of parameters until the solution converges.
 
+\section{Roll damping model}
+A serial grey-box model for ship roll damping (see Fig.\ref{fig:greyrolldamping}) is developed in Paper \ref{pap:rolldamping}. Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
+
+\begin{figure}[H]
+    
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (white-box) [white-box] {Simplified Ikeda};
+    \node (B_BK) [io, right of=white-box, xshift=0.90cm, yshift=1.5cm] {$\hat{B_{BK}}$};
+    \node (B_E) [io, right of=white-box, xshift=0.75cm, yshift=0.75cm] {$\hat{B_{E}}$};
+    \node (B_F) [io, right of=white-box, xshift=0.75cm, yshift=0cm] {$\hat{B_{F}}$};
+    \node (B_L) [io, right of=white-box, xshift=0.75cm, yshift=-0.75cm] {$\hat{B_{L}}$};
+    \node (B_W) [io, right of=white-box, xshift=0.75cm, yshift=-1.5cm] {$\hat{B_{W}}$};
+    
+    
+    \node (black-box) [black-box, right of=B_F, xshift=0.75cm] {Black-box};
+    \draw [arrow] (white-box) -- (B_BK);
+    \draw [arrow] (white-box) -- (B_E);
+    \draw [arrow] (white-box) -- (B_F);
+    \draw [arrow] (white-box) -- (B_L);
+    \draw [arrow] (white-box) -- (B_W);
+    
+    \draw [arrow] (B_BK) -- (black-box);
+    \draw [arrow] (B_E)  -- (black-box);
+    \draw [arrow] (B_F)  -- (black-box);
+    \draw [arrow] (B_L)  -- (black-box);
+    \draw [arrow] (B_W)  -- (black-box);
+    
+    
+    \node (B) [io, right of=black-box, xshift=0.75cm, yshift=0cm] {$B$};
+    \draw [arrow] (black-box)  -- (B);
+    
+    \end{tikzpicture}
+    \caption{Grey-box model to predict roll damping}
+    \label{fig:greyrolldamping}
+\end{figure}
+
+\noindent A roll damping dataset is used to train the black-box part of the grey-box model.
+250 roll decay tests assembled from the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}) are used to build the dataset. The roll damping parameters are found by applying a PIT (see Section \ref{sec:PIT_roll}) on the parameterized roll motion models (see Section \ref{sec:roll}).
+
 \section{VMM Parameter Identification} \label{sec:PIT_VMM}
-In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known ship manoeuverability. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics. The Ordinary Least Square (OLS) method regresses the hydrodynamic derivatives. 
+In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known ship manoeuverability. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics, as seen in Fig.\ref{fig:greyvmm}. The Ordinary Least Square (OLS) method regresses the hydrodynamic derivatives. 
+
+\begin{figure}[H]
+    
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (data) [io, above of=white-box, xshift=1cm, yshift=1.5cm] {Model test data};
+    
+    \node (EKF) [process, right of=data, xshift=2.5cm, yshift=0cm] {EFK + RTS};
+    \node (data_clean) [io, below of=EKF, xshift=0cm, yshift=0.0cm] {\(x,\dot{x},\ddot{x}, \delta, thrust\)};
+    
+    \node (white-box) [white-box] {Inverse dynamics};
+    \node (X_D) [io, right of=white-box, xshift=0.90cm, yshift=1cm]{\(X_D\)};
+    \node (Y_D) [io, right of=white-box, xshift=0.90cm, yshift=0cm]{\(Y_D\)};
+    \node (N_D) [io, right of=white-box, xshift=0.90cm, yshift=-1cm]{\(N_D\)};
+    
+    \node (black-box) [black-box, right of=B_F, xshift=0.75cm] {Regression};
+    
+    \draw [arrow] (data) -- (EKF);
+    \draw [arrow] (EKF) -- (data_clean);
+    
+    \draw [arrow] (data_clean) -| (white-box);
+    \draw [arrow] (data_clean) -- (black-box);
+    
+    \draw [arrow] (white-box) -- (X_D);
+    \draw [arrow] (white-box) -- (Y_D);
+    \draw [arrow] (white-box) -- (N_D);
+    
+    \draw [arrow] (X_D) -- (black-box);
+    \draw [arrow] (Y_D)  -- (black-box);
+    \draw [arrow] (N_D)  -- (black-box);
+    
+    \node (coefficients) [io, right of=black-box, xshift=1.5cm, yshift=0cm] {VMM$\left(Y_{uv},N_{\delta},...\right)$};
+    \draw [arrow] (black-box)  -- (coefficients);
+    
+    \end{tikzpicture}
+    \caption{Grey-box model to predict the VMM hydrodynamic derivatives}
+    \label{fig:greyvmm}
+\end{figure}
+
 
 \subsection{Inverse dynamics and regression}
 \label{\detokenize{03.01_inverse_dynamics:inverse-dynamics-and-regression}}\label{\detokenize{03.01_inverse_dynamics::doc}}
@@ -39,13 +118,13 @@ An example of forces calculated with inverse dynamics from motions in a turning 
     \label{\detokenize{03.01_inverse_dynamics:fig-inverse}}
 \end{figure}
 
-\section{Data cleaning}
+\subsection{Data cleaning}
 It is possible to do an exact parameter identification on perfect (simulated) data with no noise (see Paper \ref{pap:pit}). However, such data from physical experiments does not exist in reality. The measured data will always contain process noise and measurement noise. In order to mitigate this, the data is preprocessed using an Extended Kalman filter (EKF) and Rauch Tung Striebel (RTS) smoother which are both presented below.
 
 EKF is an extension of the Kalman Filter (KF) to work on nonlinear systems such as the VMMs. The basic idea is that noise can be disregarded if it does not make sense from a physical point of view. If noisy measurement data were perfectly correct, this would mean that the ship has many vibrations that must have originated from tremendous forces, considering the large mass of the ship. The prior understanding of the dynamics suggests that these forces are not present. Therefore, the noise should be considered as measurement noise and should be removed. Low-pass filtering is a common way to remove noise, where motions above some cut-off frequencies are regarded as unphysical measurement noise. The problem with low-pass filter is that it is hard to know what cut-off frequency to choose, either too low: removing part of the signal, or too high: keeping some unfiltered measurement noise in the data. The Kalman filter has a system model that continuously estimates the system’s state that runs in parallel with the measurement data. The filter estimates the current state as a combination of the measurement data and the system model estimate based on belief in the data and the model. If the data has low noise, the estimate turns toward that data. Conversely, if the model gives very good predictions, then that estimate turns towards the model.
 The system’s inverse dynamics require the entire states, including positions, velocities, and accelerations, to be known. Only positions are known from the measurements, which means that velocities and accelerations are hidden states that the EKF should estimate.
 
-\section{Iteration}
+\subsection{Iteration}
 After choosing a proper VMM model to describe a ship’s manoeuvring performance, the coefficients in the VMM can be estimated by the proposed PIT method in \hyperref[\detokenize{01.01_method:overview}]{Fig.\@ \ref{\detokenize{01.01_method:overview}}}.
 The measurement noise needs to be removed if the regression of hydrodynamic derivatives in the VMM should work well. However, filtering with the EKF also needs an accurate VMM as the system model. Therefore the accurate VMM is both the input and output of the PIT. The system model VMM in the EKF is guessed to solve this dilemma. A linear VMM with hydrodynamic derivatives estimated with semi\sphinxhyphen{}empirical formulas is used as the initial guess. Once the regressed VMM has been obtained, the PIT can be rerun using the regressed VMM as the system model in the EKF, to obtain an even better VMM. This procedure can be repeated several times for improved accuracy. Using semi\sphinxhyphen{}empirical formulas for the initially guessed VMM adds prior knowledge about the ship dynamics to the regression. When used with the recursive EKF, this method is an innovation compared to other PIT methods. An example with simulation results from the steps in the iterative EKF is shown in \hyperref[\detokenize{01.01_method:iterations}]{Fig.\@\ref{\detokenize{01.01_method:iterations}}}.
 
