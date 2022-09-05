@@ -1,0 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Conclusions\label{ch:conclusions}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The PIT ''integration approach'' produced better models than the ''derivation approach'' for the roll motion models in Paper \ref{pap:rolldamping}. The ''integration approach'' is very slow and relies on optimization that may or may not converge.
+The numerical differentiation used to estimate the velocities and accelerations, is believed to be the main cause of the poor performance of the much faster and more reliable ''derivation approach''. The introduction of EKF + RTS smoother in the PIT presented in Paper \ref{pap:pit}, solves this issue, with good results for the ''derivation approach''.
+
+The SI method, being the white-box physical model in the grey-box model in Paper \ref{pap:rolldamping} has about the same accuracy as the corresponding black-box model, which means that the white-box model is adding very little value, due to poor performance of SI method outside its limits.
+
+ 
+
+   

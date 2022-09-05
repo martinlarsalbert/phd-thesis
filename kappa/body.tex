@@ -8,13 +8,13 @@ Modeling of ship’s dynamics has a wide range of useful applications. This can 
 
 \begin{itemize}
     \item White-box modeling \\
-    involves applying physical principles, so that no observed data is required. Computational Fluid Dynamics (CFD) is one example from ship hydrodynamics. Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
+    involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}. Ikeda's method to predict roll damping \cite{ikeda_components_1978} is one example of this (see Paper \ref{pap:rolldamping}).  
 
     \item Black-box modeling \\
     means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
     
     \item Grey-box modeling \\
-    is a combination of white-box and black-box modeling methods, so that observed data is required. This concept is also referred to as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008}. 
+    is a combination of white-box and black-box modeling methods, so that both a physical model and data is required. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008} in the literature. 
 \end{itemize}
 
 \noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
@@ -27,6 +27,7 @@ Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is a
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
+A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the estimator is still perfect, which means that these methods are not solving the whole problem, where both noise and system model should be unknown. Only when using data obtained from real physical systems, from model tests or full scale ship operation, the whole system identification problem is addressed.
 
 crawling, walking, running...
 
@@ -37,32 +38,8 @@ Calm waters...
 
 \input{kappa/models}
 \input{kappa/methods}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Results\label{ch:results}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\section{Paper \ref{pap:rolldamping}}
-\subsection*{"\nameref{pap:rolldamping}"}
-A serial grey-box model for ship roll damping is developed in Paper \ref{pap:rolldamping}. Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
-A roll damping dataset is used to train the black-box part of the grey-box model.
-250 roll decay tests assembled from the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}) are used to build the dataset. The roll damping parameters are found by applying a PIT (see Section \ref{sec:PIT_roll}) on the parameterized roll motion models (see Section \ref{sec:roll}).
-Both the ''derivation approach'' and ''integration approach'' was attempted for the roll damping PIT, where the ''integration approach'' gave the most accurate models, and was therefore used to build the roll damping dataset.
-
-\section{Paper \ref{pap:daiyong}}
-\subsection*{"\nameref{pap:daiyong}"}
-
-\section{Paper \ref{pap:pit}}
-\subsection*{"\nameref{pap:pit}"}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Conclusions\label{ch:conclusions}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The PIT ''integration approach'' produced better models than the ''derivation approach'' for the roll motion models in Paper \ref{pap:rolldamping}. The ''integration approach'' is very slow and relies on optimization that may or may not converge.
-The numerical differentiation used to estimate the velocities and accelerations, is believed to be the main cause of the poor performance of the much faster and more reliable ''derivation approach''. The introduction of EKF + RTS smoother in the PIT presented in Paper \ref{pap:pit}, solved this issue, so that the ''derivation approach'' could be used.  
-
+\input{kappa/results}
+\input{kappa/conclusions}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
