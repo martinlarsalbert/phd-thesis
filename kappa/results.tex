@@ -3,21 +3,22 @@
 \chapter{Results\label{ch:results}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Paper \ref{pap:rolldamping}}
+\section{Result summary Paper \ref{pap:rolldamping}}
 \subsection*{"\nameref{pap:rolldamping}"}
 Both the ''derivation approach'' and ''integration approach'' is attempted for the roll damping PIT, where the ''integration approach'' gives the most accurate models, and is therefore used to build the roll damping dataset. A quadratic damping model (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) is sufficient to reproduce most of the roll decay tests and is therefore used to build the roll damping dataset. 
 The roll damping dataset is used to fit the grey-box model. The black-box correction model of the output components from the SI method are shown in (Eq.\ref{eq:polynom_correction}),
 \input{equations/polynom_correction}
 
-\noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. The SI method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
+\noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. This is because the SI method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
 \input{equations/polynom_complex}
 
 \noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset.
 
-\section{Paper \ref{pap:daiyong}}
+\section{Result summary Paper \ref{pap:daiyong}}
 \subsection*{"\nameref{pap:daiyong}"}
+Least Square Support Vector Regression (LS-SVR) \cite{brereton_support_2010} is used in Paper \ref{pap:daiyong} to identify an Abkowitz Vessel Manoeuvring Model (AVMM) \cite{abkowitz_ship_1964}. 
 
-\section{Paper \ref{pap:pit}}
+\section{Result summary Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
 A method for System Identification of ship manoeuvring dynamics is developed in Paper \ref{pap:pit}. 
 
