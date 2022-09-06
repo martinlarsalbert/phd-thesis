@@ -2,8 +2,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Results\label{ch:results}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This chapter presents a summary of the appended papers, including research activities
+and a selection of the important results, and highlights the main achievements.
 
-\section{Result summary Paper \ref{pap:rolldamping}}
+\section{Summary Paper \ref{pap:rolldamping}}
 \subsection*{"\nameref{pap:rolldamping}"}
 Both the ''derivation approach'' and ''integration approach'' is attempted for the roll damping PIT, where the ''integration approach'' gives the most accurate models, and is therefore used to build the roll damping dataset. A quadratic damping model (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) is sufficient to reproduce most of the roll decay tests and is therefore used to build the roll damping dataset. 
 The roll damping dataset is used to fit the grey-box model. The black-box correction model of the output components from the SI method are shown in (Eq.\ref{eq:polynom_correction}),
@@ -14,24 +16,19 @@ The roll damping dataset is used to fit the grey-box model. The black-box correc
 
 \noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset.
 
-\section{Result summary Paper \ref{pap:daiyong}}
+\section{Summary Paper \ref{pap:daiyong}}
 \subsection*{"\nameref{pap:daiyong}"}
 Least Square Support Vector Regression (LS-SVR) \cite{brereton_support_2010} is used in Paper \ref{pap:daiyong} to identify the parameters in an Abkowitz Vessel Manoeuvring Model (AVMM) \cite{abkowitz_ship_1964}.  
 The data is taken from experimental tests on a lake using a ship model with a scale of 50:1. The configuration of sensors and equipment for the experiment is shown in Fig.\ref{fig:cthmodel}.  
-
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{kappa/images/cth_model.png}
     \caption{Configuration of sensors and equipment for the experimental tests.}
     \label{fig:cthmodel}
 \end{figure}
+\noindent The hydrodynamic derivatives of the AVMM are identified almost perfectly when applied on data from simulations with MSS toolbox Mariner \cite{tristan_matlab_2009}. The PIT does however not work at all when applied on the data obtained from the lake experiments. The PIT is very sensitive to noise due to the differentiation that needs to be conducted to calculate velocities and yaw rate from the measured position and heading. The PIT works better if the data is first cleaned using a proposed preprocessing algorithm together with a Kalman Filter (KF). The simulations with the identified model and the experiments are however still not in very good agreement.     
 
-The hydrodynamic derivatives of the AVMM are identified almost perfectly with the proposed PIT when applied on data from simulations with MSS toolbox Mariner \cite{tristan_matlab_2009}.
-
-
-
-
-\section{Result summary Paper \ref{pap:pit}}
+\section{Summary Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
 A method for System Identification of ship manoeuvring dynamics is developed in Paper \ref{pap:pit}. 
 
