@@ -16,7 +16,20 @@ The roll damping dataset is used to fit the grey-box model. The black-box correc
 
 \section{Result summary Paper \ref{pap:daiyong}}
 \subsection*{"\nameref{pap:daiyong}"}
-Least Square Support Vector Regression (LS-SVR) \cite{brereton_support_2010} is used in Paper \ref{pap:daiyong} to identify an Abkowitz Vessel Manoeuvring Model (AVMM) \cite{abkowitz_ship_1964}. 
+Least Square Support Vector Regression (LS-SVR) \cite{brereton_support_2010} is used in Paper \ref{pap:daiyong} to identify the parameters in an Abkowitz Vessel Manoeuvring Model (AVMM) \cite{abkowitz_ship_1964}.  
+The data is taken from experimental tests on a lake using a ship model with a scale of 50:1. The configuration of sensors and equipment for the experiment is shown in Fig.\ref{fig:cthmodel}.  
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{kappa/images/cth_model.png}
+    \caption{Configuration of sensors and equipment for the experimental tests.}
+    \label{fig:cthmodel}
+\end{figure}
+
+The hydrodynamic derivatives of the AVMM are identified almost perfectly with the proposed PIT when applied on data from simulations with MSS toolbox Mariner \cite{tristan_matlab_2009}.
+
+
+
 
 \section{Result summary Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
