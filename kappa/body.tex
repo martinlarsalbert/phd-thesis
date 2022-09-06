@@ -8,13 +8,13 @@ Modeling of ship’s dynamics has a wide range of useful applications. This can 
 
 \begin{itemize}
     \item White-box modeling \\
-    involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from previous experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}. Ikeda's method to predict roll damping \cite{ikeda_components_1978} is one example of this (see Paper \ref{pap:rolldamping}).  
+    involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from historical experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}. Ikeda's method to predict roll damping \cite{ikeda_components_1978} is one example of this (see Paper \ref{pap:rolldamping}).  
 
     \item Black-box modeling \\
     means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
     
     \item Grey-box modeling \\
-    is a combination of white-box and black-box modeling methods, so that both a physical model and data is required. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008} in the literature. 
+    is a combination of white-box and black-box modeling methods, so that both a physical model and data is used. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008} in the literature. 
 \end{itemize}
 
 \noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
@@ -69,9 +69,20 @@ Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is a
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
-A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the estimator is still perfect, which means that these methods are not solving the whole problem, where both noise and system model should be unknown. Only when using data obtained from real physical systems, from model tests or full scale ship operation, the whole system identification problem is addressed.
+A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the model is still perfect, which means that these methods are not solving the whole problem, where both noise and system model should be unknown. 
+Only when using data obtained from real physical systems, from model tests or full scale ship operation, the whole system identification problem is addressed.
+As it is shown in both Paper \ref{pap:daiyong} and \ref{pap:pit}, it is possible to get an almost perfect identification of the model, when simulated data is used.
 
-crawling, walking, running...
+To achieve the overall objective, five main tasks and research activities are conducted in this thesis:
+% crawling, walking, running...
+\begin{itemize}
+    \item Develop a PIT for one degree of freedom (roll)
+    \item Build roll damping database for modern ship types tested at SSPA
+    \item Develop grey-box model for prediction of modern ship roll damping parameters
+    \item Develop a PIT for three degrees of freedom (surge, sway, yaw)
+    \item Develop a method to remove handle noise
+    \item Propose a methodology to choose the appropriate and robust VMM
+\end{itemize}
 
 \section{Assumptions and limitations}
 Calm waters...
