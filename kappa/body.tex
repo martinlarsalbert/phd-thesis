@@ -5,9 +5,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding industry \cite{stanic_toward_2018}.
-The idea of using twin models can be dated back to NASA’s Apollo program where two identical space vehicles were built to allow mirroring the conditions of the space vehicle during the mission \cite{rosen_about_2015}. Considering the sizes of ships (and if you are not NASA) this is not a feasible option. Building ship scale models is a more realistic approach, which has been used for centuries. The increasing digitization of ships, has enabled a new possibility to also build models digitally. A Digital Twin (DT) in shipbuilding means a digital copy of a real ship, and is used to help optimize the design, maintenance, production and sustainability of the physical ship \cite{chen_review_2021}.
+The idea of using twin models can be dated back to NASA’s Apollo program where two identical space vehicles were built to allow mirroring the conditions of the space vehicle during the mission \cite{rosen_about_2015}. Considering the sizes of ships (and if you are not NASA) this is not a feasible option. Building ship scale models is a more realistic approach, which has been used for centuries. The increasing digitization of ships, has enabled a new possibility to also build models digitally. A Digital Twin (DT) in shipbuilding means a digital copy of a real ship, and is used to help optimize the design, maintenance, production and sustainability of the physical ship \cite{chen_review_2021}. The DT can also be used to reduce the fuel consumption and emissions for ships by optimizing the operation. Weather routing is an example of this. 
 
-Virtual Prototyping (VP) is a related term which is also frequently used. VPs are generally model based in contrast to the data-driven DTs \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for ships that do not exist yet, and no operational data can thus be collected. The definitions of DT and VP overlap and are often used interchangeably. The models developed in this thesis lean more towards the data-driven DT definition however. The DT models can be categorized as: white-box, black-box or grey-box modeling \cite{leifsson_grey-box_2008}. Most of the models in this thesis fall under the grey-box category.
+Virtual Prototyping (VP) is a related term which is also frequently used. VPs are generally model based in contrast to the data-driven DTs \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is available yet. The definitions of DT and VP overlap and are often used interchangeably. The models developed in this thesis lean more towards the data-driven DT definition. The DT models can be categorized as: white-box, black-box or grey-box modeling \cite{leifsson_grey-box_2008}. Most of the models in this thesis fall under the grey-box category.
 
 \begin{itemize}
     \item White-box modeling \\
@@ -17,10 +17,10 @@ Virtual Prototyping (VP) is a related term which is also frequently used. VPs ar
     means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
     
     \item Grey-box modeling \\
-    is a combination of white-box and black-box modeling methods, so that both a physical model and data is used. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling \cite{leifsson_grey-box_2008} in the literature. 
+    is a combination of white-box and black-box modeling methods, so that both a physical model and data is used. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
 \end{itemize}
 
-\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed. The main disadvantage is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. 
+\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed.
 In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
 
 \begin{figure}[H]
@@ -66,34 +66,48 @@ In a grey box model the white and black parts can be combined in several ways us
 
 \noindent Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections after (Fig.\ref{fig:serial1}) or before (Fig.\ref{fig:serial2}) the white-box in a serial approach. 
 Grey-box modeling of a motorcycle shock absorber \cite{beghi_grey-box_2007} is an example of the parallel approach (Fig.\ref{fig:parallel}) where the low frequency dynamics is handled by a white box and the higher frequencies are handled by a black box.
-The VPs uses white-box modeling, where no operational data is required. For the DTs, black-box or grey-box are possible options.
+An alternative distinction between the VP and the DT is that VP uses white-box modeling, since no operational data exist, and the DT uses  black-box or grey-box modeling.
 
 \section{Literature review}
 
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
-A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the model is still perfect, which means that these methods are not solving the whole problem, where both noise and system model should be unknown. 
-Only when using data obtained from real physical systems, from model tests or full scale ship operation, the whole system identification problem is addressed.
+\label{sec:motivation}
+The DT hydrodynamics should be developed as grey-box models with system identification in calm waters. A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the model is still perfect, which means that these methods are not confronting the whole problem, where both noise and system model should be unknown. 
+Only when using data obtained from real physical systems, from model tests, as used in this thesis, the whole system identification problem is addressed.
 As it is shown in both Paper \ref{pap:daiyong} and \ref{pap:pit}, it is possible to get an almost perfect identification of the model, when simulated data is used.
 
-To achieve the overall objective, five main tasks and research activities are conducted in this thesis:
+The main disadvantage with black-box modeling, is the dependence on the data used to model the system, which can result in limited extrapolation properties beyond the data that it is derived from \cite{leifsson_grey-box_2008}. The use of grey-box modelling as a combination of white-box and black-box aims at mitigating this disadvantage. A robust model should be capable of making extrapolations with predictions outside its training data, in order to be of practical use.
+\bigbreak
+\noindent To achieve the overall objective, the following two main research activities are described in this thesis:
 % crawling, walking, running...
-\begin{itemize}
-    \item Develop a PIT for one degree of freedom (roll)
-    \item Build roll damping database for modern ship types tested at SSPA
-    \item Develop grey-box model for prediction of modern ship roll damping parameters
-    \item Develop a PIT for three degrees of freedom (surge, sway, yaw)
-    \item Develop a method to remove handle noise
-    \item Propose a methodology to choose the appropriate and robust VMM
-\end{itemize}
+\begin{enumerate}
+
+    \item Roll motion
+    \begin{itemize}
+        \item Develop a PIT for roll motion
+        \item Build roll damping database for modern ship types tested at SSPA
+        \item Develop grey-box model for prediction of modern ship roll damping parameters
+    \end{itemize}
+    
+    \item Manoeuvring motion
+    \begin{itemize}
+        \item Develop a PIT for three degrees of freedom (surge, sway, yaw)
+        \item Develop a method to handle noise
+        \item Propose a methodology to choose the appropriate and robust VMM for extrapolation
+ 
+    \end{itemize}
+\end{enumerate}
 
 \section{Assumptions and limitations}
 %Calm waters...
 Calm water condition is a simplification of the real sea condition that a ship encounters. This condition assumes that the influences from encountering wind, waves and currents are neglected. These assumptions simplifies the system identification, by reducing the degrees of freedoms to: surge, sway, yaw and roll. For surge, sway and yaw, which are all low frequency motions, the added masses and other hydrodynamic derivatives can be assumed as constants \cite{fossen_handbook_2021}.  
-The sea is never calm, which is why scale model test data in a controlled environment is instead used in this thesis. System identification of real operational data, where these simplifications cannot be made, is  therefore left for future work.
+The sea is never calm, which is why scale model test data in a controlled calm water environment is used in this thesis. System identification of real operational data at sea, where these simplifications cannot be made, is  therefore left for future work. Investigating system identification in calm waters, is however an important step towards DTs in full scale sea operation.
 
 \section{Outline of the paper}
+Chapter \ref{ch:models} presents the parameterized models used in this thesis for the Roll motion (Section \ref{sec:roll}) and Manoeuvring motion (Section \ref{sec:VMM}). The PITs used for these motions are presented in Section \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. A generic roll damping model, to estimate the roll damping coefficients for modern ships is also presented in section \ref{sec:genericrolldampingmodel}.
+A summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
 
 \input{kappa/models}
 \input{kappa/methods}
