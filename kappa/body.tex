@@ -6,20 +6,15 @@
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
-The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet-of-Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{aslam_internet_2020}.\end{quote}
-
-
-
-There is an increasing digitization \cite{ichimura_shipping_2022} of ships. The ship's position, motions and fuel consumption as well as environmental data about wind, waves and current are just a few examples of data that can be collected.   
-
-
-The idea of using twin models can be dated back to NASA’s Apollo program where two identical space vehicles were built to allow mirroring the conditions of the space vehicle during the mission \cite{rosen_about_2015}. Considering the sizes of ships (and if you are not NASA) this is not a feasible option. Building ship scale models is a more realistic approach, which has been used for centuries. The increasing digitization of ships, has enabled a new possibility to also build models digitally. A Digital Twin (DT) in shipbuilding means a digital copy of a real ship, and is used to help optimize the design, maintenance, production and sustainability of the physical ship \cite{chen_review_2021}. The DT can also be used to reduce the fuel consumption and emissions for ships by optimizing the operation. Weather routing is an example of this. 
-
-Virtual Prototyping (VP) is a related term which is also frequently used. VPs are generally model based in contrast to the data-driven DTs \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is available yet. The definitions of DT and VP overlap and are often used interchangeably. The models developed in this thesis lean more towards the data-driven DT definition. The DT models can be categorized as: white-box, black-box or grey-box modeling \cite{leifsson_grey-box_2008}. Most of the models in this thesis fall under the grey-box category.
+The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet-of-Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
+Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for IoS \cite{aslam_internet_2020}.
+A Digital Twin (DT) as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
+DTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is available yet.
+White-box models are used in VP. Either black-box or grey-box models are used in the DTs. 
 
 \begin{itemize}
     \item White-box modeling \\
-    involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from historical experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}. Ikeda's method to predict roll damping \cite{ikeda_components_1978} is one example of this (see Paper \ref{pap:rolldamping}).  
+    involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from historical experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
 
     \item Black-box modeling \\
     means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
@@ -28,8 +23,7 @@ Virtual Prototyping (VP) is a related term which is also frequently used. VPs ar
     is a combination of white-box and black-box modeling methods, so that both a physical model and data is used. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
 \end{itemize}
 
-\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed.
-In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
+\noindent In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
 
 \begin{figure}[H]
     \centering
@@ -72,8 +66,9 @@ In a grey box model the white and black parts can be combined in several ways us
     \label{fig:greycombinations}
 \end{figure}
 
-\noindent Grey-box modelling is often used in situations where white-box models are not giving the required accuracy by introducing some corrections after (Fig.\ref{fig:serial1}) or before (Fig.\ref{fig:serial2}) the white-box in a serial approach. Manoeuvring prediction of a ferry was conducted with this approach \cite{nielsen_machine_2022} where a deep learning model (Black-box) captures the residues between first-principles model (White-box) and observed data.
-An alternative distinction between the VP and the DT is that VP uses white-box modeling, since no operational data exist, and the DT uses  black-box or grey-box modeling.
+\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the DT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. The White-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenario of a ship operating at sea. In the deep sea: wind, waves and current will add complexity and in coastal areas water depth and bank-effects will add complexity \cite{nielsen_machine_2022}. 
+\noindent Grey-box modelling is an attempt bridge these problems, to either mitigate the White-box modelling error or the Black-box extrapolation error. \cite{nielsen_machine_2022} used this approach for manoeuvring prediction of a ferry where a deep learning model (Black-box) captures the residues between first-principles model (White-box) and observed data.
+
 
 \section{Literature review}
 
@@ -81,6 +76,11 @@ An alternative distinction between the VP and the DT is that VP uses white-box m
 %"Critic" to what has been done before
 \section{Motivation and objective}
 \label{sec:motivation}
+Motivation: IoS requires DT models of the ship's dynamics at sea.
+
+Objective: Develop DT for ship dynamics using Grey-box modelling.
+
+
 The DT hydrodynamics should be developed as grey-box models with system identification in calm waters. A majority of the publications in the field of system identification use simulated data with added white noise. Even though noise has been added, the model is still perfect, which means that these methods are not confronting the whole problem, where both noise and system model should be unknown. 
 Only when using data obtained from real physical systems, from model tests, as used in this thesis, the whole system identification problem is addressed.
 As it is shown in both Paper \ref{pap:daiyong} and \ref{pap:pit}, it is possible to get an almost perfect identification of the model, when simulated data is used.
