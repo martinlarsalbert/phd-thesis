@@ -10,7 +10,7 @@ The emergence of Internet-of-Things (IoT) has led to the introduction of the Int
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for IoS \cite{aslam_internet_2020}.
 A Digital Twin (DT) as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
 DTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
-White-box models are used in VP. Either black-box or grey-box models are used in the DTs. 
+In VP, White-box models are used. Either black-box or grey-box models are used in the DTs. 
 
 \begin{itemize}
     \item White-box modeling \\
@@ -67,24 +67,24 @@ White-box models are used in VP. Either black-box or grey-box models are used in
 \end{figure}
 
 \noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the DT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. The White-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenario of a ship operating at sea. In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will add complexity \cite{nielsen_machine_2022}. 
-\noindent Grey-box modelling is an attempt to bridge these problems, to either mitigate the White-box modelling error or the Black-box extrapolation error. \cite{nielsen_machine_2022} used this approach for manoeuvring prediction of a ferry where a deep learning model (Black-box) captures the residues between first-principles model (White-box) and observed data.
+\noindent Grey-box modelling is an attempt to bridge these problems, to either mitigate the White-box modelling error or the Black-box extrapolation error.
 
-Ship dynamics is a branch of ship hydrodynamics which concerns the forces and motions on a ship, where the ship is allowed to move and rotate in all directions possible. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better DTs.
+Ship dynamics is a branch of ship hydrodynamics which concerns the forces and motions on a ship, where the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better DTs with Grey-box modeling.
 
 \section{Literature review}
-
+\cite{nielsen_machine_2022} used Grey-box modelling for manoeuvring prediction of a ferry where a deep learning model (Black-box) captures the residues between first-principles model (White-box) and observed data.
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as Black-box models using the latest technologies within Machine Learning (ML). It is in the author's belief that using Grey-box models, also incorporating physical relations, will give better prediction models to improve the DTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the DTs to be used in the IoS applications. Otherwise one has to rely on the Black-box models to figure out the ship dynamic relations. 
+Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as Black-box models using the latest technologies within Machine Learning (ML). It is in the author's belief that Grey-box models, also incorporating physical relations, will give better prediction models to improve the DTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the DTs to be used in the IoS applications. Otherwise one has to rely on the Black-box models to figure out the ship dynamic relations. 
 
 Full scale operational data from ships at sea has a lot of noise and large uncertainties, due to the sea environment. Developing DTs for this data is a great challenge, and it is especially hard to know when the model is correct and when not. Instead using data from a controlled laboratory environment, offers data from a similar environment, but with less noise and uncertainties. 
-Model test data is therefore used in this thesis to develop DT Grey-box models of the ship rigid body dynamics. The hypothesis is that a DT model that works in the lab, will also have potential to work at the real sea. Or at least false models can be ruled out, as it is very unlikely that a DT model that does not work in the lab, will work at sea. 
+Model test data is therefore used in this thesis to develop DT Grey-box models of the ship rigid body dynamics. The hypothesis is that a DT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out, as it is very unlikely that a DT model that does not work in the lab, will work at sea. 
 
 % Objective: 
-Starting with reduced complexity and gradually increasing has been a general approach to the research for this thesis.   
+Starting with reduced complexity and then gradually increased complexity has been a general approach to the research for this thesis.   
 
 \begin{itemize}
 \item The first objective of the thesis is therefore to develop a DT for the calm water ship rigid body dynamics in roll, being one of the degrees of freedoms.
@@ -115,11 +115,12 @@ Starting with reduced complexity and gradually increasing has been a general app
 \section{Assumptions and limitations}
 %Calm waters...
 Calm water condition is a simplification of the real sea condition that a ship encounters. This condition assumes that the influences from encountering wind, waves and currents are neglected. These assumptions simplifies the system identification, by reducing the degrees of freedoms to: surge, sway, yaw and roll. For surge, sway and yaw, which are all low frequency motions, the added masses and other hydrodynamic derivatives can be assumed as constants \cite{fossen_handbook_2021}.  
-The sea is never calm, which is why scale model test data in a controlled calm water environment is used in this thesis. System identification of real operational data at sea, where these simplifications cannot be made, is  therefore left for future work. Investigating system identification in calm waters, is however an important step towards DTs in full scale sea operation.
 
 \section{Outline of the paper}
-Chapter \ref{ch:models} presents the parameterized models used in this thesis for the Roll motion (Section \ref{sec:roll}) and Manoeuvring motion (Section \ref{sec:VMM}). The PITs used for these motions are presented in Section \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. A generic roll damping model, to estimate the roll damping coefficients for modern ships is also presented in section \ref{sec:genericrolldampingmodel}.
-A summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
+Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:VMM}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
+PITs, representing the black-box part, are used to regress the parameters of the white-box models. The PITs are introduced in Chapter \ref{ch:methods} for both the roll motion and the manoeuvring motion in Section \ref{sec:PIT_roll} and Section \ref{sec:PIT_VMM}. 
+A generic roll damping model is also introduced in Section \ref{sec:genericrolldampingmodel}. This model is aiming at making predictions for many different ships, not just one.
+A short summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
 
 \input{kappa/models}
 \input{kappa/methods}

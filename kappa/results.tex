@@ -7,7 +7,20 @@ and a selection of the important results, and highlights the main achievements.
 
 \section{Summary Paper \ref{pap:rolldamping}}
 \subsection*{"\nameref{pap:rolldamping}"}
-Both the ''derivation approach'' and ''integration approach'' is attempted for the roll damping PIT, where the ''integration approach'' gives the most accurate models, and is therefore used to build the roll damping dataset. A quadratic damping model (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) is sufficient to reproduce most of the roll decay tests and is therefore used to build the roll damping dataset. 
+Time series data from 250 roll decay tests assembled from the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}) are used to investigate the roll motion model in Paper \ref{pap:rolldamping}. 
+
+
+The ''integration approach'' (see section \ref{sec:integration_approach}) to PIT roll motion gives the most accurate models.
+A quadratic damping model (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) is sufficient to reproduce most of the SSPA model roll decay tests.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\columnwidth]{kappa/images/ship_types.eps}
+    \caption{Number of tests per ship type}
+    \label{fig:ship_types}
+\end{figure}
+
+and is therefore used to build the roll damping dataset. 
 The roll damping dataset is used to fit the grey-box model. The black-box correction model of the output components from the SI method are shown in (Eq.\ref{eq:polynom_correction}),
 \input{equations/polynom_correction}
 
