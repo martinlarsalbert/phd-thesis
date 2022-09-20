@@ -21,75 +21,36 @@ In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a li
 \subsection{Integration approach}\label{sec:integration_approach}
 In the integration approach, Eq.\ref{eq:roll_decay_nonedim_a44} is solved as an Ordinary Differential Equation (ODE) for many estimated sets of parameters until the solution converges. This method is very time consuming and convergence is not guaranteed.
 
-\section{Generic roll damping model}
-\label{sec:genericrolldampingmodel}
-A serial grey-box model for ship roll damping (see Fig.\ref{fig:greyrolldamping}) is developed in Paper \ref{pap:rolldamping}. 
-This is expanding the system identification, not only focusing on one ship, but rather all modern ships, by a prediction model of the damping coefficients from the PIT applied on a whole database of roll decay tests. 
-Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
-
-\begin{figure}[H]
-    
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-    \node (white-box) [white-box] {Simplified Ikeda};
-    \node (B_BK) [io, right of=white-box, xshift=0.90cm, yshift=1.5cm] {$\hat{B_{BK}}$};
-    \node (B_E) [io, right of=white-box, xshift=0.75cm, yshift=0.75cm] {$\hat{B_{E}}$};
-    \node (B_F) [io, right of=white-box, xshift=0.75cm, yshift=0cm] {$\hat{B_{F}}$};
-    \node (B_L) [io, right of=white-box, xshift=0.75cm, yshift=-0.75cm] {$\hat{B_{L}}$};
-    \node (B_W) [io, right of=white-box, xshift=0.75cm, yshift=-1.5cm] {$\hat{B_{W}}$};
-    
-    
-    \node (black-box) [black-box, right of=B_F, xshift=0.75cm] {Black-box};
-    \draw [arrow] (white-box) -- (B_BK);
-    \draw [arrow] (white-box) -- (B_E);
-    \draw [arrow] (white-box) -- (B_F);
-    \draw [arrow] (white-box) -- (B_L);
-    \draw [arrow] (white-box) -- (B_W);
-    
-    \draw [arrow] (B_BK) -- (black-box);
-    \draw [arrow] (B_E)  -- (black-box);
-    \draw [arrow] (B_F)  -- (black-box);
-    \draw [arrow] (B_L)  -- (black-box);
-    \draw [arrow] (B_W)  -- (black-box);
-    
-    
-    \node (B) [io, right of=black-box, xshift=0.75cm, yshift=0cm] {$B$};
-    \draw [arrow] (black-box)  -- (B);
-    
-    \end{tikzpicture}
-    \caption{Grey-box model to predict roll damping}
-    \label{fig:greyrolldamping}
-\end{figure}
-
-\noindent A roll damping dataset is used to train the black-box part of the grey-box model.
-250 roll decay tests assembled from the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}) are used to build the dataset. The roll damping parameters are found by applying a PIT (see Section \ref{sec:PIT_roll}) on the parameterized roll motion models (see Section \ref{sec:roll}).
-
 \section{VMM Parameter Identification} \label{sec:PIT_VMM}
-The proposed PIT is summarized in Fig.\ref{fig:greyvmm}. In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics.
+The proposed PIT for VMMs is summarized in Fig.\ref{fig:greyvmm}. In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics.
 The measurement noise needs to be removed if the regression of hydrodynamic derivatives in the VMM should work well. This is conducted by a Extended Kalman Filter (EKF) and Rauch Tung Striebel (RTS) smoother (see section \ref{sec:datacleaning}). The EKF requires an accurate VMM as the predictor.
 Therefore the accurate VMM is both the input and output of the PIT. The system model VMM in the EKF is guessed to solve this dilemma. A linear VMM with hydrodynamic derivatives estimated with semi-empirical formulas is used as the initial guess. Once the regressed VMM has been obtained, the PIT can be rerun using the regressed VMM as the system model in the EKF, to obtain an even better VMM. This procedure, indicated by the dashed arrow in Fig.\ref{fig:greyvmm}, can be repeated several times for improved accuracy. Using semi-empirical formulas for the initially guessed VMM adds prior knowledge about the ship dynamics to the regression. An example with simulation results from the steps in the iterative EKF is shown in \hyperref[\detokenize{01.01_method:iterations}]{Fig.\@\ref{\detokenize{01.01_method:iterations}}}.
-
-\begin{figure}[H]
+\newpage
+\begin{figure}
     
     \centering
-    \begin{tikzpicture}[node distance=2cm]
-    \node (data) [io, above of=white-box, xshift=1cm, yshift=1.5cm] {Model test data};
+    \begin{tikzpicture}[node distance=1.5cm]
+    %\draw (0,0) rectangle (10,10); %create a bounding box to reserve space
+    \node (data) [io] {Model test data};
     
-    \node (EKF) [process, right of=data, xshift=2.5cm, yshift=0cm] {EFK + RTS};
-    \node (predictor) [process, right of=EKF, xshift=1.5cm, yshift=0cm]{Predictor};
-    \node (VMM) [io, right of=predictor, xshift=1.5cm, yshift=0cm] {VMM initial};
+    \node (EKF) [process, right of=data, xshift=3.0cm] {EFK + RTS};
+    \node (predictor) [process, right of=EKF, xshift=2.0cm]{Predictor};
+    \node (VMM) [io, right of=predictor, xshift=1.0cm] {VMM initial};
     
-    \node (data_clean) [io, below of=EKF, xshift=0cm, yshift=0.0cm] {\(x,\dot{x},\ddot{x}, \delta, thrust\)};
+    \node (data_clean) [io, below of=EKF] {\(x,\dot{x},\ddot{x}, \delta, thrust\)};
     
-    \node (white-box) [white-box] {Inverse dynamics};
-    \node (X_D) [io, right of=white-box, xshift=0.90cm, yshift=1cm]{\(X_D\)};
-    \node (Y_D) [io, right of=white-box, xshift=0.90cm, yshift=0cm]{\(Y_D\)};
-    \node (N_D) [io, right of=white-box, xshift=0.90cm, yshift=-1cm]{\(N_D\)};
+    \node (black-box) [black-box, below of=data_clean] {Regression};
     
-    \node (black-box) [black-box, right of=B_F, xshift=0.75cm] {Regression};
+    \node (X_D) [io, left of=black-box, xshift=-0.70cm, yshift=0.7cm]{\(X_D\)};
+    \node (Y_D) [io, left of=black-box, xshift=-0.70cm, yshift=0cm]{\(Y_D\)};
+    \node (N_D) [io, left of=black-box, xshift=-0.70cm, yshift=-0.7cm]{\(N_D\)};
     
-    \node (coefficients) [io, right of=black-box, xshift=1.5cm, yshift=0cm] {VMM$\left(Y_{uv},N_{\delta},...\right)$};
+    \node (white-box) [white-box, left of=Y_D, xshift=-1.00cm] {Inverse dynamics};
     
+    
+    %
+    %
+    \node (coefficients) [io, right of=black-box, xshift=2.0cm] {VMM$\left(Y_{uv},N_{\delta},...\right)$};
     
     \draw [arrow] (data) -- (EKF);
     \draw [arrow] (predictor) -- (EKF);
