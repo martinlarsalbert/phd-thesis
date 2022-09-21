@@ -8,9 +8,9 @@ Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the desi
 industry \cite{stanic_toward_2018}.
 The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet-of-Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for IoS \cite{aslam_internet_2020}.
-A Digital Twin (DT) as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
-DTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A DT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
-In VP, white-box models are used. Either black-box or grey-box models are used in the DTs. 
+A Ship Digital Twin (SDT) as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
+SDTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A SDT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
+In VP, white-box models are used. Either black-box or grey-box models are used in the SDTs. 
 
 \begin{itemize}
     \item White-box modeling \\
@@ -66,36 +66,37 @@ In VP, white-box models are used. Either black-box or grey-box models are used i
     \label{fig:greycombinations}
 \end{figure}
 
-\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the DT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenario of a ship operating at sea. In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
+\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenario of a ship operating at sea. In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
 \noindent Grey-box modelling is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error.
 
-Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better DTs with grey-box modeling.
+Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better SDTs with grey-box modeling.
 
 \section{Literature review}
+SDT has a a positive trend during the recent years (2018-2021), in the number of publications \cite{assani_ships_2022}. Electric power systems, propulsion system, ship hull structure and marine diesel engine seems to be the most common SDT applications \cite{assani_ships_2022}. Only a minor part of the SDT applications handle ship trajectory, speed and fuel consumption \cite{assani_ships_2022}.   
 \cite{nielsen_machine_2022} used grey-box modelling for manoeuvring prediction of a ferry where a deep learning model (black-box) captures the residues between first-principles model (white-box) and observed data.
 
 %"Critic" to what has been done before
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as black-box models with the latest technologies within Machine Learning (ML). It is in the author's belief that grey-box models, also incorporating physical relations, will give better prediction models to improve the DTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the DTs to be used in the IoS applications. Otherwise one has to rely on the black-box models to figure out the ship dynamic relations. 
+Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as black-box models with the latest technologies within Machine Learning (ML). It is in the author's belief that grey-box models, also incorporating physical relations, will give better prediction models to improve the SDTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the SDTs to be used in the IoS applications. Otherwise one has to rely on the black-box models to figure out the ship dynamic relations. 
 
-Full scale operational data from ships at sea has a lot of noise and large uncertainties, due to the sea environment. Developing DTs for this data is a great challenge, and it is especially hard to know when the model is correct and when it is not. Instead, using data from a controlled laboratory environment, offers data from a similar environment, but with less noise and uncertainties. 
-Model test data is therefore used in this thesis to develop DT grey-box models of the ship rigid body dynamics. The hypothesis is that a DT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out, if the DT model does not work in the lab, it will likely not work at sea either. 
+Full scale operational data from ships at sea has a lot of noise and large uncertainties, due to the sea environment. Developing SDTs for this data is a great challenge, and it is especially hard to know when the model is correct and when it is not. Instead, using data from a controlled laboratory environment, offers data from a similar environment, but with less noise and uncertainties. 
+Model test data is therefore used in this thesis to develop SDT grey-box models of the ship rigid body dynamics. The hypothesis is that a SDT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out, if the SDT model does not work in the lab, it will likely not work at sea either. 
 
 % Objective: 
 \bigskip
 \noindent Starting with reduced complexity and then gradually increasing the complexity has been a general approach to formulate the research objectives for this thesis:   
 
 
-\subsubsection*{DT for roll motion}
-The first objective of the thesis is therefore to develop a DT for the calm water ship rigid body dynamics in roll, based on model test data.
+\subsubsection*{SDT for roll motion}
+The first objective of the thesis is therefore to develop a SDT for the calm water ship rigid body dynamics in roll, based on model test data.
 
-\subsubsection*{DT for manoeuvring}
+\subsubsection*{SDT for manoeuvring}
 The second objective is to increase the complexity by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
 
-\subsubsection*{DT generalization}
-The DT must be able to make predictions outside the domain covered by the available data, in order to be of practical use in IoS applications.
+\subsubsection*{SDT generalization}
+The SDT must be able to make predictions outside the domain covered by the available data, in order to be of practical use in IoS applications.
 
 \section{Assumptions and limitations}
 %Calm waters...
