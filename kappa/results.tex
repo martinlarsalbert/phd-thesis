@@ -64,7 +64,15 @@ Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white 
 \noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. This is because the SI method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
 \input{equations/polynom_complex}
 
-\noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset.
+\noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset. Where the linearized equivalent damping $B_e$ is calculated with \autoref{eq:B_e_equation} \cite{himeno_prediction_1981}. The damping and frequency is nondimensionalized with \autoref{eq:be_eqvalent} and \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981}.
+
+\input{equations/B_e_equation}
+
+\begin{equation} \label{eq:be_eqvalent}
+    \hat{B_e} = \frac{B_e}{\rho \bigtriangledown Beam^2} \sqrt{\frac{Beam}{2g}},
+\end{equation}
+
+\input{equations/omega0_hat_equation}
 
 \section{Summary Paper \ref{pap:daiyong}}
 \subsection*{"\nameref{pap:daiyong}"}
@@ -102,7 +110,7 @@ A new method for System Identification of ship manoeuvring dynamics is developed
     \item It is shown that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
     
     \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. \autoref{fig:lowpass-accuracy} shows the average simulation error with the PIT using various low-pass filters or the EKF + RTS smoother.
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering
         \includegraphics{kappa/images/6.pdf}
         \caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutt off frequency or EKF.}
@@ -110,7 +118,7 @@ A new method for System Identification of ship manoeuvring dynamics is developed
     \end{figure}
     
     \item The PIT has large problems with multicollinearity for the AVMM. The absolute correction between the features is shown in \autoref{fig:ncorr}. This was less of a problem for the less complex model MAVMM.
-    \begin{figure}[H]
+    \begin{figure}[h]
         \centering
         \includegraphics{kappa/images/9.pdf}
         \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM}
@@ -118,7 +126,7 @@ A new method for System Identification of ship manoeuvring dynamics is developed
     \end{figure}
     
     \item The new method can predict turning circle manoeuvres with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases. Track plot of the wPCC result is shown in Fig.\ref{fig:turning_circle_wpcc}.
-    \begin{figure}[H]
+    \begin{figure}[h]
     \centering
     \includegraphics{kappa/images/10.pdf}
     \caption{Track plots of the turning circle test case for wPCC from Model test and simulation (Test). Also simulations with alternative realizations of the regression (Monte Carlo) are shown in this figure.}
