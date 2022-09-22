@@ -11,7 +11,7 @@ The accuracy of the linear model was not as good as the more complex models. The
 \subsubsection*{\emph{Sub task: Develop a method to handle noise}}
 The PIT ''integration approach'' produced better models than the ''derivation approach'' for the roll motion models in Paper \ref{pap:rolldamping}. The ''integration approach'' is very slow and relies on optimization that may or may not converge.
 The numerical differentiation that was used in Paper \ref{pap:rolldamping} to estimate the velocities and accelerations, is believed to be the main cause of the poor performance of the much faster and more reliable ''derivation approach''. A similar issue was also encountered in Paper \ref{pap:daiyong}, where the identified hydrodynamic derivatives were very sensitive to the choice of the regularisation factor of the LS-SVR.
-The iterative EKF + RTS smoother in the proposed PIT in Paper \ref{pap:pit}, seems to solve these issues. It is also shown that the proposed way to handle noise is better than low-pass filters, which many of the publications about VMM system identification use.
+The iterative EKF + RTS smoother in the proposed PIT in Paper \ref{pap:pit} has reduced these issues. It is also shown that the proposed way to handle noise is better than low-pass filters, which many of the publications about VMM system identification use.
 
 \subsubsection*{SDT for manoeuvring}
 It is shown in both \ref{pap:daiyong} and Paper \ref{pap:pit} that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator. This is the case when simulated data for the PIT is used.
@@ -20,3 +20,6 @@ The challenges with noisy experimental data is shown in Paper \ref{pap:daiyong},
 
 \subsubsection*{SDT generalization}
 A methodology to select a suitable VMM based on cross-validation is proposed in Paper \ref{pap:pit}. In order to investigate the model's ability to extrapolate and make predictions outside its training data, the validation set should have larger yaw rates, drift angles and rudder angles compared to the training set. The methodology was applied on the wPCC and KVLCC2 test cases, where turning circles where predicted with good accuracy on models trained on zigzag tests. 
+
+\subsubsection*{}
+Methods for system identification of ship rigid body dynamics in calm waters have been presented in this thesis. Multicollinearity is a large problem, especially for the complex VMMs, where the appropriate complexity needs to be selected with the bias-variance tradeoff between underfitting or overfitting the data. The SDT models identified with the proposed methods generalizes well to unseen data in the test cases used in this thesis.

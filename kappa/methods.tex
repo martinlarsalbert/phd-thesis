@@ -2,7 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The system identification of ship dynamics can be simplified into parameter identification if parameterized physical models can be assumed. Parameter Identification Techniques (PIT) for roll motion an manoeuvring is presented in \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
+The system identification of ship dynamics for SDT can be simplified into parameter identification if parameterized physical models can be assumed. Parameter Identification Techniques (PIT) for roll motion an manoeuvring is presented in \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
 
 \section{Roll damping Parameter Identification} \label{sec:PIT_roll}
 \noindent The PIT for roll motions can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic}. These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$ as seen in Eq.\ref{eq:roll_decay_nonedim_a44} for the linear model.
@@ -16,16 +16,17 @@ The system identification of ship dynamics can be simplified into parameter iden
 Two different PIT methods have been investigated: the ``derivation approach'', referred as PIT in \parencite{imo_1200_2006}, and the ``integration approach'' as used in \cite{soder_assessment_2019}. 
 
 \subsection{Derivation approach}\label{sec:derivation_approach}
-In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters should be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ needs to be estimated. A least squares fit is applied on the roll motion equation to identify any parameter, including nonlinear or frequency parameter. 
+In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters should be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ first needs to be estimated. This is done with numerical differentiation in Paper \ref{pap:rolldamping} and Paper \ref{pap:daiyong} and with Extended Kalman Filter (EKF) in Paper \ref{pap:pit}.
+A least squares fit is applied on the roll motion equation to identify the damping and stiffness parameters.
 
 \subsection{Integration approach}\label{sec:integration_approach}
-In the integration approach, Eq.\ref{eq:roll_decay_nonedim_a44} is solved as an Ordinary Differential Equation (ODE) for many estimated sets of parameters until the solution converges. This method is very time consuming and convergence is not guaranteed.
+In the integration approach, Eq.\ref{eq:roll_decay_nonedim_a44} is solved as an Ordinary Differential Equation (ODE) for many estimated sets of parameters until the solution converges. This method is very time consuming and convergence is not guaranteed, but the advantage is that only roll angle $\phi$ is needed.
 
 \section{VMM Parameter Identification} \label{sec:PIT_VMM}
-The proposed PIT for VMMs is summarized in Fig.\ref{fig:greyvmm}. In this procedure, a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics (see Section \ref{\detokenize{03.01_inverse_dynamics::doc}}).
+In the proposed PIT a VMM is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the VMM can be identified with regression of the force polynomials on forces predicted with inverse dynamics (see Section \ref{\detokenize{03.01_inverse_dynamics::doc}}).
 The measurement noise needs to be removed if the regression of hydrodynamic derivatives in the VMM should work well. This is conducted by a Extended Kalman Filter (EKF) and Rauch Tung Striebel (RTS) smoother (see section \ref{sec:datacleaning}). The EKF requires an accurate VMM as the predictor.
-Therefore the accurate VMM is both the input and output of the PIT. The system model VMM in the EKF is guessed to solve this dilemma. A linear VMM with hydrodynamic derivatives estimated with semi-empirical formulas is used as the initial guess. Once the regressed VMM has been obtained, the PIT can be rerun using the regressed VMM as the system model in the EKF, to obtain an even better VMM. This procedure, indicated by the dashed arrow in Fig.\ref{fig:greyvmm}, can be repeated several times for improved accuracy. Using semi-empirical formulas for the initially guessed VMM adds prior knowledge about the ship dynamics to the regression. An example with simulation results from the steps in the iterative EKF is shown in \hyperref[\detokenize{01.01_method:iterations}]{Fig.\@\ref{\detokenize{01.01_method:iterations}}}.
-\newpage
+Therefore the accurate VMM is both the input and output of the PIT. The system model VMM in the EKF is guessed to solve this dilemma. A linear VMM with hydrodynamic derivatives estimated with semi-empirical formulas is used as the initial guess. Once the regressed VMM has been obtained, the PIT can be rerun using the regressed VMM as the system model in the EKF, to obtain an even better VMM. The method is summarized in Fig.\ref{fig:greyvmm} which can be repeated several times, indicated by the dashed arrow, for improved accuracy. 
+
 \begin{figure}[H]
     
     \centering
@@ -76,6 +77,9 @@ Therefore the accurate VMM is both the input and output of the PIT. The system m
     \label{fig:greyvmm}
 \end{figure}
 
+\noindent Using semi-empirical formulas for the initially guessed VMM adds prior knowledge about the ship dynamics to the regression. An example with simulation results from the steps in the iterative EKF is shown in \hyperref[\detokenize{01.01_method:iterations}]{Fig.\@\ref{\detokenize{01.01_method:iterations}}}.
+
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{kappa/images/0.pdf}
@@ -110,11 +114,9 @@ An example of forces calculated with inverse dynamics from motions in a turning 
 
 \subsection{Data cleaning}
 \label{sec:datacleaning}
-It is possible to do an exact parameter identification on perfect (simulated) data with no noise (see Paper \ref{pap:daiyong} and \ref{pap:pit}). However, such data from physical experiments does not exist in reality. The measured data will always contain process noise and measurement noise. In order to mitigate this, the data is preprocessed using the EKF and RTS smoother which are both presented below.
-
+It is possible to do an exact parameter identification on perfect (simulated) data with no noise (see Paper \ref{pap:daiyong} and \ref{pap:pit}). However, such data from physical experiments does not exist in reality. The measured data will always contain process noise and measurement noise. In order to mitigate this, the data is preprocessed using the Extended Kalman Filter (EKF) \cite{brown_introduction_1997} and Rauch Tung Striebel (RTS) smoother \cite{rauch_maximum_1965} which are both presented below.
 EKF is an extension of the Kalman Filter (KF) to work on nonlinear systems such as the VMMs. The basic idea is that noise can be disregarded if it does not make sense from a physical point of view. If noisy measurement data were perfectly correct, this would mean that the ship has many vibrations that must have originated from tremendous forces, considering the large mass of the ship. The prior understanding of the dynamics suggests that these forces are not present. Therefore, the noise should be considered as measurement noise and should be removed. Low-pass filtering is a common way to remove noise, where motions above some cut-off frequencies are regarded as unphysical measurement noise. The problem with low-pass filter is that it is hard to know what cut-off frequency to choose, either too low: removing part of the signal, or too high: keeping some unfiltered measurement noise in the data. The Kalman filter has a system model that continuously estimates the system’s state that runs in parallel with the measurement data. The filter estimates the current state as a combination of the measurement data and the system model estimate based on belief in the data and the model. If the data has low noise, the estimate turns toward that data. Conversely, if the model gives very good predictions, then that estimate turns towards the model.
 The system’s inverse dynamics require the entire states, including positions, velocities, and accelerations, to be known. Only positions are known from the measurements, which means that velocities and accelerations are hidden states that the EKF should estimate.
-
-The EKF is recursive and can be run online, continuously making new estimates as new measurements arrive. The EKF uses passed measurements to estimate states in the near future. This property is helpful for online applications such as  autopilots or autonomous ships. This restriction is  unnecessary for the PIT on already existing data where a whole time series of existing measurements is available. The fact that both past and future data are known can be used to improve the filter. An EKF filter can include future time steps by adding a smoother after the filter. The PIT uses a Rauch Tung Striebel (RTS) smoother \cite{rauch_maximum_1965}, which is an algorithm that runs the EKF backward to also account for future time steps.
+The EKF is recursive and can be run online, continuously making new estimates as new measurements arrive. The EKF uses passed measurements to estimate states in the near future. This property is helpful for online applications such as  autopilots or autonomous ships. This restriction is  unnecessary for the PIT on already existing data where a whole time series of existing measurements is available. The fact that both past and future data are known can be used to improve the filter. An EKF filter can include future time steps by adding the RTS smoother after the filter. The RTS smoother is an algorithm that runs the EKF backward to also account for future time steps.
 
 
