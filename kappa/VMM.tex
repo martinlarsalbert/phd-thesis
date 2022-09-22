@@ -1,8 +1,13 @@
 \section{Vessel Manoeuvring Models} \label{sec:VMM}
 \label{\detokenize{02.01_VMMs:vessel-manoeuvring-models}}\label{\detokenize{02.01_VMMs:vmm}}\label{\detokenize{02.01_VMMs::doc}}
-\sphinxAtStartPar
-Ship manoeuvring is a simplified case of seakeeping. The encountering waves have been removed, assuming calm water conditions. This simplification allows the ship dynamics to be expressed with only four degrees of freedom: surge, sway, roll, and yaw, where the roll is often excluded. Surge, sway, and yaw have very low frequencies during manoeuvres, so added masses and other hydrodynamic derivatives can be assumed as constants  \cite{fossen_handbook_2021}. Three Vessel Manoeuvring Models (VMMs) are used in this thesis: Linear (LVMM) \cite{matusiak_dynamics_2017}, Abkowitz (AVMM), \cite{abkowitz_ship_1964} and Modified Abkowitz (MAVMM), which is proposed in this thesis.
-\hyperref[\detokenize{02.01_VMMs:coordinate-system}]{Fig.\@ \ref{\detokenize{02.01_VMMs:coordinate-system}}} shows the reference frames used in the VMMs where \(x_0\) and \(y_0\) and heading \(\Psi\) are the global position and orientation of a ship fix reference frame \(O(x,y,z)\) (or rather \(O(x,y)\) when heave is exluded) with origin at midship. \(u\), \(v\), \(r\), \(X\), \(Y\) and \(N\) are velocities and forces in the ship fix reference frame.
+Ship manoeuvring is a simplified case of seakeeping. The encountering waves have been removed, assuming calm water conditions. The manoeuvring motions have low frequencies so added masses and other hydrodynamic derivatives can be assumed as constants  \cite{fossen_handbook_2021}. Three Vessel Manoeuvring Models (VMMs) are used in this thesis: 
+\begin{itemize}
+    \item Linear (LVMM) \cite{matusiak_dynamics_2017}
+    \item Abkowitz (AVMM), \cite{abkowitz_ship_1964}
+    \item Modified Abkowitz (MAVMM), which is proposed in Paper \ref{pap:pit}
+\end{itemize}
+
+\hyperref[\detokenize{02.01_VMMs:coordinate-system}]{Fig.\@ \noindent\ref{\detokenize{02.01_VMMs:coordinate-system}}} shows the reference frames used in the VMMs where \(x_0\) and \(y_0\) and heading \(\Psi\) are the global position and orientation of a ship fix reference frame \(O(x,y,z)\) (or rather \(O(x,y)\) when heave is exluded) with origin at midship. \(u\), \(v\), \(r\), \(X\), \(Y\) and \(N\) are velocities and forces in the ship fix reference frame.
 
 
 
@@ -13,8 +18,7 @@ Ship manoeuvring is a simplified case of seakeeping. The encountering waves have
     \label{\detokenize{02.01_VMMs:coordinate-system}}
 \end{figure}
 
-\sphinxAtStartPar
-The acceleration can be solved from the manoeuvring equation (\autoref{equation:02.01_VMMs:eqqsystem}) \cite{fossen_handbook_2021} as seen in \autoref{equation:02.01_VMMs:eqacc},
+\noindent The acceleration can be solved from the manoeuvring equation (\autoref{equation:02.01_VMMs:eqqsystem}) \cite{fossen_handbook_2021} as seen in \autoref{equation:02.01_VMMs:eqacc},
 \begin{equation}\label{equation:02.01_VMMs:eqqsystem}
 \begin{split}\displaystyle \left[\begin{matrix}- X_{\dot{u}} + m & 0 & 0\\0 & - Y_{\dot{v}} + m & - Y_{\dot{r}} + m x_{G}\\0 & - N_{\dot{v}} + m x_{G} & I_{z} - N_{\dot{r}}\end{matrix}\right] \left[\begin{matrix}\dot{u}\\\dot{v}\\\dot{r}\end{matrix}\right] = \left[\begin{matrix}m r^{2} x_{G} + m r v + \operatorname{X_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u + \operatorname{Y_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u x_{G} + \operatorname{N_{D}}{\left(u,v,r,\delta,thrust \right)}\end{matrix}\right]\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqacc}
@@ -42,7 +46,7 @@ how global coordinates \(x_0\), \(y_0\) and \(\Psi\) depend on \(u\), \(v\), and
 where \(\mathbf{c}\) is control inputs (rudder angle \(\delta\) and thrust); the last three derivatives: \(\dot{u}\), \(\dot{v}\), \(\dot{r}\) are calculated with \autoref{equation:02.01_VMMs:eqacc}.
 \(\mathbf{w}\) is the process noise, i.e., the difference between the predicted state by the VMM and the true
 state of the system. \(\mathbf{w}\) is unknown when the VMM is used for manoeuvre predictions and therefore normally
-assumed to be zero, but it is an important factor when the VMM is used in the EKF, see Section \ref{sec:datacleaning}.
+assumed to be zero, but it is an important factor when the VMM is used in the EKF (see Section \ref{sec:datacleaning}).
 The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_VMMs:eqf}. The main difference between the VMM:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted below for the various VMMs: LVMM, AVMM and MAVMM.
 
 \sphinxAtStartPar
@@ -73,15 +77,11 @@ AVMM (Abkowitz Vessel Manoeuvring Model) \cite{abkowitz_ship_1964}:
 
 \begin{equation}\label{equation:02.01_VMMs:eqyabkowitz}
 \begin{split}\begin{split}
-\operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & Y_{0uu} u'^{2} + Y_{0u} u' + Y_{0} + Y_{\delta\delta\delta} \delta^{3} + Y_{\delta} \delta + Y_{r\delta\delta} \delta^{2} r' + Y_{rr\delta} \delta r'^{2} + Y_{rrr} r'^{3} \\
-& + Y_{r} r' + Y_{T\delta} \delta thrust' + Y_{T} thrust' + Y_{u\delta} \delta u' + Y_{ur} r' u' + Y_{uu\delta} \delta u'^{2} + Y_{uur} r' u'^{2} + Y_{uuv} u'^{2} v' \\
-& + Y_{uv} u' v' + Y_{v\delta\delta} \delta^{2} v' + Y_{vr\delta} \delta r' v' + Y_{vrr} r'^{2} v' + Y_{vv\delta} \delta v'^{2} + Y_{vvr} r' v'^{2} + Y_{vvv} v'^{3} + Y_{v} v' 
+\operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & Y_{0uu} u'^{2} + Y_{0u} u' + Y_{0} + Y_{\delta\delta\delta} \delta^{3} + Y_{\delta} \delta + Y_{r\delta\delta} \delta^{2} r' + Y_{rr\delta} \delta r'^{2} \\ & + Y_{rrr} r'^{3} + Y_{r} r' + Y_{T\delta} \delta thrust' + Y_{T} thrust' + Y_{u\delta} \delta u' \\ & + Y_{ur} r' u' + Y_{uu\delta} \delta u'^{2} + Y_{uur} r' u'^{2} + Y_{uuv} u'^{2} v' + Y_{uv} u' v' \\ & + Y_{v\delta\delta} \delta^{2} v' + Y_{vr\delta} \delta r' v' + Y_{vrr} r'^{2} v' + Y_{vv\delta} \delta v'^{2} + Y_{vvr} r' v'^{2} \\ & + Y_{vvv} v'^{3} + Y_{v} v' 
 \end{split}\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqnabkowitz}
 \begin{split}\begin{split}
-\operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & N_{0uu} u'^{2} + N_{0u} u' + N_{0} + N_{\delta\delta\delta} \delta^{3} + N_{\delta} \delta + N_{r\delta\delta} \delta^{2} r' + N_{rr\delta} \delta r'^{2} + N_{rrr} r'^{3} \\
-& + N_{r} r' + N_{T\delta} \delta thrust' + N_{T} thrust' + N_{u\delta} \delta u' + N_{ur} r' u' + N_{uu\delta} \delta u'^{2} + N_{uur} r' u'^{2} + N_{uuv} u'^{2} v' \\
-& + N_{uv} u' v' + N_{v\delta\delta} \delta^{2} v' + N_{vr\delta} \delta r' v' + N_{vrr} r'^{2} v' + N_{vv\delta} \delta v'^{2} + N_{vvr} r' v'^{2} + N_{vvv} v'^{3} + N_{v} v' 
+\operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & N_{0uu} u'^{2} + N_{0u} u' + N_{0} + N_{\delta\delta\delta} \delta^{3} + N_{\delta} \delta + N_{r\delta\delta} \delta^{2} r' + N_{rr\delta} \delta r'^{2} \\ & + N_{rrr} r'^{3} + N_{r} r' + N_{T\delta} \delta thrust' + N_{T} thrust' + N_{u\delta} \delta u' \\ & + N_{ur} r' u' + N_{uu\delta} \delta u'^{2} + N_{uur} r' u'^{2} + N_{uuv} u'^{2} v' + N_{uv} u' v' \\ & + N_{v\delta\delta} \delta^{2} v' + N_{vr\delta} \delta r' v' + N_{vrr} r'^{2} v' + N_{vv\delta} \delta v'^{2} + N_{vvr} r' v'^{2} \\ & + N_{vvv} v'^{3} + N_{v} v' 
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
@@ -92,11 +92,11 @@ MAVMM (Modified Abkowitz Vessel Manoeuvring Model, where only the most relevant 
 \end{split}\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqymartinssimple}
 \begin{split}\begin{split}
-\operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & Y_{\delta} \delta + Y_{r} r' + Y_{T\delta} \delta thrust' + Y_{T} thrust' + Y_{ur} r' u' + Y_{u} u' + Y_{vv\delta} \delta v'^{2} + Y_{v} v' 
+\operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & Y_{\delta} \delta + Y_{r} r' + Y_{T\delta} \delta thrust' + Y_{T} thrust' + Y_{ur} r' u' \\ & + Y_{u} u' + Y_{vv\delta} \delta v'^{2} + Y_{v} v' 
 \end{split}\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqnmartinssimple}
 \begin{split}\begin{split}
-\operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & N_{\delta} \delta + N_{r} r' + N_{T\delta} \delta thrust' + N_{T} thrust' + N_{ur} r' u' + N_{u} u' + N_{vv\delta} \delta v'^{2} + N_{v} v' 
+\operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & N_{\delta} \delta + N_{r} r' + N_{T\delta} \delta thrust' + N_{T} thrust' + N_{ur} r' u' + N_{u} u' \\ & + N_{vv\delta} \delta v'^{2} + N_{v} v' 
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
