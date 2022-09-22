@@ -3,6 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The background of modelling SDTs with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations. The chapter ends with an outline of the whole thesis.
+
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
@@ -82,10 +84,10 @@ A lot of research concerns the system identification of the ship's manoeuvring d
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as black-box models with the latest technologies within Machine Learning (ML). It is in the author's belief that grey-box models, also incorporating physical relations, will give better prediction models to improve the SDTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the SDTs to be used in the IoS applications. This approach will be explored in this thesis for the ship rigid body dynamics in calm waters.
+Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as black-box models with the latest technologies within Machine Learning (ML). It is in the author's belief that grey-box models, also incorporating physical relations, could give better prediction models to improve the SDTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the SDTs to be used in the IoS applications. This approach will be explored in this thesis for the ship rigid body dynamics in calm waters.
 
 Full scale operational data from ships at sea has a lot of noise and large uncertainties, due to the sea environment. Developing SDTs for this data is a great challenge. It is especially hard to know when the model is correct and when it is not. Instead, using data from a controlled laboratory environment, offers data from a similar environment, but with less noise and uncertainties. 
-Model test data is therefore used in this thesis to develop SDT grey-box models of the ship rigid body dynamics. The hypothesis is that a SDT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out. SDT models that do not work in the lab, will most likely not work at sea either. 
+Model test data is therefore used in this thesis to develop SDT grey-box models of the ship rigid body dynamics. The hypothesis is that a SDT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out, since SDT models that do not work in the lab, will most likely not work at sea either. 
 
 % Objective: 
 \bigskip
@@ -105,7 +107,7 @@ The SDT must be able to make predictions outside the domain covered by the avail
 %Calm waters...
 Calm water condition is a simplification of the real sea condition that a ship encounters. This condition assumes that the influences from encountering wind, waves and currents are neglected. These assumptions simplifies the system identification, by reducing the degrees of freedoms to: surge, sway, yaw and roll. Also note that all result are not necessarily directly transferable to full scale when model scale data is used, considering potential scale effects. 
 
-\section{Outline of the paper}
+\section{Outline of the thesis}
 Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:VMM}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
 PITs, representing the black-box part, are used to regress the parameters of the white-box models. The PITs are introduced in Chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in Section \ref{sec:PIT_roll} and Section \ref{sec:PIT_VMM}. 
 A short summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
@@ -120,5 +122,5 @@ A short summary of the appended papers, including research activities and a sele
 \chapter{Future work\label{ch:future_work}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection*{Generic roll damping model}
-The PIT of the roll motion models applied on 250 roll-decay tests that was investigated in Paper \ref{pap:rolldamping} produced a roll damping database for modern ship types. A grey-box model and a black-box model as described in Section \ref{sec:genericrolldampingmodel} was developed from this database. The prediction accuracy of these models were not very good and should be improved. This is important, especially since the SI method, being the state of art white-box physical model for roll damping, was found to be outside its limits for the ships in the database. This imply that there is a need for a new roll damping prediction method for modern ships.  
+\subsubsection*{New generic roll damping model}
+The PIT of the roll motion models applied on 250 roll-decay tests that was investigated in Paper \ref{pap:rolldamping} produced a roll damping database for modern ship types. A grey-box model and a black-box model as described in Section \ref{sec:genericrolldampingmodel} was developed from this database. The prediction accuracy of these models were not very good and should be improved. This is important, especially since the SI method, being the state of art white-box physical model for roll damping, was found to be outside its limits for the ships in the database. This implies that there is a need for a new roll damping prediction method for modern ships.  

@@ -98,20 +98,36 @@ A new method for System Identification of ship manoeuvring dynamics is developed
 \end{figure}
 \noindent A new PIT for VMMs (see Section \ref{sec:PIT_VMM}), with large focus on the data cleaning, is also proposed in Paper \ref{pap:pit}. This PIT is investigated together with the method to select a appropriate and robust VMM for two very different cases. The wPCC test case which is a twin screw Pure Car Truck Carrier and the KVLCC2 being a single screw Very Large Crude Carrier.    
 \begin{itemize}
-    \item The new method can predict turning circle manoeuvres with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases. Track plot of the wPCC result is shown in Fig.\ref{fig:turning_circle_wpcc}.
     
     \item It is shown that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
     
-    \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning.
+    \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. \autoref{fig:lowpass-accuracy} shows the average simulation error with the PIT using various low-pass filters or the EKF + RTS smoother.
+    \begin{figure}[H]
+        \centering
+        \includegraphics{kappa/images/6.pdf}
+        \caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutt off frequency or EKF.}
+        \label{fig:lowpass-accuracy}
+    \end{figure}
     
-\end{itemize}
-
-\begin{figure}[H]
+    \item The PIT has large problems with multicollinearity for the AVMM. The absolute correction between the features is shown in \autoref{fig:ncorr}. This was less of a problem for the less complex model MAVMM.
+    \begin{figure}[H]
+        \centering
+        \includegraphics{kappa/images/9.pdf}
+        \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM}
+        \label{fig:ncorr}
+    \end{figure}
+    
+    \item The new method can predict turning circle manoeuvres with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases. Track plot of the wPCC result is shown in Fig.\ref{fig:turning_circle_wpcc}.
+    \begin{figure}[H]
     \centering
     \includegraphics{kappa/images/10.pdf}
     \caption{Track plots of the turning circle test case for wPCC from Model test and simulation (Test). Also simulations with alternative realizations of the regression (Monte Carlo) are shown in this figure.}
     \label{fig:turning_circle_wpcc}
-\end{figure}
+    \end{figure}
+    
+\end{itemize}
+
+
 
 
 
