@@ -64,7 +64,7 @@ Simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white box m
 \noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. This is because the Simplified Ikeda's method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
 \input{equations/polynom_complex}
 
-\noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset. Where the linearized equivalent damping $B_e$ is calculated with \autoref{eq:B_e_equation} \cite{himeno_prediction_1981}. The damping and frequency is nondimensionalized with \autoref{eq:be_eqvalent} and \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981}.
+\noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset. The linearized equivalent damping $B_e$ is calculated with \autoref{eq:B_e_equation} \cite{himeno_prediction_1981}. The damping and frequency is nondimensionalized with \autoref{eq:be_eqvalent} and \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981}.
 
 \input{equations/B_e_equation}
 
@@ -93,7 +93,7 @@ The data is taken from experimental tests on a lake using a ship model with a sc
     \label{fig:daiyong_extrapolation}
 \end{figure}
 
-\noindent The PIT is very sensitive to noise due to the differentiation that needs to be conducted to calculate velocities and yaw rate from the measured position and heading. The PIT works better if the data is first cleaned using a proposed preprocessing algorithm together with a Kalman Filter (KF). The simulations with the identified model and the experiments are however still not in very good agreement.     
+\noindent The PIT is very sensitive to noise due to the differentiation that needs to be conducted to calculate velocities and yaw rate from the measured position and heading. The PIT works better if the data is first cleaned using a proposed preprocessing algorithm together with a Kalman Filter (KF). The simulations with the identified model and the experiments were however still not in very good agreement.     
 
 \section{Summary Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
