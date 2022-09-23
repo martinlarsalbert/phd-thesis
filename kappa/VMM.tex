@@ -14,7 +14,7 @@ Ship manoeuvring is a simplified case of seakeeping. The encountering waves have
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{kappa/images/coordinate_system.PNG}
-    \caption{Coordinate system}
+    \caption{Reference frames}
     \label{\detokenize{02.01_VMMs:coordinate-system}}
 \end{figure}
 
@@ -53,15 +53,15 @@ The manoeuvring simulation can now be conducted by numerical integration of \aut
 LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}:
 \begin{equation}\label{equation:02.01_VMMs:eqxlinear}
 \begin{split}\begin{split}
-\operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & X_{\delta} \delta + X_{r} r' + X_{u} u' + X_{v} v' 
+\operatorname{X_{D}'}{\left(u',v',r',\delta\right)} = & X_{\delta} \delta + X_{r} r' + X_{u} u' + X_{v} v' 
 \end{split}\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqylinear}
 \begin{split}\begin{split}
-\operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & Y_{\delta} \delta + Y_{r} r' + Y_{u} u' + Y_{v} v' 
+\operatorname{Y_{D}'}{\left(u',v',r',\delta \right)} = & Y_{\delta} \delta + Y_{r} r' + Y_{u} u' + Y_{v} v' 
 \end{split}\end{split}
 \end{equation}\begin{equation}\label{equation:02.01_VMMs:eqnlinear}
 \begin{split}\begin{split}
-\operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & N_{\delta} \delta + N_{r} r' + N_{u} u' + N_{v} v' 
+\operatorname{N_{D}'}{\left(u',v',r',\delta \right)} = & N_{\delta} \delta + N_{r} r' + N_{u} u' + N_{v} v' 
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar

@@ -3,14 +3,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The background of modelling SDTs with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations. The chapter ends with an outline of the whole thesis.
+The background of modelling the Ship Digital Twin (SDT) with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations. The chapter ends with an outline of the whole thesis.
 
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
 The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet-of-Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for IoS \cite{aslam_internet_2020}.
-A Ship Digital Twin (SDT) as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
+A SDT as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
 SDTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A SDT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
 In VP, white-box models are used. Either black-box or grey-box models are used in the SDTs. 
 
@@ -109,7 +109,7 @@ Calm water condition is a simplification of the real sea condition that a ship e
 
 \section{Outline of the thesis}
 Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:VMM}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
-PITs, representing the black-box part, are used to regress the parameters of the white-box models. The PITs are introduced in Chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in Section \ref{sec:PIT_roll} and Section \ref{sec:PIT_VMM}. 
+Parameter Identification Techniques (PITs), representing the black-box part, are used to regress the parameters of the white-box models. The PITs are introduced in Chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in Section \ref{sec:PIT_roll} and Section \ref{sec:PIT_VMM}. 
 A short summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
 
 \input{kappa/models}

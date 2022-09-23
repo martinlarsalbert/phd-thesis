@@ -22,7 +22,7 @@ In Paper \ref{pap:rolldamping}, time series data from 250 roll decay tests (see 
 \label{sec:genericrolldampingmodel}
 A serial grey-box model for ship roll damping (see Fig.\ref{fig:greyrolldamping}) is also developed in Paper \ref{pap:rolldamping}. 
 This is expanding the system identification, not only focusing on one ship, but rather all modern ships, by a prediction model of the damping coefficients from the PIT applied on a whole database of roll decay tests. 
-Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
+Simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
 
 \begin{figure}[H]
     
@@ -58,10 +58,10 @@ Simplified Ikeda's (SI) method \cite{kawahara_simple_2011} is used as the white 
     \label{fig:greyrolldamping}
 \end{figure}
 
-\noindent The roll damping data set, obtained from the roll motion investigation, is used to train the black-box part of the grey-box model. The black-box correction model of the output components from the SI method are shown in (Eq.\ref{eq:polynom_correction}),
+\noindent The roll damping data set, obtained from the roll motion investigation, is used to train the black-box part of the grey-box model. The black-box correction model of the output components from the Simplified Ikeda's method are shown in (Eq.\ref{eq:polynom_correction}),
 \input{equations/polynom_correction}
 
-\noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. This is because the SI method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
+\noindent Large corrections of the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are suggested by this expression. This is because the Simplified Ikeda's method is not very accurate for this dataset, where most of the ships in the dataset exceed the limits of the method. A pure black-box model is also devloped in Paper \ref{pap:rolldamping} (see Eq.\ref{eq:polynom_complex}),
 \input{equations/polynom_complex}
 
 \noindent The grey-box model and the black-box model above, have about the same accuracy when performing cross-validation on the roll damping dataset. Where the linearized equivalent damping $B_e$ is calculated with \autoref{eq:B_e_equation} \cite{himeno_prediction_1981}. The damping and frequency is nondimensionalized with \autoref{eq:be_eqvalent} and \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981}.

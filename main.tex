@@ -101,6 +101,8 @@
 \def\figureautorefname~#1\null{Fig.#1\null}
 \def\tableautorefname~#1\null{Tab.#1\null}
 
+\usepackage{tocloft}  % No page number of appended papers
+
 % % % Biblatex
 
 \addbibresource{library.bib}  % Bibliography file
@@ -305,7 +307,7 @@
 % #6 Comment (like "reprinted with a kind permission" and "reformatted for uniformity")
 % #7 File to input
 {
-  \chapter*{#1\label{#3}}      % Title as Chapter
+  \chapter{#1\label{#3}}      % Title as Chapter
   \chaptermark{#2}            % Short title for the page header
   \thispagestyle{empty}       % no page numbers
   {\Large #4}\par             % authors
@@ -329,39 +331,31 @@
 
 \newcommand{\reformatted}{The paper was reformatted for uniformity, but otherwise is unchanged.}
 
+\addtocontents{toc}{\cftpagenumbersoff{chapter}}
+
 \part{Appended papers}        % in this part one chapter = one paper
 
 % Example of using the command \paper defined above: 
 \paper{Analysis of roll damping model scale data}
-      { }
+      {~}
       {pap:rolldamping}
       {Martin Alexandersson, Wengang Mao and Jonas Ringsberg}
-      {Ships and Offshore Structures 16.sup1. Publisher: Taylor & Francis}
-      { }
-      { }
+      {Ships and Offshore Structures 16.sup1. Publisher: Taylor \& Francis}
+      {~}
 
-%\paper{Prediction of roll motion using fully nonlinear %potential flow and Ikeda's method}
-%      { }
-%      {pap:motions}
-%      {Martin Alexandersson, Martin Kjellberg, Wengang Mao %and Jonas Ringsberg}
-%      {ISOPE Conference}
-%      {}
-%      { }
-      
 \paper{A comparison of ship manoeuvrability models to approximate ship navigation trajectories}
-      { }
+      {~}
       {pap:daiyong}
       {Martin Alexandersson, Daiyong Zhang, Wengang Mao and Jonas Ringsberg}
       {Ships and Offshore Structures}
-      {}
-      { }
-      
+      {~}
+
 \paper{System identification of {Vessel} {Manoeuvring} {Models}}
-      { }
+      {~}
       {pap:pit}
       {Martin Alexandersson, Wengang Mao and Jonas Ringsberg}
       {Ocean Engineering}
-      {}
-      { }
+      {~}
+\addtocontents{toc}{\cftpagenumberson{chapter}} % to restore the showing of page numbers
 
 \end{document}

@@ -2,7 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The system identification of ship dynamics for SDT can be simplified into parameter identification if parameterized physical models can be assumed. Parameter Identification Techniques (PIT) for roll motion an manoeuvring is presented in \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
+The system identification of ship dynamics for SDT can be simplified into parameter identification if parameterized physical models can be assumed. Parameter Identification Techniques (PIT) for roll motion and manoeuvring is presented in \ref{sec:PIT_roll} and \ref{sec:PIT_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
 
 \section{Roll damping Parameter Identification} \label{sec:PIT_roll}
 \noindent The PIT for roll motions can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models in Eq.\ref{eq:roll_decay_equation_himeno_linear}, Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b} and Eq.\ref{eq:roll_decay_equation_cubic}. These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$ as seen in Eq.\ref{eq:roll_decay_nonedim_a44} for the linear model.
@@ -16,7 +16,7 @@ The system identification of ship dynamics for SDT can be simplified into parame
 Two different PIT methods have been investigated: the ``derivation approach'', referred as PIT in \parencite{imo_1200_2006}, and the ``integration approach'' as used in \cite{soder_assessment_2019}. 
 
 \subsection{Derivation approach}\label{sec:derivation_approach}
-In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters should be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ first needs to be estimated. This is done with numerical differentiation in Paper \ref{pap:rolldamping} and Paper \ref{pap:daiyong} and with Extended Kalman Filter (EKF) in Paper \ref{pap:pit}.
+In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters should be regressed. Only roll angle $\phi$ is known from the experimental data however, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ first needs to be estimated. This is done with numerical differentiation in Paper \ref{pap:rolldamping} and Paper \ref{pap:daiyong} and with Extended Kalman Filter (EKF) in Paper \ref{pap:pit}.
 A least squares fit is applied on the roll motion equation to identify the damping and stiffness parameters.
 
 \subsection{Integration approach}\label{sec:integration_approach}
