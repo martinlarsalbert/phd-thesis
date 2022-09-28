@@ -1,4 +1,3 @@
-%!TEX root = ../main.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
@@ -111,16 +110,3 @@ Calm water condition is a simplification of the real sea condition that a ship e
 Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:VMM}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
 Parameter Identification Techniques (PITs), representing the black-box part, are used to regress the parameters of the white-box models. The PITs are introduced in Chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in Section \ref{sec:PIT_roll} and Section \ref{sec:PIT_VMM}. 
 A short summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
-
-\input{kappa/models}
-\input{kappa/methods}
-\input{kappa/results}
-\input{kappa/conclusions}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Future work\label{ch:future_work}}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\subsubsection*{New generic roll damping model}
-The PIT of the roll motion models applied on 250 roll-decay tests that was investigated in Paper \ref{pap:rolldamping} produced a roll damping database for modern ship types. A grey-box model and a black-box model as described in Section \ref{sec:genericrolldampingmodel} was developed from this database. The prediction accuracy of these models were not very good and should be improved. This is important, especially since the SI method, being the state of art white-box physical model for roll damping, was found to be outside its limits for the ships in the database. This implies that there is a need for a new roll damping prediction method for modern ships.  
