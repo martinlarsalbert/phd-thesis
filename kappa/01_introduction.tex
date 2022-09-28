@@ -2,7 +2,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The background of modelling the Ship Digital Twin (SDT) with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations. The chapter ends with an outline of the whole thesis.
+The use of twin models is a not a new idea. NASA build twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth, as a reference object if something went wrong during the mission.  
+The twin model has a lot of other usefully applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary scenarios with conventional ships. Building a real twin ship as a reference object is not realistic however, but with data recorded onboard ships it is instead possible to build a Ship Digital Twin (SDT), to serve the same purpose.
+Methods for System identification of Ship Rigid Body Dynamics are presented in this thesis, to be used as sub-component in the SDTs. 
+
+The background of modelling the SDTs with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations. The chapter ends with an outline of the whole thesis.
 
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
@@ -11,8 +15,12 @@ The emergence of Internet-of-Things (IoT) has led to the introduction of the Int
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for IoS \cite{aslam_internet_2020}.
 A SDT as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
 SDTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A SDT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
-In VP, white-box models are used. Either black-box or grey-box models are used in the SDTs. 
 
+Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better SDTs.
+
+\subsection{White-, Black- or Grey-box modelling}
+The models for VP and SDT can generally be categorized as white-, black- or grey-box models. Where 
+white-box models are used in VP and either black-box or grey-box models are used in the SDTs. 
 \begin{itemize}
     \item White-box modeling \\
     involves applying physical principles, so that no observed data is required, for instance Computational Fluid Dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from historical experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
@@ -26,56 +34,13 @@ In VP, white-box models are used. Either black-box or grey-box models are used i
 
 \noindent In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
 
-\begin{figure}[H]
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-    \node (white-box) [white-box] {White-box};
-    \node (black-box) [black-box, right of=white-box, xshift=2cm] {Black-box};
-    \draw [arrow] (white-box) -- (black-box);
-    \end{tikzpicture}
-    \caption{Serial grey-box}
-    \label{fig:serial1}
-    \end{subfigure}
-
-    
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-    \node (black-box) [black-box] {Black-box};
-    \node (white-box) [white-box, right of=black-box, xshift=2cm] {White-box};
-    \draw [arrow] (black-box) -- (white-box);
-    \end{tikzpicture}
-    \caption{Serial grey-box}
-    \label{fig:serial2}
-    \end{subfigure}
-
-    \begin{subfigure}[b]{0.3\textwidth}
-    \centering
-    \begin{tikzpicture}[node distance=2cm]
-    \node (black-box) [black-box] {Black-box};
-    \node (white-box) [white-box, below of=black-box] {White-box};
-    \node (join) [process, right of=black-box, xshift=2cm, yshift=-1cm] {join};
-    \draw [arrow] (black-box) -- (join);
-    \draw [arrow] (white-box) -- (join);
-    \end{tikzpicture}
-    \caption{Parallel grey-box}
-    \label{fig:parallel}
-    \end{subfigure}
-    \caption{Several ways to combine white- and black-box models in grey box models.}
-    \label{fig:greycombinations}
-\end{figure}
+\input{kappa/fig_grey_combinations}
 
 \noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
 
 The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios of a ship operating at sea. 
 In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
-Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in a totally different outcome. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. 
-
-Grey-box modelling is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error.
-
-Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better SDTs with grey-box modeling.
+Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in a totally different outcome. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Grey-box modelling is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error.
 
 \section{Literature review}
 SDT has a a positive trend in the number of publications during the recent years (2018-2021)  \cite{assani_ships_2022}. Most of the papers concerns ship equipment such as electric power systems, propulsion system, ship hull structure and marine diesel engines \cite{assani_ships_2022}. Only a minor part of the SDT applications handle ship trajectory, speed and fuel consumption \cite{assani_ships_2022}.   

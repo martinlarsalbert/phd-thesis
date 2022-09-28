@@ -1,0 +1,40 @@
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (white-box) [white-box] {White-box};
+    \node (black-box) [black-box, right of=white-box, xshift=2cm] {Black-box};
+    \draw [arrow] (white-box) -- (black-box);
+    \end{tikzpicture}
+    \caption{Serial grey-box}
+    \label{fig:serial1}
+    \end{subfigure}
+
+    
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (black-box) [black-box] {Black-box};
+    \node (white-box) [white-box, right of=black-box, xshift=2cm] {White-box};
+    \draw [arrow] (black-box) -- (white-box);
+    \end{tikzpicture}
+    \caption{Serial grey-box}
+    \label{fig:serial2}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.3\textwidth}
+    \centering
+    \begin{tikzpicture}[node distance=2cm]
+    \node (black-box) [black-box] {Black-box};
+    \node (white-box) [white-box, below of=black-box] {White-box};
+    \node (join) [process, right of=black-box, xshift=2cm, yshift=-1cm] {join};
+    \draw [arrow] (black-box) -- (join);
+    \draw [arrow] (white-box) -- (join);
+    \end{tikzpicture}
+    \caption{Parallel grey-box}
+    \label{fig:parallel}
+    \end{subfigure}
+    \caption{Several ways to combine white- and black-box models in grey box models.}
+    \label{fig:greycombinations}
+\end{figure}
