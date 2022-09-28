@@ -88,21 +88,29 @@ A lot of research concerns the system identification of the ship's manoeuvring d
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Models specialized in predicting specific aspects of the ship's operation, such as the fuel consumption, can be developed as black-box models with the latest technologies within Machine Learning (ML). It is in the author's belief that grey-box models, also incorporating physical relations, could give better prediction models to improve the SDTs. Introducing some aspects of ship dynamics into the model, gives a deeper understanding of the forces and motions of the ship, which can improve the accuracy of the SDTs to be used in the IoS applications. This approach will be explored in this thesis for the ship rigid body dynamics in calm waters.
+Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Using SDTs is one way, modelled as white-, black- or grey-boxes. A pure white-box approach is ruled out as too complex, as described above, where in the remaining black-box and grey-box, grey-box modelling is used in this thesis.   
+The system identification of the ship rigid body dynamics at full scale sea conditions comprises uncertainties from:
+\begin{itemize}
+    \item the \textbf{environment}: wind, waves and currents
+    \item the \textbf{ship}: geometry and mass properties
+    \item the \textbf{measurements}
+\end{itemize}
 
-Full scale operational data from ships at sea has a lot of noise and large uncertainties, due to the sea environment. Developing SDTs for this data is a great challenge. It is especially hard to know when the model is correct and when it is not. Instead, using data from a controlled laboratory environment, offers data from a similar environment, but with less noise and uncertainties. 
-Model test data is therefore used in this thesis to develop SDT grey-box models of the ship rigid body dynamics. The hypothesis is that a SDT model that works in the lab, will also have potential to work at the sea. Or at least false models can be ruled out, since SDT models that do not work in the lab, will most likely not work at sea either. 
+In order to limit these uncertainties, model tests data, from a controlled laboratory environment is used in this thesis, as a first step towards system identification at the real full scale sea conditions.
 
 % Objective: 
-\bigskip
-\noindent Starting with reduced complexity and then gradually increasing the complexity has been a general approach to formulate the research objectives for this thesis:   
+\begin{quote} 
+The main objective with this thesis is to develop system identification methods for grey box models of ship rigid body dynamics in calm waters, to be used as a sub-components in Ship Digital Twins. 
+\end{quote}
 
+\noindent 
+The research goals for this thesis have been formulated starting with reduced complexity and then gradually increasing the complexity:
 
 \subsubsection*{SDT for roll motion}
-The first objective of the thesis is therefore to develop a SDT for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data.
+The first goal of the thesis is therefore to develop a SDT for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data.
 
 \subsubsection*{SDT for manoeuvring}
-The second objective is to increase the complexity by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
+The second goal is to increase the complexity by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
 
 \subsubsection*{SDT generalization}
 The SDT must be able to make predictions outside the domain covered by the available data, in order to be of practical use in IoS applications. This addresses the generalization of the SDTs.
