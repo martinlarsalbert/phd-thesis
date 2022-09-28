@@ -18,7 +18,6 @@ SDTs are data-driven in contrast to the related term Virtual Prototyping (VP), w
 
 Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. This thesis concerns rigid body ship dynamics in calm waters. The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. In this thesis, the rigid body ship dynamics is studied with the aim to develop better SDTs.
 
-\subsection{White-, Black- or Grey-box modelling}
 The models for VP and SDT can generally be categorized as white-, black- or grey-box models. Where 
 white-box models are used in VP and either black-box or grey-box models are used in the SDTs. 
 \begin{itemize}
@@ -36,12 +35,6 @@ white-box models are used in VP and either black-box or grey-box models are used
 
 \input{kappa/fig_grey_combinations}
 
-\noindent The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
-
-The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios of a ship operating at sea. 
-In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
-Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in a totally different outcome. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Grey-box modelling is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error.
-
 \section{Literature review}
 SDT has a a positive trend in the number of publications during the recent years (2018-2021)  \cite{assani_ships_2022}. Most of the papers concerns ship equipment such as electric power systems, propulsion system, ship hull structure and marine diesel engines \cite{assani_ships_2022}. Only a minor part of the SDT applications handle ship trajectory, speed and fuel consumption \cite{assani_ships_2022}.   
 Even though SDT is not explicitly mentioned, there are a lot of papers published about methods that can be used as SDTs. \cite{lang_comparison_2022} predicted the propulsion power for a chemical tanker for three test case voyages with high accuracy, using ML black-box modeling. The manoeuvres where however excluded. In another paper \cite{nielsen_machine_2022} used grey-box modelling for manoeuvring prediction of a ferry where a deep learning model (black-box) captures the residues between first-principles model (white-box) and observed data. These are very promising works that also show that there is still a lot to be done withing the field. 
@@ -53,23 +46,29 @@ A lot of research concerns the system identification of the ship's manoeuvring d
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Using SDTs is one way, modelled as white-, black- or grey-boxes. A pure white-box approach is ruled out as too complex, as described above, where in the remaining black-box and grey-box, grey-box modelling is used in this thesis.   
-The system identification of the ship rigid body dynamics at full scale sea conditions comprises uncertainties from:
+Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Using SDTs is one way, modelled as white-, black- or grey-boxes.
+The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
+
+The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios of a ship operating at sea. 
+In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
+Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in totally different outcomes. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Grey-box modelling is therefore used in this thesis, which is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error. 
+
+It is often practical to first assume higher levels of simplifications and approximations for the problem under study and thereafter, step by step, increase the complexity of the problem. In this way, the effects of various factors can be initially studied in a rather isolated way. 
+Ship rigid body dynamics at full scale sea conditions comprises uncertainties from:
 \begin{itemize}
     \item the \textbf{environment}: wind, waves and currents
     \item the \textbf{ship}: geometry and mass properties
     \item the \textbf{measurements}
 \end{itemize}
 
-In order to limit these uncertainties, model tests data, from a controlled laboratory environment is used in this thesis, as a first step towards system identification at the real full scale sea conditions.
-
+\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. The main objective with this thesis is to:
 % Objective: 
 \begin{quote} 
-The main objective with this thesis is to develop system identification methods for grey box models of ship rigid body dynamics in calm waters, to be used as a sub-components in Ship Digital Twins. 
+Develop system identification methods for grey box models of ship rigid body dynamics in calm waters, to be used as a sub-components in Ship Digital Twins. 
 \end{quote}
 
 \noindent 
-The research goals for this thesis have been formulated starting with reduced complexity and then gradually increasing the complexity:
+The goals for this thesis, to fulfill the research objective, have been formulated following the step by step approach as described above, with reduced complexity and then gradually increasing the complexity:
 
 \subsubsection*{SDT for roll motion}
 The first goal of the thesis is therefore to develop a SDT for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data.
