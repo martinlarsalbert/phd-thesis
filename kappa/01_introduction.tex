@@ -49,7 +49,7 @@ A lot of research concerns the system identification of the ship's manoeuvring d
 Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Using SDTs is one way, modelled as white-, black- or grey-boxes.
 The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
 
-The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios of a ship operating at sea. 
+The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
 In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
 Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in totally different outcomes. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Grey-box modelling is therefore used in this thesis, which is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error. 
 
@@ -61,7 +61,8 @@ Ship rigid body dynamics at full scale sea conditions comprises uncertainties fr
     \item the \textbf{measurements}
 \end{itemize}
 
-\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. The main objective with this thesis is to:
+\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. A majority of the publications within this field, such as \cite{shi_identification_2009}, \cite{perera_system_2015}, \cite{zhu_parameter_2017} and \cite{wang_parameter_2021} simplifies this even further by using simulated data, which is too much of a simplification as we identify real objects, not its mathematical model \cite{miller_ship_2021}.
+The main objective with this thesis is therefore to:
 % Objective: 
 \begin{quote} 
 Develop system identification methods for grey box models of ship rigid body dynamics in calm waters, to be used as a sub-components in Ship Digital Twins. 
