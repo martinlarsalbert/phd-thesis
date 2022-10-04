@@ -119,4 +119,19 @@ EKF is an extension of the Kalman Filter (KF) to work on nonlinear systems such 
 The system’s inverse dynamics require the entire states, including positions, velocities, and accelerations, to be known. Only positions are known from the measurements, which means that velocities and accelerations are hidden states that the EKF can estimate.
 The EKF is recursive and can be run online, continuously making new estimates as new measurements arrive. The EKF uses passed measurements to estimate states in the near future. This property is helpful for online applications such as  autopilots or autonomous ships. This restriction is  unnecessary for the  on already existing data where a whole time series of existing measurements is available. The fact that both past and future data are known can be used to improve the filter. An EKF filter can include future time steps by adding the RTS smoother after the filter. The RTS smoother is an algorithm that runs the EKF backward to also account for future time steps.
 
+\subsection{Model development process}
+\label{model_development_process}
+The general aim of developing a manoeuvring model with parameter estimation is to develop a model that can generalize outside the known data. The method presented in this paper is evaluated with the ''Hold-Out'' method where the data is divided into three sets:
+\begin{itemize}
+\item {} 
+training set
+
+\item {} 
+validation set
+\item {} 
+test set.
+\end{itemize}
+
+\noindent The best manoeuvring model is selected from a selection of candidate models. The purpose with the training set is to train all the candidate models using the proposed parameter estimation method. The validation set is then used to select which one of the candidate models is the best. The training and validation sets are then joined to train the selected model as the final model, to be used in predicting the test set, which is used to evaluate the accuracy of the model. These three sets are not divided randomly, but rather to assess the model’s extrapolation ability. The data sets are therefore split to have the smallest: yaw rates, drift- and rudder-angles in the training set, the medium values in the validation set and the largest values in the test set which for instance can be seen in \autoref{fig:cross_validation} in the next chapter.
+
 
