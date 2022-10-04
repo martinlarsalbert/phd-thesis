@@ -7,13 +7,27 @@ The twin model could be used as a reference object if something went wrong durin
 The twin model concept has a lot of other usefully applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications such as conventional ships. Building a real twin ship as a reference object is of course not realistic. With data recorded onboard ships it is instead possible to build a ship digital twin (SDT), to serve the same purpose.
 System identification methods of Ship Rigid Body Dynamics are presented in this thesis, which can be used as important sub-components in the SDTs. 
 
-Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields, where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. 
+Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields (see \autoref{fig:seakeeping_and_manoeuvring}), where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. 
 
 \begin{figure}
     \centering
-    \includegraphics{}
-    \caption{Caption}
-    \label{fig:my_label}
+    \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{kappa/images/seakeeping.jpg}
+         \caption{Seakeeping}
+         \label{fig:seakeeping}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.45\textwidth}
+         \centering
+         \includegraphics[width=\textwidth]{kappa/images/manoeuvring.jpg}
+         \caption{Manoeuvring}
+         \label{fig:manoeuvring}
+     \end{subfigure}
+     \hfill
+    \caption{Seakeeping and manoeuvring model tests, copyright SSPA Sweden AB}
+    \label{fig:seakeeping_and_manoeuvring}
+
 \end{figure}
 
 The background of modelling the SDTs with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations.
