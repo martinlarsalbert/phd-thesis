@@ -16,12 +16,12 @@ In Paper \ref{pap:rolldamping}, time series data from 250 roll decay tests (see 
     \label{fig:ship_types}
 \end{figure}
 
-\noindent Parameters in the linear (Eq.\ref{eq:roll_decay_equation_himeno_linear}), quadratic (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and cubic (Eq.\ref{eq:roll_decay_equation_cubic}) roll motion model are identified using the roll motion PIT (see section \ref{sec:PIT_roll}). The investigation shows that the quadratic damping model has almost the same accuracy as the cubic model. The ''integration approach'' (see section \ref{sec:integration_approach}) to PIT roll motion, produces the most accurate models compared to the ''derivation approach'' (see section \ref{sec:derivation_approach}).
+\noindent Parameters in the linear (Eq.\ref{eq:roll_decay_equation_himeno_linear}), quadratic (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and cubic (Eq.\ref{eq:roll_decay_equation_cubic}) roll motion model are identified using the roll motion  (see section \ref{sec:_roll}). The investigation shows that the quadratic damping model has almost the same accuracy as the cubic model. The ''integration approach'' (see section \ref{sec:integration_approach}) to  roll motion, produces the most accurate models compared to the ''derivation approach'' (see section \ref{sec:derivation_approach}).
 
 \subsection{Generic roll damping model}
 \label{sec:genericrolldampingmodel}
 A serial grey-box model for ship roll damping (see Fig.\ref{fig:greyrolldamping}) is also developed in Paper \ref{pap:rolldamping}. 
-This is expanding the system identification, not only focusing on one ship, but rather all modern ships, by a prediction model of the damping coefficients from the PIT applied on a whole database of roll decay tests. 
+This is expanding the system identification, not only focusing on one ship, but rather all modern ships, by a prediction model of the damping coefficients from the  applied on a whole database of roll decay tests. 
 Simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white box model, which is combined with a following black-box correction model.
 
 \begin{figure}[H]
@@ -84,7 +84,7 @@ The data is taken from experimental tests on a lake using a ship model with a sc
     \caption{Configuration of sensors and equipment for the experimental tests.}
     \label{fig:cthmodel}
 \end{figure}
-\noindent The hydrodynamic derivatives of the AVMM are identified almost perfectly when applied on data from simulations with MSS toolbox Mariner \cite{tristan_matlab_2009}. The PIT does however not work at all when applied on the data obtained from the lake experiments as seen in Fig.\ref{fig:daiyong_extrapolation}. 
+\noindent The hydrodynamic derivatives of the AVMM are identified almost perfectly when applied on data from simulations with MSS toolbox Mariner \cite{tristan_matlab_2009}. The  does however not work at all when applied on the data obtained from the lake experiments as seen in Fig.\ref{fig:daiyong_extrapolation}. 
 
 \begin{figure}[H]
     \centering
@@ -93,23 +93,23 @@ The data is taken from experimental tests on a lake using a ship model with a sc
     \label{fig:daiyong_extrapolation}
 \end{figure}
 
-\noindent The PIT is very sensitive to noise due to the differentiation that needs to be conducted to calculate velocities and yaw rate from the measured position and heading. The PIT works better if the data is first cleaned using a proposed preprocessing algorithm together with a Kalman Filter (KF). The simulations with the identified model and the experiments were however still not in very good agreement.     
+\noindent The  is very sensitive to noise due to the differentiation that needs to be conducted to calculate velocities and yaw rate from the measured position and heading. The  works better if the data is first cleaned using a proposed preprocessing algorithm together with a Kalman Filter (KF). The simulations with the identified model and the experiments were however still not in very good agreement.     
 
 \section{Summary Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
-A new method for System Identification of ship manoeuvring dynamics is developed in Paper \ref{pap:pit}. The system model for the ship manoeuvring is assumed to be represented by a VMM (see Section \ref{sec:VMM}). The appropriate VMM for the specific ship and data is selected from a set of candidate VMMs, with varying complexity as a function of its number of hydrodynamic derivatives. The appropriate VMM is selected to give a robust model that can make predictions outside the domain covered by the available training data. A cross validation scheme is proposed to be used in the selection. In this scheme, the validation set has larger drift angles, yaw rates and rudder angles compared to the training set as seen in the example in Fig.\ref{fig:cross_validation}.
+A new method for System Identification of ship manoeuvring dynamics is developed in Paper \ref{pap:pit}. The system model for the ship manoeuvring is assumed to be represented by a manoeuvring model (see Section \ref{sec:manoeuvring model}). The appropriate manoeuvring model for the specific ship and data is selected from a set of candidate VMMs, with varying complexity as a function of its number of hydrodynamic derivatives. The appropriate manoeuvring model is selected to give a robust model that can make predictions outside the domain covered by the available training data. A cross validation scheme is proposed to be used in the selection. In this scheme, the validation set has larger drift angles, yaw rates and rudder angles compared to the training set as seen in the example in Fig.\ref{fig:cross_validation}.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{kappa/images/3.pdf}
     \caption{wPCC training, validation and testing datasets.}
     \label{fig:cross_validation}
 \end{figure}
-\noindent A new PIT for VMMs (see Section \ref{sec:PIT_VMM}), with large focus on the data cleaning, is also proposed in Paper \ref{pap:pit}. This PIT is investigated together with the method to select a appropriate and robust VMM for two very different cases. The wPCC test case which is a twin screw Pure Car Truck Carrier and the KVLCC2 being a single screw Very Large Crude Carrier.    
+\noindent A new  for VMMs (see Section \ref{sec:_VMM}), with large focus on the data cleaning, is also proposed in Paper \ref{pap:pit}. This  is investigated together with the method to select a appropriate and robust manoeuvring model for two very different cases. The wPCC test case which is a twin screw Pure Car Truck Carrier and the KVLCC2 being a single screw Very Large Crude Carrier.    
 \begin{itemize}
     
-    \item It is shown that the hydrodynamic derivatives within a VMM can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
+    \item It is shown that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
     
-    \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. \autoref{fig:lowpass-accuracy} shows the average simulation error with the PIT using various low-pass filters or the EKF + RTS smoother.
+    \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. \autoref{fig:lowpass-accuracy} shows the average simulation error with the  using various low-pass filters or the EKF + RTS smoother.
     \begin{figure}[h]
         \centering
         \includegraphics{kappa/images/6.pdf}
@@ -117,7 +117,7 @@ A new method for System Identification of ship manoeuvring dynamics is developed
         \label{fig:lowpass-accuracy}
     \end{figure}
     
-    \item The PIT has large problems with multicollinearity for the AVMM. The absolute correction between the features is shown in \autoref{fig:ncorr}. This was less of a problem for the less complex model MAVMM.
+    \item The  has large problems with multicollinearity for the AVMM. The absolute correction between the features is shown in \autoref{fig:ncorr}. This was less of a problem for the less complex model MAVMM.
     \begin{figure}[h]
         \centering
         \includegraphics{kappa/images/9.pdf}

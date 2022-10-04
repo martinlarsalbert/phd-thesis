@@ -1,6 +1,6 @@
-\section{Vessel Manoeuvring Models} \label{sec:VMM}
+\section{Vessel Manoeuvring Models} \label{sec:manoeuvring model}
 \label{\detokenize{02.01_VMMs:vessel-manoeuvring-models}}\label{\detokenize{02.01_VMMs:vmm}}\label{\detokenize{02.01_VMMs::doc}}
-Ship manoeuvring is a simplified case of seakeeping. The encountering waves have been removed, assuming calm water conditions. The manoeuvring motions have low frequencies so that added masses and other hydrodynamic derivatives can be assumed as constants  \cite{fossen_handbook_2021}. Three Vessel Manoeuvring Models (VMMs) are used in this thesis: 
+Ship manoeuvring is a simplified case of seakeeping. The encountering waves have been removed, assuming calm water conditions. The manoeuvring motions have low frequencies so that added masses and other hydrodynamic derivatives can be assumed as constants  \cite{fossen_handbook_2021}. Three manoeuvring models are used in this thesis: 
 \begin{itemize}
     \item Linear (LVMM) \cite{matusiak_dynamics_2017}
     \item Abkowitz (AVMM), \cite{abkowitz_ship_1964}
@@ -44,10 +44,10 @@ how global coordinates \(x_0\), \(y_0\) and \(\Psi\) depend on \(u\), \(v\), and
 \end{equation}
 \sphinxAtStartPar
 where \(\mathbf{c}\) is control inputs (rudder angle \(\delta\) and thrust); the last three derivatives: \(\dot{u}\), \(\dot{v}\), \(\dot{r}\) are calculated with \autoref{equation:02.01_VMMs:eqacc}.
-\(\mathbf{w}\) is the process noise, i.e., the difference between the predicted state by the VMM and the true
-state of the system. \(\mathbf{w}\) is unknown when the VMM is used for manoeuvre predictions and therefore normally
-assumed to be zero, but it is an important factor when the VMM is used in the EKF (see Section \ref{sec:datacleaning}).
-The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_VMMs:eqf}. The main difference between the VMM:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted below for the various VMMs: LVMM, AVMM and MAVMM.
+\(\mathbf{w}\) is the process noise, i.e., the difference between the predicted state by the manoeuvring model and the true
+state of the system. \(\mathbf{w}\) is unknown when the manoeuvring model is used for manoeuvre predictions and therefore normally
+assumed to be zero, but it is an important factor when the manoeuvring model is used in the EKF (see Section \ref{sec:datacleaning}).
+The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_VMMs:eqf}. The main difference between the manoeuvring model:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted below for the various VMMs: LVMM, AVMM and MAVMM.
 
 \sphinxAtStartPar
 LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}:
