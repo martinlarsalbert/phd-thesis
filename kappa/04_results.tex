@@ -41,7 +41,7 @@ The generic roll damping model was then developed as a grey-box model, including
 
 \subsection{Best mathematical model for the roll motion}
 System identification on the linear, quadratic and cubic model was conducted using both the ''integration approach'' (described in \autoref{sec:integration_approach}) and the ''derivation approach'' (described in \autoref{sec:derivation_approach}).
-Results from simulations with the identified models is shown for one of the roll-decay tests in \autoref{fig:roll_decay_compare}. It can be seen that the cubic and quadratic model reproduce the model test well and that the the linear model is too simple to have a good representation for both smaller and larger roll angles.
+Results from simulations with the identified models is shown for one of the roll-decay tests in \autoref{fig:roll_decay_compare}. It can be seen that the cubic and quadratic model reproduce the model test well and that the the linear model is too simple to have a good representation for both smaller and larger roll angles. The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can also be visualized as seen in \autoref{fig:roll_decay}.
 
 \begin{figure}[H]
     \centering
@@ -53,7 +53,7 @@ Results from simulations with the identified models is shown for one of the roll
 \begin{figure}[H]
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[]{kappa/images/roll_decay_amplitude.eps}
+        \includegraphics[]{kappa/images/roll_decay_amplitude.pdf}
         \caption{Amplitude decrements}
         \label{fig:roll_decay_amplitude}
     \end{subfigure}
@@ -61,7 +61,7 @@ Results from simulations with the identified models is shown for one of the roll
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[]{kappa/images//roll_decay_damping.eps}
+        \includegraphics[]{kappa/images//roll_decay_damping.pdf}
         \caption{Dampings}
         \label{fig:roll_decay_damping}
     \end{subfigure}
@@ -69,7 +69,42 @@ Results from simulations with the identified models is shown for one of the roll
     \label{fig:roll_decay}
 \end{figure}
 
-The best parameter estimations were obtained using the ''integration approach''.
+\noindent The best parameter estimations were obtained using the ''integration approach''.
+The goodness of fit of the linear, quadratic and cubic model are described using the coefficient of determination:
+\begin{equation} \label{eq:R2}
+%R^2=1-\frac{SS_{res}}{SS_{tot}}
+R^2=1-\frac{\sum\limit_{i=1}^{n}(\phi_{i}-\hat{\phi}_i)^2}{\sum\limit_{i=1}^{n}(\phi_i-\bar \phi)^2}
+\end{equation}
+where $\phi_i$ is the model test roll angle at time step $i$, $\bar \phi$ is the mean roll angle from the model test and $\hat{\phi}_i$ is the predicted roll angle (with linear, quadratic or cubic model). The average goodness of fit $R^2$ was 0.995 for the cubic model, 0.993 for the quadratic, and 0.986 for the linear model. This mean that the quadratic model is almost as good as the cubic model in describing the roll motion. The quadratic model with fewer parameters than the cubic model is expected to have a better generalization at the same accuracy and is therefore selected as the best mathematical model for the roll motion. 
+
+\subsection{Compare with state of art prediction}
+Ikeda's method divides roll damping into five damping components: the friction component $B_F$, the eddy component $B_E$, the lift component $B_L$, the wave component $B_W$ and the bilge keel component $B_{BK}$, as in the following Eq.(\ref{eq:ikeda}), 
+\begin{equation} \label{eq:ikeda}
+B_{44} = B_F + B_E + B_L + B_W + B_{BK}
+\end{equation}
+where the wave and eddy components require strip-theory based hydrodynamic analysis to obtain the ship's shape coefficients. The hydrodynamic analysis requires the ship's exact hull geometries. It might be time consuming to build the geometry model and perform the strip-theory based hydrodynamic analysis. Sometimes, a ship's hull geometry is simply not available for such purposes. 
+
+A simplified Ikeda method (SI-method) was proposed by \parencite{kawahara_simple_2011} and is used in Paper \ref{pap:rolldamping} to calculate all the damping components including the eddy component $B_E$ and wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$ as described in \parencite{ikeda_velocity_1979}, giving a function: 
+\input{equations/simplified_ikeda_equation}
+
+\noindent The formulas within $f$ can be referred to \parencite{ikeda_velocity_1979, kawahara_simple_2011} with the implementation in the paper by \cite{alexandersson_martinlarsalbertrolldecay-estimators_2020}.
+It should be noted that this method may be only efficiently used to estimate the roll damping of ships within the boundaries \parencite{kawahara_simple_2011}:
+\begin{equation}
+    \label{eq:SI_limits}
+     \left\{
+     \begin{array}{ll}
+    0.5 \leq C_b \leq 0.85,\hspace{0.5cm} 
+    0 \leq \hat{\omega} \leq 1.0,
+    \hspace{0.5cm}
+    0.9 \leq A_0 \leq 0.99,\\
+    2.5\leq Beam/T \leq 4.5, \hspace{1cm}
+    0.01 \leq BK_B/Beam \leq 0.06, \\
+        -1.5 \leq OG/T \leq 0.2,
+     \hspace{1cm}
+    0.05 \leq BK_L/L_{PP} \leq 0.4.
+    \end{array}
+    \right.
+\end{equation}
 
 \subsection{Generic roll damping model}
 \label{sec:genericrolldampingmodel}
