@@ -22,7 +22,8 @@ The objective in Paper \ref{pap:rolldamping} was therefore to improve the roll d
 \begin{itemize}
     \item Find the mathematical model that best describes the roll motion
     \item Identify the parameters in this model for all the tests
-    \item Develop a generic roll damping model for all ships, using those parameters
+    \item Compare the identified parameters with state of art prediction
+    \item Develop a generic roll damping model for all ships, using the identified parameters
     \begin{itemize}
         \item Grey-box model
         \item Black-box model
@@ -40,14 +41,35 @@ The generic roll damping model was then developed as a grey-box model, including
 
 \subsection{Best mathematical model for the roll motion}
 System identification on the linear, quadratic and cubic model was conducted using both the ''integration approach'' (described in \autoref{sec:integration_approach}) and the ''derivation approach'' (described in \autoref{sec:derivation_approach}).
-Results from simulations with the identified models is shown for one of the roll-decay tests in \autoref{fig:roll_decay_compare}.
+Results from simulations with the identified models is shown for one of the roll-decay tests in \autoref{fig:roll_decay_compare}. It can be seen that the cubic and quadratic model reproduce the model test well and that the the linear model is too simple to have a good representation for both smaller and larger roll angles.
 
 \begin{figure}[H]
     \centering
-    \includegraphics{kappa/images/roll_decay_model_compare.pdf}
-    \caption{Caption}
+    \includegraphics[width=\linewidth]{kappa/images/roll_decay_model_compare.pdf}
+    \caption{Roll decay estimation with identified cubic, quadratic and linear model.}
     \label{fig:roll_decay_compare}
 \end{figure}
+
+\begin{figure}[H]
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[]{kappa/images/roll_decay_amplitude.eps}
+        \caption{Amplitude decrements}
+        \label{fig:roll_decay_amplitude}
+    \end{subfigure}
+        ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
+      %(or a blank line to force the subfigure onto a new line)
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[]{kappa/images//roll_decay_damping.eps}
+        \caption{Dampings}
+        \label{fig:roll_decay_damping}
+    \end{subfigure}
+    \caption{Roll decay model test, linear-, quadratic- and cubic-model}
+    \label{fig:roll_decay}
+\end{figure}
+
+The best parameter estimations were obtained using the ''integration approach''.
 
 \subsection{Generic roll damping model}
 \label{sec:genericrolldampingmodel}
