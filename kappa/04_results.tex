@@ -87,7 +87,7 @@ where the wave and eddy components require strip-theory based hydrodynamic analy
 A simplified Ikeda method (SI-method) was proposed by \parencite{kawahara_simple_2011} and is used in Paper \ref{pap:rolldamping} to calculate all the damping components including the eddy component $B_E$ and wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$ as described in \parencite{ikeda_velocity_1979}, giving a function: 
 \input{equations/simplified_ikeda_equation}
 
-\noindent The formulas within $f$ can be referred to \parencite{ikeda_velocity_1979, kawahara_simple_2011} with the implementation in the paper by \cite{alexandersson_martinlarsalbertrolldecay-estimators_2020}.
+\noindent The formulas within $f$ can be referred to \parencite{ikeda_velocity_1979, kawahara_simple_2011} with the implementation in \cite{alexandersson_martinlarsalbertrolldecay-estimators_2020}.
 It should be noted that this method may be only efficiently used to estimate the roll damping of ships within the boundaries \parencite{kawahara_simple_2011}:
 \begin{equation}
     \label{eq:SI_limits}
@@ -105,6 +105,24 @@ It should be noted that this method may be only efficiently used to estimate the
     \end{array}
     \right.
 \end{equation}
+
+\noindent The total roll damping is predicted as the sum (\autoref{eq:ikeda}) of the damping contributions (\autoref{eq:simplified_ikeda_equation}). This damping can be compared with the linearized equivalent damping $B_e$, calculated for a certain roll angle $\phi_a$ with the identified roll damping parameters $B_1$ and $B_2$ \cite{himeno_prediction_1981},
+\input{equations/B_e_equation}
+
+\noindent The $B_e$ coefficient can be made non-dimensional according to \parencite{himeno_prediction_1981}, giving the non-dimensional equivalent linear damping coefficient $\hat{B_e}$. This one is more convenient to use when comparing roll damping for different ships,
+\begin{equation} \label{eq:be_eqvalent}
+    \hat{B_e} = \frac{B_e}{\rho \bigtriangledown Beam^2} \sqrt{\frac{Beam}{2g}},
+\end{equation}
+\noindent where $\rho$, $\bigtriangledown$ and $Beam$ stand for fluid density, displacement volume, and breadth of a ship, respectively.
+
+\begin{figure}[H]
+\centering
+  \centering
+  \includegraphics[]{figures/ikeda_phi_a.pdf}
+  \vspace{-0.5cm}
+  \caption{Root mean square error of roll damping prediction between the SI-method and the model test results (upper plot). Influence of roll amplitude $\phi_a$ on $\hat{B_e}$ between the SI-method and model tests for $0^{\circ}$ (bottom left plot), $5^{\circ}$ (bottom middle plot) and $10^{\circ}$ (bottom right plot), respectively.}
+  \label{fig:ikeda_phi_a}
+\end{figure}
 
 \subsection{Generic roll damping model}
 \label{sec:genericrolldampingmodel}
