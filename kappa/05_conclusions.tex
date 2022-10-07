@@ -2,24 +2,17 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusions\label{ch:conclusions}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The main findings and conclusions are presented below with respect to the main objective to develop system identification methods for grey box models of ship rigid body dynamics in calm waters.
 
-\subsubsection*{Roll model}
-The  was used to identify the parameters in the linear (Eq.\ref{eq:roll_decay_equation_himeno_linear}), quadratic (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and cubic (Eq.\ref{eq:roll_decay_equation_cubic}) roll motion model for the 250 roll decay tests obtained from SSPA. 
-The accuracy of the linear model was not as good as the more complex models. The quadratic model had almost as high accuracy as the cubic model. The quadratic model, which is more robust, is therefore the best choice to describe the roll motion. 
-
-\subsubsection*{\emph{Sub task: Develop a method to handle noise}}
-The  ''integration approach'' produced better models than the ''derivation approach'' for the roll motion models in Paper \ref{pap:rolldamping}. The ''integration approach'' is very slow and relies on optimization that may or may not converge.
-The numerical differentiation that was used in Paper \ref{pap:rolldamping} to estimate the velocities and accelerations, is believed to be the main cause of the poor performance of the much faster and more reliable ''derivation approach''. A similar issue was also encountered in Paper \ref{pap:daiyong}, where the identified hydrodynamic derivatives were very sensitive to the choice of the regularisation factor of the LS-SVR.
-The iterative EKF + RTS smoother in the proposed  in Paper \ref{pap:pit} has reduced these issues. It is also shown that the proposed way to handle noise is better than low-pass filters.
-
-\subsubsection*{Manoeuvring model}
-It is shown in both \ref{pap:daiyong} and Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator. This is the case when simulated data for the  is used.
-The challenge to develop a SDT for manoeuvring is therefore to select the appropriate manoeuvring model (see section \ref{sec:manoeuvring model}) and to handle the measurement noise.
-The challenges with noisy experimental data is shown in Paper \ref{pap:daiyong}, where the  has problems to identify a reliable model. The challenges were mitigated in Paper \ref{pap:pit}, by improved preprocessing of the noisy data and by reduced multicollinearity of the manoeuvring model. The multicollinearity of the AVMM was reduced, by excluding hydrodynamic derivatives and the introduction of a propeller thrust model.
-
-\subsubsection*{Model generalization}
-A methodology to select a suitable manoeuvring model based on cross-validation is proposed in Paper \ref{pap:pit}. In order to investigate the model's ability to extrapolate and make predictions outside its training data, the validation set should have larger yaw rates, drift angles and rudder angles compared to the training set. The methodology was applied on the wPCC and KVLCC2 test cases, where turning circles where predicted with good accuracy on models trained on zigzag tests. 
-
-\subsubsection*{}
-Methods for system identification of ship rigid body dynamics in calm waters have been presented in this thesis. Multicollinearity is a large problem, especially for the complex manoeuvring models, where the appropriate complexity needs to be selected with the bias-variance tradeoff between underfitting or overfitting of data. The SDT models identified with the proposed methods generalizes well to unseen data in the test cases used in the thesis.
+\begin{itemize}
+    
+    \item The hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
+    
+    \item System identification methods must handling measurement noise and minimize the process uncertainty to be successful.
+    
+    \item Prepossessing of measurement data with EKF + RTS run in iteration with initial estimation from semi-empirical formulas, is better than using low-pass filters.
+    
+    \item Too complex models has great problems with multicollinearity, that need to be handled.
+    
+    \item The proposed system identification method can predict turning circle manoeuvres with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases.
+    
+\end{itemize}

@@ -92,7 +92,7 @@ The propeller is part of the manoeuvring model for thr KVLCC2 test case. A prope
 
 \subsubsection{The KVLCC2 propeller model}
 \label{\detokenize{06.20_results_kvlcc2:the-kvlcc2-propeller-model}}\label{\detokenize{06.20_results_kvlcc2:results-propeller-model}}
-\sphinxAtStartPar
+
 The coefficients of \(K_T\) (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011} (\(k_0\):{0.32419}, \(k_1\):{-0.22091}, \(k_2\):{-0.14905}).
 The Polynomial propeller model was developed with polynomial regression and cross-validation on the training and validation datasets to make the best feature selection.
 A cross-validation study was carried out on the three candidate propeller models: the MMG propeller model, the simple propeller model, and the Polynomial propeller model. The training and validation sets were made of the entire model test time series from the HSVA model tests.
@@ -103,23 +103,23 @@ The model tests were divided into the test and validation sets randomly. The ran
 \includegraphics{kappa/images/12.pdf}
 \caption{Validation of MMG, Simple and Polynomial propeller models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}\end{figure}
 
-\sphinxAtStartPar
+
 \noindent \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}} shows coefficients of the polynomial propeller model fitted on the training and validation dataset for KVLCC2.
 \input{kappa/table_kvlcc2_propeller_model}
 
 \subsubsection{KVLCC2 manoeuvring model}
 \label{\detokenize{06.20_results_kvlcc2:kvlcc2-manoeuvring-model}}
-\sphinxAtStartPar
+
 The LVMM was ruled too simple, for KVLCC2 as well, so only the AVMM and MAVMM were considered possible manoeuvring models in the cross-validation.
 The forces and moments applied on the hull, rudder, and propeller predicted with the AVMM and MAVMM fitted with the proposed parameter estimation on the training set are shown in \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}}}.
-The forces are well predicted with both manoeuvring models. The AVMM is not giving the large over predictions that were seen for wPCC (see Section \(\ref{\detokenize{06.10_results_wpcc::doc}}\)). However, the MAVMM is still slightly better and is therefore selected as the suitable manoeuvring model for the KVLCC2.
+The forces are well predicted with both manoeuvring models. The AVMM is not giving the large over predictions that were seen for wPCC. However, the MAVMM is still slightly better and is therefore selected as the suitable manoeuvring model for the KVLCC2.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/13.pdf}
 \caption{Validation of force models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}}\end{figure}
 
-\sphinxAtStartPar
+
 Simulations of the validation cases with the MAVMM is shown for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}} where the predicted thrust is also shown.
 
 \begin{figure}[!htb]
@@ -132,7 +132,7 @@ Simulations of the validation cases with the MAVMM is shown for one of the ZigZa
 \includegraphics{kappa/images/15.pdf}
 \caption{Validation error (prediction-model test) with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}\end{figure}
 
-\sphinxAtStartPar
+
 Results from the final prediction of the turning circle test are shown in  \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}}, \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}}. The prediction is conducted using simulation with the MAVMM trained on the training and validation dataset. Monte Carlo simulations with alternative realizations of the regression are also shown in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
 
 \begin{figure}[!htb]
@@ -142,351 +142,50 @@ Results from the final prediction of the turning circle test are shown in  \hype
 
 \begin{figure}[!htb]
 \centering
-\includegraphics{kappa}
+\includegraphics{kappa/images/17.pdf}
 \caption{Comparison between predicted Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}\end{figure}
 
 \begin{figure}[!htb]
 \centering
-\capstart
-
-\noindent\sphinxincludegraphics{{18}.pdf}
+\includegraphics{kappa/images/18.pdf}
 \caption{The prediction error (prediction-model test) for Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure}
 
-\sphinxAtStartPar
+
 For KVLCC2 comparisons of turning circle advance and tactical diameter compared to the model test result is shown in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameter differ 2\% and 5\%, which can be considered acceptable, considering the margin to the IMO standard limits, which are also shown in this table. The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
+\input{kappa/table_kvlcc2_turning}
 
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\sphinxcapstartof{table}
-\sphinxthecaptionisattop
-\sphinxcaption{KVLCC2 Predicted turning circle advance (A) and tactical diameter (TD) compared to MARIN model tests and IMO limit}\label{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}
-\sphinxaftertopcaption
-\begin{tabulary}{\linewidth}[t]{|T|T|T|T|T|T|T|}
-\hline
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
-delta
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-A (model test) {[}m{]}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-A (prediction) {[}m{]}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-A (IMO) {[}m{]}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-TD (model test) {[}m{]}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-TD (prediction) {[}m{]}
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-TD (IMO) {[}m{]}
-\\
-\hline
-\sphinxAtStartPar
-35.0
-&
-\sphinxAtStartPar
-21.59
-&
-\sphinxAtStartPar
-21.21
-&
-\sphinxAtStartPar
-31.5
-&
-\sphinxAtStartPar
-21.72
-&
-\sphinxAtStartPar
-23.07
-&
-\sphinxAtStartPar
-35.0
-\\
-\hline
-\sphinxAtStartPar
--35.0
-&
-\sphinxAtStartPar
-22.54
-&
-\sphinxAtStartPar
-22.1
-&
-\sphinxAtStartPar
-31.5
-&
-\sphinxAtStartPar
-23.55
-&
-\sphinxAtStartPar
-24.29
-&
-\sphinxAtStartPar
-35.0
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
 
-\sphinxAtStartPar
+
 The mean values and standard error (se) of the hydrodynamic derivatives expressed with prime units for the KVLCC2 obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_VMMs:eqxmartinssimple}\),\(\autoref{equation:02.01_VMMs:eqymartinssimple}\), \(\autoref{equation:02.01_VMMs:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
+\input{kappa/table_kvlcc2_derivatives}
 
+\subsection{Inverse dynamics}
+\label{\detokenize{06.40_results_inverse_dynamics:inverse-dynamics}}\label{\detokenize{06.40_results_inverse_dynamics::doc}}
 
-\begin{savenotes}\sphinxattablestart
-\centering
-\sphinxcapstartof{table}
-\sphinxthecaptionisattop
-\sphinxcaption{KVLCC2 MAVMM derivatives (prime units times 1000)}\label{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}
-\sphinxaftertopcaption
-\begin{tabulary}{\linewidth}[t]{|T|T|T|T|T|T|T|T|T|}
-\hline
-\sphinxstyletheadfamily 
-\sphinxAtStartPar
-name
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-mean
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-se
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-name
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-mean
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-se
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-name
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-mean
-&\sphinxstyletheadfamily 
-\sphinxAtStartPar
-se
-\\
-\hline
-\sphinxAtStartPar
-\( X_{vr} \)
-&
-\sphinxAtStartPar
--11.454
-&
-\sphinxAtStartPar
-0.272
-&
-\sphinxAtStartPar
-\( Y_{T} \)
-&
-\sphinxAtStartPar
-77.34
-&
-\sphinxAtStartPar
-1.23
-&
-\sphinxAtStartPar
-\( N_{\delta} \)
-&
-\sphinxAtStartPar
--1.274
-&
-\sphinxAtStartPar
-0.003
-\\
-\hline
-\sphinxAtStartPar
-\( X_{rr} \)
-&
-\sphinxAtStartPar
--1.406
-&
-\sphinxAtStartPar
-0.068
-&
-\sphinxAtStartPar
-\( Y_{r} \)
-&
-\sphinxAtStartPar
-256.065
-&
-\sphinxAtStartPar
-0.654
-&
-\sphinxAtStartPar
-\( N_{r} \)
-&
-\sphinxAtStartPar
--105.618
-&
-\sphinxAtStartPar
-0.179
-\\
-\hline
-\sphinxAtStartPar
-\( X_{\delta\delta} \)
-&
-\sphinxAtStartPar
--2.719
-&
-\sphinxAtStartPar
-0.013
-&
-\sphinxAtStartPar
-\( Y_{v} \)
-&
-\sphinxAtStartPar
--24.467
-&
-\sphinxAtStartPar
-0.02
-&
-\sphinxAtStartPar
-\( N_{T} \)
-&
-\sphinxAtStartPar
--32.523
-&
-\sphinxAtStartPar
-0.274
-\\
-\hline
-\sphinxAtStartPar
-\( X_{uu} \)
-&
-\sphinxAtStartPar
-80.508
-&
-\sphinxAtStartPar
-0.618
-&
-\sphinxAtStartPar
-\( Y_{ur} \)
-&
-\sphinxAtStartPar
--252.991
-&
-\sphinxAtStartPar
-0.658
-&
-\sphinxAtStartPar
-\( N_{u} \)
-&
-\sphinxAtStartPar
-0.063
-&
-\sphinxAtStartPar
-0.001
-\\
-\hline
-\sphinxAtStartPar
-\( X_{u} \)
-&
-\sphinxAtStartPar
--81.415
-&
-\sphinxAtStartPar
-0.618
-&
-\sphinxAtStartPar
-\( Y_{u} \)
-&
-\sphinxAtStartPar
--0.119
-&
-\sphinxAtStartPar
-0.003
-&
-\sphinxAtStartPar
-\( N_{v} \)
-&
-\sphinxAtStartPar
--7.156
-&
-\sphinxAtStartPar
-0.016
-\\
-\hline&&&&&&
-\sphinxAtStartPar
-\( N_{T\delta} \)
-&
-\sphinxAtStartPar
--391.596
-&
-\sphinxAtStartPar
-0.941
-\\
-\hline&&&&&&
-\sphinxAtStartPar
-\( N_{vv\delta} \)
-&
-\sphinxAtStartPar
--19.257
-&
-\sphinxAtStartPar
-0.089
-\\
-\hline&&&&&&
-\sphinxAtStartPar
-\( N_{ur} \)
-&
-\sphinxAtStartPar
-102.252
-&
-\sphinxAtStartPar
-0.183
-\\
-\hline
-\end{tabulary}
-\par
-\sphinxattableend\end{savenotes}
+The hydrodynamic derivatives within the manoeuvring model can be identified exactly at ideal conditions for the parameter estimation with no measurement noise and a perfect estimator. For example, artificial data from a turning circle test can be simulated by a pre-defined/true manoeuvring model. The hydrodynamic derivatives within the manoeuvring model can be identified with the same values. Results from such a simulation is shown in \hyperref[\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}]{Fig.\@ \ref{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}} where the regression has identified the true values precisely.
 
-
-
-
-The appropriate manoeuvring model for the specific ship and data is selected from a set of candidate manoeuvring models, with varying complexity as a function of its number of hydrodynamic derivatives. The appropriate manoeuvring model is selected to give a robust model that can make predictions outside the domain covered by the available training data. A cross validation scheme is proposed to be used in the selection. In this scheme, the validation set has larger drift angles, yaw rates and rudder angles compared to the training set as seen in the example in Fig.\ref{fig:cross_validation}.
 \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=\linewidth]{kappa/images/3.pdf}
-    \caption{wPCC training, validation and testing datasets.}
-    \label{fig:cross_validation}
-\end{figure}
-\noindent A new parameter estimation for manoeuvring models (see Section \ref{sec:_VMM}), with large focus on the data cleaning, is also proposed in Paper \ref{pap:pit}. This  is investigated together with the method to select a appropriate and robust manoeuvring model for two very different cases. The wPCC test case which is a twin screw Pure Car Truck Carrier and the KVLCC2 being a single screw Very Large Crude Carrier.    
-\begin{itemize}
-    
-    \item It is shown that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator.
-    
-    \item It is shown that the proposed prepossessing of measurement data with EKF + RTS run in iteration with initial guess from semi-empirical formulas, is better than using low-pass filters for cleaning. \autoref{fig:lowpass-accuracy} shows the average simulation error with the  using various low-pass filters or the EKF + RTS smoother.
-    \begin{figure}[!htb]
-        \centering
-        \includegraphics{kappa/images/6.pdf}
-        \caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutt off frequency or EKF.}
-        \label{fig:lowpass-accuracy}
-    \end{figure}
-    
-    \item The  has large problems with multicollinearity for the AVMM. The absolute correction between the features is shown in \autoref{fig:ncorr}. This was less of a problem for the less complex model MAVMM.
-    \begin{figure}[!htb]
-        \centering
-        \includegraphics{kappa/images/9.pdf}
-        \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM}
-        \label{fig:ncorr}
-    \end{figure}
-    
-    \item The new method can predict turning circle manoeuvres with less than 5 \% error in advance and tactical diameter for the wPCC and KVLCC2 test cases. Track plot of the wPCC result is shown in Fig.\ref{fig:turning_circle_wpcc}.
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics{kappa/images/10.pdf}
-    \caption{Track plots of the turning circle test case for wPCC from Model test and simulation (Test). Also simulations with alternative realizations of the regression (Monte Carlo) are shown in this figure.}
-    \label{fig:turning_circle_wpcc}
-    \end{figure}
-    
-\end{itemize}
+\centering
+\includegraphics{kappa/images/5.pdf}
+\caption{True and regressed hydrodynamic derivatives in MAVMM identified with Inverse dynamics and OLS regression on a simulated turning circle with MAVMM.}\label{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}\end{figure}
+
+
+\subsection{Preprocessing}
+\label{\detokenize{06.31_results_noise:preprocessing}}\label{\detokenize{06.31_results_noise::doc}}
+
+The low-pass filter is a prevalent alternative to preprocessing the model test data, as opposed to the EKF used by the proposed parameter estimation.
+In order to study which of the filters works best, the proposed parameter estimation has been run on the wPCC model test data with the EKF + RTS smoother replaced by a Low-pass filter instead. The low-pass filter applies a first-order linear digital Butterworth filter twice, once forward and once backward, to get zero phase \cite{virtanen_scipy_2020}. \hyperref[\detokenize{06.31_results_noise:fig-lowpass-accuracy}]{Fig.\@ \ref{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}} shows the average simulation error \( \overline{RMSE} \) with low-pass filters at various cut-off frequencies for all wPCC model tets. Corresponding error with parameter estimation using EKF + RTS is also shown in the figure. The simulation error for each model test is expressed as Root Mean Square Error \(RMSE\) (\autoref{equation:06.31_results_noise:eqrmse}) of the distance between the position from the model test and simulation.
+\begin{equation}\label{equation:06.31_results_noise:eqrmse}
+\begin{split}RMSE=\sqrt{ \frac{\sum_{n=1}^{N} (d_n^2) }{N}} \end{split}
+\end{equation}
+
+where \(d_n\) is the euclidean distance for each time step between the model test positions (\(x_0\), \(y_0\)) and the predicted positions.
+
+\begin{figure}[!htb]
+\centering
+\includegraphics{kappa/images/6.pdf}
+\caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutt off frequency or EKF.}\label{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}\end{figure}
+
+
+Even though high accuracy can be obtained using a low-pass filter as the pre-processor, if an optimal cut-off frequency is selected, its accuracy decreases quickly at lower or higher frequencies. With higher cut-off frequencies, too much of the measurement error remains in the data, resulting in poor performance of the OLS regression. In extreme cases, it is like having no filter at all. Using too low of a cut-off frequency removes too much, including parts of the actual signal. The results show that the low-pass filter with a 7 Hz cut-off frequency has the lowest error among the low-pass filters, but EKF + RTS in the parameter estimation has an even lower error, which is why this is used as the preprocessor in the proposed parameter estimation.
