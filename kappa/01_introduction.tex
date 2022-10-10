@@ -4,10 +4,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The use of twin models is a not a new idea. NASA build twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
 The twin model could be used as a reference object if something went wrong during the mission.  
-The twin model concept has a lot of other usefully applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications such as conventional ships. Building a real twin ship as a reference object is of course not realistic. With data recorded onboard ships it is instead possible to build a ship digital twin (SDT), to serve the same purpose.
+The twin model concept has a lot of other usefully applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. Building a real twin ship as a reference object is of course not realistic. With data recorded onboard ships it is instead possible to build a ship digital twin (SDT), to serve the same purpose.
 System identification methods of Ship Rigid Body Dynamics are presented in this thesis, which can be used as important sub-components in the SDTs. 
 
-Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields (see \autoref{fig:seakeeping_and_manoeuvring}), where Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. 
+Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. 
 
 \begin{figure}
     \centering
@@ -30,16 +30,17 @@ Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces a
 
 \end{figure}
 
-The background of modelling the SDTs with white-, black- or grey-box models is first introduced in this chapter followed by a brief literature review. The motivation and objective of this research is then stated followed by assumptions and limitations.
+This chapter first gives some background defining Internet-of-
+Ships (IoS), ship digital twins (SDT) and the modelling of ship rigid body dynamics with white-, black- or grey-box models. A literature review of system identification is then given.
+The motivation and objective of this research is then stated followed by assumptions and limitations.
 
 \section{Background}
 Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
 The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet-of-Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for the IoS \cite{aslam_internet_2020}.
-A SDT as a digital copy of a real ship, is one approach to achieve this \cite{chen_review_2021}. 
+A Ship Digital Twin (SDT) as a digital copy of a real ship, is one way to make use of all the data within IoS \cite{chen_review_2021}. 
 SDTs are data-driven in contrast to the related term Virtual Prototyping (VP), which is instead model based \cite{major_framework_2021}. A SDT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
-
 The models for VP and SDT can generally be categorized as white-, black- or grey-box models. Where 
 white-box models are used in VP and either black-box or grey-box models are used in the SDTs. 
 \begin{itemize}
@@ -92,8 +93,7 @@ Ship rigid body dynamics at full scale sea conditions comprises uncertainties fr
     \item the \textbf{measurements}
 \end{itemize}
 
-\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. A majority of the publications within this field, such as \cite{shi_identification_2009}, \cite{perera_system_2015}, \cite{zhu_parameter_2017}, \cite{wang_parameter_2021} and \cite{xue_hydrodynamic_2020} simplifies this even further by using simulated data, which can be too much of a simplification as we identify real objects, not its mathematical model \cite{miller_ship_2021}.
-The main objective with this thesis is therefore to:
+\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. The main objective with this thesis is therefore to:
 % Objective: 
 \begin{quote} 
 Develop system identification methods for grey box models of ship rigid body dynamics in calm waters. 
