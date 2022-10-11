@@ -174,61 +174,61 @@ test set.
 \end{itemize}
 
 
-\begin{figure}[h]
-\centering
-\begin{tikzpicture}
-
-\node (dataset)[rectangle,
-    draw,
-    text = black,
-    minimum width=10cm,
-    fill = white]{DATASET};
-
-
-\node (train)[rectangle,
-    draw,
-    text = black,
-    minimum width=5cm,
-    fill = yellow, below of=dataset]{TRAIN};
-
-\node (validation)[rectangle,
-    draw,
-    text = blue,
-    minimum width=5cm,
-    fill = white, right of=train, xshift=4.0cm]{VALIDATION};
-
-\node (test)[rectangle,
-    draw,
-    text = white,
-    minimum width=5cm,
-    fill = green, right of=validation, xshift=4.0cm]{TEST};
-    
-\node (train_multiple)[rectangle,
-    draw,
-    text = black,
-    draw = none,
-    fill = none, below of=train]{Train multiple models};
-    
-\node(validate_models)[rectangle,
-    draw,
-    text = black,
-    draw = none,
-    fill = none, below of=validation]{Validate models};
-    
-\node(evaluate_models)[rectangle,
-    draw,
-    text = black,
-    draw = none,
-    fill = none, below of=test]{Evaluate models};
-
-\draw[shorten <=0.3cm,->] (train) -- (train_multiple)
-\draw[shorten <=0.3cm,->] (validation) -- (validate_models)
-\draw[shorten <=0.3cm,->] (test) -- (evaluate_models)
-    
-\end{tikzpicture}
-\label{fig:model_development_provess}
-\caption{Caption}
-\end{figure}
+%\begin{figure}[h]
+%\centering
+%\begin{tikzpicture}
+%
+%\node (dataset)[rectangle,
+%    draw,
+%    text = black,
+%    minimum width=10cm,
+%    fill = white]{DATASET};
+%
+%
+%\node (train)[rectangle,
+%    draw,
+%    text = black,
+%    minimum width=5cm,
+%    fill = yellow, below of=dataset]{TRAIN};
+%
+%\node (validation)[rectangle,
+%    draw,
+%    text = blue,
+%    minimum width=5cm,
+%    fill = white, right of=train, xshift=4.0cm]{VALIDATION};
+%
+%\node (test)[rectangle,
+%    draw,
+%    text = white,
+%    minimum width=5cm,
+%    fill = green, right of=validation, xshift=4.0cm]{TEST};
+%    
+%\node (train_multiple)[rectangle,
+%    draw,
+%    text = black,
+%    draw = none,
+%    fill = none, below of=train]{Train multiple models};
+%    
+%\node(validate_models)[rectangle,
+%    draw,
+%    text = black,
+%    draw = none,
+%    fill = none, below of=validation]{Validate models};
+%    
+%\node(evaluate_models)[rectangle,
+%    draw,
+%    text = black,
+%    draw = none,
+%    fill = none, below of=test]{Evaluate models};
+%
+%\draw[shorten <=0.3cm,->] (train) -- (train_multiple)
+%\draw[shorten <=0.3cm,->] (validation) -- (validate_models)
+%\draw[shorten <=0.3cm,->] (test) -- (evaluate_models)
+%    
+%\end{tikzpicture}
+%\label{fig:model_development_provess}
+%\caption{Caption}
+%\end{figure}
 
 \noindent The best manoeuvring model is selected from a selection of candidate models. The purpose with the training set is to train all the candidate models using the proposed parameter estimation method. The validation set is then used to select which one of the candidate models is the best. The training and validation sets are then joined to train the selected model as the final model, to be used in predicting the test set, which is used to evaluate the accuracy of the model. These three sets are not divided randomly, but rather to assess the model’s extrapolation ability. The data sets are therefore split to have the smallest: yaw rates, drift- and rudder-angles in the training set, the medium values in the validation set and the largest values in the test set which for instance can be seen in \autoref{fig:wpcc_datasets} in the next chapter.
 
