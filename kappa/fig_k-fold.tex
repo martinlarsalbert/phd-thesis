@@ -1,0 +1,38 @@
+\begin{figure}[h]
+    \centering
+    
+    \begin{tikzpicture}
+      \matrix (M) [matrix of nodes,
+          nodes={minimum height = 7mm, minimum width = 1.2cm, outer sep=0, anchor=center,   draw},
+          column 1/.style={nodes={draw=none}, minimum width = 4cm},
+          row sep=1mm, column sep=-\pgflinewidth, nodes in empty cells,
+          e/.style={fill=yellow!30}
+        ]
+        {
+          Experiment 1 & & & & & |[e]| \\
+          Experiment 2 & & & & |[e]| & \\
+          Experiment 3 & & & |[e]| & & \\
+          Experiment 4 & & |[e]| & & & \\
+          Experiment 5 & |[e]| & & & & \\
+        };
+        \draw (M-1-2.north west) ++(0,2mm) coordinate (LT) edge[|<->|, >= latex]     node[above]{Total number of datasets} (LT-|M-1-6.north east);
+        
+        \node (training)[rectangle,
+            draw,
+            anchor=west,
+            text = black,
+            minimum width=2cm,
+            fill = white] at (4.7,0.5) {Training};
+            
+        \node (validation)[rectangle,
+            draw,
+            anchor=west,
+            text = black,
+            minimum width=2cm,
+            fill = yellow!30, below of=training]{Validation};
+        
+    \end{tikzpicture}
+    
+    \caption{K-fold cross validation}
+    \label{fig:k-fold}
+\end{figure}
