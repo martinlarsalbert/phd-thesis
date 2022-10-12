@@ -82,7 +82,7 @@ Huge amounts of data concerning ships' operation is collected daily around the o
 The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
 
 The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, but in general not possible for the complex scenarios and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
-In the deep sea: wind, waves and current will add complexity. In coastal areas water depth and bank-effects will also add complexity \cite{nielsen_machine_2022}. 
+In the deep sea: wind, waves and current add complexity to the modelling. In coastal areas water depth and bank-effects also add complexity \cite{nielsen_machine_2022}. 
 Also, even if the sea is modelled perfectly, long term predictions are not possible due to the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as ''butterfly effect'', where only a very small difference in the initial conditions result in totally different outcomes. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Grey-box modelling is therefore used in this thesis, which is an attempt to bridge these problems, to either mitigate the white-box modelling error or the black-box extrapolation error. 
 
 It is often practical to first assume higher levels of simplifications and approximations for the problem under study and thereafter, step by step, increase the complexity of the problem. In this way, the effects of various factors can be initially studied in a rather isolated way. 
@@ -106,7 +106,7 @@ The goals for this thesis, to fulfill the research objective, have been formulat
 The first goal of the thesis is therefore to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data.
 
 \subsubsection*{Manoeuvring model}
-The second goal is to increase the complexity by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
+The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
 
 \subsubsection*{Model generalization}
 The models must be able to make predictions outside the domain covered by the available data, in order to be of practical use in IoS applications.
