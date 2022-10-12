@@ -6,7 +6,7 @@ The objective was used to identify the parameters in the linear (Eq.\ref{eq:roll
 The accuracy of the linear model was not as good as the more complex models. The quadratic model had almost as high accuracy as the cubic model. The quadratic model, which is more robust, is therefore the best choice to describe the roll motion. Increasing the complexity from the one degree of freedom roll motion parameter estimation, parameter estimation for surge, sway and yaw was investigated as described in the next section.
 
 \subsubsection*{Manoeuvring model}
-It is shown in both \ref{pap:daiyong} and Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator. 
+It is shown in Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator. 
 This type of result can be seen when identifying parameters in a manoeuvring model on data from simulations with the same manoeuvring model.
 In order to succeed in system identification on actual model test data, measurement noise as well as model uncertainty need to be handled, and a manoeuvring model as close as possible to the real system needs to be found. The proposed parameter estimation method requires that the model test data is preprocessed to remove measurement noise. The method uses iterative EKF and RTS smoothers as the preprocessor. This preprocessor has higher accuracy and avoids finding the optimal cut-off frequency compared to low-pass filters. 
 
