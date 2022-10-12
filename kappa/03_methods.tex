@@ -215,14 +215,14 @@ The general aim of developing a manoeuvring model with parameter estimation is t
     anchor=west,
     text = black,
     draw = none,
-    fill = none] at (8.4cm, -2cm) {Evaluate models};
+    fill = none] at (8.0cm, -2cm) {Evaluate final model};
 
 \draw[shorten <=0.1cm,->] (train) -- (train_multiple);
 \draw[shorten <=0.1cm,->] (validation) -- (validate_models);
 \draw[shorten <=0.1cm,->] (test) -- (evaluate_models);
     
 \end{tikzpicture}
-\caption{Caption}
+\caption{Model development process with holdout evaluation}
 \label{fig:model_development_process}
 \end{figure}
 
