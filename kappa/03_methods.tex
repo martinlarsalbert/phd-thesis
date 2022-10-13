@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models can be assumed. Parameter estimations for roll motion and manoeuvring are presented in \ref{sec:_roll} and \ref{sec:_VMM}. The system identification can be performed by selecting the best model from a collection of candidate models.
 
-\section{Roll damping parameter estimation} \label{sec:_roll}
+\section{Roll model parameter estimation} \label{sec:_roll}
 \noindent Parameter estimation can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models from the previous chapter (\autoref{eq:roll_decay_equation_himeno_linear}, \autoref{eq:roll_decay_equation_himeno_quadratic_b} and \autoref{eq:roll_decay_equation_cubic}). These equations do not have unique solutions, considering that the whole equations can be multiplied by an arbitrary factor to obtain new valid solutions. The inertia is therefore excluded, to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$ as seen in Eq.\ref{eq:roll_decay_nonedim_a44} for the linear model.
 
 \input{equations/roll_decay_nonedim_A44}
@@ -22,10 +22,10 @@ A least squares fit is applied on the roll motion equation to identify the dampi
 \subsection{Integration approach}\label{sec:integration_approach}
 In the integration approach, Eq.\ref{eq:roll_decay_nonedim_a44} is solved as an Ordinary differential equation (ODE) for many estimated sets of parameters until the solution converges. This method is very time consuming and convergence is not guaranteed, but the advantage is that only roll angle $\phi$ is needed.
 
-\section{Manoeuvring parameter estimation} \label{sec:_VMM}
+\section{Manoeuvring model parameter estimation} \label{sec:_VMM}
 In the proposed parameter estimation a manoeuvring model is used to solve the reversed manoeuvring problem, such as predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the manoeuvring model can be identified with regression of the force polynomials on forces predicted with inverse dynamics (see Section \ref{\detokenize{03.01_inverse_dynamics::doc}}).
 The measurement noise needs to be removed if the regression of hydrodynamic derivatives in the manoeuvring model should work well. This is conducted by an extended Kalman filter (EKF) and Rauch Tung Striebel (RTS) smoother (see section \ref{sec:datacleaning}). The EKF requires an accurate manoeuvring model as the predictor.
-Therefore the accurate manoeuvring model is both the input and output of the method. The system model manoeuvring model in the EKF is guessed to solve this dilemma. A linear manoeuvring model with hydrodynamic derivatives estimated with semi-empirical formulas is used as the initial guess. Once the regressed manoeuvring model has been obtained, the parameter estimation can be rerun using the regressed manoeuvring model as the system model in the EKF, to obtain an even better manoeuvring model. The method is summarized in Fig.\ref{fig:greyvmm} which can be repeated several times, indicated by the dashed arrow, for improved accuracy. 
+Therefore the accurate manoeuvring model is both the input and output of the method. The model manoeuvring model in the EKF is guessed to solve this dilemma. A linear manoeuvring model with hydrodynamic derivatives estimated with semi-empirical formulas (\autoref{app:initial_estimates}) is used as the initial guess. Once the regressed manoeuvring model has been obtained, the parameter estimation can be rerun using the regressed manoeuvring model as the predictor  model in the EKF, to improve the filter and obtain an even better manoeuvring model. The method is summarized in Fig.\ref{fig:greyvmm} which can be repeated several times, indicated by the dashed arrow, for improved accuracy. 
 
 \begin{figure}[H]
     
@@ -73,7 +73,7 @@ Therefore the accurate manoeuvring model is both the input and output of the met
     \draw [arrow, dashed] (coefficients)  -- (predictor);
     
     \end{tikzpicture}
-    \caption{Grey-box model to predict the manoeuvring model hydrodynamic derivatives}
+    \caption{Method to estimate the manoeuvring model hydrodynamic derivatives}
     \label{fig:greyvmm}
 \end{figure}
 
@@ -83,18 +83,18 @@ Therefore the accurate manoeuvring model is both the input and output of the met
 \begin{figure}[H]
     \centering
     \includegraphics[width=\textwidth]{kappa/images/0.pdf}
-    \caption{Simulation with: initial model, first and second iteration of the }
+    \caption{Simulation with: initial model and first and second iteration of the parameter estimation method.}
     \label{\detokenize{01.01_method:iterations}}
 \end{figure}
 
 \subsection{Inverse dynamics and regression}
 \label{\detokenize{03.01_inverse_dynamics:inverse-dynamics-and-regression}}\label{\detokenize{03.01_inverse_dynamics::doc}}
 
-Each manoeuvring model has some hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) that are defined as polynomials. The hydrodynamic derivatives in these polynomials can be identified with force regression of measured forces and moments. The measured forces and moments are usually taken from Captive Model Tests (CMT), Planar Motion Mechanism (PMM) tests or Virtual Captive Tests (VCT). When the ship is free in all degrees of freedom, as in the present model tests, only
+Each manoeuvring model has some hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) that are defined as polynomials. The hydrodynamic derivatives in these polynomials can be identified with force regression of measured forces and moments. The measured forces and moments are usually taken from captive model tests (CMT), planar motion mechanism (PMM) tests or virtual captive tests (VCT). When the ship is free in all degrees of freedom, as in the present model tests, only
 motions are recorded however. Hence, forces and moments causing ship motions need to be estimated by
 solving the inverse dynamics problem.
 The inverse dynamics is solved by restructuring the system equation (\autoref{equation:02.01_manoeuvring models:eqacc}) to get the hydrodynamics functions on the left-hand side. If the mass and inertia of the ship including added masses: \(X_{\dot{u}}\), \(Y_{\dot{v}}\), \(Y_{\dot{r}}\), \(N_{\dot{v}}\) and \(N_{\dot{r}}\), are known, the forces in Prime system can be calculated using \autoref{equation:03.01_inverse_dynamics:eqxd}, \autoref{equation:03.01_inverse_dynamics:eqyd} and \autoref{equation:03.01_inverse_dynamics:eqnd}.
-These forces can be used to regress the hydrodynamic derivatives using the Ordinary Least Square (OLS) method. If the added masses are not known, they can be calculated with potential flow methods or semi-empirical methods (\autoref{app:initial_estimates}). 
+These forces can be used to regress the hydrodynamic derivatives using the ordinary least square (OLS) method. If the added masses are not known, they can be calculated with potential flow methods or semi-empirical methods (\autoref{app:initial_estimates}). 
 \begin{equation}\label{equation:03.01_inverse_dynamics:eqxd}
 \begin{split}\displaystyle \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = - X_{\dot{u}}' \dot{u}' + \dot{u}' m' - m' r'^{2} x_{G}' - m' r' v'\end{split}
 \end{equation}\begin{equation}\label{equation:03.01_inverse_dynamics:eqyd}
@@ -114,8 +114,8 @@ These forces can be used to regress the hydrodynamic derivatives using the Ordin
 
 \subsection{Data cleaning}
 \label{sec:datacleaning}
-It is possible to do an exact parameter estimation on perfect (simulated) data with no noise (see Paper \ref{pap:PIT}). However, such data from physical experiments does not exist in reality. The measured data will always contain process noise and measurement noise. In order to mitigate this, the data is preprocessed using the extended Kalman filter (EKF) \cite{brown_introduction_1997} and Rauch Tung Striebel (RTS) smoother \cite{rauch_maximum_1965} which are both presented below.
-EKF is an extension of the Kalman filter (KF) to work on nonlinear systems such as the manoeuvring models. The basic idea is that noise can be disregarded if it does not make sense from a physical point of view. If noisy measurement data were perfectly correct, this would mean that the ship has many vibrations that must have originated from tremendous forces, considering the large mass of the ship. The prior understanding of the dynamics suggests that these forces are not present. Therefore, the noise should be considered as measurement noise and should be removed. Low-pass filtering is a common way to remove noise, where motions above some cut-off frequency are regarded as unphysical measurement noise. The problem with low-pass filter is that it is hard to know what cut-off frequency to choose, either too low: removing part of the signal, or too high: keeping some unfiltered measurement noise in the data. The Kalman filter has a system model, a manoeuvring model in this case, that continuously estimates the system’s state that runs in parallel with the measurement data. The filter estimates the current state as a combination of the measurement data and the system model estimate based on belief in the data and the model. If the data has low noise, the estimate turns toward that data. Conversely, if the model gives very good predictions, then that estimate turns towards the model.
+It is possible to do an exact parameter estimation on perfect (simulated) data with no noise (see Paper \ref{pap:pit}). However, such data from physical experiments does not exist in reality. The measured data will always contain process noise and measurement noise. In order to mitigate this, the data is preprocessed using the extended Kalman filter (EKF) \cite{brown_introduction_1997} and Rauch Tung Striebel (RTS) smoother \cite{rauch_maximum_1965} which are both presented below.
+EKF is an extension of the Kalman filter (KF) to work on nonlinear systems such as the manoeuvring models. The basic idea is that noise can be disregarded if it does not make sense from a physical point of view. If noisy measurement data were perfectly correct, this would mean that the ship has many vibrations that must have originated from tremendous high frequency forces, considering the large mass of the ship. The prior understanding of the dynamics suggests that these forces are not present. Therefore, the noise should be considered as measurement noise and should be removed. Low-pass filtering is a common way to remove noise, where motions above some cut-off frequency are regarded as unphysical measurement noise. The problem with low-pass filter is that it is hard to know what cut-off frequency to choose, either too low: removing part of the signal, or too high: keeping some unfiltered measurement noise in the data. The Kalman filter has a predictor model, a manoeuvring model in this case, that continuously estimates the system’s state that runs in parallel with the measurement data. The filter estimates the current state as a combination of the measurement data and the predictor model estimate based on belief in the data and the model. If the data has low noise, the estimate turns toward that data. Conversely, if the model gives very good predictions, then that estimate turns towards the model.
 The system’s inverse dynamics require the entire states, including positions, velocities, and accelerations, to be known. Only positions are known from the measurements, which means that velocities and accelerations are hidden states that the EKF can estimate.
 The EKF is recursive and can be run online, continuously making new estimates as new measurements arrive. The EKF uses passed measurements to estimate states in the near future. This property is helpful for online applications such as  autopilots or autonomous ships. This restriction is  unnecessary for the estimation on already existing data where a whole time series of existing measurements is available. The fact that both past and future data are known can be used to improve the filter. An EKF filter can include future time steps by adding the RTS smoother after the filter. The RTS smoother is an algorithm that runs the EKF backward to also account for future time steps.
 
@@ -141,7 +141,7 @@ The label vector \(y\) and feature matrix \(X\) in the regression problem in \au
 \begin{split}\displaystyle \gamma = \left[\begin{matrix}X_{T}\\X_{u}\\X_{\delta\delta}\\X_{rr}\\X_{uu}\\X_{vr}\end{matrix}\right]\end{split}
 \end{equation}
 
-\noindent The hydrodynamic derivatives in the manoeuvring model are considered Gaussian random variables when conducting the ordinary least squares (OLS) regression. The hydrodynamic derivatives in the manoeuvring model are usually taken as the mean value of each regressed random variable, being the most likely estimate. The regression result can be described with a Multivariate Gaussian Distribution, defined by the regression’s mean values and covariance matrix. Monte Carlo simulations can be conducted with this distribution to study alternative realizations of the regression.
+\noindent The hydrodynamic derivatives in the manoeuvring model are considered Gaussian random variables when conducting the ordinary least squares (OLS) regression. The hydrodynamic derivatives in the manoeuvring model are usually taken as the mean value of each regressed random variable, being the most likely estimate. The regression result can be described with a multivariate Gaussian distribution, defined by the regression’s mean values and covariance matrix. Monte Carlo simulations can be conducted with this distribution to study alternative realizations of the regression.
 
 
 Strong multicollinearity is a known problem for the manoeuvring models \cite{luo_parameter_2016}, \cite{wang_quantifying_2018}.

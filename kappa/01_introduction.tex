@@ -117,6 +117,21 @@ Calm water condition is a simplification of the real sea condition that a ship e
 The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. 
 Also note that all result are not necessarily directly transferable to full scale when model scale data is used, considering potential scale effects. 
 
+\section{Reproducibility}
+\begin{table}[H]
+    \centering
+    \caption{References for reproducibility}
+    \label{tab:reproducibility}
+    \begin{tabular}{|c|c|c|}
+        \hline
+         Paper &  Code & Data \\
+         \hline
+         \ref{pap:rolldamping} & \textcite{alexandersson_martinlarsalbertrolldecay-estimators_2020} & ~ \\
+         \ref{pap:pit} & \textcite{alexandersson_code_2022} & \textcite{alexandersson_wpcc_2022}, \textcite{stern_experience_2011} \\
+         \hline
+    \end{tabular}
+\end{table}
+
 \section{Outline of the thesis}
 Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
 Parameter estimations, representing the black-box part, are used to regress the parameters of the white-box models. The parameter estimations are introduced in chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in section \ref{sec:_roll} and section \ref{sec:_VMM}. 
