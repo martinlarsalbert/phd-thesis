@@ -171,31 +171,28 @@ Simulations of the validation cases with the MAVMM is shown for one of the ZigZa
 
 \newpage
 \noindent Results from the final prediction of the turning circle test are shown in  \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}}, \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}}. The prediction is conducted using simulation with the MAVMM trained on the training and validation dataset. Monte Carlo simulations with alternative realizations of the regression are also shown in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
-
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/15.pdf}
 \caption{Comparison between predicted Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}\end{figure}
-
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/17.pdf}
 \caption{Comparison between predicted Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}\end{figure}
-
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/18.pdf}
-\caption{The prediction error (prediction-model test) for Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure}
-\noindent For KVLCC2 comparisons of turning circle advance and tactical diameter compared to the model test result is shown in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameter differ 2\% and 5\%, which can be considered acceptable, considering the margin to the IMO standard limits, which are also shown in this table. The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
+\caption{The prediction error (prediction-model test) for Turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} Comparisons of turning circle advance and tactical diameter compared to the model test result are shown in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameter differ 2\% and 5\%, which can be considered acceptable, considering the margin to the IMO standard limits, which are also shown in this table. The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
 \input{kappa/table_kvlcc2_turning}
 
 \noindent The mean values and standard error (se) of the hydrodynamic derivatives expressed with prime units for the KVLCC2 obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqymartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
 \input{kappa/table_kvlcc2_derivatives}
 
 \newpage
+\clearpage
 \subsection{Inverse dynamics}
 \label{\detokenize{06.40_results_inverse_dynamics:inverse-dynamics}}\label{\detokenize{06.40_results_inverse_dynamics::doc}}
-The capability of the inverse dynamics on simulated data was also investigated in Paper \ref{pap:pit}. The hydrodynamic derivatives within the manoeuvring model can be identified exactly at ideal conditions for the parameter estimation with no measurement noise and a perfect estimator. For example, artificial data from a turning circle test can be simulated by a pre-defined/true manoeuvring model. The hydrodynamic derivatives within the manoeuvring model can be identified with the same values. Results from such a simulation is shown in \hyperref[\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}]{Fig.\@ \ref{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}} where the regression has identified the true values precisely.
+The capability of the inverse dynamics on simulated data was also investigated in Paper \ref{pap:pit}. The hydrodynamic derivatives within the manoeuvring model can be identified exactly at ideal conditions for the parameter estimation with no measurement noise and a perfect estimator. For example, artificial data from a turning circle test can be simulated by a pre-defined/true manoeuvring model. The hydrodynamic derivatives within the manoeuvring model can be identified with the same values. Results from such a simulation are shown in \hyperref[\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}]{Fig.\@ \ref{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}} where the regression has identified the true values precisely.
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/5.pdf}
@@ -206,7 +203,7 @@ The capability of the inverse dynamics on simulated data was also investigated i
 \label{\detokenize{06.31_results_noise:preprocessing}}\label{\detokenize{06.31_results_noise::doc}}
 
 The low-pass filter is a prevalent alternative to preprocessing the model test data, as opposed to the EKF used by the proposed parameter estimation.
-In order to study which of the filters works best in Paper \ref{pap:pit}, the proposed parameter estimation has been run on the wPCC model test data with the EKF + RTS smoother replaced by a low-pass filter instead. The low-pass filter applies a first-order linear digital Butterworth filter twice, once forward and once backward, to get zero phase \cite{virtanen_scipy_2020}. \hyperref[\detokenize{06.31_results_noise:fig-lowpass-accuracy}]{Fig.\@ \ref{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}} shows the average simulation error \( \overline{RMSE} \) with low-pass filters at various cut-off frequencies for all wPCC model tets. Corresponding error with parameter estimation using EKF + RTS is also shown in the figure. The simulation error for each model test is expressed as Root Mean Square Error \(RMSE\) (\autoref{equation:06.31_results_noise:eqrmse}) of the distance between the position from the model test and simulation.
+In order to study which of the filters works best in Paper \ref{pap:pit}, the proposed parameter estimation has been run on the wPCC model test data with the EKF + RTS smoother replaced by a low-pass filter. The low-pass filter applies a first-order linear digital Butterworth filter twice, once forward and once backward, to get zero phase \cite{virtanen_scipy_2020}. \hyperref[\detokenize{06.31_results_noise:fig-lowpass-accuracy}]{Fig.\@ \ref{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}} shows the average simulation error \( \overline{RMSE} \) with low-pass filters at various cut-off frequencies for all wPCC model tets. Corresponding error with parameter estimation using EKF + RTS is also shown in the figure. The simulation error for each model test is expressed as root mean square error \(RMSE\) (\autoref{equation:06.31_results_noise:eqrmse}) of the distance between the position from the model test and simulation.
 \begin{equation}\label{equation:06.31_results_noise:eqrmse}
 \begin{split}RMSE=\sqrt{ \frac{\sum_{n=1}^{N} (d_n^2) }{N}} \end{split}
 \end{equation}
