@@ -52,7 +52,7 @@ In the model development process (\autoref{sec:model_development_process}), the 
 \label{fig:wpcc_datasets}
 \end{figure}
 
-The LVMM was ruled too simple, so only the AVMM and MAVMM were considered possible manoeuvring models in the cross-validation.
+The linear model (LVMM) was ruled too simple, so only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
 Forces and moment predicted for the validation dataset with the manoeuvring models fitted with proposed parameter estimation on the training set are shown in \autoref{fig:validation-forces}. It can be seen that the fitted AVMM overpredicts the forces by far. Therefore, simulations of the validation cases are only possible using the MAVMM, which is selected as the suitable manoeuvring model for the wPCC.
 The simulations are shown for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.10_results_wpcc:fig-validation-sim}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-validation-sim}}}.
 
@@ -67,13 +67,13 @@ The simulations are shown for one of the ZigZag20/20 validation cases in \hyperr
 \includegraphics{kappa/images/8.pdf}
 \caption{Validation with simulations for wPCC ZigZag20/20.}\label{\detokenize{06.10_results_wpcc:fig-validation-sim}}\end{figure}
 
-\noindent The over-prediction of forces with the AVMM can be explained by the large problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression are shown in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. It can be seen that most of the coefficients have very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have a substantial values and large uncertainty.
+The over-prediction of forces with the AVMM can be explained by the large problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression are shown in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. It can be seen that most of the coefficients have very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have a substantial values and large uncertainty.
 
 \begin{figure}[!htb]
 \centering
 \includegraphics[width=\textwidth]{kappa/images/9.pdf}
 \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM}\label{\detokenize{06.10_results_wpcc:fig-ncorr}}\end{figure}
-\noindent Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs 4\% and 1\% to the model test data as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also shown in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also shown in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
+Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs 4\% and 1\% to the model test data as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also shown in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also shown in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 
 \begin{figure}[!htb]
 \centering
@@ -93,10 +93,10 @@ The simulations are shown for one of the ZigZag20/20 validation cases in \hyperr
 \subsection{The KVLCC2 test case}
 \label{\detokenize{05.01_case_studies:the-kvlcc2-test-scenarios}}
 
-The proposed method is also validated using the KVLCC2 case study ship model.
+The proposed system identification method is also validated using the KVLCC2 case study ship model.
 The propeller is part of the manoeuvring model for this test case, instead of only the hull and rudders, as in the wPCC test case, so that the entire ship can be simulated without additional input.
 The model development process as described in \autoref{sec:model_development_process} is applied for the KVLCC2 as well.
-Here,
+The data has been split into a training, validation and test dataset,
 \begin{itemize}
     \item Training dataset: various zigzag tests to starboard and port from model tests carried out at HSVA for the SIMMAN2008 conference \cite{stern_experience_2011}.
     \item Validation dataset: ZigZag35/5 carried out at HSVA for the SIMMAN2008 conference \cite{stern_experience_2011}.
@@ -113,15 +113,32 @@ Here,
 \subsubsection{The KVLCC2 propeller model}
 \label{\detokenize{06.20_results_kvlcc2:the-kvlcc2-propeller-model}}\label{\detokenize{06.20_results_kvlcc2:results-propeller-model}}
 
-The coefficients of \(K_T\) (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011} (\(k_0\):{0.32419}, \(k_1\):{-0.22091}, \(k_2\):{-0.14905}).
-The Polynomial propeller model was developed with polynomial regression and cross-validation on the training and validation datasets to make the best feature selection.
-A cross-validation study was carried out on the three candidate propeller models: 
+In the development of a propeller model, the coefficients in the \(K_T\) polynomial (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011}, as seen in \autoref{tab:kt_coefficients}).
+
+\begin{table}[H]
+    \centering
+    \caption{\(K_T\) polynomial coefficients}
+    \label{tab:kt_coefficients}
+    \begin{tabular}{|c|c|}
+        \hline
+        Coefficient & Value \\
+        \hline
+        k_0 & 0.32419 \\
+        k_1 & -0.22091 \\
+        k_2 & -0.14905 \\
+        \hline
+    \end{tabular}
+
+\end{table}
+
+\noindent The propeller model was developed with cross-validation on the training and validation datasets to make the best feature selection.
+The cross-validation study was carried out on the three candidate propeller models: 
 \begin{itemize}
     \item the MMG propeller model
     \item the simple propeller model
-    \item the Polynomial propeller model
+    \item the polynomial propeller model
 \end{itemize}
-The training and validation sets were made of the entire model test time series from the HSVA model tests. The model tests were divided into the test and validation sets randomly. The random training and validation were repeated 100 times. The Polynomial model was selected, having the highest accuracy. Taylor wake \(w_{p0}\) = {0.4} was used in all three models, the MMG model used \(C_1\)={2.0}, \(C_2\)={1.6} when \(\beta_p>0\) and \(C_2\)={1.1} when \(\beta_p<=0\) \cite{yasukawa_introduction_2015-1}. \hyperref[\detokenize{06.20_results_kvlcc2:fig-propeller-validation}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}} shows a small part of the cross-validation and coefficients of the polynomial propeller model fitted on the training and validation dataset for KVLCC2 is shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}}.
+The training and validation sets were made of the entire model test time series from the HSVA model tests. The model tests were divided into the test and validation sets randomly. The random training and validation were repeated 100 times. The Polynomial model was selected, having the highest accuracy. Taylor wake \(w_{p0}\) = {0.4} was used in all three models. The MMG model used \(C_1\)={2.0}, \(C_2\)={1.6} when \(\beta_p>0\) and \(C_2\)={1.1} when \(\beta_p<=0\) \cite{yasukawa_introduction_2015-1}. \hyperref[\detokenize{06.20_results_kvlcc2:fig-propeller-validation}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}} shows a small part of the cross-validation. Coefficients of the polynomial propeller model fitted on the training and validation dataset for KVLCC2 is shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}}.
 
 \begin{figure}[!htb]
 \centering
@@ -132,7 +149,7 @@ The training and validation sets were made of the entire model test time series 
 \subsubsection{KVLCC2 manoeuvring model}
 \label{\detokenize{06.20_results_kvlcc2:kvlcc2-manoeuvring-model}}
 
-The linear manoeuvring model (LVMM) was ruled too simple, for KVLCC2, so only the AVMM and MAVMM were considered possible manoeuvring models in the cross-validation.
+The linear manoeuvring model (LVMM) was ruled too simple, for KVLCC2, so that only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
 The forces and moments applied on the hull, rudder, and propeller predicted with the AVMM and MAVMM fitted with the proposed parameter estimation on the training set are shown in \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}}}.
 The forces are well predicted with both manoeuvring models. The AVMM is not giving the large over predictions that were seen for wPCC. However, the MAVMM is still slightly better and is therefore selected as the suitable manoeuvring model for the KVLCC2.
 Simulations of the validation cases with the MAVMM is shown for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}} where the predicted thrust is also shown.
@@ -149,7 +166,7 @@ Simulations of the validation cases with the MAVMM is shown for one of the ZigZa
 
 \begin{figure}[!htb]
 \centering
-\includegraphics{kappa/images/15.pdf}
+\includegraphics{kappa/images/16.pdf}
 \caption{Validation error (prediction-model test) with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}\end{figure}
 
 \newpage
