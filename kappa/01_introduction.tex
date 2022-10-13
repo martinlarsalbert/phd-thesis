@@ -118,6 +118,20 @@ The rigid body assumption simplifies the ship as a stiff body that does not tran
 Also note that all result are not necessarily directly transferable to full scale when model scale data is used, considering potential scale effects. 
 
 \section{Reproducibility}
+The research for this thesis has been conducted with the aim to have good reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as:
+\begin{quote}
+Reproducibility refers to the ability of a researcher to duplicate the results of a prior study
+using the same materials and procedures as were used by the original
+investigator. 
+E.g., a researcher uses the same raw data, builds same analysis files,
+and same statistical procedures to make sure that same results
+obtained as in published study. Reproducibility is a minimum necessary condition for a finding to be
+believable and informative. 
+    \cite{bollen_reproducibility_2015}
+\end{quote}
+
+\noindent For this sake, all code developed in this research has been made available as open source and the used data has been published as open data as seen in the references in \autoref{tab:reproducibility}. Publishing the roll decay data from Paper \ref{pap:rolldamping} as open data was however not possible due to intellectual property (IP) rights.
+
 \begin{table}[H]
     \centering
     \caption{References for reproducibility}
@@ -126,7 +140,7 @@ Also note that all result are not necessarily directly transferable to full scal
         \hline
          Paper &  Code & Data \\
          \hline
-         \ref{pap:rolldamping} & \textcite{alexandersson_martinlarsalbertrolldecay-estimators_2020} & ~ \\
+         \ref{pap:rolldamping} & \textcite{alexandersson_martinlarsalbertrolldecay-estimators_2020} & Unpublished due to IP rights\\
          \ref{pap:pit} & \textcite{alexandersson_code_2022} & \textcite{alexandersson_wpcc_2022}, \textcite{stern_experience_2011} \\
          \hline
     \end{tabular}
