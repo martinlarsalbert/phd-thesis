@@ -9,9 +9,9 @@ The ship's dynamics comprises the forces and motions in the six degrees of freed
 \section{Roll motion} \label{sec:roll}
 The roll motion without manoeuvres in calm water with no external forces can be expressed with Eq.\ref{eq:roll_decay_equation_general_himeno} \cite{himeno_prediction_1981},
 \input{equations/roll_decay_equation_general_himeno}
-\noindent The ship roll motion can be observed under those conditions in a so called roll-decay test. The model is forced to an initial roll angle as seen in \autoref{fig:rolldecay_initial}. The model is then released (\autoref{fig:rolldecay_free}) and rolls back to equilibrium (\autoref{fig:rolldecay_equilibrium}). But the model will pass the equilibrium due to the momentum and not stop until it has reached the end point on the other side (\autoref{fig:rolldecay_endpoint}). This starts a new cycle, where the model rolls back again, resulting in an oscillatory motion where potential energy is transferred to kinetic energy and back.
+\noindent The ship roll motion can be observed under those conditions in a so called roll-decay test. The model is forced to an initial roll angle as seen in \autoref{fig:rolldecay_initial}. The model is then released (\autoref{fig:rolldecay_free}) and rolls back to equilibrium (\autoref{fig:rolldecay_equilibrium}). But the model will pass the static equilibrium point due to the momentum and not stop until it has reached the end point on the other side (\autoref{fig:rolldecay_endpoint}). This starts a new cycle, where the model rolls back again, resulting in an oscillatory motion where potential energy is transferred to kinetic energy and back.
 \input{kappa/images/rolldecay_test}
-\noindent This oscillation would be going on forever, if it wasn't for the energy losses in roll damping. Interactions between the ship and the water in terms of: as friction, wave generation, eddy generation and hydrodynamic lift will cause the ship to lose some of its energy. This means that the oscillation is decaying over time as seen in \autoref{fig:rolldecay}, showing the time series for the roll angle.
+\noindent This oscillation would be going on forever, if it wasn't for the energy losses in roll damping. Interactions between the ship and the water in terms of: friction, wave generation, eddy generation and hydrodynamic lift will cause the ship to lose some of its energy. This means that the oscillation is decaying over time as seen in \autoref{fig:rolldecay}, showing the time series for the roll angle.
 
 \begin{figure}[H]
     \centering
@@ -21,7 +21,11 @@ The roll motion without manoeuvres in calm water with no external forces can be 
 \end{figure}
 
 \noindent The damping $B_{44}\left(\dot{\phi}\right)$ can be expressed as an expansion series:  
-$ B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n$. This can be expressed as a ``linear model'' (Eq.\ref{eq:roll_decay_equation_himeno_linear}), ``quadratic model'' (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and ``cubic model'' (Eq.\ref{eq:roll_decay_equation_cubic}).
+\begin{equation}
+    B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n
+\end{equation}
+ 
+\noindent This series can be truncated to expressed a ``linear model'' (Eq.\ref{eq:roll_decay_equation_himeno_linear}), ``quadratic model'' (Eq.\ref{eq:roll_decay_equation_himeno_quadratic_b}) and ``cubic model'' (Eq.\ref{eq:roll_decay_equation_cubic}).
 
 \input{equations/roll_decay_equation_himeno_linear}
 \input{equations/roll_decay_equation_himeno_quadratic_b}
