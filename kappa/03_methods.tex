@@ -16,7 +16,7 @@ The system identification of rigid body ship dynamics can be simplified into par
 Two different  methods have been investigated: the ``derivation approach'', referred as  in \parencite{imo_1200_2006}, and the ``integration approach'' as used in \cite{soder_assessment_2019}. 
 
 \subsection{Derivation approach}\label{sec:derivation_approach}
-In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters should be regressed. Only roll angle $\phi$ is known from the experimental data however, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ first needs to be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with extended Kalman filter (EKF) in Paper \ref{pap:pit}).
+In the derivation approach Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ etc. should be regressed. Only roll angle $\phi$ is known from the experimental data however, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ first needs to be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with extended Kalman filter (EKF) in Paper \ref{pap:pit}).
 A least squares fit is applied on the roll motion equation to identify the damping and stiffness parameters.
 
 \subsection{Integration approach}\label{sec:integration_approach}
@@ -173,54 +173,56 @@ The general aim of developing a manoeuvring model with parameter estimation is t
     draw,
     text = black,
     minimum width=12cm,
-    fill = white] at (0, 0) {DATASET};
+    fill = white] at (0, 0) {\footnotesize DATASET};
 
 \node (train)[rectangle,
     draw,
     anchor=west,
     text = black,
-    minimum width=4cm,
-    fill = yellow] at (0, -1cm) {TRAIN};
+    minimum width=6cm,
+    fill = yellow] at (0, -1cm) {\footnotesize TRAIN};
 
 \node (validation)[rectangle,
     draw,
     anchor=west,
     text = blue,
-    minimum width=4cm,
-    fill = white] at (4cm, -1cm) {VALIDATION};
+    minimum width=3cm,
+    fill = white] at (6cm, -1cm) {\footnotesize VALIDATION};
 
 \node (test)[rectangle,
     draw,
     anchor=west,
     text = white,
-    minimum width=4cm,
-    fill = black!15!green!255] at (8cm, -1cm){TEST};
+    minimum width=3cm,
+    fill = black!15!green!255] at (9cm, -1cm){\footnotesize TEST};
     
 \node (train_multiple)[rectangle,
     draw,
     anchor=west,
     text = black,
     draw = none,
-    fill = none] at (-0.2cm, -2cm){Train candidate models};
+    fill = none] at (0.2cm, -2cm){\footnotesize Train candidate models};
     
 \node (validate_models)[rectangle,
     draw,
     anchor=west,
     text = black,
     draw = none,
-    fill = none] at (4.4cm, -2cm){Validate models};
+    fill = none] at (4.9cm, -2cm){\footnotesize Validate models};
     
 \node (evaluate_models)[rectangle,
     draw,
     anchor=west,
     text = black,
     draw = none,
-    fill = none] at (8.0cm, -2cm) {Evaluate final model};
+    fill = none] at (8.3cm, -2cm) {\footnotesize Evaluate final model};
 
-\draw[shorten <=0.1cm,->] (train) -- (train_multiple);
-\draw[shorten <=0.1cm,->] (validation) -- (validate_models);
-\draw[shorten <=0.1cm,->] (test) -- (evaluate_models);
-    
+\draw[->] (3,-1.3) -- (3,-1.8);
+\draw[->] (7,-1.3) -- (7,-1.8);
+\draw[->] (10,-1.3) -- (10,-1.8);
+
+
+
 \end{tikzpicture}
 \caption{Model development process with hold-out evaluation}
 \label{fig:model_development_process}

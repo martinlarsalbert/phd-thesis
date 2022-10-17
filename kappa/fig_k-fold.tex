@@ -9,27 +9,27 @@
           e/.style={fill=yellow!30}
         ]
         {
-          Experiment 1 & & & & & |[e]| \\
-          Experiment 2 & & & & |[e]| & \\
-          Experiment 3 & & & |[e]| & & \\
-          Experiment 4 & & |[e]| & & & \\
-          Experiment 5 & |[e]| & & & & \\
+          \footnotesize Experiment 1 & & & & & |[e]| \\
+          \footnotesize Experiment 2 & & & & |[e]| & \\
+          \footnotesize Experiment 3 & & & |[e]| & & \\
+          \footnotesize Experiment 4 & & |[e]| & & & \\
+          \footnotesize Experiment 5 & |[e]| & & & & \\
         };
-        \draw (M-1-2.north west) ++(0,2mm) coordinate (LT) edge[|<->|, >= latex]     node[above]{Total number of datasets} (LT-|M-1-6.north east);
+        \draw (M-1-2.north west) ++(0,2mm) coordinate (LT) edge[|<->|, >= latex]     node[above]{\footnotesize Total number of datasets} (LT-|M-1-6.north east);
         
         \node (training)[rectangle,
             draw,
             anchor=west,
             text = black,
             minimum width=2cm,
-            fill = white] at (4.7,0.5) {Training};
+            fill = white] at (4.7,0.5) { \footnotesize Training};
             
         \node (validation)[rectangle,
             draw,
             anchor=west,
             text = black,
             minimum width=2cm,
-            fill = yellow!30, below of=training]{Validation};
+            fill = yellow!30, below of=training]{\footnotesize Validation};
         
     \end{tikzpicture}
     

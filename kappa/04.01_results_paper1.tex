@@ -70,7 +70,7 @@ R^2=1-\frac{\sum\limit_{i=1}^{n}(\phi_{i}-\hat{\phi}_i)^2}{\sum\limit_{i=1}^{n}(
 \end{equation}
 where $\phi_i$ is the model test roll angle at time step $i$, $\bar \phi$ is the mean roll angle from the model test and $\hat{\phi}_i$ is the predicted roll angle (with linear, quadratic or cubic model). The average goodness of fit $R^2$ was 0.995 for the cubic model, 0.993 for the quadratic, and 0.986 for the linear model. This means that the quadratic model is almost as good as the cubic model in describing the roll motion. The quadratic model with fewer parameters than the cubic model is expected to have a better generalization at the same accuracy and is therefore selected as the best mathematical model for the roll motion. 
 
-\subsection{Comparison with state of art prediction}
+\subsection{Comparison with Ikeda's method}
 Ikeda's method divides roll damping into five damping components: the friction component $B_F$, the eddy component $B_E$, the lift component $B_L$, the wave component $B_W$ and the bilge keel component $B_{BK}$, as in the following Eq.(\ref{eq:ikeda}), 
 \begin{equation} \label{eq:ikeda}
 B_{44} = B_F + B_E + B_L + B_W + B_{BK}

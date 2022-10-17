@@ -18,10 +18,13 @@ Ship manoeuvring is a simplified case of seakeeping. The encountering waves have
     \label{\detokenize{02.01_manoeuvring models:coordinate-system}}
 \end{figure}
 
-\noindent The acceleration can be solved from the manoeuvring equation (\autoref{equation:02.01_manoeuvring models:eqqsystem}) \cite{fossen_handbook_2021} as seen in \autoref{equation:02.01_manoeuvring models:eqacc},
+The manoeuvring equation can be described as \cite{fossen_handbook_2021},
 \begin{equation}\label{equation:02.01_manoeuvring models:eqqsystem}
 \begin{split}\displaystyle \left[\begin{matrix}- X_{\dot{u}} + m & 0 & 0\\0 & - Y_{\dot{v}} + m & - Y_{\dot{r}} + m x_{G}\\0 & - N_{\dot{v}} + m x_{G} & I_{z} - N_{\dot{r}}\end{matrix}\right] \left[\begin{matrix}\dot{u}\\\dot{v}\\\dot{r}\end{matrix}\right] = \left[\begin{matrix}m r^{2} x_{G} + m r v + \operatorname{X_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u + \operatorname{Y_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u x_{G} + \operatorname{N_{D}}{\left(u,v,r,\delta,thrust \right)}\end{matrix}\right]\end{split}
-\end{equation}\begin{equation}\label{equation:02.01_manoeuvring models:eqacc}
+\end{equation}
+
+\noindent where the first matrix describes the inertia of the ship in the surge, sway and yaw directions. The inertia in air is represented by the mass $m$ and moment of inertia $I_z$. The added mass in water is represented by: $X_{\dot{u}}$, $Y_{\dot{v}}$, $Y_{\dot{r}}$, $N_{\dot{v}}$ and $N_{\dot{r}}$. The hydrodynamic forces from the ship hull and rudder are desribed in the functions $X_D()$, $Y_D()$ and $N_D()$. The accelerations ($\dot{u}$, $\dot{v}$ and $\dot{r}$) can be solved from this equation,
+\begin{equation}\label{equation:02.01_manoeuvring models:eqacc}
 \begin{split}\displaystyle \dot{\nu} = \left[\begin{matrix}\dot{u}\\\dot{v}\\\dot{r}\end{matrix}\right] = \left[\begin{matrix}\frac{1}{- X_{\dot{u}} + m} & 0 & 0\\0 & - \frac{- I_{z} + N_{\dot{r}}}{S} & - \frac{- Y_{\dot{r}} + m x_{G}}{S}\\0 & - \frac{- N_{\dot{v}} + m x_{G}}{S} & - \frac{Y_{\dot{v}} - m}{S}\end{matrix}\right] \left[\begin{matrix}m r^{2} x_{G} + m r v + \operatorname{X_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u + \operatorname{Y_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u x_{G} + \operatorname{N_{D}}{\left(u,v,r,\delta,thrust \right)}\end{matrix}\right]\end{split}
 \end{equation}
 \sphinxAtStartPar
@@ -30,11 +33,12 @@ where \(S\) is a helper variable:
 \begin{split}\displaystyle S = - I_{z} Y_{\dot{v}} + I_{z} m + N_{\dot{r}} Y_{\dot{v}} - N_{\dot{r}} m - N_{\dot{v}} Y_{\dot{r}} + N_{\dot{v}} m x_{G} + Y_{\dot{r}} m x_{G} - m^{2} x_{G}^{2}\end{split}
 \end{equation}
 \sphinxAtStartPar
-A state space model for manoeuvring can now be defined with six states:
+
+\noindent A state space model for manoeuvring can now be defined with six states:
 \begin{equation}\label{equation:02.01_manoeuvring models:eq_x}
 \begin{split}\displaystyle \mathbf{x} = \left[\begin{matrix}x_{0}\\y_{0}\\\Psi\\u\\v\\r\end{matrix}\right]\end{split}
 \end{equation}
-\sphinxAtStartPar
+\noindent where $x_0$, $y_0$ and $\Psi$ are the global coordinates and heading of the ship and $u$, $v$ and $r$ are the velocities as seen in \autoref{\detokenize{02.01_manoeuvring models:coordinate-system}} above.
 The time derivative of this state \(\dot{\mathbf{x}}\) can be defined by a state transition \(f(\mathbf{x},\mathbf{c})\) using geometrical relations
 how global coordinates \(x_0\), \(y_0\) and \(\Psi\) depend on \(u\), \(v\), and \(r\) viz.,
 \begin{equation}\label{equation:02.01_manoeuvring models:eqf}
@@ -47,10 +51,9 @@ where \(\mathbf{c}\) is control inputs (rudder angle \(\delta\) and thrust); the
 \(\mathbf{w}\) is the process noise, i.e., the difference between the predicted state by the manoeuvring model and the true
 state of the system. \(\mathbf{w}\) is unknown when the manoeuvring model is used for manoeuvre predictions and therefore normally
 assumed to be zero, but it is an important factor when the manoeuvring model is used in the EKF (see Section \ref{sec:datacleaning}).
-The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_manoeuvring models:eqf}. The main difference between the manoeuvring model:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted below for the various manoeuvring models: LVMM, AVMM and MAVMM.
+The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_manoeuvring models:eqf}. The main difference between the manoeuvring model:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted in prime system ($X_D'$, $Y_D'$, $N_D'$) below for the various manoeuvring models: LVMM, AVMM and MAVMM.
 
-\sphinxAtStartPar
-LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}:
+\subsubsection*{LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}}
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxlinear}
 \begin{split}\begin{split}
 \operatorname{X_{D}'}{\left(u',v',r',\delta\right)} = & X_{\delta} \delta + X_{r} r' + X_{u} u' + X_{v} v' 
@@ -65,7 +68,7 @@ LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}:
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
-AVMM (Abkowitz Vessel Manoeuvring Model) \cite{abkowitz_ship_1964}:
+\subsubsection*{AVMM (Abkowitz Vessel Manoeuvring Model) \cite{abkowitz_ship_1964}}
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxabkowitz}
 \begin{split}
 \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & X_{\delta\delta} \delta^{2} + X_{r\delta} \delta r' + X_{rr} r'^{2} + X_{T} thrust' + X_{u\delta\delta} \delta^{2} u' \\ 
@@ -85,7 +88,8 @@ AVMM (Abkowitz Vessel Manoeuvring Model) \cite{abkowitz_ship_1964}:
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
-MAVMM (Modified Abkowitz Vessel Manoeuvring Model, where only the most relevant coefficients in AVMM are included.)
+\subsubsection*{MAVMM (Modified Abkowitz Vessel Manoeuvring Model}
+Only the most relevant coefficients in AVMM are included, as proposed in Paper \ref{pap:pit}.
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxmartinssimple}
 \begin{split}\begin{split}
 \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & X_{\delta\delta} \delta^{2} + X_{rr} r'^{2} + X_{T} thrust' + X_{uu} u'^{2} + X_{u} u' + X_{vr} r' v' 
