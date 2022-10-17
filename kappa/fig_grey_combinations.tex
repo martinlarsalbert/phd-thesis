@@ -3,8 +3,8 @@
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \begin{tikzpicture}[node distance=2cm]
-    \node (white-box) [white-box] {White-box};
-    \node (black-box) [black-box, right of=white-box, xshift=2cm] {Black-box};
+    \node (white-box) [white-box] {\footnotesize White-box};
+    \node (black-box) [black-box, right of=white-box, xshift=2cm] {\footnotesize Black-box};
     \draw [arrow] (white-box) -- (black-box);
     \end{tikzpicture}
     \caption{Serial grey-box}
@@ -15,8 +15,8 @@
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \begin{tikzpicture}[node distance=2cm]
-    \node (black-box) [black-box] {Black-box};
-    \node (white-box) [white-box, right of=black-box, xshift=2cm] {White-box};
+    \node (black-box) [black-box] {\footnotesize Black-box};
+    \node (white-box) [white-box, right of=black-box, xshift=2cm] {\footnotesize White-box};
     \draw [arrow] (black-box) -- (white-box);
     \end{tikzpicture}
     \caption{Serial grey-box}
@@ -26,9 +26,9 @@
     \begin{subfigure}[b]{0.3\textwidth}
     \centering
     \begin{tikzpicture}[node distance=2cm]
-    \node (black-box) [black-box] {Black-box};
-    \node (white-box) [white-box, below of=black-box] {White-box};
-    \node (join) [process, right of=black-box, xshift=2cm, yshift=-1cm] {join};
+    \node (black-box) [black-box] {\footnotesize Black-box};
+    \node (white-box) [white-box, below of=black-box] {\footnotesize White-box};
+    \node (join) [process, right of=black-box, xshift=2cm, yshift=-1cm] {\footnotesize join};
     \draw [arrow] (black-box) -- (join);
     \draw [arrow] (white-box) -- (join);
     \end{tikzpicture}

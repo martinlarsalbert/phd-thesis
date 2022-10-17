@@ -32,26 +32,26 @@ Therefore the accurate manoeuvring model is both the input and output of the met
     \centering
     \begin{tikzpicture}[node distance=1.5cm]
     %\draw (0,0) rectangle (10,10); %create a bounding box to reserve space
-    \node (data) [io] {Model test data: $x$, $\delta$, thrust};
+    \node (data) [io] {\footnotesize Model test data: $x$, $\delta$, thrust};
     
-    \node (EKF) [process, right of=data, xshift=3.0cm] {EFK + RTS};
-    \node (predictor) [process, right of=EKF, xshift=2.0cm]{Predictor};
-    \node (VMM) [io, right of=predictor, xshift=1.0cm] {initial model};
+    \node (EKF) [process, right of=data, xshift=3.0cm] {\footnotesize EFK + RTS};
+    \node (predictor) [process, right of=EKF, xshift=2.0cm]{\footnotesize Predictor};
+    \node (VMM) [io, right of=predictor, xshift=1.0cm] {\footnotesize initial model};
     
-    \node (data_clean) [io, below of=EKF] {\(x,\dot{x},\ddot{x}, \delta, thrust\)};
+    \node (data_clean) [io, below of=EKF] {\footnotesize \(x,\dot{x},\ddot{x}, \delta, thrust\)};
     
-    \node (black-box) [black-box, below of=data_clean] {Regression};
+    \node (black-box) [black-box, below of=data_clean] {\footnotesize Regression};
     
-    \node (X_D) [io, left of=black-box, xshift=-0.70cm, yshift=0.7cm]{\(X_D\)};
-    \node (Y_D) [io, left of=black-box, xshift=-0.70cm, yshift=0cm]{\(Y_D\)};
-    \node (N_D) [io, left of=black-box, xshift=-0.70cm, yshift=-0.7cm]{\(N_D\)};
+    \node (X_D) [io, left of=black-box, xshift=-0.70cm, yshift=0.7cm]{\footnotesize \(X_D\)};
+    \node (Y_D) [io, left of=black-box, xshift=-0.70cm, yshift=0cm]{\footnotesize \(Y_D\)};
+    \node (N_D) [io, left of=black-box, xshift=-0.70cm, yshift=-0.7cm]{\footnotesize \(N_D\)};
     
-    \node (white-box) [white-box, left of=Y_D, xshift=-1.00cm] {Inverse dynamics};
+    \node (white-box) [white-box, left of=Y_D, xshift=-1.00cm] {\footnotesize Inverse dynamics};
     
     
     %
     %
-    \node (coefficients) [io, right of=black-box, xshift=2.0cm] {model$\left(Y_{uv},N_{\delta},...\right)$};
+    \node (coefficients) [io, right of=black-box, xshift=2.0cm] {\footnotesize model$\left(Y_{uv},N_{\delta},...\right)$};
     
     \draw [arrow] (data) -- (EKF);
     \draw [arrow] (predictor) -- (EKF);
