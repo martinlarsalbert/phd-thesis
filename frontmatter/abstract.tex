@@ -1,7 +1,7 @@
 
 % -- Importance, background/motivation
 It is common today, that operational data is recorded onboard ships within the Internet of ships paradigm. This enables the possibility to build ship digital twins as digital copies of the real ships. Predicting the ships motions with ship dynamics could be an important sub-component of these ship digital twins. A model for the ship dynamics can be identified based on observations of the ship's motions. 
-The identified model will have model uncertainty due to imperfections and idealizations made in physical model formulations as well as uncertainty from errors in the measurement data, which can be very pronounced when using full scale operational data. It is easier to develop accurate models, with low model uncertainty, using data obtained in a controlled laboratory environment where the measurement errors are much lower, especially in calm water conditions. The prediction model should be able to extend to describe scenarios that a ship did not encountered before, which can be possible if as much as possible of the underlying physics has been identified. Grey-box modelling is a technique to achieve this which combines the operational data with physical principles.  
+The identified model will have model uncertainty due to imperfections and idealizations made in physical model formulations as well as uncertainty from errors in the measurement data, which can be very pronounced when using full scale operational data. It is easier to develop accurate models, with low model uncertainty, using data obtained in a controlled laboratory environment where the measurement errors are much lower, especially in calm water conditions. The prediction model should be able to describe scenarios that a ship did not encountered before, which is possible if much of the underlying physics has been identified. Grey-box modelling is a technique which combines the operational data with physical principles to achieve this.  
  
 The objective of this thesis is therefore to 
 % -- Objective/scope
@@ -12,10 +12,10 @@ A model development procedure is proposed in this thesis to handle the model unc
 
 % -- Results example
 It is shown that the ship roll motion with good accuracy can be described by a quadratic damping model. For the more complex manoeuvring models, multicollinearity is a large problem where the appropriate complexity needs to be selected with the bias-variance tradeoff between underfitting or overfitting the data. 
-The proposed model development procedure and parameter estimation method was applied on the wPCC and KVLCC2 test case ships where the holdout turning circle tests were predicted with good accuracy.
+The proposed model development procedure and parameter estimation method was applied on the wPCC and KVLCC2 test case ships where the hold-out turning circle tests were predicted with good accuracy.
 
 % -- Conclusion 
-The proposed methods can produce prediction models with very good generalization, given a suitable model structure selected from the candidate models and an appropriate split in the holdout evaluation of the model development process. 
+The proposed methods can produce prediction models with very good generalization, given that a suitable model structure has been selected from the candidate models and an appropriate split in the hold-out evaluation of the model development process. 
 
 \vspace{0.1cm}
 \textbf{Keywords:} Ship digital twin, Ship manoeuvring, System identification, Inverse dynamics, Extended Kalman filter, RTS smoother, Multicollinearity
