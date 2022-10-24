@@ -103,7 +103,7 @@
 \def\tableautorefname~#1\null{Tab.#1\null}
 
 \usepackage{tocloft}  % No page number of appended papers
-
+\usepackage{appendix}
 % % % Biblatex
 
 \addbibresource{library.bib}  % Bibliography file
@@ -286,7 +286,7 @@
 \renewcommand{\chaptername}{Paper}
                               % write 'Paper' instead of 'Chapter' in the title
 
-%\setcounter{chapter}{0}       % reset chapter numbers after Part I
+\setcounter{chapter}{0}       % reset chapter numbers after Part I
 
 % Fix hyperlinks to chapters/papers after chapter counter reset, see
 % http://tex.stackexchange.com/a/6099
