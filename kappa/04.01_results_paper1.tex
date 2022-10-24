@@ -37,14 +37,14 @@ The generic roll damping model was developed as a grey-box model and a black-box
 System identification on the linear, quadratic, and cubic models was conducted using both the ''integration approach'' (\autoref{sec:integration_approach}) and the ''derivation approach'' (\autoref{sec:derivation_approach}) where the best parameter estimations were obtained using the ''integration approach''.
 Results from the simulations with the identified models (from one of the roll-decay tests) are presented in \autoref{fig:roll_decay_compare}. The cubic and quadratic models reproduce the model test well, and the linear model is too simple to provide an accurate representation for both smaller and larger roll angles. The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can be visualized, as seen in \autoref{fig:roll_decay}.
 
-\begin{figure}[!htb]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{kappa/images/roll_decay_model_compare.pdf}
     \caption{Roll decay estimation with identified cubic, quadratic, and linear models.}
     \label{fig:roll_decay_compare}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[h!]
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[]{kappa/images/roll_decay_amplitude.pdf}
@@ -108,7 +108,7 @@ It should be noted that this method is only efficient for the estimation of the 
 \end{equation}
 \noindent where $\rho$, $\bigtriangledown$, and $Beam$ stand for fluid density, displacement volume, and breadth of a ship, respectively. Prediction error plots of $\hat{B_e}$ from the simplified Ikeda's method and identified damping from the model tests are presented in \autoref{fig:si_model_within}. In this figure, a comparison of predictions with roll amplitudes in the range of 0 to 10 degrees is displayed for all ships with no limits and for ships within the limits of the method (\autoref{eq:SI_limits}). The $R^2$ values of the predictions are displayed in \autoref{tab:si_validation}. There is reasonable agreement between the predicted roll damping and model tests for ships within the limits. There is very poor agreement for ships outside the limits. It should be noted that most of the points are outside the limits of the method.
 
-\begin{figure}[!htb]
+\begin{figure}[h!]
 \centering
     \begin{subfigure}[b]{0.49\textwidth}
     
@@ -135,7 +135,7 @@ It should be noted that this method is only efficient for the estimation of the 
 \end{figure}
 \noindent A comparison of the simplified Ikeda's method and the original Ikeda's method was carried out in Paper \ref{pap:rolldamping}; the comparison was used to determine whether the observed deviations are the result of extrapolation or inherent to the original method. In Ikeda's method, more extensive knowledge of the ship hull geometry is needed in order for $B_W$ to be calculated with a strip method and $B_E$ to be calculated with sectional Lewis coefficients. It was possible to collect the required hull inputs for 15 ships in the database. These ships were used in 50 of the reference roll decay tests; all but one of the tests exceed the limits. Ikeda's method has much more agreement for these exceeding model tests according to Fig.\ref{fig:si_ikeda_model} and the calculated $R^2$ in Table \ref{tab:si_ikeda_validation}.
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
     \includegraphics[width=0.50\textwidth]{kappa/images/si_ikeda_model.pdf}
     \caption{Comparison of simplified and original Ikeda's method and model tests}
