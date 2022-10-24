@@ -51,35 +51,37 @@ In the model development process (\autoref{sec:model_development_process}), the 
 \label{fig:wpcc_datasets}
 \end{figure}
 
-The linear model (LVMM) was ruled too simple. Only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
+\noindent The linear model (LVMM) was ruled too simple. Only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
 Forces and moment predicted for the validation dataset, with the manoeuvring models fitted with proposed parameter estimation on the training set, are presented in \autoref{fig:validation-forces}. The fitted AVMM over-predicts the forces by far. Therefore, simulations of the validation cases are only possible using the MAVMM, which is selected as the suitable manoeuvring model for the wPCC.
 The simulations are displayed for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.10_results_wpcc:fig-validation-sim}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-validation-sim}}}.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
 \includegraphics{kappa/images/7.pdf}
 \caption{Validation of force models for wPCC ZigZag20/20.}\label{fig:validation-forces}
 \end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
 \includegraphics{kappa/images/8.pdf}
 \caption{Validation with simulations for wPCC ZigZag20/20.}\label{\detokenize{06.10_results_wpcc:fig-validation-sim}}\end{figure}
 
-The over-prediction of forces with the AVMM can be explained by the major problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression is presented in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. Most of the coefficients have a very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have substantial values and large degrees of uncertainty.
+\noindent The over-prediction of forces with the AVMM can be explained by the major problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression is presented in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. Most of the coefficients have a very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have substantial values and large degrees of uncertainty.
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{kappa/images/9.pdf}
 \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM}\label{\detokenize{06.10_results_wpcc:fig-ncorr}}\end{figure}
-Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs by 4\% and 1\% from the model test data, as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also presented in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 
-\begin{figure}[!htb]
+\newpage
+\noindent Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs by 4\% and 1\% from the model test data, as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also presented in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
+
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{kappa/images/10.pdf}
 \caption{Turning circle test case for wPCC, track plots from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}}\end{figure}
 
-\begin{figure}[!htb]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{kappa/images/11.pdf}
 \caption{Turning circle test case for wPCC, time series from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-testing-sim}}\end{figure}
@@ -112,7 +114,7 @@ The data has been split into training, validation, and test datasets,
 \subsubsection{The KVLCC2 propeller model}
 \label{\detokenize{06.20_results_kvlcc2:the-kvlcc2-propeller-model}}\label{\detokenize{06.20_results_kvlcc2:results-propeller-model}}
 
-In the development of a propeller model, the coefficients in the \(K_T\) polynomial (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011}, as seen in \autoref{tab:kt_coefficients}).
+In the development of a propeller model, the coefficients in the \(K_T\) polynomial (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011}, as seen in \autoref{tab:kt_coefficients}.
 
 \begin{table}[H]
     \centering
@@ -166,7 +168,7 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/16.pdf}
-\caption{Validation error (prediction-model test) with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}\end{figure}
+\caption{Validation error (prediction minus (-) model test) with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}\end{figure}
 
 \newpage
 \noindent Results from the final prediction of the turning circle test are shown in  \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}}, \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}}. The prediction is conducted using simulation with the MAVMM trained on the training and validation datasets. Monte Carlo simulations with alternative realizations of the regression are also displayed in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
@@ -181,7 +183,7 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 \begin{figure}[!htb]
 \centering
 \includegraphics{kappa/images/18.pdf}
-\caption{The prediction error (prediction-model test) for the turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} Comparisons of turning circle advance and tactical diameters compared to the model test results are displayed in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameters differ by 2\% and 5\%, which is considered acceptable because of the margin of the IMO standard limits (which are also displayed in this table). The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
+\caption{The prediction error (prediction minus (-) model test) for the turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} Comparisons of turning circle advance and tactical diameters compared to the model test results are displayed in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameters differ by 2\% and 5\%, which is considered acceptable because of the margin of the IMO standard limits (which are also displayed in this table). The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
 \input{kappa/table_kvlcc2_turning}
 
 \noindent The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the KVLCC2) obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqymartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
@@ -213,4 +215,4 @@ In order to investigate which filter is the most effective in Paper \ref{pap:pit
 \centering
 \includegraphics{kappa/images/6.pdf}
 \caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutoff frequencies or EKF.}\label{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}\end{figure} 
-\noindent High accuracy can be obtained using a low-pass filter as the preprocessor. If an optimal cutoff frequency is selected, the low-pass filter's accuracy decreases quickly at lower or higher frequencies. Higher cutoff frequencies result in too much measurement error in the data, which causes the OLS regression to perform poorly. In extreme cases, it is similar to having no filter. An extremely low cutoff frequency removes too much, including parts of the actual signal. The results show that the low-pass filter with a 7 Hz cutoff frequency has the lowest error rate among the low-pass filters. The EKF + RTS method in the parameter estimation has an even lower error rate, which is why it is used as the preprocessor in the proposed parameter estimation.
+\noindent The simulations show that high accuracy can be obtained using a low-pass filter as the preprocessor if an optimal cutoff frequency is selected. The low-pass filter's accuracy decreases quickly at lower or higher frequencies. Higher cutoff frequencies result in too much measurement error in the data, which causes the OLS regression to perform poorly. In extreme cases, it is similar to having no filter. An extremely low cutoff frequency removes too much, including parts of the actual signal. The results show that the low-pass filter with a 7 Hz cutoff frequency has the lowest error rate among the low-pass filters. The EKF + RTS method in the parameter estimation has an even lower error rate, which is why it is used as the preprocessor in the proposed parameter estimation.

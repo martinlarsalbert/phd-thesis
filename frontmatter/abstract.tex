@@ -8,14 +8,14 @@ The objective of this thesis is therefore to
 \noindent \objective 
 
 % -- Method, developed method, setting
-A model development procedure is proposed in this thesis to handle the model uncertainty through the selection of candidate models based on a hold-out evaluation procedure. The measurement noise is handled by an iterative preprocessor, which uses an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother that uses an initial guessed predictor model from semi-empirical formulas.
+A model development procedure is proposed in this thesis to handle the model uncertainty through the selection of candidate models based on a hold-out evaluation procedure. The measurement noise is handled by an iterative preprocessor, which uses an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother that uses an initially estimated predictor model from semi-empirical formulas.
 
 % -- Results example
 It is demonstrated that the ship's roll motion with high accuracy can be described using a quadratic damping model. For the more complex manoeuvring models, multicollinearity is a large problem where the appropriate complexity needs to be selected with the bias-variance trade-off between underfitting or overfitting the data. 
 The proposed model development procedure and parameter estimation method were applied to the wPCC and KVLCC2 test case ships where the hold-out turning circle tests were predicted with high accuracy.
 
 % -- Conclusion 
-The proposed methods can produce prediction models with very good generalization given that a suitable model structure has been selected from the candidate models and an appropriate split in the hold-out evaluation of the model development process. 
+The proposed methods can produce prediction models with high generalization given that a suitable model structure has been selected from the candidate models and an appropriate split in the hold-out evaluation of the model development process. 
 
 \vspace{0.1cm}
 \textbf{Keywords:} Ship digital twin, Ship manoeuvring, System identification, Inverse dynamics, Extended Kalman filter, RTS smoother, Multicollinearity
