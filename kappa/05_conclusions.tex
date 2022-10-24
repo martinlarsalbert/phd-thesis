@@ -2,43 +2,42 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusions\label{ch:conclusions}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The main conclusions are presented below with respect to the main objective of this thesis:
+The main conclusions are presented in this section with respect to the main objective of this thesis:
 % Objective: 
 \begin{quote} 
 \expandafter\MakeUppercase \objective
 \end{quote}
-\noindent The conclusions are categorized by the identified goals to achieve this objective.
+\noindent The conclusions are categorized by the goals that comprise this objective.
 
 \subsubsection*{Roll model}
-The first goal of the thesis was to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data. 
+The first goal of the thesis was to use model test data to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom. 
 Three candidate models were considered: 
 \begin{itemize}
     \item the linear roll motion model
     \item the quadratic roll motion model
     \item the cubic roll motion model
 \end{itemize}
-\noindent Data from 250 roll decay tests obtained from SSPA were used to evaluate these models. The accuracy of the linear model was not as good as the nonlinear models. The quadratic model had almost as high accuracy as the cubic model and is expected to have better generalization with fewer parameter in the model. The quadratic model, is therefore the best choice to describe the roll motion. 
+\noindent Data from 250 roll decay tests obtained from SSPA were used to evaluate these models. The linear model was not as accurate as the nonlinear models. The quadratic model was almost as accurate as the cubic model and is expected to have a higher degree of generalization with fewer parameters in the model. Therefore,  the quadratic model is the best description for the roll motion. 
 
-Predictions with original Ikeda's method was also conducted for some of the ships that exceeded the limits of the simplified Ikeda's method. These predictions were in much better agreement with the dampings from the model tests. This shows that the observed deviations with the simplified Ikeda's method are result from extrapolation errors rather than inherent 
-errors in the original Ikeda's method.
+Predictions with original Ikeda's method were also conducted for some of the ships that exceeded the limits of the simplified Ikeda's method. These predictions were in much better agreement with the dampings from the model tests. These results indicate that the observed deviations with the simplified Ikeda's method are the result of extrapolation rather than errors inherent 
+to the original Ikeda's method.
 
-A grey-box correction model of the simplified Ikeda's method and a complete black-box model to predict ship roll damping was proposed in Paper \ref{pap:rolldamping}. The proposed models give better predictions than the simplified Ikeda's method outside its limits but worse predictions within it. Applying corrections to the simplified Ikeda's method outside its limits is therefore not enough to get good roll damping predictions for modern ships. Further
-research efforts should be devoted to creating an updated version of the simplified Ikeda's method.
+A grey-box correction model of the simplified Ikeda's method and a complete black-box model to predict ship roll damping were proposed in Paper \ref{pap:rolldamping}. The proposed models yield better predictions than the simplified Ikeda's method outside its limits and worse predictions within its limits. Applying corrections to the simplified Ikeda's method outside its limits is therefore not enough for obtaining useful roll damping predictions for modern ships; an additional course of action is necessary. Further research efforts must focus on updating and improving the simplified Ikeda's method.
 
 \subsubsection*{Manoeuvring model}
-The second goal in this thesis was to increase the complexity and uncertainty of the modelling by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
+The second goal of this thesis was to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom. This goal addresses the manoeuvring problem.
 
-It is shown in Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly at ideal conditions with no measurement noise and a perfect estimator. 
-This type of result can be seen when identifying parameters in a manoeuvring model on data from simulations with the same manoeuvring model.
-The challenge in system identification on actual model test data is therefore to handle the measurement noise and the model uncertainty. A new system identification method has therefore been proposed in Paper \ref{pap:pit} where a preprocessor with EKF and RTS smoother are run in iteration for a set of candidate manoeuvring models to both handle the measurement noise and model uncertainty.
-The system identification with the proposed preprocessor has higher accuracy than if low-pass filters are used and avoids the problem of finding the optimal cut-off frequency.
+It is demonstrated in Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly in ideal conditions with no measurement noise and a perfect estimator. 
+Such a result appears during the identification of parameters in a manoeuvring model on data from simulations with the same manoeuvring model.
+System identification on actual model tests has the challenge of handling the measurement noise and the model uncertainty. A new system identification method has been proposed in Paper \ref{pap:pit}, where a preprocessor with an EKF and an RTS smoother are run in iteration for a set of candidate manoeuvring models to  handle both the measurement noise and model uncertainty.
+The system identification with the proposed pre-processor has higher accuracy than with low-pass filters. It also does not require finding the optimal cutoff frequency.
 
-The linearization in the EKF may cause stability problems. This can be a problem for sparse time series, with longer time steps. This was however not a problem for the present test cases, with very high frequency data (100 Hz). 
-Using unscented Kalman filter (UKF) instead of EKF is a possible solution, if these kinds of stability problems occur. This has however not been further investigated in this thesis.
+The linearization in the EKF may threaten stability, which can be a problem for sparse time series with longer time steps. However, this was not a problem for the present test cases, with very high frequency data (100 Hz). 
+Using unscented the Kalman filter (UKF) instead of the EKF can resolve stability issues . This resolution has not been examined further  in this thesis.
 
-Multicollinearity was a significant problem with the AVMM for both the wPCC and KVLCC2 data. Consequently, some of the regressed hydrodynamic derivatives in the AVMM have unphysically large values and substantial uncertainties. The model is still mathematically correct, where the regressed polynomials fit the training data well. The regressed polynomial could be the sum of large counteracting coefficients. The model works as long as the states are similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives is disturbed, giving significant extrapolation errors very quickly. This behavior was seen when predicting forces and moments with the AVMM on unseen validation data and is a well known problem \cite{ittc_maneuvering_2008}.
-The MAVMM has fewer hydrodynamic derivatives with lower multicollinearity and minor extrapolation errors. Including propeller thrust in the manoeuvring model made it possible to obtain high accuracy with fewer hydrodynamic derivatives. Another problem with a too many parameters in a model is that the standard manoeuvres used in this paper does not follow the aspect of persistence of excitation, so that some of the hydrodynamic derivatives might not be identifiable \cite{revestido_herrero_two-step_2012}. During zigzag tests, the model is for instance exposed to only two rudder angles for a majority of the data. A series of step responses as used in \cite{miller_ship_2021} gives a better excitation, but requires a lot of space, which is possible at lake experiments, but not in a narrow basin. The model generalization therefore needs to be addressed, as seen in the next section.
+Multicollinearity was a significant problem with the AVMM for both the wPCC and KVLCC2 data. Consequently, some of the regressed hydrodynamic derivatives in the AVMM have unphysically large values and substantial uncertainties. The model is still mathematically correct; the regressed polynomials fit the training data well. The regressed polynomial could be the sum of large counteracting coefficients. The model is effective when the states are similar to the training data. When extrapolating, the balance between these massive derivatives may be disturbed, which quickly yields significant extrapolation errors. This behavior occurred when predicting forces and moments with the AVMM on unseen validation data; it is a documented problem \cite{ittc_maneuvering_2008}.
+The MAVMM has fewer hydrodynamic derivatives with lower multicollinearity and minor extrapolation errors. Including propeller thrust in the manoeuvring model made it possible to obtain high accuracy with fewer hydrodynamic derivatives. An additional concern with a high number of parameters in a model is that the standard manoeuvres used in this paper do not follow the aspect of persistence of excitation. As a result, some of the hydrodynamic derivatives might not be identifiable \cite{revestido_herrero_two-step_2012}. For instance, the model is exposed to only two rudder angles in the majority of the data during the zigzag tests. A series of step responses used in \cite{miller_ship_2021} provides a better excitation, but requires a large amount of space. Wider space is possible during lake experiments, but not in a narrow basin. The model generalization therefore must be addressed, as seen in the next section.
 
 \subsubsection*{Model generalization} 
-The third goal of this thesis was model generalization. The models must be able to make predictions outside the domain covered by the available data, in order to be of practical use in Internet of Ships (IoS) applications. A model development process for manoeuvring models with good generalization was proposed in Paper \ref{pap:pit}.
-The process was applied together with the proposed parameter estimation technique on the wPCC and KVLCC2 test cases. Turning circles where predicted with good accuracy on models trained on zigzag tests. This shows that the models have good generalization, since the turning circles have much larger rudder angles, drift angles and yaw rates, compared to the training zigzag tests. 
+The third goal of this thesis was model generalization. In order to be of practical use in an Internet of Ships (IoS) application, the models must be able to make predictions outside the domain covered by the available data. A model development process for manoeuvring models with a high degree of generalization was proposed in Paper \ref{pap:pit}.
+The process was executed along with the proposed parameter estimation technique on the wPCC and KVLCC2 test cases. Turning circles where predicted with high accuracy on models trained on zigzag tests. This result indicates that the models have a high degree of generalization because the turning circles have much larger rudder angles, drift angles, and yaw rates compared to the training zigzag tests. 

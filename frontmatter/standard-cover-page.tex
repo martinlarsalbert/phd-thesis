@@ -7,11 +7,25 @@
      {\includegraphics[width=\paperwidth]{frontmatter/standard-cover-header}};
 
   % Cover image
-  \ifdefined\thesiscoverimage
+%  \ifdefined\thesiscoverimage
+%    \node [inner sep=0pt,anchor=north west]  at
+%      ($ (current page.north west) + (1.8cm, -7cm) $)
+%       {\includegraphics[width=11cm]{\thesiscoverimage}};
+%  \fi
+
     \node [inner sep=0pt,anchor=north west]  at
       ($ (current page.north west) + (1.8cm, -7cm) $)
-       {\includegraphics[width=11cm]{\thesiscoverimage}};
-  \fi
+       {
+       \begin{figure}
+           
+           \begin{subfigure}[b]{0.3\textwidth}
+           \includegraphics[width=3cm]{kappa/images/strip_1.pdf}
+           \end{subfigure}
+           
+       \end{figure}
+       
+       
+       };
 
   % Title
   \node [inner sep=0pt,anchor=south west, text width=17cm]  at

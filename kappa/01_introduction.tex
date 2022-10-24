@@ -2,12 +2,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Section comments: Be mindful of using objective language. Avoid using general words like "good" or "special." It would also help to explain the example used for the Butterfly effect more.
 The use of twin models is not a new idea. NASA built twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
-The twin model could have been used as a reference object if something went wrong during the mission.  
-The twin model concept has a lot of other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. Building a real twin ship as a reference object is of however not realistic. With data recorded onboard ships, it is instead possible to build a ship digital twin (SDT), to serve the same purpose.
+The twin model could have been used as a reference object in case of a mishap during the mission.  
+The twin model concept has many other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. However, building a real twin ship as a reference object is not realistic. Instead, with data recorded aboard ships, it is possible to build a ship digital twin (SDT) to serve the same purpose.
 System identification methods of ship rigid body dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
 
-Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major sub fields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behaviour of a ship in a seaway, under the influence of the external waves, currents and winds. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which can either be thought of as an idealized simplification case of Seakeeping or actual conditions in sheltered environments. 
+Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments. 
 
 \begin{figure}
     \centering
@@ -30,44 +31,43 @@ Ship dynamics is a branch of ship hydrodynamics which concerns the ship forces a
 
 \end{figure}
 
-This chapter first gives some background defining Internet of Ships (IoS), ship digital twins (SDT) and the modelling of ship rigid body dynamics with white-, black- or grey-box models. A literature review of system identification is then given.
-The motivation and objective of this research is then stated followed by assumptions and limitations.
+This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of ship rigid body dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
+The motivation and objective of this research are then stated, followed by the assumptions and limitations.
 
 \section{Background}
-Shipbuilding 4.0, at the principles of the Industry 4.0, will transform the design, manufacturing, operation, shipping, services, production systems, maintenance and value chains in all aspects of the shipbuilding 
+With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
-The emergence of Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipments, waterway environment, waterway facilities, shore-based facilities, and other navigation elements, which are embedded with a variety of sensor and heterogeneous network technologies to enable these objects to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
-Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications for the IoS \cite{aslam_internet_2020}.
-A ship digital twin (SDT) as a digital copy of a real ship, is one way to make use of all the data within IoS \cite{chen_review_2021}. 
-SDTs are data-driven in contrast to the related term virtual prototyping (VP), which is instead model based \cite{major_framework_2021}. A SDT is generally a model for an existing ship from where data can be collected and the VPs are generally prototypes for future ships, where no operational data is yet available.
-The models for VP and SDT can generally be categorized as white-, black- or grey-box models. Where 
-white-box models are used in VP and either black-box or grey-box models are used in the SDTs. 
+The emergence of the Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm. \begin{quote} IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipment, the waterway environment, waterway facilities, shore-based facilities, and other navigation elements. The sensing objects are embedded with various sensor and heterogeneous network technologies that enable them to collect and exchange data \cite{liu_internet_2016-1}.\end{quote}
+Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications of the IoS \cite{aslam_internet_2020}.
+A ship digital twin (SDT), which is a digital copy of a real ship, is one way to utilize all data within the IoS \cite{chen_review_2021}. 
+SDTs are data-driven in contrast to the alternative model-based virtual prototyping (VP) \cite{major_framework_2021}. An SDT is typically used as a model for an existing ship from which data can be collected; the VPs are  prototypes for future ships, in which no operational data is available.
+The models for VP and SDT are categorized as white-box, black-box, or grey-box models.White-box models are used in VP. Either black-box or grey-box models are used in the SDTs. 
 \begin{itemize}
     \item White-box modeling \\
-    involves applying physical principles, so that no observed data is required, for instance computational fluid dynamics (CFD). Semi-empirical models where unknown physical constants have been derived from historical experiments, can also be considered as white-box models \cite{leifsson_grey-box_2008}.  
+    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifsson_grey-box_2008}.  
 
     \item Black-box modeling \\
-    means that parameters do not have physical significance but where the objectives is to find a good model that fits the observed data \cite{lindskog_tools_1995}.
+    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskog_tools_1995}.
     
     \item Grey-box modeling \\
-    is a combination of white-box and black-box modeling methods, so that both a physical model and data is used. This concept is also referred as semi-physical modeling, hybrid modeling or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
+    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
 \end{itemize}
 
-\noindent In a grey box model the white and black parts can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
+\noindent In a grey box model, the white and black components can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}, as seen in Fig.\ref{fig:greycombinations}. 
 
 \input{kappa/fig_grey_combinations}
 
 \section{Literature review}
-Ship digital twin (SDT) has a positive trend in the number of publications during the recent years (2018-2021)  \cite{assani_ships_2022}. Most of the papers concern ship equipment such as electric power systems, propulsion system, ship hull structure and marine diesel engines \cite{assani_ships_2022}. Only a minor part of the SDT applications handle ship trajectory, speed and fuel consumption \cite{assani_ships_2022}.   
-Even though SDT is not explicitly mentioned, there are a lot of papers published about methods that can be used as SDTs. \cite{lang_comparison_2022} predicted the propulsion power for a chemical tanker for three test case voyages, using ML black-box modeling. The manoeuvres where however excluded. \cite{nielsen_machine_2022} used grey-box modelling for manoeuvring prediction of a ferry where a deep learning model (black-box) captures the residues between first-principles model (white-box) and observed data. These are very promising works that also show that there is still a lot to be done withing the field. 
+Ship digital twin (SDT) has a positive trend in the number of publications in recent years (2018-2021)  \cite{assani_ships_2022}. Most of the papers concern ship equipment such as electric power systems, propulsion system, ship hull structure, and marine diesel engines \cite{assani_ships_2022}. A small minority of the SDT applications handle ship trajectory, speed, and fuel consumption \cite{assani_ships_2022}.   
+Even though SDT is not explicitly mentioned, there are many publications about methods that can be used as SDTs. \cite{lang_comparison_2022} predicted the propulsion power for a chemical tanker for three test case voyages by using ML black-box modeling. However, the manoeuvres were excluded. \cite{nielsen_machine_2022} used grey-box modelling for the manoeuvring prediction of a ferry, where a deep learning model (black-box) captures the residues between a first-principles model (white-box) and observed data. These studies demonstrate the vast potential for further research and work to be done within the field.
 
-Some of the publications within system identification of the ship's manoeuvring dynamics are summarized in \autoref{tab:references} categorized as black-box or grey-box models.
+Noteworthy publications within the system identification of the ship's manoeuvring dynamics are summarized in \autoref{tab:references} and categorized as black-box or grey-box models.
 \input{kappa/references_table} 
-\noindent The system identification can be applied on full scale data \cite{astrom_identification_1976}, \cite{perera_system_2015}, \cite{revestido_herrero_two-step_2012} which has the highest uncertainty, both in terms of model uncertainty and measurement uncertainty which is therefore the hardest task, but also the most relevant. The uncertainty can be reduced by instead using model test data as in \cite{araki_estimating_2012}, \cite{he_nonparametric_2022}, \cite{xue_identification_2021}, \cite{miller_ship_2021} and \cite{luo_parameter_2016} . The uncertainty can be further reduced by using simulated data as in \cite{shi_identification_2009}, \cite{zhu_parameter_2017}, \cite{wang_parameter_2021} which can show the potential of new methods with the benefit that the true model is known, but one also has to remember that the objective is to identify real objects, not its mathematical model \cite{miller_ship_2021}.
+\noindent The system identification can be applied to full scale data \cite{astrom_identification_1976}, \cite{perera_system_2015}, \cite{revestido_herrero_two-step_2012}, which has the highest model uncertainty and measurement uncertainty. Therefore, it is the hardest task but also the most relevant. A method for reducing the uncertainty is using model test data, as in \cite{araki_estimating_2012}, \cite{he_nonparametric_2022}, \cite{xue_identification_2021}, \cite{miller_ship_2021}, and \cite{luo_parameter_2016}. The uncertainty can be further reduced by using simulated data, as in \cite{shi_identification_2009}, \cite{zhu_parameter_2017},  and \cite{wang_parameter_2021}, which can demonstrate the potential of new methods that have the benefit of the true model being known. One must be consistent with the objective of identifying real objects, not only mathematical models \cite{miller_ship_2021}.
 
-\noindent Black-box modeling was used in \cite{he_nonparametric_2022}, using neural network, and in \cite{xue_identification_2021}, using Gaussian process. The nonparametric models are related, where the system structure is known but no parameters are required as seen in \cite{pongduang_nonparametric_2020}. However, most of the system identification methods for ship manoeuvring models use the grey-box modeling by assuming a predefined mathematical model, which reduces the problem to a parameter estimation.
-The Kalman filter (KF) combined with maximum likelihood estimation was proposed already in 1976 \cite{astrom_identification_1976} to develop a linear manoeuvring model based on manually recorded data in 1969 onboard the Atlantic Song freighter. The extended Kalman filter (EKF) can also estimate parameters if the parameters are represented as states of the state space model. This technique was used on a nonlinear Nomoto model \cite{perera_system_2015} and a 3 degree of freedom model (3DOF) \cite{shi_identification_2009}. EKF was used in \cite{araki_estimating_2012} with constrained parameters based on physical reasoning and prior knowledge using constrained least squares regression. Unscented Kalman filter (UKF), which has been proposed as an improvement to the EKF in handling nonlinear systems, was used in \cite{revestido_herrero_two-step_2012}.
-Support vector regression (SVR) has been investigated in \cite{zhu_parameter_2017}, \cite{wang_parameter_2021} and \cite{luo_parameter_2016}. A genetic algorithm was used in \cite{miller_ship_2021} for the system identification of model test performed on a lake.
+\noindent Black-box modeling was used in \cite{he_nonparametric_2022}, using a neural network, and in \cite{xue_identification_2021}, using a Gaussian process. The nonparametric models are related because the system structure is known but no parameters are required; this is seen in \cite{pongduang_nonparametric_2020}. However, most of the system identification methods for ship manoeuvring models use grey-box modeling by assuming a predefined mathematical model, which reduces the problem to a parameter estimation.
+The Kalman filter (KF) combined with maximum likelihood estimation was proposed in 1976 \cite{astrom_identification_1976} to develop a linear manoeuvring model that utilized manually recorded data in 1969 aboard the Atlantic Song freighter. The extended Kalman filter (EKF) can also estimate parameters if the parameters are represented as states of the state space model. This technique was used on a nonlinear Nomoto model \cite{perera_system_2015} and a 3 degree of freedom model (3DOF) \cite{shi_identification_2009}. The EKF was used in \cite{araki_estimating_2012}, with constrained parameters based on physical reasoning and prior knowledge from constrained least squares regression. The unscented Kalman filter (UKF), which has been proposed as an improvement to the EKF for handling nonlinear systems, was used in \cite{revestido_herrero_two-step_2012}.
+Support vector regression (SVR) has been investigated in \cite{zhu_parameter_2017}, \cite{wang_parameter_2021}, and \cite{luo_parameter_2016}. A genetic algorithm was used in \cite{miller_ship_2021} for the system identification of a model test performed on a lake.
 
 
 
@@ -77,47 +77,47 @@ Support vector regression (SVR) has been investigated in \cite{zhu_parameter_201
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
-Huge amounts of data concerning ships' operation is collected daily around the oceans. We are still figuring out ways to make use of it. Using SDTs is one way, modelled as white-, black- or grey-boxes.
-The black-box modeling is entirely data driven, which means that no prior understanding of the system generating the data is needed and is therefore an attractive option for the SDT modelling. The black-box modeling may however give infeasible models outside the domain covered by the available data \cite{nielsen_machine_2022}. 
+A profuse amount of data concerning the operation of ships in the oceans is collected daily. Many uses and potential applications of this data are unknown. The use of SDTs (which are modelled as white-boxes, black-boxes, or grey-boxes) has potential .
+Black-box modeling is entirely data-driven, which means that no prior understanding of the system generating the data is needed. Therefore, it is an attractive option for the SDT modelling. One caveat is that the black-box modeling may provide infeasible models outside of the domain covered by the available data \cite{nielsen_machine_2022}. 
 
-The white-box modeling does not have this problem, but does on the other hand require a full understanding of the system, which may be possible for special cases, using CFD calculations, but in general not possible for the complex scenarios and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
-In the deep sea: wind, waves and current add uncertainty to the modelling. In coastal areas water depth and bank-effects also add uncertainty \cite{nielsen_machine_2022}. 
-Also, even if the sea is modelled perfectly, long term predictions with high accuracy will face the behaviour known as deterministic chaos \cite{lorenz_deterministic_1963}, popularly known as butterfly effect, where only a very small difference in the initial condition result in a totally different outcome. Two weeks are for instance believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Since the methods developed in this thesis are intended as a first step towards system identification in full scale sea conditions, grey-box modelling is used in this thesis, even though CFD calculations could have been used to solve the particular identification problems in the thesis. The grey-box model is a merge of the white and black box approach as an attempt to bridge their difficulties. 
+The white-box modeling does not have the same problem as the black-box model. To obtain high accuracy, it does require a complete understanding of the system. Acquiring such knowledge may be possible for some cases with CFD calculations, but it is not practical for the complex environment and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
+Wind, waves, and currents add uncertainty to the modelling in the deep sea. Water depth and the bank effect add uncertainty in coastal areas \cite{nielsen_machine_2022}. 
+Even if the sea is flawlessly modelled, long-term predictions with high accuracy will be exposed to deterministic chaos \cite{lorenz_deterministic_1963}, which is popularly known as the butterfly effect. During the butterfly effect, only a very small difference in the initial conditions results in a significantly different outcome. For instance, a period of two weeks is believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Because the methods developed in this thesis frame the first step towards system identification in full scale sea conditions, grey-box modelling is used. The grey-box model involves merging the white-box and black-box methods in an attempt to alleviate concerns regarding both models. 
 
-It is often practical to first assume higher levels of simplifications and approximations for the problem under study and thereafter, step by step, increase the complexity of the problem. In this way, the effects of various factors can be initially studied in a rather isolated way. 
+It is practical to first assume higher levels of simplifications and approximations for the problem under study and thereafter increase the complexity of the problem step by step. The effects of various factors can be initially studied in isolation with this approach. 
 Ship rigid body dynamics at full scale sea conditions comprises uncertainties from:
 \begin{itemize}
-    \item the \textbf{environment}: wind, waves and currents
+    \item the \textbf{environment}: wind, waves, and currents
     \item the \textbf{ship}: geometry and mass properties
     \item the \textbf{measurements}
 \end{itemize}
 
-\noindent A simplification made in this thesis, is to limit the uncertainties at full scale sea conditions, by instead using model tests data, from a controlled laboratory environment. The main objective with this thesis is therefore to:
+\noindent The simplification this thesis presents is limiting the uncertainties at full scale sea conditions by using model test data from a controlled laboratory environment. The main objective of this thesis is to:
 % Objective: 
 \begin{quote} 
 \expandafter\MakeUppercase \objective
 \end{quote}
 
 \noindent 
-The goals for this thesis, to fulfill the research objective, have been formulated following the step by step approach, with reduced complexity and then gradually increasing the model complexity:
+To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach.The approach consists of reducing complexity and then gradually increasing the model complexity:
 
 \subsubsection*{Roll motion model}
-The first goal of the thesis is therefore to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom, based on model test data.
+The first goal of the thesis is to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom; it is based on model test data.
 
 \subsubsection*{Manoeuvring model}
-The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway and yaw degrees of freedoms, addressing the manoeuvring problem.
+The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom, which addresses the manoeuvring problem.
 
 \subsubsection*{Model generalization}
-The third goal is a constraint. The models must be able to make predictions outside the domain covered by the available data, in order to be of practical use in the internet of ships (IoS) applications.
+The third goal is a constraint. In order to be of practical use in the internet of ships (IoS) applications, the models must be able to make predictions outside of the domain covered by the available data.
 
 \section{Assumptions and limitations}
 %Calm waters...
-Calm water condition is a simplification of the real sea condition that a ship encounters. This condition assumes that the influences from encountering wind, waves and currents are neglected. These assumptions simplifies the system identification, by reducing the degrees of freedoms to: surge, sway, yaw and roll. 
-The rigid body assumption simplifies the ship as a stiff body that does not transform under the act of forces. 
-Also note that all result are not necessarily directly transferable to full scale when model scale data is used, considering potential scale effects. 
+The calm water condition is used as a simplification of the real sea condition that a ship encounters. This condition does not account for the factors of wind, waves, and currents. These assumptions simplify the system identification by reducing the degrees of freedom to: surge, sway, yaw and, roll. 
+The rigid body assumption simplifies the ship to a stiff body that does not transform under the influence of forces. 
+It is important to note that all results are not necessarily directly transferable to the full scale when model scale data is used considering potential scale effects. 
 
 \section{Reproducibility}
-The research for this thesis has been conducted with the aim to have good reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as:
+The research for this thesis has been conducted with the aim of having a high degree of reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as:
 \begin{quote}
 Reproducibility refers to the ability of a researcher to duplicate the results of a prior study
 using the same materials and procedures as were used by the original
@@ -129,7 +129,7 @@ believable and informative.
     \cite{bollen_reproducibility_2015}
 \end{quote}
 
-\noindent For this sake, all code developed in this research has been made available as open source and the used data has been published as open data as seen in the references in \autoref{tab:reproducibility}. Publishing the roll decay data from Paper \ref{pap:rolldamping} as open data was however not possible due to intellectual property (IP) rights.
+\noindent To ensure adequate reproducibility, all code developed in this research has been made available as open source. In addition, the used data has been published as open data, as seen in the references in \autoref{tab:reproducibility}. Publishing the roll decay data from Paper \ref{pap:rolldamping} as open data was not possible due to intellectual property (IP) rights.
 
 \begin{table}[H]
     \centering
@@ -146,6 +146,6 @@ believable and informative.
 \end{table}
 
 \section{Outline of the thesis}
-Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion is introduced in Section \ref{sec:roll} and the manoeuvring motion models are introduced in Section \ref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box part of the developed grey-box models.
-Parameter estimations, representing the black-box part, are used to regress the parameters of the white-box models. The parameter estimations are introduced in chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in section \ref{sec:_roll} and section \ref{sec:_VMM}. 
-A summary of the appended papers, including research activities and a selection of the important results is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
+Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion are introduced in Section \ref{sec:roll}, and the manoeuvring motion models are introduced in Section \ref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box component of the developed grey-box models.
+Parameter estimations, representing the black-box component, are used to regress the parameters of the white-box models. The parameter estimations are introduced in chapter \ref{ch:methods} for the roll motion and the manoeuvring motion in section \ref{sec:_roll} and section \ref{sec:_VMM}. 
+A summary of the appended papers, which includes research activities and a selection of the most relevant results, is presented in chapter \ref{ch:results}, followed by the conclusions in chapter \ref{ch:conclusions} and plans for future work in chapter \ref{ch:future_work}.
