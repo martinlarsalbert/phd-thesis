@@ -53,7 +53,7 @@ state of the system. \(\mathbf{w}\) is unknown when the manoeuvring model is use
 assumed to be zero, but it is an important factor when the manoeuvring model is used in the EKF (see Section \ref{sec:datacleaning}).
 The manoeuvring simulation can now be conducted by numerical integration of \autoref{equation:02.01_manoeuvring models:eqf}. The main difference between the manoeuvring model:s lies in how the hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) are defined. These expressions are denoted in prime system ($X_D'$, $Y_D'$, $N_D'$) below for the various manoeuvring models: LVMM, AVMM and MAVMM.
 
-\subsubsection*{LVMM (Linear Vessel Manoeuvring Model) \cite{matusiak_dynamics_2017}}
+\subsubsection*{Linear vessel manoeuvring model (LVMM)} \cite{matusiak_dynamics_2017}}
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxlinear}
 \begin{split}\begin{split}
 \operatorname{X_{D}'}{\left(u',v',r',\delta\right)} = & X_{\delta} \delta + X_{r} r' + X_{u} u' + X_{v} v' 
@@ -68,7 +68,7 @@ The manoeuvring simulation can now be conducted by numerical integration of \aut
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
-\subsubsection*{AVMM (Abkowitz Vessel Manoeuvring Model) \cite{abkowitz_ship_1964}}
+\subsubsection*{Abkowitz vessel manoeuvring model(AVMM) \cite{abkowitz_ship_1964}}
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxabkowitz}
 \begin{split}
 \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = & X_{\delta\delta} \delta^{2} + X_{r\delta} \delta r' + X_{rr} r'^{2} + X_{T} thrust' + X_{u\delta\delta} \delta^{2} u' \\ 
@@ -88,7 +88,7 @@ The manoeuvring simulation can now be conducted by numerical integration of \aut
 \end{split}\end{split}
 \end{equation}
 \sphinxAtStartPar
-\subsubsection*{MAVMM (Modified Abkowitz Vessel Manoeuvring Model}
+\subsubsection*{Modified Abkowitz vessel manoeuvring model (MAVMM)}
 Only the most relevant coefficients in AVMM are included, as proposed in Paper \ref{pap:pit}.
 \begin{equation}\label{equation:02.01_manoeuvring models:eqxmartinssimple}
 \begin{split}\begin{split}
