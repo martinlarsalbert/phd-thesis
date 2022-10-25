@@ -53,14 +53,14 @@
 \usepackage{url}              % handles URLs correctly (e.g. DOI, software links)
 
 \usepackage[%
-  url=true,%                  % print URLs in references, except for the ones removed below
+  %url=true,%                  % print URLs in references, except for the ones removed below
   backend=biber,%             % use biber instead of bibtex
-  style=authoryear,%          % cite as: (Author 2008)
-  maxbibnames=10,%            % max names in bibliography
-  maxcitenames=1,%            % max names in citation
-  mincitenames=1,%            % if there are more than maxcitenames, shrink to this
-  backref=true,%              % prints page numbers (wrong with \frontmatter and hypertexnames=false)
-  dashed=false                % do not replace repeated author with a dash in bibliography
+  style=authoryear-ibid,%          % cite as: (Author 2008)
+%  maxbibnames=10,%            % max names in bibliography
+   maxcitenames=3,%            % max names in citation
+%  mincitenames=1,%            % if there are more than maxcitenames, shrink to this
+%  backref=true,%              % prints page numbers (wrong with \frontmatter and hypertexnames=false)
+%  dashed=false                % do not replace repeated author with a dash in bibliography
 ]{biblatex}                   % Modern bibtex replacement (bibliography mgmt)
 
 \usepackage[%
