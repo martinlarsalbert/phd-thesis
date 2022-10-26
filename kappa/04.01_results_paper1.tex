@@ -47,16 +47,16 @@ Results from the simulations with the identified models (from one of the roll-de
 \begin{figure}[h!]
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[]{kappa/images/roll_decay_amplitude.pdf}
-        \caption{Amplitude decrements}
+        \includegraphics[width=0.9\linewidth]{kappa/images/roll_decay_amplitude.pdf}
+        \caption{Amplitude decrements.}
         \label{fig:roll_decay_amplitude}
     \end{subfigure}
         ~ %add desired spacing between images, e. g. ~, \quad, \qquad, \hfill etc. 
       %(or a blank line to force the subfigure onto a new line)
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[]{kappa/images//roll_decay_damping.pdf}
-        \caption{Dampings}
+        \includegraphics[width=0.9\linewidth]{kappa/images//roll_decay_damping.pdf}
+        \caption{Dampings.}
         \label{fig:roll_decay_damping}
     \end{subfigure}
     \caption{Roll decay model test, linear-, quadratic- and cubic-model.}
@@ -110,43 +110,39 @@ It should be noted that this method is only efficient for the estimation of the 
 
 \begin{figure}[h!]
 \centering
-    \begin{subfigure}[b]{0.49\textwidth}
+    \begin{subfigure}[b]{0.32\textwidth}
     
         \centering
-        \includegraphics[width=0.99\textwidth]{kappa/images/si_model_within.pdf}
-        \vspace{-0.5cm}
+        \includegraphics[width=\textwidth]{kappa/images/si_model_within.pdf}
+        %\vspace{-0.5cm}
         \caption{The simplified Ikeda's method within and outside its limits.}
         \label{fig:si_model_within}
     \end{subfigure}
     \hfill
-    \begin{subfigure}[b]{0.49\textwidth}
-        \includegraphics[width=0.99\textwidth]{kappa/images/component_residual.pdf}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{kappa/images/component_residual.pdf}
+        \vspace{-0.2cm}
         \caption{Residuals vs. components.}
         \label{fig:component_residual}
+        \vspace{0.3cm}
     \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{kappa/images/si_ikeda_model.pdf}
+        \caption{Comparison of simplified and original Ikeda's method and model tests.}
+        \label{fig:si_ikeda_model}
+    \end{subfigure}
+
     \caption{Prediction error plots.}
 \end{figure}
-
 \input{equations/si_validation}
-
 \noindent The largest contribution to the error in the predictions comes from the wave damping $B_W$, as seen in \autoref{fig:component_residual}.
-\begin{figure}[H]
-    
-\end{figure}
-\noindent A comparison of the simplified Ikeda's method and the original Ikeda's method was carried out in Paper \ref{pap:rolldamping}; the comparison was used to determine whether the observed deviations are the result of extrapolation or inherent to the original method. In Ikeda's method, more extensive knowledge of the ship hull geometry is needed in order for $B_W$ to be calculated with a strip method and $B_E$ to be calculated with sectional Lewis coefficients. It was possible to collect the required hull inputs for 15 ships in the database. These ships were used in 50 of the reference roll decay tests; all but one of the tests exceed the limits. Ikeda's method has much more agreement for these exceeding model tests according to Fig.\ref{fig:si_ikeda_model} and the calculated $R^2$ in Table \ref{tab:si_ikeda_validation}.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=0.50\textwidth]{kappa/images/si_ikeda_model.pdf}
-    \caption{Comparison of simplified and original Ikeda's method and model tests.}
-    \label{fig:si_ikeda_model}
-
-\end{figure}
+A comparison of the simplified Ikeda's method and the original Ikeda's method was carried out in Paper \ref{pap:rolldamping}; the comparison was used to determine whether the observed deviations are the result of extrapolation or inherent to the original method. In Ikeda's method, more extensive knowledge of the ship hull geometry is needed in order for $B_W$ to be calculated with a strip method and $B_E$ to be calculated with sectional Lewis coefficients. It was possible to collect the required hull inputs for 15 ships in the database. These ships were used in 50 of the reference roll decay tests; all but one of the tests exceed the limits. Ikeda's method has much more agreement for these exceeding model tests according to Fig.\ref{fig:si_ikeda_model} and the calculated $R^2$ in Table \ref{tab:si_ikeda_validation}.
 
 \input{equations/si_ikeda_validation}
-
-
-
 \subsection{Generic roll damping model}
 \label{sec:genericrolldampingmodel}
 A serial grey-box model for ship roll damping (see Fig.\ref{fig:greyrolldamping}) is also developed in Paper \ref{pap:rolldamping}. 
