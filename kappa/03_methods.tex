@@ -17,7 +17,7 @@ The system identification of rigid body ship dynamics can be simplified into par
 Two methods have been investigated: the ``derivation approach'', referred to in \parencite{imo_1200_2006}, and the ``integration approach'' used in \cite{soder_assessment_2019}. 
 
 \subsection{Derivation approach}\label{sec:derivation_approach}
-In the derivation approach, Eq.\ref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ must be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ also must be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with the extended Kalman filter (EKF) in Paper \ref{pap:pit}).
+In the derivation approach, \autoref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ must be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ also must be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with the extended Kalman filter (EKF) in Paper \ref{pap:pit}).
 A least squares fit must be applied to the roll motion equation to identify the damping and stiffness parameters.
 
 \subsection{Integration approach}\label{sec:integration_approach}
