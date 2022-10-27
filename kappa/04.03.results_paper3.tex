@@ -59,24 +59,24 @@ Forces and moment predicted for the validation dataset, with the manoeuvring mod
 \noindent The over-prediction of forces with the AVMM can be explained by the major problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression is presented in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. Most of the coefficients have a very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have substantial values and large degrees of uncertainty.
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.8\textwidth]{kappa/images/9.pdf}
+\includegraphics[width=0.8\textwidth]{kappa/images/10.pdf}
 \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM.}\label{\detokenize{06.10_results_wpcc:fig-ncorr}}\end{figure}
 Therefore, simulations of the validation cases are only possible using the MAVMM, which is selected as the suitable manoeuvring model for the wPCC.
 The simulations are displayed for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.10_results_wpcc:fig-validation-sim}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-validation-sim}}}.
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{kappa/images/8.pdf}
+\includegraphics[width=0.8\textwidth]{kappa/images/9.pdf}
 \caption{Validation with simulations for wPCC ZigZag20/20.}\label{\detokenize{06.10_results_wpcc:fig-validation-sim}}\end{figure}
 \newpage
 \noindent Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs by 4\% and 1\% from the model test data, as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also presented in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 \input{kappa/table_wpcc_turning}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/10.pdf}
+\includegraphics[width=1.0\textwidth]{kappa/images/11.pdf}
 \caption{Turning circle test case for wPCC, track plots from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}}\end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/11.pdf}
+\includegraphics[width=1.0\textwidth]{kappa/images/12.pdf}
 \caption{Turning circle test case for wPCC, time series from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-testing-sim}}\end{figure}
 \noindent The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the wPCC) obtained with parameter estimation of MAVMM (\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}, \autoref{equation:02.01_manoeuvring models:eqymartinssimple},  \autoref{equation:02.01_manoeuvring models:eqnmartinssimple}) applied to all the wPCC data (including the turning circle)  are displayed in \hyperref[\detokenize{06.10_results_wpcc:wpcc-derivatives}]{Table \ref{\detokenize{06.10_results_wpcc:wpcc-derivatives}}}.
 \input{kappa/table_wpcc_derivatives}
@@ -134,7 +134,7 @@ The training and validation sets were derived from the entire model test time se
 \input{kappa/table_kvlcc2_propeller_model}
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.7\textwidth]{kappa/images/12.pdf}
+\includegraphics[width=0.7\textwidth]{kappa/images/13.pdf}
 \caption{Validation of MMG, Simple, and Polynomial propeller models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}\end{figure}
 %\clearpage
 \newpage
@@ -147,12 +147,12 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{kappa/images/13.pdf}
+\includegraphics[width=0.8\textwidth]{kappa/images/14.pdf}
 \caption{Validation of force models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-forces}}\end{figure}
 
 \begin{figure}[h!]
 \centering
-\includegraphics[width=0.8\textwidth]{kappa/images/14.pdf}
+\includegraphics[width=0.8\textwidth]{kappa/images/15.pdf}
 \caption{Validation with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim}}\end{figure}
 
 \begin{figure}[h!]
@@ -164,15 +164,15 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 \noindent Results from the final prediction of the turning circle test are shown in  \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}}, \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}}. The prediction is conducted using simulation with the MAVMM trained on the training and validation datasets. Monte Carlo simulations with alternative realizations of the regression are also displayed in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/15.pdf}
+\includegraphics[width=1.0\textwidth]{kappa/images/17.pdf}
 \caption{Comparison between the predicted turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}\end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/17.pdf}
+\includegraphics[width=1.0\textwidth]{kappa/images/18.pdf}
 \caption{Comparison between the predicted turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}\end{figure}
 \begin{figure}[h!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/18.pdf}
+\includegraphics[width=1.0\textwidth]{kappa/images/19.pdf}
 \caption{The prediction error (prediction minus (-) model test) for the turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} Comparisons of turning circle advance and tactical diameters compared to the model test results are displayed in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameters differ by 2\% and 5\%, which is considered acceptable because of the margin of the IMO standard limits (which are also displayed in this table). The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
 \input{kappa/table_kvlcc2_turning}
 \noindent The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the KVLCC2) obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqymartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
