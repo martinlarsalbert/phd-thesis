@@ -28,7 +28,40 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
 The generic roll damping model was developed as a grey-box model and a black-box model.
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=\linewidth]{kappa/images/workflow.pdf}
+\begin{tikzpicture}[node distance=3cm]
+
+\node (data_collection) at (0,0) {Data collection:};
+\node (roll_decay_DB) [database,label=below:Roll decay DB, right of=data_collection, xshift=-0.5cm]{};
+\node (PIT) [process, right of=roll_decay_DB, xshift=0.5cm] {PIT};
+\node (damping_DB) [database, label=below:Damping DB, right of=PIT, xshift=0cm] {};
+\path (roll_decay_DB) -- node(time_series)[xshift=3.0cm]{Time series} -- (PIT);
+\draw [arrow] (roll_decay_DB) -- (time_series) -- (PIT);
+\path (PIT) -- node(B){B} (damping_DB);
+\draw [arrow] (PIT) -- (B) -- (damping_DB);
+
+\node (comparison)[below of=data_collection, yshift=0.5cm]{Comparison:};
+%plot:
+\node (origo)[right of=comparison, xshift=-0.5cm, yshift=-1cm];
+\node(y)[above of=origo, yshift=-1cm]{Simplified ikeda};
+\node(x)[right of=origo, xshift=-1cm]{Damping DB};
+\draw[->](origo) -- (y);
+\draw[->](origo) -- (x);
+\draw node[anchor=south, right of=origo, xshift=-3cm, yshift=0cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-2.5cm, yshift=0.6cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-2cm, yshift=1cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-2cm, yshift=1.2cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-1.5cm, yshift=1.7cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-1.5cm, yshift=1.3cm] {\textbullet};
+\draw node[anchor=south, right of=origo, xshift=-1cm, yshift=2cm] {\textbullet};
+
+\node (regressions)[below of=comparison, yshift=-0.5cm]{Regressions:};
+\node (damping_DB2) [database,label=below:Damping DB, right of=regressions, xshift=-0.5cm]{};
+\node (grey_box) [grey-box, right of=damping_DB2, xshift=0.5cm, yshift=1.5cm] {Grey-box};
+\node (black_box) [black-box, below of=grey_box, yshift=1.5cm] {Black-box};
+\draw [arrow] (damping_DB2) |- (grey_box);
+\draw [arrow] (damping_DB2) -- (black_box);
+
+\end{tikzpicture}
     \caption{Overview of the work conducted for Paper \ref{pap:rolldamping}.}
     \label{fig:paper1_overview}
 \end{figure}
