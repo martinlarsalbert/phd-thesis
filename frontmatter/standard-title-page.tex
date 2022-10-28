@@ -4,28 +4,29 @@
 \thispagestyle{empty}         % no page numbers here
 
 
-{\scshape Thesis for the degree of 
+\begin{normalsize}{\uppercase Thesis for the degree of 
 \ifthenelse{\equal{\thesistype}{PhD}}{Doctor of Philosophy}{Licentiate of Engineering}}
+\end{normalsize}
 
 \vspace{3 cm}
 
-{\large \textbf{\thesistitle}}
+{\large \textbf{\thesistitle} \par}
 \vskip 1pc
 {\large \thesissubtitle}
 \vspace{1.5 cm}
-{\normalsize \thesisauthor}
+\vspace{-10pt}
 
+{\normalsize \MakeUppercase{\thesisauthor} \par}
+
+\vspace{5 cm}
+
+\includegraphics[width=35mm]{frontmatter/standard-images/chalmers_logo}
 \vfill
+\vspace{0.5 cm}
 
-\includegraphics[width=35mm]{frontmatter/standard-images/Bildmarke30mm}
+Department of \thesisdepartment \\
+{\scshape CHALMERS UNIVERSITY OF TECHNOLOGY} \\
+Gothenburg, Sweden \thesisyear
 
-\vspace{1cm}
-
-Department of \thesisdepartment
-
-{\scshape CHALMERS UNIVERSITY OF TECHNOLOGY}
-
-Göteborg, Sweden \thesisyear
-
-\clearpage
+\newpage
 }
