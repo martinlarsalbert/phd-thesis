@@ -1,57 +1,90 @@
-\vspace*{50 pt}
-{
-  \thispagestyle{empty}         % no page numbers here
+%\vspace*{50 pt}
+%{
+%  \thispagestyle{empty}         % no page numbers here
+%
+%  \parindent 0 pt
+%
+%  \thesistitle
+%
+%  \thesissubtitle
+%
+%  \textsc{\thesisauthor}
+%
+%  \thesisisbn
+%
+%  \vskip 1pc
+%
+%  \copyright\enskip \textsc{\thesisauthor, \thesisyear.}
+%
+%  \vskip 1pc
+%
+%  \ifthenelse{\equal{\thesistype}{PhD}}{Doktorsavhandlingar}{Licentiatavhandlingar}
+%   vid Chalmers tekniska högskola
+%
+%  \ifthenelse{\equal{\thesistype}{PhD}}{%
+%    Ny serie nr \thesisnumber%
+%  }{%
+%    Technical report No. \thesisnumber%
+%  }
+%
+%  \thesisissn
+%
+%  \vskip 1pc
+%
+%  Department of \thesisdepartment
+%
+%  Chalmers University of Technology
+%
+%  SE--412 96 Göteborg, Sweden
+%
+%  Telephone\enskip+ 46 (0) 31 -- 772 1000
+%
+%  \vfill
+%
+%  \thesiscoverdescription
+%
+%  \vskip 2pc
+%
+%  Typeset by the author using \LaTeX.
+%
+%  \vskip 1pc
+%
+%  Printed by Chalmers Reproservice
+%
+%  Göteborg, Sweden \thesisyear
+%}
 
-  \parindent 0 pt
 
-  \thesistitle
+\thispagestyle{empty}
 
-  \thesissubtitle
+\vspace*{9.9 cm}
 
-  \textsc{\thesisauthor}
+\noindent\textbf{\thesistitle}\\
+\ifdefined \thesissubtitle \if \thesissubtitle\empty\else
+    \noindent\footnotesize{\textit{\thesissubtitle}}\\
+\fi\fi\\
+\normalsize
+\MakeUppercase{\thesisauthor}\\
+%\vspace{1.0 cm}\\
+\\
+\copyright~{\MakeUppercase{\thesisauthor}},~2021\\ 
+%\vspace{0.5 cm}\\
+\\
+Report No \thesisnumber\\
+%\vspace{0.5 cm}
+\\
+\noindent Chalmers University of Technology \\
+\thesisdepartment \\
+SE-412 96, Gothenburg\\
+Sweden \\
+Telephone: +46 (0)31-772 1000 \\
+www.chalmers.se \\
+%\vfill
+%\vspace{1.0 cm}\\
+\\
+Typeset by the author using \LaTeX.\\
+\noindent{Printed by \theprinter \\
+Gothenburg, Sweden, \thesisyear}
 
-  \thesisisbn
-
-  \vskip 1pc
-
-  \copyright\enskip \textsc{\thesisauthor, \thesisyear.}
-
-  \vskip 1pc
-
-  \ifthenelse{\equal{\thesistype}{PhD}}{Doktorsavhandlingar}{Licentiatavhandlingar}
-   vid Chalmers tekniska högskola
-
-  \ifthenelse{\equal{\thesistype}{PhD}}{%
-    Ny serie nr \thesisnumber%
-  }{%
-    Technical report No. \thesisnumber%
-  }
-
-  \thesisissn
-
-  \vskip 1pc
-
-  Department of \thesisdepartment
-
-  Chalmers University of Technology
-
-  SE--412 96 Göteborg, Sweden
-
-  Telephone\enskip+ 46 (0) 31 -- 772 1000
-
-  \vfill
-
-  \thesiscoverdescription
-
-  \vskip 2pc
-
-  Typeset by the author using \LaTeX.
-
-  \vskip 1pc
-
-  Printed by Chalmers Reproservice
-
-  Göteborg, Sweden \thesisyear
-}
 
 \clearpage
