@@ -111,14 +111,14 @@ In the development of a propeller model, the coefficients in the \(K_T\) polynom
     \centering
     \caption{\(K_T\) polynomial coefficients.}
     \label{tab:kt_coefficients}
-    \begin{tabular}{|c|c|}
-        \hline
+    \begin{tabular}{c c}
+        \toprule
         Coefficient & Value \\
         \hline
         k_0 & 0.32419 \\
         k_1 & -0.22091 \\
         k_2 & -0.14905 \\
-        \hline
+        \bottomrule
     \end{tabular}
 
 \end{table}
@@ -185,7 +185,7 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 The capability of the inverse dynamics on simulated data was also investigated in Paper \ref{pap:pit}. The hydrodynamic derivatives within the manoeuvring model can be identified exactly at ideal conditions for the parameter estimation with no measurement noise and a perfect estimator. For example, artificial data from a turning circle test can be simulated by a predefined/true manoeuvring model. The hydrodynamic derivatives within the manoeuvring model can be identified with the same values. Results from such a simulation are presented in \hyperref[\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}]{Fig.\@ \ref{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}}, where the regression has identified the true values precisely.
 \begin{figure}[h!]
 \centering
-\includegraphics{kappa/images/5.pdf}
+\includegraphics[width=\linewidth]{kappa/images/5.pdf}
 \caption{True and regressed hydrodynamic derivatives in MAVMM identified with Inverse dynamics and OLS regression on a simulated turning circle with MAVMM.}\label{\detokenize{06.40_results_inverse_dynamics:fig-bar-parameters}}\end{figure}
 
 
