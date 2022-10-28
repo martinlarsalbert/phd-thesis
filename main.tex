@@ -237,18 +237,32 @@
 
 %\input{frontmatter/dedications-page}
 
+%==============================================================
+% Abstract
+%==============================================================
 % Add abstract to the ToC
 \cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{Abstract}  % add toc line with target at the last anchor
-\chapter*{Abstract}
-\vspace*{-1cm}                % More space for abstract text
+\noindent\textbf{\thesistitle}\\
+\noindent \MakeUppercase{\thesisauthor}\\
+\noindent Chalmers University of Technology\\
+\noindent \thesisdepartment\\
+\section*{Abstract}
+%\vspace*{-1cm}                % More space for abstract text
 \input{frontmatter/abstract}
 
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{Acknowledgments}  % add toc line with target at the last anchor
 \chapter*{Acknowledgments}
 \input{frontmatter/acknowledgments}
+
+% add Contents to PDF bookmarks, but do not add it to the 'printed' Contents
+\cleardoublepage
+\phantomsection
+% \pdfbookmark[level]{text-to-display-in-outline}{unique-pdf-anchor-name}, chapter is level 0
+\pdfbookmark[0]{Contents}{Contents}
+\tableofcontents
 
 \cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
@@ -263,16 +277,10 @@
 \chapter*{List of Acronyms}
 \input{frontmatter/acronyms}
 
-% add Contents to PDF bookmarks, but do not add it to the 'printed' Contents
-\cleardoublepage
-\phantomsection
-% \pdfbookmark[level]{text-to-display-in-outline}{unique-pdf-anchor-name}, chapter is level 0
-\pdfbookmark[0]{Contents}{Contents}
-\tableofcontents
+
 
 \mainmatter                   % normal arabic page numbers
-
-\part{Introductory chapters}
+%\part{Introductory chapters}
 
 % Headers, footers
 \fancyfoot{}                  % clean all
