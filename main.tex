@@ -1,7 +1,24 @@
-\documentclass[12pt,a4paper,twoside,openright,pdftex]{book}
-                              % Reproservice prints on G4, which is about 80% of A4.
-                              % With this scale, 12pt font becomes 9.6pt.
-                              % https://www.chalmers.se/insidan/SV/arbetsredskap/kommunikation/tryck-och-layout/mallar-for-trycksaker/avhandlingens-utformning
+\documentclass[
+  paper=23.9cm:16.9cm,
+   % paper=a4,
+  pagesize,
+  twoside,
+  10pt,
+  chapterprefix,
+  headsepline=on,
+  footinclude=off,
+  DIV=18,
+  BCOR=7mm,
+  bibliography=totoc,
+  numbers=noenddot,
+  open=right,
+]{scrreprt}
+\usepackage[%
+  left=20mm,
+  right=20mm,
+  top=25mm,
+  bottom=25mm,
+]{geometry}
 
 \synctex=1                    % instead of "pdflatex -synctex=1 main"
 
@@ -26,15 +43,16 @@
 \usepackage{tikz}             % simply amazing graphics library for LaTeX
 \usetikzlibrary{calc}
 \usetikzlibrary{matrix}
+\input{tikz}
 
-\usepackage[%                 %
-  a4paper%
-  ,twoside                    %
-  ,inner=2.5cm                % inner margin
-  ,outer=2.5cm                % outer margin
-  ,bindingoffset=1cm       % additional binding offset on the inner side
-  ,bottom=3cm
-]{geometry}                   % Adjust the margins
+%\usepackage[%                 %
+%  a4paper%
+%  ,twoside                    %
+%  ,inner=2.5cm                % inner margin
+%  ,outer=2.5cm                % outer margin
+%  ,bindingoffset=1cm       % additional binding offset on the inner side
+%  ,bottom=3cm
+%]{geometry}                   % Adjust the margins
 
 \usepackage{fancyhdr}         % fine-tuning of headers
 \pagestyle{fancy}
@@ -90,69 +108,6 @@
 \renewcommand{\nomentryend}{\hspace*{\fill}#1}}
 %----------------------------------------------
 
-%%% Flow chart stuff:
-\usepackage{tikz}
-\usetikzlibrary{shapes.geometric, arrows}
-\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=2cm, minimum height=1cm,text centered, draw=black, fill=red!30]
-\tikzstyle{io} = [rectangle, rectangle, minimum width=0.0cm, minimum height=0.7cm, draw=none, fill=white]
-\tikzstyle{process} = [rectangle, minimum width=1cm, minimum height=1cm, text centered, draw=black, fill=orange!30]
-\tikzstyle{decision} = [diamond, minimum width=3cm, minimum height=0.7cm, text centered, draw=black, fill=green!30]
-\tikzstyle{arrow} = [thick,->,>=stealth]
-\tikzstyle{white-box} = [rectangle, minimum width=2cm, minimum height=0.7cm, text centered, draw=black, fill=white]
-\tikzstyle{black-box} = [rectangle, minimum width=2cm, minimum height=0.7cm, text centered, draw=black, fill=black, text=white]
-\tikzstyle{grey-box} = [rectangle, minimum width=2cm, minimum height=0.7cm, text centered, draw=black, fill=gray, text=black]
-
-\makeatletter
-\tikzset{
-    database top segment style/.style={draw},
-    database middle segment style/.style={draw},
-    database bottom segment style/.style={draw},
-    database/.style={
-        path picture={
-            \path [database bottom segment style]
-                (-\db@r,-0.5*\db@sh) 
-                -- ++(0,-1*\db@sh) 
-                arc [start angle=180, end angle=360,
-                    x radius=\db@r, y radius=\db@ar*\db@r]
-                -- ++(0,1*\db@sh)
-                arc [start angle=360, end angle=180,
-                    x radius=\db@r, y radius=\db@ar*\db@r];
-            \path [database middle segment style]
-                (-\db@r,0.5*\db@sh) 
-                -- ++(0,-1*\db@sh) 
-                arc [start angle=180, end angle=360,
-                    x radius=\db@r, y radius=\db@ar*\db@r]
-                -- ++(0,1*\db@sh)
-                arc [start angle=360, end angle=180,
-                    x radius=\db@r, y radius=\db@ar*\db@r];
-            \path [database top segment style]
-                (-\db@r,1.5*\db@sh) 
-                -- ++(0,-1*\db@sh) 
-                arc [start angle=180, end angle=360,
-                    x radius=\db@r, y radius=\db@ar*\db@r]
-                -- ++(0,1*\db@sh)
-                arc [start angle=360, end angle=180,
-                    x radius=\db@r, y radius=\db@ar*\db@r];
-            \path [database top segment style]
-                (0, 1.5*\db@sh) circle [x radius=\db@r, y radius=\db@ar*\db@r];
-        },
-        minimum width=2*\db@r + \pgflinewidth,
-        minimum height=3*\db@sh + 2*\db@ar*\db@r + \pgflinewidth,
-    },
-    database segment height/.store in=\db@sh,
-    database radius/.store in=\db@r,
-    database aspect ratio/.store in=\db@ar,
-    database segment height=0.1cm,
-    database radius=0.25cm,
-    database aspect ratio=0.35,
-    database top segment/.style={
-        database top segment style/.append style={#1}},
-    database middle segment/.style={
-        database middle segment style/.append style={#1}},
-    database bottom segment/.style={
-        database bottom segment style/.append style={#1}}
-}
-\makeatother
 
 
 \def\equationautorefname~#1\null{Eq.~(#1)\null}
