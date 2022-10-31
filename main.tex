@@ -22,6 +22,9 @@
 
 \synctex=1                    % instead of "pdflatex -synctex=1 main"
 
+\usepackage[,numfigreset=1,mathnumfig]{sphinx}
+\makenomenclature
+
 \usepackage{lipsum}           % generating fill-in text for this thesis template
 
 \usepackage{ifthen}           % if-then-else (to choose PhD/Lic titles)
@@ -100,8 +103,6 @@
 \usepackage{bookmark}         % Create pdf bookmarks in one go
 \usepackage{nomencl}
 \usepackage{float}
-\usepackage[,numfigreset=1,mathnumfig]{sphinx}
-\makenomenclature
 % This will add the units
 %----------------------------------------------
 \newcommand{\nomunit}[1]{%
