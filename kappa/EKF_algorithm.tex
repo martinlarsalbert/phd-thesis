@@ -1,0 +1,85 @@
+\label{04.01_EK:ek-algorithm}
+\begin{sphinxadmonition}{note}{Algorithm 3.1 (Discrete\sphinxhyphen{}time extended Kalman filter)}
+
+
+
+\sphinxAtStartPar
+\sphinxstylestrong{Inputs} Initial values: \(x_0\), \(P_0\), \(C_d\), \(R_d\), \(Q_d\), \(E_d\)
+
+\sphinxAtStartPar
+\sphinxstylestrong{Output} Estimated states: \(\hat{x}\), estimated state covariances \(\hat{P}\)
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+Initial values:
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+\(\hat{x}[0] = x_0\)
+
+\item {} 
+\sphinxAtStartPar
+\(\hat{P}[0] = P_0\)
+
+\end{enumerate}
+
+\item {} 
+\sphinxAtStartPar
+For \(k\) in \(n\) measurements (time steps)
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
+\item {} 
+\sphinxAtStartPar
+KF gain
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
+\item {} 
+\sphinxAtStartPar
+\(K[k]=\hat{P}[k] C_d^T \left(C_d \hat{P}[k] C_d^T + R_d\right)^{-1}\)
+
+\item {} 
+\sphinxAtStartPar
+\(I_{KC} = I_n - K[k] C_d\)
+
+\end{enumerate}
+
+\item {} 
+\sphinxAtStartPar
+Update
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
+\item {} 
+\sphinxAtStartPar
+State corrector
+\(\hat{x}[k] = \hat{x}[k] + K[k] (y - C_d \hat{x}[k]) \)
+
+\item {} 
+\sphinxAtStartPar
+Covariance corrector
+\(\hat{P}[k] = I_{KC} \cdot \hat{P}[k] I_{KC}^T + K[k] R_d K^T \)
+
+\end{enumerate}
+
+\item {} 
+\sphinxAtStartPar
+Predict
+\begin{enumerate}
+\sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
+\item {} 
+\sphinxAtStartPar
+State predictor
+\(\hat{x}[k+1] = \hat{x}[k] + h \cdot \hat{f}(\hat{x}[k], c[k])\)
+
+\item {} 
+\sphinxAtStartPar
+Covariance predictor
+\(\hat{P}[k+1] = A_d[k]  \hat{P}[k] A_d[k]^T + E_d Q_d E_d^T \)
+
+\end{enumerate}
+
+\end{enumerate}
+
+\end{enumerate}
+\end{sphinxadmonition}
