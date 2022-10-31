@@ -9,7 +9,6 @@ The twin model concept has many other useful applications, not just for catastro
 System identification methods of ship rigid body dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
 
 Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments. 
-
 \begin{figure}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
@@ -30,9 +29,10 @@ Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces 
     \label{fig:seakeeping_and_manoeuvring}
 
 \end{figure}
-
 This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of ship rigid body dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
 The motivation and objective of this research are then stated, followed by the assumptions and limitations.
+
+
 
 \section{Background}
 With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
@@ -101,13 +101,13 @@ Ship rigid body dynamics at full scale sea conditions comprises uncertainties fr
 \noindent 
 To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach.The approach consists of reducing complexity and then gradually increasing the model complexity:
 
-\subsubsection*{Roll motion model}
+\subsubsection*{\normalfont \color{black} \textbf{Roll motion model}}
 The first goal of the thesis is to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom; it is based on model test data.
 
-\subsubsection*{Manoeuvring model}
+\subsubsection*{\normalfont \color{black} \textbf{Manoeuvring model}}
 The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom, which addresses the manoeuvring problem.
 
-\subsubsection*{Model generalization}
+\subsubsection*{\normalfont \color{black} \textbf{Model generalization}}
 The third goal is a constraint. In order to be of practical use in the internet of ships (IoS) applications, the models must be able to make predictions outside of the domain covered by the available data.
 
 \section{Assumptions and limitations}

@@ -21,7 +21,6 @@
 ]{geometry}
 
 \synctex=1                    % instead of "pdflatex -synctex=1 main"
-
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 \makenomenclature
 
@@ -34,9 +33,6 @@
 \usepackage[T1]{fontenc}      % unicode letters in the output pdf
 
 \usepackage{amssymb, amsmath} % math symbols
-
-\usepackage{lmodern}          % better font
-
 \usepackage{microtype}        % micro typesetting (on errors use draft to disable)
 
 \usepackage{booktabs}         % better table formatting
@@ -85,6 +81,15 @@
   dashed=false                % do not replace repeated author with a dash in bibliography
 ]{biblatex}                   % Modern bibtex replacement (bibliography mgmt)
 \DeclareNameAlias{author}{last-first}
+\DeclareCiteCommand{\fullcite}
+  {\usebibmacro{prenote}}
+  {\usedriver
+     {\defcounter{minnames}{6}%
+      \defcounter{maxnames}{6}}
+     {\thefield{entrytype}}.}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
 
 \usepackage[%
    pdftex%
@@ -119,7 +124,18 @@
 \usepackage{appendix}
 % % % Biblatex
 \usepackage[section]{placeins}  % This prevents placing floats before a section.
+
 \usepackage[Sonny]{fncychap}  % Fancy chapter headings
+% Fonts
+\usepackage{lmodern}          % better font
+\usepackage{titlesec}
+\titleformat{\section}
+{\normalfont\rmfamily\bfseries\large}
+{\thesection}{1em}{}
+
+\titleformat{\subsection}
+{\normalfont\rmfamily\bfseries\normalsize}
+{\thesubsection}{1em}{}
 
 \usepackage{makecell}  % to get line breaks in table cells
 
@@ -209,6 +225,11 @@
   \null\vfil
   \secdef\@part\@spart}
 \makeatother
+
+\titleformat{\part}
+{\normalfont\rmfamily\bfseries\huge}
+{Part \thepart}{1em}{}
+
 % End remove page numbers from the "Part I" pages
 
 
