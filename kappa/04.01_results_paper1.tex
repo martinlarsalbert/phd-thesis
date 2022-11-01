@@ -7,12 +7,12 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
 
 \begin{figure}[!htb]
     \centering
-    \includegraphics[width=0.5\columnwidth]{kappa/images/ship_types.eps}
+    \includegraphics[width=0.6\columnwidth]{kappa/images/ship_types.eps}
     \caption{Number of tests per ship type.}
     \label{fig:ship_types}
 \end{figure}
 
-\noindent The work was divided into the following subtasks: 
+\noindent The work was divided into the following sub tasks (also summarized in \autoref{fig:paper1_overview}): 
 \begin{itemize}
     \item Find the mathematical model that is the best representation of the roll motion.
     \item Identify the parameters in this model for all the tests.
@@ -24,8 +24,6 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
     \end{itemize}
 \end{itemize}
 
-\noindent The work is also summarized in \autoref{fig:paper1_overview}. System identification on the time series from the roll decay database was performed with the linear (\autoref{eq:roll_decay_equation_himeno_linear}), quadratic (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and cubic models (\autoref{eq:roll_decay_equation_cubic}). Roll damping parameters, identified from the model that was found to be optimal, were used to build a roll damping database. The identified roll dampings could be compared to corresponding predictions with the simplified Ikeda's method \cite{kawahara_simple_2011}, which is the state of art prediction for ship roll damping.
-The generic roll damping model was developed as a grey-box model and a black-box model.
 \begin{figure}[!htb]
     \centering
 \begin{tikzpicture}[node distance=3cm]
@@ -66,6 +64,9 @@ The generic roll damping model was developed as a grey-box model and a black-box
     \label{fig:paper1_overview}
 \end{figure}
 
+\clearpage
+System identification on the time series from the roll decay database was performed with the linear (\autoref{eq:roll_decay_equation_himeno_linear}), quadratic (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and cubic models (\autoref{eq:roll_decay_equation_cubic}). Estimated roll damping parameters were used to build a roll damping database. The database could be compared to corresponding predictions with the simplified Ikeda's method \cite{kawahara_simple_2011}, which is the state of art prediction for ship roll damping.
+The generic roll damping model was developed as a grey-box model and a black-box model.
 \subsection{Best mathematical model for the roll motion}
 System identification on the linear, quadratic, and cubic models was conducted using both the ''integration approach'' (\autoref{sec:integration_approach}) and the ''derivation approach'' (\autoref{sec:derivation_approach}) where the best parameter estimations were obtained using the ''integration approach''.
 Results from the simulations with the identified models (from one of the roll-decay tests) are presented in \autoref{fig:roll_decay_compare}. The cubic and quadratic models reproduce the model test well, and the linear model is too simple to provide an accurate representation for both smaller and larger roll angles. The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can be visualized, as seen in \autoref{fig:roll_decay}.
@@ -76,7 +77,7 @@ Results from the simulations with the identified models (from one of the roll-de
     \caption{Roll decay estimation with identified cubic, quadratic, and linear models.}
     \label{fig:roll_decay_compare}
 \end{figure}
-
+\clearpage
 \begin{figure}[h!]
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -108,9 +109,7 @@ Ikeda's method divides roll damping into five damping components: the friction c
 \begin{equation} \label{eq:ikeda}
 B_{44} = B_F + B_E + B_L + B_W + B_{BK}
 \end{equation}
-where the wave and eddy components require strip-theory based hydrodynamic analysis to obtain the ship's shape coefficients. The hydrodynamic analysis requires the ship's exact hull geometry. Building the geometry model and performing the strip-theory based hydrodynamic analysis are time-consuming. A ship's hull geometry is not always available for such purposes. 
-
-A simplified Ikeda's method (SI-method) proposed by \parencite{kawahara_simple_2011} is used in Paper \ref{pap:rolldamping} to calculate all the damping components, which include the eddy component $B_E$ and the wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$, as described in \parencite{ikeda_velocity_1979}, giving a function: 
+where the wave and eddy components require strip-theory based hydrodynamic analysis to obtain the ship's shape coefficients. The hydrodynamic analysis requires the ship's exact hull geometry. Building the geometry model and performing the strip-theory based hydrodynamic analysis are time-consuming. A ship's hull geometry is not always available for such purposes. A simplified Ikeda's method (SI-method) proposed by \parencite{kawahara_simple_2011} is used in Paper \ref{pap:rolldamping} to calculate all the damping components, which include the eddy component $B_E$ and the wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$, as described in \parencite{ikeda_velocity_1979}, giving a function: 
 \input{equations/simplified_ikeda_equation}
 
 \noindent The formulas within $f$ can be expressed as \parencite{ikeda_velocity_1979, kawahara_simple_2011} with the implementation in \cite{alexandersson_martinlarsalbertrolldecay-estimators_2020}.
@@ -171,9 +170,7 @@ It should be noted that this method is only efficient for the estimation of the 
     \caption{Prediction error plots.}
 \end{figure}
 \input{equations/si_validation}
-\noindent The largest contribution to the error in the predictions comes from the wave damping $B_W$, as seen in \autoref{fig:component_residual}.
-
-A comparison of the simplified Ikeda's method and the original Ikeda's method was carried out in Paper \ref{pap:rolldamping}; the comparison was used to determine whether the observed deviations are the result of extrapolation or inherent to the original method. In Ikeda's method, more extensive knowledge of the ship hull geometry is needed in order for $B_W$ to be calculated with a strip method and $B_E$ to be calculated with sectional Lewis coefficients. It was possible to collect the required hull inputs for 15 ships in the database. These ships were used in 50 of the reference roll decay tests; all but one of the tests exceed the limits. Ikeda's method has much more agreement for these exceeding model tests according to Fig.\ref{fig:si_ikeda_model} and the calculated $R^2$ in Table \ref{tab:si_ikeda_validation}.
+\noindent The largest contribution to the error in the predictions comes from the wave damping $B_W$, as seen in \autoref{fig:component_residual}. A comparison of the simplified Ikeda's method and the original Ikeda's method was carried out in Paper \ref{pap:rolldamping}; the comparison was used to determine whether the observed deviations are the result of extrapolation or inherent to the original method. In Ikeda's method, more extensive knowledge of the ship hull geometry is needed in order for $B_W$ to be calculated with a strip method and $B_E$ to be calculated with sectional Lewis coefficients. It was possible to collect the required hull inputs for 15 ships in the database. These ships were used in 50 of the reference roll decay tests; all but one of the tests exceed the limits. Ikeda's method has much more agreement for these exceeding model tests according to Fig.\ref{fig:si_ikeda_model} and the calculated $R^2$ in Table \ref{tab:si_ikeda_validation}.
 
 \input{equations/si_ikeda_validation}
 \subsection{Generic roll damping model}

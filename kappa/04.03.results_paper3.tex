@@ -30,52 +30,53 @@ In order to expand the modelling complexity and uncertainty from Paper \ref{pap:
 
 \noindent The parameter estimation method requires an initial guessed linear manoeuvring model. The initial models for the two test cases have hydrodynamic derivatives (\autoref{tab:initial}) that are calculated with semi-empirical formulas (\autoref{app:initial_estimates}) sourced from \cite{brix_manoeuvring_1993}. 
 \input{kappa/table_initial}
+\clearpage
 \subsection{The wPCC test case}
 \label{\detokenize{05.01_case_studies:the-wpcc-test-scenarios}}
 The wPCC test case focuses on predicting forces and moments from the ship hull and the rudders. The propeller force is not part of the prediction model; it is obtained from the model test measurements.
-In the model development process (\autoref{sec:model_development_process}), the model test data used for modelling is split into the training test, the validation test, and the test data sets, 
+In the model development process (\autoref{sec:model_development_process}), the model test data used for modelling is split into the training test, the validation test, and the test data sets (also presented in \autoref{fig:wpcc_datasets}), 
 \begin{itemize}
     \item The training dataset: self-propulsion, pull-out tests, and zigzag10/10 tests to starboard and port.
     \item The validation dataset: three zigzag20/20 tests.
     \item Test dataset: one turning circle test.
 \end{itemize}
-\noindent This split is also presented in \autoref{fig:wpcc_datasets}. If the manoeuvring model built by the proposed method based on a series of model tests (including ZigZag10/10 and 20/20 to port and starboard as well as the self-propulsion and pull out test) \cite{imo_standards_2002} can predict the turning circle maneuver, then it is a capable model.
 \begin{figure}[h!]
 \centering
 \includegraphics[width= 1.0\linewidth]{kappa/images/3.pdf}
 \caption{wPCC training, validation and testing datasets.}
 \label{fig:wpcc_datasets}
 \end{figure}
-
-\noindent The linear model (LVMM) was ruled too simple. Only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
+\noindent If the manoeuvring model built by the proposed method based on a series of model tests (including ZigZag10/10 and 20/20 to port and starboard as well as the self-propulsion and pull out test) \cite{imo_standards_2002} can predict the turning circle maneuver, then it is a capable model. The linear model (LVMM) was ruled too simple for the wPCC. Only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
 Forces and moment predicted for the validation dataset, with the manoeuvring models fitted with proposed parameter estimation on the training set, are presented in \autoref{fig:validation-forces}. The fitted AVMM over-predicts the forces by far. 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/7.pdf}
 \caption{Validation of force models for wPCC ZigZag20/20.}\label{fig:validation-forces}
 \end{figure}
-\noindent The over-prediction of forces with the AVMM can be explained by the major problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data. The absolute correlation coefficient between the features in the wPCC yaw moment regression is presented in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. Most of the coefficients have a very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have substantial values and large degrees of uncertainty.
+\noindent The over-prediction of forces with the AVMM can be explained by the major problems with multicollinearity that were encountered when applying the parameter estimation method to the wPCC data.
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/10.pdf}
-\caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM.}\label{\detokenize{06.10_results_wpcc:fig-ncorr}}\end{figure}
-Therefore, simulations of the validation cases are only possible using the MAVMM, which is selected as the suitable manoeuvring model for the wPCC.
-The simulations are displayed for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.10_results_wpcc:fig-validation-sim}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-validation-sim}}}.
+\caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM.}\label{\detokenize{06.10_results_wpcc:fig-ncorr}}
+\end{figure}
+\clearpage
+The absolute correlation coefficient between the features in the wPCC yaw moment regression is presented in \hyperref[\detokenize{06.10_results_wpcc:fig-ncorr}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-ncorr}}}. Most of the coefficients have a very high absolute correlation (indicated in black). Some of the regressed hydrodynamic derivatives in the AVMM also have substantial values and large degrees of uncertainty. Therefore, simulations of the validation cases are only possible using the MAVMM. The simulations are displayed for one of the ZigZag20/20 validation cases in \hyperref[\detokenize{06.10_results_wpcc:fig-validation-sim}]{Fig.\@ \ref{\detokenize{06.10_results_wpcc:fig-validation-sim}}}.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/9.pdf}
 \caption{Validation with simulations for wPCC ZigZag20/20.}\label{\detokenize{06.10_results_wpcc:fig-validation-sim}}\end{figure}
-\noindent Advance and tactical diameter \cite{imo_standards_2002} from the predicted turning circle with the final manoeuvring model (MAVMM) differs by 4\% and 1\% from the model test data, as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}. Results from the turning circle prediction are also presented in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
+The MAVMM was therefore selected as the most appropriate model for the wPCC in the validation step of the model development process. This model was retrained on the joined test and validation data set to obtain the final prediction model which was used to predict the turning circle test data set. Advance and tactical diameter \cite{imo_standards_2002} from the prediction differs by 4\% and 1\% from the model test data, as seen in \autoref{\detokenize{06.10_results_wpcc:tab-wpcc-advance}}.
 \input{kappa/table_wpcc_turning}
+Results from the turning circle prediction are also presented in  \autoref{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}} and  \autoref{\detokenize{06.10_results_wpcc:fig-testing-sim}}. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/11.pdf}
+\includegraphics[width=0.90\textwidth]{kappa/images/11.pdf}
 \caption{Turning circle test case for wPCC, track plots from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-track-plot-testing-sim}}\end{figure}
-\clearpage
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/12.pdf}
+\includegraphics[width=0.90\textwidth]{kappa/images/12.pdf}
 \caption{Turning circle test case for wPCC, time series from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-testing-sim}}\end{figure}
+\clearpage
 \noindent The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the wPCC) obtained with parameter estimation of MAVMM (\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}, \autoref{equation:02.01_manoeuvring models:eqymartinssimple},  \autoref{equation:02.01_manoeuvring models:eqnmartinssimple}) applied to all the wPCC data (including the turning circle)  are displayed in \hyperref[\detokenize{06.10_results_wpcc:wpcc-derivatives}]{Table \ref{\detokenize{06.10_results_wpcc:wpcc-derivatives}}}.
 \input{kappa/table_wpcc_derivatives}
 \clearpage
@@ -84,13 +85,13 @@ The simulations are displayed for one of the ZigZag20/20 validation cases in \hy
 The proposed system identification method is also validated using the KVLCC2 case study ship model.
 The propeller is in the manoeuvring model for this test case (instead of only the hull and rudders, as in the wPCC test case) so that the entire ship can be simulated without additional input.
 The model development process, which is described in \autoref{sec:model_development_process}, is applied to the KVLCC2 as well.
-The data has been split into training, validation, and test datasets,
+The data has been split into training, validation, and test data sets (also seen in \autoref{fig:kvlcc2_datasets}),
 \begin{itemize}
     \item Training dataset: various zigzag tests to starboard and port from model tests carried out at HSVA for the SIMMAN2008 conference \cite{stern_experience_2011}.
     \item Validation dataset: ZigZag35/5 carried out at HSVA for the SIMMAN2008 conference \cite{stern_experience_2011}.
     \item Test dataset: turning circle model tests carried out at MARIN for the SIMMAN2008 conference \cite{stern_experience_2011}
 \end{itemize}
-\noindent The split can also be seen in \ref{fig:kvlcc2_datasets}. A propeller prediction model is needed for the KVLCC2, which is developed from thrust measurements from the model tests, as described in the next section.
+\noindent A propeller prediction model is needed for the KVLCC2, which is developed from thrust measurements from the model tests, as described in the next section.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/4.pdf}
@@ -98,11 +99,18 @@ The data has been split into training, validation, and test datasets,
 \subsubsection{The KVLCC2 propeller model}
 \label{\detokenize{06.20_results_kvlcc2:the-kvlcc2-propeller-model}}\label{\detokenize{06.20_results_kvlcc2:results-propeller-model}}
 
-In the development of a propeller model, the coefficients in the \(K_T\) polynomial (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011}, as seen in \autoref{tab:kt_coefficients}.
-
-\begin{table}[h!]
+In the development of a propeller model, the coefficients in the \(K_T\) polynomial (\autoref{equation:02.10_propeller_model:eqkt}) were regressed from the KVLCC2 propeller characteristics from SIMMAN2008 HSVA model tests \cite{stern_experience_2011}, as seen in \autoref{tab:kt_coefficients}. The propeller model was developed with cross-validation on the training and validation datasets to make the appropriate feature selection.
+The cross-validation study was carried out on the three candidate propeller models: 
+\begin{itemize}
+    \item the MMG propeller model
+    \item the simple propeller model
+    \item the polynomial propeller model
+\end{itemize}
+The training and validation sets were derived from the entire model test time series from the HSVA model tests. The model tests were randomly divided into the test and validation sets. The random training and validation sets were repeated 100 times. The Polynomial model was selected due to it having the highest accuracy. Taylor wake \(w_{p0}\) = {0.4} was used in all three models. The MMG model used \(C_1\)={2.0}, \(C_2\)={1.6} when \(\beta_p>0\) and \(C_2\)={1.1} when \(\beta_p<=0\) \cite{yasukawa_introduction_2015-1}. \hyperref[\detokenize{06.20_results_kvlcc2:fig-propeller-validation}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}} displays a small portion of the cross-validation. Coefficients of the polynomial propeller model fitted on the training and validation datasets for KVLCC2 are presented in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}}.
+\begin{minipage}[c]{0.49\textwidth}
+    \vspace{-0.40cm}
     \centering
-    \caption{\(K_T\) polynomial coefficients.}
+    \captionof{table}{\(K_T\) polynomial coefficients.}
     \label{tab:kt_coefficients}
     \begin{tabular}{c c}
         \toprule
@@ -114,21 +122,19 @@ In the development of a propeller model, the coefficients in the \(K_T\) polynom
         \bottomrule
     \end{tabular}
 
-\end{table}
-
-\noindent The propeller model was developed with cross-validation on the training and validation datasets to make the appropriate feature selection.
-The cross-validation study was carried out on the three candidate propeller models: 
-\begin{itemize}
-    \item the MMG propeller model
-    \item the simple propeller model
-    \item the polynomial propeller model
-\end{itemize}
-The training and validation sets were derived from the entire model test time series from the HSVA model tests. The model tests were randomly divided into the test and validation sets. The random training and validation sets were repeated 100 times. The Polynomial model was selected due to it having the highest accuracy. Taylor wake \(w_{p0}\) = {0.4} was used in all three models. The MMG model used \(C_1\)={2.0}, \(C_2\)={1.6} when \(\beta_p>0\) and \(C_2\)={1.1} when \(\beta_p<=0\) \cite{yasukawa_introduction_2015-1}. \hyperref[\detokenize{06.20_results_kvlcc2:fig-propeller-validation}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}} displays a small portion of the cross-validation. Coefficients of the polynomial propeller model fitted on the training and validation datasets for KVLCC2 are presented in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}}.
+%\end{table}
+\end{minipage}
+\hfill
+\begin{minipage}[c]{0.49\textwidth}
+\captionof{table}{KVLCC2 propeller model.}
+\label{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}
 \input{kappa/table_kvlcc2_propeller_model}
+\end{minipage}
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=1.0\textwidth]{kappa/images/13.pdf}
+\includegraphics[width=0.78\textwidth]{kappa/images/13.pdf}
 \caption{Validation of MMG, Simple, and Polynomial propeller models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}\end{figure}
+\clearpage
 \subsubsection{KVLCC2 manoeuvring model}
 \label{\detokenize{06.20_results_kvlcc2:kvlcc2-manoeuvring-model}}
 The linear manoeuvring model (LVMM) was ruled too simple for KVLCC2. Only the AVMM and MAVMM were considered possible manoeuvring models in the model selection.
@@ -147,6 +153,7 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/16.pdf}
 \caption{Validation error (prediction minus (-) model test) with simulations for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-validation-sim-error}}\end{figure}
+\clearpage
 \noindent Results from the final prediction of the turning circle test are shown in  \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-track-plot-testing-sim}}}, \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim}}} and \hyperref[\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}]{Fig.\@ \ref{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}}. The prediction is conducted using simulation with the MAVMM trained on the training and validation datasets. Monte Carlo simulations with alternative realizations of the regression are also displayed in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
 \begin{figure}[h!]
 \centering
@@ -159,9 +166,12 @@ Simulations of the validation cases with the MAVMM are displayed for one of the 
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/19.pdf}
-\caption{The prediction error (prediction minus (-) model test) for the turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} Comparisons of turning circle advance and tactical diameters compared to the model test results are displayed in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameters differ by 2\% and 5\%, which is considered acceptable because of the margin of the IMO standard limits (which are also displayed in this table). The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
+\caption{The prediction error (prediction minus (-) model test) for the turning circle test with MAVMM trained on HSVA data and MARIN model test results for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-kvlcc2-testing-sim-error}}\end{figure} 
+
+Comparisons of turning circle advance and tactical diameters compared to the model test results are displayed in \hyperref[\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}]{Table \ref{\detokenize{06.20_results_kvlcc2:tab-kvlcc2-advance}}}. Predicted advance and tactical diameters differ by 2\% and 5\%, which is considered acceptable because of the margin of the IMO standard limits (which are also displayed in this table). The results are also closer to the model tests than a similar study conducted for the KVLCC2 \cite{he_nonparametric_2022}.
 \input{kappa/table_kvlcc2_turning}
-\noindent The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the KVLCC2) obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqymartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
+\clearpage
+The mean values and standard error (se) of the hydrodynamic derivatives (expressed with prime units for the KVLCC2) obtained with parameter estimation of MAVMM (\(\autoref{equation:02.01_manoeuvring models:eqxmartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqymartinssimple}\), \(\autoref{equation:02.01_manoeuvring models:eqnmartinssimple}\)) applied on all the HSVA data are shown in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-derivatives}}}.
 \input{kappa/table_kvlcc2_derivatives}
 \section*{}
 \vspace{-1cm}
@@ -178,7 +188,7 @@ The capability of the inverse dynamics on simulated data was also investigated i
 \label{\detokenize{06.31_results_noise:preprocessing}}\label{\detokenize{06.31_results_noise::doc}}
 
 The low-pass filter is a prevalent alternative to preprocessing the model test data, as opposed to the EKF used by the proposed parameter estimation.
-In order to investigate which filter is the most effective in Paper \ref{pap:pit}, the proposed parameter estimation was run on the wPCC model test data with the EKF + RTS smoother replaced with a low-pass filter. The low-pass filter applies a first-order linear digital Butterworth filter twice (once forward and once backward) for zero-phase conditions \cite{virtanen_scipy_2020}. \hyperref[\detokenize{06.31_results_noise:fig-lowpass-accuracy}]{Fig.\@ \ref{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}} displays the average simulation error \( \overline{RMSE} \) with low-pass filters at various cutoff frequencies for all wPCC model tests. Corresponding error with parameter estimation using EKF + RTS is also presented in the figure. The simulation error for each model test is expressed as the root mean square error \(RMSE\) (\autoref{equation:06.31_results_noise:eqrmse}) of the distance between the position from the model test and simulation.
+In order to investigate which filter is the most effective, the proposed parameter estimation was run on the wPCC model test data with the EKF + RTS smoother replaced with a low-pass filter. The low-pass filter applies a first-order linear digital Butterworth filter twice (once forward and once backward) for zero-phase conditions \cite{virtanen_scipy_2020}. \hyperref[\detokenize{06.31_results_noise:fig-lowpass-accuracy}]{Fig.\@ \ref{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}} displays the average simulation error \( \overline{RMSE} \) with low-pass filters at various cutoff frequencies for all wPCC model tests. Corresponding error with parameter estimation using EKF + RTS is also presented in the figure. The simulation error for each model test is expressed as the root mean square error \(RMSE\) (\autoref{equation:06.31_results_noise:eqrmse}) of the distance between the position from the model test and simulation.
 \begin{equation}\label{equation:06.31_results_noise:eqrmse}
 \begin{split}RMSE=\sqrt{ \frac{\sum_{n=1}^{N} (d_n^2) }{N}} \end{split}
 \end{equation}

@@ -53,7 +53,7 @@ The models for VP and SDT are categorized as white-box, black-box, or grey-box m
     is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
 \end{itemize}
 
-\noindent In a grey box model, the white and black components can be combined in several ways using either a serial or parallel approach \cite{leifsson_grey-box_2008}, as seen in Fig.\ref{fig:greycombinations}. 
+\noindent The white and black component can be combined as a grey box model in several ways, using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in Fig.\ref{fig:greycombinations}. 
 
 \input{kappa/fig_grey_combinations}
 
@@ -80,7 +80,7 @@ Support vector regression (SVR) has been investigated in \cite{zhu_parameter_201
 A profuse amount of data concerning the operation of ships in the oceans is collected daily. Many uses and potential applications of this data remains to be discovered. The use of SDTs (which are modelled as white-boxes, black-boxes, or grey-boxes) has potential .
 Black-box modeling is entirely data-driven, which means that no prior understanding of the system generating the data is needed. Therefore, it is an attractive option for the SDT modelling. One caveat is that the black-box modeling may provide infeasible models outside of the domain covered by the available data \cite{nielsen_machine_2022}. 
 
-The white-box modeling does not have the same problem as the black-box model. To obtain high accuracy, it does require a complete understanding of the system. Acquiring such knowledge may be possible for some cases with CFD calculations, but it is not practical for the complex environment and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
+The white-box modeling, which is not relying on the data, does not have this problem. However, to obtain high accuracy it does require a complete understanding of the system. Acquiring such knowledge may be possible for some cases with CFD calculations, but it is not practical for the complex environment and nonlinearities of a ship operating at sea \cite{miller_ship_2021}. 
 Wind, waves, and currents add uncertainty to the modelling in the deep sea. Water depth and the bank effect add uncertainty in coastal areas \cite{nielsen_machine_2022}. 
 Even if the sea is flawlessly modelled, long-term predictions with high accuracy will be exposed to deterministic chaos \cite{lorenz_deterministic_1963}, which is popularly known as the butterfly effect. During the butterfly effect, only a very small difference in the initial conditions results in a significantly different outcome. For instance, a period of two weeks is believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Because the methods developed in this thesis frame the first step towards system identification in full scale sea conditions, grey-box modelling is used. The grey-box model involves merging the white-box and black-box methods in an attempt to alleviate concerns regarding both models. 
 
@@ -99,7 +99,7 @@ Ship rigid body dynamics at full scale sea conditions comprises uncertainties fr
 \end{quote}
 
 \noindent 
-To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach.The approach consists of reducing complexity and then gradually increasing the model complexity:
+To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach. The approach consists of reducing complexity and then gradually increasing the model complexity:
 
 \subsubsection*{\normalfont \color{black} \textbf{Roll motion model}}
 The first goal of the thesis is to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom; it is based on model test data.

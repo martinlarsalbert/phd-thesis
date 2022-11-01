@@ -3,7 +3,8 @@
 \chapter{Methods\label{ch:methods}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Section comments: There were more changes related to objective language and directional words. There is a missing term near line 13.
-The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models can be assumed. Parameter estimations for roll motion and manoeuvring are presented in \ref{sec:_roll} and \ref{sec:_VMM}. System identification can be performed by selecting the most appropriate model from a collection of candidate models.
+The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models is assumed as the most appropriate model from a collection of candidate models.
+The parameter estimations for roll motion and manoeuvring are presented in \autoref{sec:_roll} and \autoref{sec:_VMM}. The most appropriate models are selected in the model development process which is described in \autoref{sec:model_development_process}.
 
 \section{Roll model parameter estimation} \label{sec:_roll}
 \noindent Parameter estimation can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models from the previous chapter (\autoref{eq:roll_decay_equation_himeno_linear}, \autoref{eq:roll_decay_equation_himeno_quadratic_b} and \autoref{eq:roll_decay_equation_cubic}). These equations do not have unique solutions because each equation can be multiplied by an arbitrary factor to obtain a new valid solution. Inertia is therefore excluded to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$, as seen in \autoref{eq:roll_decay_nonedim_a44}, for the linear model.
@@ -14,7 +15,7 @@ The system identification of rigid body ship dynamics can be simplified into par
 \input{equations/A_44_eq}
 
 \noindent The frequency $\omega_0$ can be obtained with Fast Fourier transform (FFT) of the roll signal. 
-Two methods have been investigated: the ``derivation approach'', referred to in \parencite{imo_1200_2006}, and the ``integration approach'' used in \cite{soder_assessment_2019}. 
+Two methods for parameter estimation have been investigated: the ``derivation approach'', referred to in \parencite{imo_1200_2006}, and the ``integration approach'' used in \cite{soder_assessment_2019} which are both described in the next subsections. 
 
 \subsection{Derivation approach}\label{sec:derivation_approach}
 In the derivation approach, \autoref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ must be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ also must be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with the extended Kalman filter (EKF) in Paper \ref{pap:pit}).
@@ -24,12 +25,10 @@ A least squares fit must be applied to the roll motion equation to identify the 
 In the integration approach, \autoref{eq:roll_decay_nonedim_a44} is solved as an ordinary differential equation (ODE) for many estimated sets of parameters until the solution converges. This method is time-consuming, and convergence is not guaranteed. However, the advantage is that only roll angle $\phi$ is needed.
 
 \section{Manoeuvring model parameter estimation} \label{sec:_VMM}
-In the proposed parameter estimation, a manoeuvring model is used to solve the reversed manoeuvring problem. The problem may consist of predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the manoeuvring model can be identified through regression of the force polynomials on forces predicted with inverse dynamics (see \autoref{\detokenize{03.01_inverse_dynamics::doc}}).
+A new parameter estimation method is proposed in Paper \ref{pap:pit} for the remaining degrees of freedom. A manoeuvring model is used to solve the reversed manoeuvring problem. The problem may consist of predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the manoeuvring model can be identified through regression of the force polynomials on forces predicted with inverse dynamics (see \autoref{\detokenize{03.01_inverse_dynamics::doc}}).
 The measurement noise must be removed prior to the regression of hydrodynamic derivatives in the manoeuvring model. This is conducted by an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother (see \autoref{sec:datacleaning}). The EKF requires an accurate manoeuvring model as the predictor.
-Therefore, the accurate manoeuvring model is both the input and output of the method. A linear manoeuvring model that includes hydrodynamic derivatives estimated with semi-empirical formulas (\autoref{app:initial_estimates}) is used as the initial predictor. Once the regressed manoeuvring model has been obtained, the parameter estimation can be refined, using the regressed manoeuvring model as the predictor model in the EKF, to improve the filter and obtain a more accurate manoeuvring model. The method is summarized in Fig.\ref{fig:greyvmm} and can be repeated several times (indicated by the dashed arrow) for improved accuracy. 
-
-\tikzsetnextfilename{TestFigure} % your name for the tikz fig.for example filename=TestFigure
-\begin{figure}[H]
+Therefore, the accurate manoeuvring model is both the input and output of the method. As a solution to this dilemma, a linear manoeuvring model that includes hydrodynamic derivatives estimated with semi-empirical formulas (\autoref{app:initial_estimates}) is used as the initial predictor. Once the regressed manoeuvring model has been obtained, the parameter estimation can be refined, using the regressed manoeuvring model as the predictor model in the EKF, to improve the filter and obtain a more accurate manoeuvring model. The method is summarized in Fig.\ref{fig:greyvmm} and can be repeated several times (indicated by the dashed arrow) for improved accuracy. 
+\begin{figure}[h]
     
     \centering
     \begin{tikzpicture}[node distance=1.5cm]
@@ -152,13 +151,12 @@ Where \(h\) is the discrete time step, \(R_d\) describes the covariance matrix o
 Selecting good values for these three matrices is the most complicated part of getting the EKF to work well. The amount of expected measurement noise in the data should be inserted in to \(R_d\), and the amount of error generated by the process model (manoeuvring model) needs to be estimated in \(Q_d\). The choices for these matrices depend on the reliability of the present data and the present process model.
 
 \subsection{Regression}
-Finding the hydrodynamic derivatives can be defined as a linear regression problem:
+Finding the hydrodynamic derivatives can be defined as a linear regression problem following the ''derivation approach'' (see \autoref{sec:derivation_approach}):
 \begin{equation}\label{equation:03.01_inverse_dynamics:eqregression}
 \begin{split}y = X\gamma + \epsilon\end{split}
 \end{equation}
 
-\noindent A model for the hydrodynamic forces must first be assumed.
-The label vector \(y\) and feature matrix \(X\) in the regression problem in \autoref{equation:03.01_inverse_dynamics:eqregression} can now be calculated based on the assumed model. For example: the label in the regression of the surge degree of freedom for the MAVMM can be calculated using the inverse dynamics force, which is expressed with primed units:
+\noindent The label vector \(y\) and feature matrix \(X\) in the regression problem in \autoref{equation:03.01_inverse_dynamics:eqregression} can be calculated if model for the hydrodynamic forces is assumed. For example: the label in the regression of the surge degree of freedom for the MAVMM can be calculated using the inverse dynamics force, which is expressed with primed units:
 \begin{equation}\label{equation:03.01_inverse_dynamics:diff_eq_X_y}
 \begin{split}\displaystyle y = - X_{\dot{u}} \dot{u}' + \dot{u}' m' - m' r'^{2} x_{G'} - m' r' v'\end{split}
 \end{equation}
@@ -168,13 +166,11 @@ The label vector \(y\) and feature matrix \(X\) in the regression problem in \au
 \begin{split}\displaystyle X = \left[\begin{matrix}thrust' & u' & \delta^{2} & r'^{2} & u'^{2} & r' v'\end{matrix}\right]\end{split}
 \end{equation}
 
-\noindent The regressed hydrodynamic derivatives are stored in the \(\gamma\) vector:
+\noindent The hydrodynamic derivatives in the \(\gamma\) vector (\autoref{equation:03.01_inverse_dynamics:diff_eq_X_beta}) can be estimated with ordinary least squares (OLS) regression.
 \begin{equation}\label{equation:03.01_inverse_dynamics:diff_eq_X_beta}
 \begin{split}\displaystyle \gamma = \left[\begin{matrix}X_{T}\\X_{u}\\X_{\delta\delta}\\X_{rr}\\X_{uu}\\X_{vr}\end{matrix}\right]\end{split}
 \end{equation}
-
-\noindent The hydrodynamic derivatives in the manoeuvring model are treated as Gaussian random variables when conducting the ordinary least squares (OLS) regression. The hydrodynamic derivatives in the manoeuvring model are usually taken as the mean value of each regressed random variable, which is the most likely estimate. The regression result can be expressed with a multivariate Gaussian distribution, which is defined by the regression’s mean values and covariance matrix. The multivariate Gaussian distribution can be used to conduct Monte Carlo simulations in the study of alternative realizations of the regression.
-
+In this regression, the hydrodynamic derivatives are treated as Gaussian random variables. The hydrodynamic derivatives in the manoeuvring model are usually estimated as the mean value of each regressed random variable, which is the most likely estimate. The regression result can be expressed with a multivariate Gaussian distribution, which is defined by the regression’s mean values and covariance matrix. The multivariate Gaussian distribution can be used to conduct Monte Carlo simulations in the study of alternative realizations of the regression.
 
 Strong multicollinearity is a documented problem for the manoeuvring models \cite{luo_parameter_2016, wang_quantifying_2018}.
 The thrust coefficient \(X_T\) in the hydrodynamic function \(X_D\) in \autoref{equation:02.01_manoeuvring models:eqxabkowitz} introduces multicollinearity to the regression. This coefficient can instead be calculated from the thrust deduction factor \(t_{df}\):
@@ -192,9 +188,9 @@ The thrust coefficient \(X_T\) in the hydrodynamic function \(X_D\) in \autoref{
 \begin{split}\displaystyle Y_{R} = \frac{N_{R}}{x_{r'}}\end{split}
 \end{equation}
 
-\subsection{Model development process}
+\section{Model development process}
 \label{sec:model_development_process}
-The aim of developing a manoeuvring model with parameter estimation is to develop a model that can generalize outside the known data. The method presented in this thesis is assessed with the hold-out evaluation \cite{sammut_holdout_2017}. The data in this evaluation is divided into three sets: the training set, the validation set, and the test set. The development process can be seen in \autoref{fig:model_development_process}.
+The aim of developing a manoeuvring model with parameter estimation is to develop a model that can generalize outside the known data. The method presented in this thesis is assessed with the hold-out evaluation \cite{sammut_holdout_2017}. The data in this evaluation is divided into three sets: the training set, the validation set, and the test set as seen in \autoref{fig:model_development_process}.
 
 \begin{figure}[H]
 \centering
@@ -260,6 +256,7 @@ The aim of developing a manoeuvring model with parameter estimation is to develo
 \label{fig:model_development_process}
 \end{figure}
 
-\noindent The purpose of the training set is to train all the candidate models using the proposed parameter estimation method. The validation set is then used to select the most effective candidate model. The training and validation sets are then joined to train the selected model as the final model. The final model is used for predicting the test set, which is used to evaluate the accuracy of the model. These three sets are not divided randomly;  they are divided to assess the model’s extrapolation ability. The data sets are therefore split to have the smallest yaw rates, drift-angles, and rudder-angles in the training set; the medium values in the validation set; and the largest values in the test set, which can be seen in \autoref{fig:wpcc_datasets} in the next chapter.
+\noindent The purpose of the training set is to train all the candidate models using the proposed parameter estimation method. The validation set is used to select the most effective candidate model. The training and validation sets are joined to train the selected model as the final model. The final model is used for predicting the test set, which is used to evaluate the accuracy of the model. These three sets are not divided randomly;  they are divided to assess the model’s extrapolation ability. The data sets are therefore split to have the smallest yaw rates, drift-angles, and rudder-angles in the training set; the medium values in the validation set; and the largest values in the test set.
+Examples of this can be seen for the two test cases in this thesis in \autoref{fig:kvlcc2_datasets} and  \autoref{fig:wpcc_datasets} in the next chapter.
 
 

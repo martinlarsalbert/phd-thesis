@@ -137,8 +137,13 @@
 {\normalfont\rmfamily\bfseries\normalsize}
 {\thesubsection}{1em}{}
 
-\usepackage{makecell}  % to get line breaks in table cells
 
+\titleformat{\subsubsection}
+{\normalfont\rmfamily\bfseries\normalsize}
+{\thesubsubsection}{1em}{}
+
+\usepackage{makecell}  % to get line breaks in table cells
+\setlength\parindent{12pt}  % Indent after new line...
 
 \addbibresource{library.bib}  % Bibliography file
 \renewcommand{\cite}{\parencite}
@@ -296,6 +301,7 @@
 \addcontentsline{toc}{chapter}{List of Publications}  % add toc line with target at the last anchor
 \chapter*{List of Publications}
 \input{frontmatter/publications-list}
+\makenomenclature
 \input{nomenclature}
 
 \cleardoublepage              % advance the pages
