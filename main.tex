@@ -273,6 +273,7 @@
 %==============================================================
 % Add abstract to the ToC
 \cleardoublepage              % advance the pages
+\pagenumbering{roman}
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{Abstract}  % add toc line with target at the last anchor
 \noindent\textbf{\thesistitle}\\
@@ -314,7 +315,7 @@
 
 \mainmatter                   % normal arabic page numbers
 \part{Introductory chapters}
-
+\pagenumbering{arabic}
 % Headers, footers
 \fancyfoot{}                  % clean all
 \fancyhead[RE]{\textit{\nouppercase{\rightmark}}}
