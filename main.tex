@@ -300,7 +300,7 @@
 \cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{List of Publications}  % add toc line with target at the last anchor
-\chapter*{List of Publications}
+\chapter{List of Publications}
 \input{frontmatter/publications-list}
 \addcontentsline{toc}{chapter}{Nomenclature}  % add toc line with target at the 
 \makenomenclature
@@ -364,7 +364,7 @@
 % #6 Comment (like "reprinted with a kind permission" and "reformatted for uniformity")
 % #7 File to input
 {
-  \chapter*{#1\label{#3}}      % Title as Chapter
+  \chapter{#1\label{#3}}      % Title as Chapter
   \chaptermark{#2}            % Short title for the page header
   \thispagestyle{empty}       % no page numbers
   {\Large #4}\par             % authors
@@ -390,7 +390,8 @@
 
 \addtocontents{toc}{\cftpagenumbersoff{chapter}}
 
-%\part{Appended papers}        % in this part one chapter = one paper
+\setcounter{part}{1}
+\part{Appended papers}        % in this part one chapter = one paper
 
 % Example of using the command \paper defined above: 
 \paper{Analysis of roll damping model scale data}
