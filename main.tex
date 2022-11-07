@@ -1,9 +1,9 @@
 \documentclass[
-  paper=23.9cm:16.9cm,
-   % paper=a4,
+  %paper=23.9cm:16.9cm, %Actual book size
+  paper=a4paper,
   pagesize,
   twoside,
-  10pt,
+  12pt,
   chapterprefix,
   headsepline=on,
   footinclude=off,
@@ -12,8 +12,9 @@
   bibliography=totoc,
   numbers=noenddot,
   open=right,
-]{scrreprt}
+]{book}
 \usepackage[%
+  papersize={23.9cm,16.9cm}
   left=20mm,
   right=20mm,
   top=25mm,
@@ -22,7 +23,7 @@
 
 \synctex=1                    % instead of "pdflatex -synctex=1 main"
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
-\makenomenclature
+%\makenomenclature
 
 \usepackage{lipsum}           % generating fill-in text for this thesis template
 
@@ -126,9 +127,12 @@
 \usepackage[section]{placeins}  % This prevents placing floats before a section.
 
 \usepackage[Sonny]{fncychap}  % Fancy chapter headings
+\ChTitleVar{\normalfont\rmfamily\bfseries\large} % Chapter title
+
 % Fonts
 \usepackage{lmodern}          % better font
 \usepackage{titlesec}
+
 \titleformat{\section}
 {\normalfont\rmfamily\bfseries\large}
 {\thesection}{1em}{}
@@ -137,10 +141,13 @@
 {\normalfont\rmfamily\bfseries\normalsize}
 {\thesubsection}{1em}{}
 
-
 \titleformat{\subsubsection}
 {\normalfont\rmfamily\bfseries\normalsize}
 {\thesubsubsection}{1em}{}
+
+% Table of content fonts
+\renewcommand\cftchappagefont{\normalfont\rmfamily\bfseries\normalsize}
+\renewcommand\cftsecpagefont{\normalfont\rmfamily\bfseries\normalsize}
 
 \usepackage{makecell}  % to get line breaks in table cells
 \setlength\parindent{12pt}  % Indent after new line...
@@ -300,7 +307,7 @@
 \cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{List of Publications}  % add toc line with target at the last anchor
-\chapter{List of Publications}
+\chapter*{List of Publications}
 \input{frontmatter/publications-list}
 \addcontentsline{toc}{chapter}{Nomenclature}  % add toc line with target at the 
 \makenomenclature
