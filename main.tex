@@ -3,7 +3,7 @@
   paper=a4paper,
   pagesize,
   twoside,
-  12pt,
+  10pt,
   chapterprefix,
   headsepline=on,
   footinclude=off,
@@ -14,7 +14,9 @@
   open=right,
 ]{book}
 \usepackage[%
-  papersize={23.9cm,16.9cm}
+  %papersize={23.9cm,16.9cm},
+  paperwidth=16.9cm, 
+  paperheight=23.9cm,
   left=20mm,
   right=20mm,
   top=25mm,
@@ -79,7 +81,8 @@
    giveninits=true,
 %  mincitenames=1,%            % if there are more than maxcitenames, shrink to this
 %  backref=true,%              % prints page numbers (wrong with \frontmatter and hypertexnames=false)
-  dashed=false                % do not replace repeated author with a dash in bibliography
+  dashed=false,                % do not replace repeated author with a dash in bibliography
+  uniquename=false,           % So not distinguish people with same family name by adding initial
 ]{biblatex}                   % Modern bibtex replacement (bibliography mgmt)
 \DeclareNameAlias{author}{last-first}
 \DeclareCiteCommand{\fullcite}
@@ -145,6 +148,14 @@
 {\normalfont\rmfamily\bfseries\normalsize}
 {\thesubsubsection}{1em}{}
 
+% Fixing vspaces for chapter heading
+\makeatletter
+\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
+\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
+\patchcmd{\DOTI}{\vskip 80\p@}{\vskip -30\p@}{}{}
+\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip -30\p@}{}{}
+\makeatother
+  
 % Table of content fonts
 \renewcommand\cftchappagefont{\normalfont\rmfamily\bfseries\normalsize}
 \renewcommand\cftsecpagefont{\normalfont\rmfamily\bfseries\normalsize}
@@ -310,7 +321,6 @@
 \chapter*{List of Publications}
 \input{frontmatter/publications-list}
 \addcontentsline{toc}{chapter}{Nomenclature}  % add toc line with target at the 
-\makenomenclature
 \input{nomenclature}
 
 \cleardoublepage              % advance the pages
