@@ -114,7 +114,14 @@
     {\clearfield{url}}
     {}%
 }
-
+\AtEveryBibitem{% Clean up the bibtex rather than editing it
+ \clearlist{address}
+ \clearfield{isbn}
+ \clearfield{issn}
+ \clearfield{month}
+ \clearfield{note}
+ \clearlist{publisher}
+}
 % End Biblatex
 
 
