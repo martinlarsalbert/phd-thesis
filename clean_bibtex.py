@@ -13,7 +13,7 @@ removes = ['publisher','note']
 
 for remove in removes:
     logger.info(f'remove {remove}')
-    s = re.sub(remove + r' *= .*\{.+\}','',s)
+    s = re.sub(remove + r' *= .*\{.+\},','',s)
 
 with open('library.bib', mode='w', encoding='utf8') as file:
     file.write(s)
