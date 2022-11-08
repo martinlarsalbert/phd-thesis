@@ -85,6 +85,8 @@
   dashed=false,                % do not replace repeated author with a dash in bibliography
   uniquename=false,           % So not distinguish people with same family name by adding initial
 ]{biblatex}                   % Modern bibtex replacement (bibliography mgmt)
+\addbibresource{library.bib}  % Bibliography file
+
 \DeclareNameAlias{author}{last-first}
 \DeclareCiteCommand{\fullcite}
   {\usebibmacro{prenote}}
@@ -94,6 +96,26 @@
      {\thefield{entrytype}}.}
   {\multicitedelim}
   {\usebibmacro{postnote}}
+
+% Remove URLs from common (easy-to-find) entries.
+\AtEveryBibitem{%
+  \ifboolexpr%
+    {%
+      test { \ifentrytype{book} }
+      or
+      test { \ifentrytype{inbook} }
+      or
+      test { \ifentrytype{inproceedings} }
+      or
+      test { \ifentrytype{incollection} }
+      or
+      test { \ifentrytype{article} }
+    }
+    {\clearfield{url}}
+    {}%
+}
+
+% End Biblatex
 
 
 \usepackage[%
@@ -164,27 +186,9 @@
 \usepackage{makecell}  % to get line breaks in table cells
 \setlength\parindent{12pt}  % Indent after new line...
 
-\addbibresource{library.bib}  % Bibliography file
 \renewcommand{\cite}{\parencite}
 
-% Remove URLs from common (easy-to-find) entries.
-\AtEveryBibitem{%
-  \ifboolexpr%
-    {%
-      test { \ifentrytype{book} }
-      or
-      test { \ifentrytype{inbook} }
-      or
-      test { \ifentrytype{inproceedings} }
-      or
-      test { \ifentrytype{incollection} }
-      or
-      test { \ifentrytype{article} }
-    }
-    {\clearfield{url}}
-    {}%
-}
-% End Biblatex
+
 
 
 % % % New environments
