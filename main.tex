@@ -87,41 +87,41 @@
 ]{biblatex}                   % Modern bibtex replacement (bibliography mgmt)
 \addbibresource{library.bib}  % Bibliography file
 
-\DeclareNameAlias{author}{last-first}
-\DeclareCiteCommand{\fullcite}
-  {\usebibmacro{prenote}}
-  {\usedriver
-     {\defcounter{minnames}{6}%
-      \defcounter{maxnames}{6}}
-     {\thefield{entrytype}}.}
-  {\multicitedelim}
-  {\usebibmacro{postnote}}
+%\DeclareNameAlias{author}{last-first}
+%\DeclareCiteCommand{\fullcite}
+%  {\usebibmacro{prenote}}
+%  {\usedriver
+%     {\defcounter{minnames}{6}%
+%      \defcounter{maxnames}{6}}
+%     {\thefield{entrytype}}.}
+%  {\multicitedelim}
+%  {\usebibmacro{postnote}}
 
 % Remove URLs from common (easy-to-find) entries.
-\AtEveryBibitem{%
-  \ifboolexpr%
-    {%
-      test { \ifentrytype{book} }
-      or
-      test { \ifentrytype{inbook} }
-      or
-      test { \ifentrytype{inproceedings} }
-      or
-      test { \ifentrytype{incollection} }
-      or
-      test { \ifentrytype{article} }
-    }
-    {\clearfield{url}}
-    {}%
-}
-\AtEveryBibitem{% Clean up the bibtex rather than editing it
- \clearlist{address}
- \clearfield{isbn}
- \clearfield{issn}
- \clearfield{month}
- \clearfield{note}
- \clearlist{publisher}
-}
+%\AtEveryBibitem{%
+%  \ifboolexpr%
+%    {%
+%      test { \ifentrytype{book} }
+%      or
+%      test { \ifentrytype{inbook} }
+%      or
+%      test { \ifentrytype{inproceedings} }
+%      or
+%      test { \ifentrytype{incollection} }
+%      or
+%      test { \ifentrytype{article} }
+%    }
+%    {\clearfield{url}}
+%    {}%
+%}
+%\AtEveryBibitem{% Clean up the bibtex rather than editing it
+% \clearlist{address}
+% \clearfield{isbn}
+% \clearfield{issn}
+% \clearfield{month}
+% \clearfield{note}
+% \clearlist{publisher}
+%}
 % End Biblatex
 
 

@@ -5,7 +5,7 @@ In order to expand the modelling complexity and uncertainty from Paper \ref{pap:
 \begin{figure}[h!]
 \centering
 \includegraphics[width=0.7\linewidth]{kappa/images/wpcc_mdl.png}
-\caption{wPCC tested at SSPA. Copyright 2020 by SSPA}
+\caption{wPCC tested at SSPA. Copyright 2020 by SSPA.}
 \label{fig:wpcc-mdl}
 \end{figure}
 
@@ -107,6 +107,8 @@ The cross-validation study was carried out on the three candidate propeller mode
     \item the polynomial propeller model
 \end{itemize}
 The training and validation sets were derived from the entire model test time series from the HSVA model tests. The model tests were randomly divided into the test and validation sets. The random training and validation sets were repeated 100 times. The Polynomial model was selected due to it having the highest accuracy. Taylor wake \(w_{p0}\) = {0.4} was used in all three models. The MMG model used \(C_1\)={2.0}, \(C_2\)={1.6} when \(\beta_p>0\) and \(C_2\)={1.1} when \(\beta_p<=0\) \cite{yasukawa_introduction_2015-1}. \hyperref[\detokenize{06.20_results_kvlcc2:fig-propeller-validation}]{\autoref{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}} displays a small portion of the cross-validation. Coefficients of the polynomial propeller model fitted on the training and validation datasets for KVLCC2 are presented in \hyperref[\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}]{Table \ref{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}}.
+
+\vspace{0.2cm}
 \begin{minipage}[c]{0.49\textwidth}
     \vspace{-0.40cm}
     \centering
@@ -121,7 +123,6 @@ The training and validation sets were derived from the entire model test time se
         k_2 & -0.14905 \\
         \bottomrule
     \end{tabular}
-
 %\end{table}
 \end{minipage}
 \hfill
@@ -130,9 +131,10 @@ The training and validation sets were derived from the entire model test time se
 \label{\detokenize{06.20_results_kvlcc2:kvlcc2-propeller-model}}
 \input{kappa/table_kvlcc2_propeller_model}
 \end{minipage}
+\vspace{-0.4cm}
 \begin{figure}[!htb]
 \centering
-\includegraphics[width=0.78\textwidth]{kappa/images/13.pdf}
+\includegraphics[width=0.77\textwidth]{kappa/images/13.pdf}
 \caption{Validation of MMG, Simple, and Polynomial propeller models for KVLCC2.}\label{\detokenize{06.20_results_kvlcc2:fig-propeller-validation}}\end{figure}
 \clearpage
 \subsubsection{KVLCC2 manoeuvring model}
@@ -192,9 +194,7 @@ In order to investigate which filter is the most effective, the proposed paramet
 \begin{equation}\label{equation:06.31_results_noise:eqrmse}
 \begin{split}RMSE=\sqrt{ \frac{\sum_{n=1}^{N} (d_n^2) }{N}} \end{split}
 \end{equation}
-
-\noindent where \(d_n\) is the euclidean distance for each time step between the model test positions (\(x_0\), \(y_0\)) and the predicted positions.
-
+where \(d_n\) is the euclidean distance for each time step between the model test positions (\(x_0\), \(y_0\)) and the predicted positions.
 \begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/6.pdf}
