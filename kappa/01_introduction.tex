@@ -6,7 +6,7 @@
 The use of twin models is not a new idea. NASA built twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
 The twin model could have been used as a reference object in case of a mishap during the mission.  
 The twin model concept has many other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. However, building a real twin ship as a reference object is not realistic. Instead, with data recorded aboard ships, it is possible to build a ship digital twin (SDT) to serve the same purpose.
-System identification methods of ship rigid body dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
+System identification methods of rigid body ship dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
 
 Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments. 
 \begin{figure}
@@ -29,7 +29,7 @@ Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces 
     \label{fig:seakeeping_and_manoeuvring}
 
 \end{figure}
-This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of ship rigid body dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
+This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of rigid body ship dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
 The motivation and objective of this research are then stated, followed by the assumptions and limitations.
 
 
@@ -85,7 +85,7 @@ Wind, waves, and currents add uncertainty to the modelling in the deep sea. Wate
 Even if the sea is flawlessly modelled, long-term predictions with high accuracy will be exposed to deterministic chaos \cite{lorenz_deterministic_1963}, which is popularly known as the butterfly effect. During the butterfly effect, only a very small difference in the initial conditions results in a significantly different outcome. For instance, a period of two weeks is believed to be the upper limit for weather forecasts  \cite{zhang_what_2019}. Because the methods developed in this thesis frame the first step towards system identification in full scale sea conditions, grey-box modelling is used. The grey-box model involves merging the white-box and black-box methods in an attempt to alleviate concerns regarding both models. 
 
 It is practical to first assume higher levels of simplifications and approximations for the problem under study and thereafter increase the complexity of the problem step by step. The effects of various factors can be initially studied in isolation with this approach. 
-Ship rigid body dynamics at full scale sea conditions comprises uncertainties from:
+rigid body ship dynamics at full scale sea conditions comprises uncertainties from:
 \begin{itemize}
     \item the \textbf{environment}: wind, waves, and currents
     \item the \textbf{ship}: geometry and mass properties
@@ -102,7 +102,7 @@ Ship rigid body dynamics at full scale sea conditions comprises uncertainties fr
 To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach. The approach consists of reducing complexity and then gradually increasing the model complexity:
 
 \subsubsection*{\normalfont \color{black} \textbf{Roll motion model}}
-The first goal of the thesis is to develop a model for the calm water ship rigid body dynamics in the roll degree of freedom; it is based on model test data.
+The first goal of the thesis is to develop a model for the calm water rigid body ship dynamics in the roll degree of freedom; it is based on model test data.
 
 \subsubsection*{\normalfont \color{black} \textbf{Manoeuvring model}}
 The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom, which addresses the manoeuvring problem.
@@ -146,6 +146,6 @@ believable and informative.
 \end{table}
 
 \section{Outline of the thesis}
-Chapter \ref{ch:models} presents the models for ship rigid body dynamics used in this thesis. The models for roll motion are introduced in \autoref{sec:roll}, and the manoeuvring motion models are introduced in  \autoref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box component of the developed grey-box models.
+Chapter \ref{ch:models} presents the models for rigid body ship dynamics used in this thesis. The models for roll motion are introduced in \autoref{sec:roll}, and the manoeuvring motion models are introduced in  \autoref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box component of the developed grey-box models.
 Parameter estimations, representing the black-box component, are used to regress the parameters of the white-box models. The parameter estimations are introduced in \autoref{ch:methods} for the roll motion and the manoeuvring motion in \autoref{sec:_roll} and \autoref{sec:_VMM}. 
 A summary of the appended papers, which includes research activities and a selection of the most relevant results, is presented in \autoref{ch:results}, followed by the conclusions in \autoref{ch:conclusions} and plans for future work in \autoref{ch:future_work}.
