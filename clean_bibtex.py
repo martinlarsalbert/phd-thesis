@@ -9,7 +9,9 @@ logger.addHandler(ch)
 with open('library_raw.bib', mode='r', encoding='utf8') as file:
     s = file.read()
 
-removes = ['publisher','note']
+#removes = ['publisher','note']
+removes = ['note']
+
 
 for remove in removes:
     logger.info(f'remove {remove}')
