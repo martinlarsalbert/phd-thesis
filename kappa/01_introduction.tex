@@ -37,10 +37,10 @@ The motivation and objective of this research are then stated, followed by the a
 \section{Background}
 With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
-The emergence of the Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm. 
+The emergence of the Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm \cite{liu_internet_2016-1}. 
 \begin{quote} 
 \vspace{0.1cm}
-''IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipment, the waterway environment, waterway facilities, shore-based facilities, and other navigation elements. The sensing objects are embedded with various sensor and heterogeneous network technologies that enable them to collect and exchange data.'' \cite{liu_internet_2016-1}.
+``IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipment, the waterway environment, waterway facilities, shore-based facilities, and other navigation elements. The sensing objects are embedded with various sensor and heterogeneous network technologies that enable them to collect and exchange data.'' 
 \vspace{0.1cm}
 \end{quote}
 Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications of the IoS \cite{aslam_internet_2020}.
@@ -63,7 +63,7 @@ The models for VP and SDT are categorized as white-box, black-box, or grey-box m
 \input{kappa/fig_grey_combinations}
 
 \section{Literature review}
-Ship digital twin (SDT) has a positive trend in the number of publications in recent years (2018-2021)  \cite{assani_ships_2022}. Most of the papers concern ship equipment such as electric power systems, propulsion system, ship hull structure, and marine diesel engines \cite{assani_ships_2022}. A small minority of the SDT applications handle ship trajectory, speed, and fuel consumption \cite{assani_ships_2022}.   
+Ship digital twin (SDT) has a positive trend in the number of publications in recent years (2018-2021). Most of the papers concern ship equipment such as electric power systems, propulsion system, ship hull structure, and marine diesel engines. A small minority of the SDT applications handle ship trajectory, speed, and fuel consumption \cite{assani_ships_2022}.   
 Even though SDT is not explicitly mentioned, there are many publications about methods that can be used as SDTs. \textcite{lang_comparison_2022} predicted the propulsion power for a chemical tanker for three test case voyages by using ML black-box modeling. However, the manoeuvres were excluded. \textcite{nielsen_machine_2022} used grey-box modelling for the manoeuvring prediction of a ferry, where a deep learning model (black-box) captures the residues between a first-principles model (white-box) and observed data. These studies demonstrate the vast potential within the field.
 
 Noteworthy publications within the system identification of the ship's manoeuvring dynamics are summarized in \autoref{tab:references} and categorized as black-box or grey-box models.
@@ -72,7 +72,7 @@ The system identification can be applied to full scale data \cite{astrom_identif
 
 Black-box modeling was used in \textcite{he_nonparametric_2022}, using a neural network, and in \textcite{xue_identification_2021}, using a Gaussian process. The nonparametric models are related because the system structure is known but no parameters are required; this is seen in \textcite{pongduang_nonparametric_2020}. However, most of the system identification methods for ship manoeuvring models use grey-box modeling by assuming a predefined mathematical model, which reduces the problem to a parameter estimation.
 The Kalman filter (KF) combined with maximum likelihood estimation was proposed in 1976 by \textcite{astrom_identification_1976} to develop a linear manoeuvring model that utilized manually recorded data in 1969 aboard the Atlantic Song freighter. The extended Kalman filter (EKF) can also estimate parameters if the parameters are represented as states of the state space model. This technique was used on a nonlinear Nomoto model \cite{perera_system_2015} and a 3 degree of freedom model (3DOF) \cite{shi_identification_2009}. The EKF was used in \textcite{araki_estimating_2012}, with constrained parameters based on physical reasoning and prior knowledge from constrained least squares regression. The unscented Kalman filter (UKF), which has been proposed as an improvement to the EKF for handling nonlinear systems, was used in \textcite{revestido_herrero_two-step_2012}.
-Support vector regression (SVR) has also been investigated  \cite{luo_parameter_2016,zhu_parameter_2017, wang_parameter_2021}. A genetic algorithm was used by \textcite{miller_ship_2021} for the system identification of a model test performed on a lake.
+Support vector regression (SVR) has also been investigated by \textcite{luo_parameter_2016}, \textcite{zhu_parameter_2017}, and \textcite{wang_parameter_2021}. A genetic algorithm was used by \textcite{miller_ship_2021} for the system identification of a model test performed on a lake.
 
 
 
@@ -122,12 +122,10 @@ The rigid body assumption simplifies the ship to a stiff body that does not tran
 It is important to note that all results are not necessarily directly transferable to the full scale when model scale data is used considering potential scale effects. 
 
 \section{Reproducibility}
-The research for this thesis has been conducted with the aim of having a high degree of reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as:
+The research for this thesis has been conducted with the aim of having a high degree of reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as \entryneedsurl{bollen_social_2015}\cite{bollen_social_2015}:
 \begin{quote}
 \vspace{0.2cm}
-''Reproducibility refers to the ability of a researcher to duplicate the results of a prior study using the same materials and procedures as were used by the original investigator. ...  Reproducibility is a minimum necessary condition for a finding to be believable and informative.''
-\entryneedsurl{bollen_social_2015}
-\cite{bollen_social_2015}
+``Reproducibility refers to the ability of a researcher to duplicate the results of a prior study using the same materials and procedures as were used by the original investigator. ...  Reproducibility is a minimum necessary condition for a finding to be believable and informative.''
 \vspace{0.2cm}
 \end{quote}
 To ensure adequate reproducibility, all code developed in this research has been made available as open source. In addition, the used data has been published as open data, as seen in the references in \autoref{tab:reproducibility}. Publishing the roll decay data from Paper \ref{pap:rolldamping} as open data was not possible due to intellectual property (IP) rights.
