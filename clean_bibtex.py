@@ -1,3 +1,7 @@
+"""
+Module that cleans a bibtex file as a last option to fix it.
+"""
+
 import re
 import logging
 import bibtexparser
@@ -10,13 +14,6 @@ logger.addHandler(ch)
 
 with open('library_raw.bib',mode='r', encoding='utf8') as bibtex_file:
     bib_database = bibtexparser.load(bibtex_file)
-
-#removes = ['publisher','note']
-#removes = ['note']
-#for remove in removes:
-#    logger.info(f'remove {remove}')
-#    s = re.sub(remove + r' *= .*\{[^}]+},','',s, re.DOTALL)
-
 
 def remove(id, field):
     if field in bib_database.entries_dict[id]:
