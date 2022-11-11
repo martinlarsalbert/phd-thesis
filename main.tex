@@ -214,7 +214,7 @@
 \setlength\parindent{12pt}  % Indent after new line...
 
 \renewcommand{\cite}{\parencite}
-
+\usepackage{pdfpages}
 
 
 
@@ -449,6 +449,8 @@
       {\fullcite{alexandersson_analysis_2021}}
       {~}
       {~}
+\newpage
+\includepdf[pages=2-]{paper1.pdf}
 
 \paper{System identification of {vessel} {manoeuvring} {models}}
       {~}
@@ -456,5 +458,6 @@
       {\fullcite{alexandersson_system_2022}}
       {Accepted for publication in Ocean Engineering.}
       {~}
-
+\newpage
+\includepdf[pages=3-]{paper2.pdf}
 \end{document}
