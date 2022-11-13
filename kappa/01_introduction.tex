@@ -8,8 +8,8 @@ The twin model could have been used as a reference object in case of a mishap du
 The twin model concept has many other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. However, building a real twin ship as a reference object is not realistic. Instead, with data recorded aboard ships, it is possible to build a ship digital twin (SDT) to serve the same purpose.
 System identification methods of rigid body ship dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
 
-Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments. 
-\begin{figure}
+Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments.
+\begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
          \centering
@@ -27,13 +27,9 @@ Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces 
      \hfill
     \caption{Seakeeping and manoeuvring model tests, copyright SSPA.}
     \label{fig:seakeeping_and_manoeuvring}
-
 \end{figure}
 This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of rigid body ship dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
 The motivation and objective of this research are then stated, followed by the assumptions and limitations.
-
-
-
 \section{Background}
 With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
@@ -47,7 +43,9 @@ Safety enhancements, route planning and optimization, energy efficiency, automat
 A ship digital twin (SDT), which is a digital copy of a real ship, is one way to utilize all data within the IoS \cite{chen_review_2021}. 
 SDTs are data-driven in contrast to the alternative model-based virtual prototyping (VP) \cite{major_framework_2021}. An SDT is typically used as a model for an existing ship from which data can be collected; the VPs are  prototypes for future ships, in which no operational data is available.
 The models for VP and SDT are categorized as white-box, black-box, or grey-box models.White-box models are used in VP. Either black-box or grey-box models are used in the SDTs. 
+\vspace{5pt}
 \begin{itemize}
+    \setlength\itemsep{5pt}
     \item White-box modeling \\
     involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifsson_grey-box_2008}.  
 
@@ -57,6 +55,7 @@ The models for VP and SDT are categorized as white-box, black-box, or grey-box m
     \item Grey-box modeling \\
     is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
 \end{itemize}
+\vspace{5pt}
 
 \noindent The white and black component can be combined as a grey box model in several ways, using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in \autoref{fig:greycombinations}. 
 
