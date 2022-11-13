@@ -3,17 +3,10 @@
 \subsection*{"\nameref{pap:rolldamping}"}
 System identification of ship roll motion, which includes roll damping and stiffness, is developed in Paper \ref{pap:rolldamping}. Parametric roll was observed by \textcite{froude_rolling_1861} and has been a focus of the marine research community since the early 1950s \parencite{galeazzi_early_2013}; it has received even more attention since \textcite{france_investigation_2001} demonstrated that the APL China casualty in 1998, where a post-Panamax C11 class container ship lost almost a third of its containers, was most likely caused by head sea parametric rolling. The damping of roll motion plays an important role in these phenomena. Previous literature demonstrates that the relatively small difference in the roll damping prediction obtained with small method variation may contribute to the difference between severe roll angles and much less noticeable motions \cite{soder_ikeda_2019}.
 
-The objective of Paper \ref{pap:rolldamping} was to improve the roll damping predictions for modern ships. The roll damping was studied using time series data from 250 (see \autoref{fig:ship_types}) roll decay tests (see \autoref{sec:roll}) assembled by the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}).
-
-\begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.6\columnwidth]{kappa/images/ship_types.eps}
-    \caption{Number of tests per ship type.}
-    \label{fig:ship_types}
-\end{figure}
-
-\noindent The work was divided into the following sub tasks (also summarized in \autoref{fig:paper1_overview}): 
+The objective of Paper \ref{pap:rolldamping} was to improve the roll damping predictions for modern ships. The roll damping was studied using time series data from 250 (see \autoref{fig:ship_types}) roll decay tests (see \autoref{sec:roll}) assembled by the Maritime Dynamics Laboratory at SSPA Sweden AB (\href{www.sspa.se}{www.sspa.se}). The work was divided into the following sub tasks (also summarized in \autoref{fig:paper1_overview}): 
+\vspace{5pt}
 \begin{itemize}
+    \setlength\itemsep{5pt}
     \item Find the mathematical model that is the best representation of the roll motion.
     \item Identify the parameters in this model for all the tests.
     \item Compare the identified parameters with state of art predictions.
@@ -23,11 +16,16 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
         \item Black-box model
     \end{itemize}
 \end{itemize}
-
+\vspace{5pt}
+\begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.6\columnwidth]{kappa/images/ship_types.eps}
+    \caption{Number of tests per ship type.}
+    \label{fig:ship_types}
+\end{figure}
 \begin{figure}[!htb]
     \centering
 \begin{tikzpicture}[node distance=3cm]
-
 \node (data_collection) at (0,0) {Data collection:};
 \node (roll_decay_DB) [database,label=below:Roll decay DB, right of=data_collection, xshift=-0.5cm]{};
 \node (PIT) [process, right of=roll_decay_DB, xshift=0.5cm] {PIT};
@@ -58,26 +56,21 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
 \node (black_box) [black-box, below of=grey_box, yshift=1.5cm] {Black-box};
 \draw [arrow] (damping_DB2) |- (grey_box);
 \draw [arrow] (damping_DB2) -- (black_box);
-
 \end{tikzpicture}
     \caption{Overview of the work conducted for Paper \ref{pap:rolldamping}.}
     \label{fig:paper1_overview}
 \end{figure}
-
-\clearpage
 System identification on the time series from the roll decay database was performed with the linear (\autoref{eq:roll_decay_equation_himeno_linear}), quadratic (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and cubic models (\autoref{eq:roll_decay_equation_cubic}). Estimated roll damping parameters were used to build a roll damping database. The database could be compared to corresponding predictions with the simplified Ikeda's method \cite{kawahara_simple_2011}, which is the state of art prediction for ship roll damping.
 The generic roll damping model was developed as a grey-box model and a black-box model.
 \subsection{Best mathematical model for the roll motion}
 System identification on the linear, quadratic, and cubic models was conducted using both the ``integration approach'' (\autoref{sec:integration_approach}) and the ``derivation approach'' (\autoref{sec:derivation_approach}) where the best parameter estimations were obtained using the ``integration approach''.
 Results from the simulations with the identified models (from one of the roll-decay tests) are presented in \autoref{fig:roll_decay_compare}. The cubic and quadratic models reproduce the model test well, and the linear model is too simple to provide an accurate representation for both smaller and larger roll angles. The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can be visualized, as seen in \autoref{fig:roll_decay}.
-
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\linewidth]{kappa/images/roll_decay_model_compare.pdf}
     \caption{Roll decay estimation with identified cubic, quadratic, and linear models.}
     \label{fig:roll_decay_compare}
 \end{figure}
-\clearpage
 \begin{figure}[h!]
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -96,8 +89,7 @@ Results from the simulations with the identified models (from one of the roll-de
     \caption{Roll decay model test, linear-, quadratic- and cubic-model.}
     \label{fig:roll_decay}
 \end{figure}
-
-\noindent The goodness of fit for the linear, quadratic, and cubic models can be expressed using the coefficient of determination:
+The goodness of fit for the linear, quadratic, and cubic models can be expressed using the coefficient of determination:
 \begin{equation} \label{eq:R2}
 %R^2=1-\frac{SS_{res}}{SS_{tot}}
 R^2=1-\frac{\sum\limit_{i=1}^{n}(\phi_{i}-\hat{\phi}_i)^2}{\sum\limit_{i=1}^{n}(\phi_i-\bar \phi)^2}
@@ -218,11 +210,9 @@ The simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white-b
 
 \noindent Major corrections to the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are included in this expression. The corrections are included because the simplified Ikeda's method is not very accurate for this dataset; most of the ships in the dataset exceeded the limits of the method. A pure black-box model is also developed in Paper \ref{pap:rolldamping} (see \autoref{eq:polynom_complex}),
 \input{equations/polynom_complex}
-
 \noindent where non-dimensional frequency $\hat{\omega_0}$ is calculated with \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981},
 \input{equations/omega0_hat_equation}
-
-\noindent Over-fitting data is a concern when constructing a regression model from a data set. Including too many parameters or allowing the order of the model to be too high would provide a very accurate representation of the present roll damping data. However, such a representation would be accompanied by major extrapolation errors when the model is used for other data. The generalization of the model can be assessed with a hold-out evaluation by using K-fold cross validation \cite{mosteller_handbook_1968} (\autoref{fig:k-fold}).\input{kappa/fig_k-fold} The data has been divided into five smaller sets (folds). Four of the folds are used to train the model, and the fifth fold is used for testing (validation). Validation consists of calculating the coefficient of determination $R^2$ for the fitted model. Validation is completed for all five possible train-test combinations. 
+Over-fitting data is a concern when constructing a regression model from a data set. Including too many parameters or allowing the order of the model to be too high would provide a very accurate representation of the present roll damping data. However, such a representation would be accompanied by major extrapolation errors when the model is used for other data. The generalization of the model can be assessed with a hold-out evaluation by using K-fold cross validation \cite{mosteller_handbook_1968} (\autoref{fig:k-fold}).\input{kappa/fig_k-fold} The data has been divided into five smaller sets (folds). Four of the folds are used to train the model, and the fifth fold is used for testing (validation). Validation consists of calculating the coefficient of determination $R^2$ for the fitted model. Validation is completed for all five possible train-test combinations. 
 The folds are randomly constructed with the restriction that all data for a particular ship must be in the same fold. Five folds are randomly generated 20 times, which gives 100 values of $R^2$ from the train-test-procedure for each model. The mean values and standard deviation of these 100 values of $R^2$ are displayed in Table \ref{tab:crossvalidation}. The mean and standard deviation of $R^2$ simplified Ikeda's method in this table were calculated directly instead of using cross validation because they do not rely on the SSPA data.
-
 \input{equations/cross_validation}
+\clearpage

@@ -11,7 +11,7 @@
   BCOR=7mm,
   bibliography=totoc,
   numbers=noenddot,
-  open=right,
+  openright,
 ]{book}
 \usepackage[%
   %papersize={23.9cm,16.9cm},
@@ -181,7 +181,7 @@
 
 \usepackage[section]{placeins}  % This prevents placing floats before a section.
 
-\usepackage[Sonny]{fncychap}  % Fancy chapter headings
+%\usepackage[Sonny]{fncychap}  % Fancy chapter headings
 \ChTitleVar{\normalfont\rmfamily\bfseries\large} % Chapter title
 
 % Fonts
@@ -200,14 +200,6 @@
 {\normalfont\rmfamily\bfseries\normalsize}
 {\thesubsubsection}{1em}{}
 
-% Fixing vspaces for chapter heading
-\makeatletter
-\patchcmd{\@makechapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
-\patchcmd{\@makeschapterhead}{\vspace*{50\p@}}{\vspace*{-40\p@}}{}{}
-\patchcmd{\DOTI}{\vskip 80\p@}{\vskip -30\p@}{}{}
-\patchcmd{\DOTIS}{\vskip 40\p@}{\vskip -30\p@}{}{}
-\makeatother
-  
 % Table of content fonts
 \renewcommand\cftchappagefont{\normalfont\rmfamily\bfseries\normalsize}
 \renewcommand\cftsecpagefont{\normalfont\rmfamily\bfseries\normalsize}
@@ -242,50 +234,50 @@
 
 
 % Begin page content adjustments for putting more text on pages.
-\renewcommand{\topfraction}{.85}       % max fraction of floats at top
-\renewcommand{\bottomfraction}{.7}     % max fraction of floats at bottom
-\renewcommand{\textfraction}{.15}      % minimal text wrt. figs
-\renewcommand{\floatpagefraction}{.66} % fraction for page of floats. floatpagefraction MUST be less than topfraction 
-\renewcommand{\dbltopfraction}{.66}    % fit big float above 2-col. text
-\renewcommand{\dblfloatpagefraction}{.66}
-\setcounter{topnumber}{9}
-\setcounter{bottomnumber}{9}
-\setcounter{totalnumber}{20}
-\setcounter{dbltopnumber}{9}
-\widowpenalty=300                             % widow (at the beginning of page)
-\clubpenalty=300                              % orphans (at the end of page)
+%\renewcommand{\topfraction}{.85}       % max fraction of floats at top
+%\renewcommand{\bottomfraction}{.7}     % max fraction of floats at bottom
+%\renewcommand{\textfraction}{.15}      % minimal text wrt. figs
+%\renewcommand{\floatpagefraction}{.66} % fraction for page of floats. %floatpagefraction MUST be less than topfraction 
+%\renewcommand{\dbltopfraction}{.66}    % fit big float above 2-col. text
+%\renewcommand{\dblfloatpagefraction}{.66}
+%\setcounter{topnumber}{9}
+%\setcounter{bottomnumber}{9}
+%\setcounter{totalnumber}{20}
+%\setcounter{dbltopnumber}{9}
+%\widowpenalty=300                             % widow (at the beginning of %page)
+%\clubpenalty=300                              % orphans (at the end of page)
 \setlength{\parskip}{0ex plus 0.5ex}  % space between paragraphs
 % End page content adjustments
 
 % % %
 % Begin remove page numbers from the "Part I" pages
-\fancypagestyle{veryempty}{% no headers, no page numbers
-  \fancyhf{} % remove everything
-  \fancyfoot{}
-  \renewcommand{\headrulewidth}{0pt} % remove lines as well
-  \renewcommand{\footrulewidth}{0pt}
-}
-\makeatletter
-\renewcommand\part{%
-  \if@openright
-    \cleardoublepage
-  \else
-    \clearpage
-  \fi
-  \thispagestyle{veryempty}%
-  \if@twocolumn
-    \onecolumn
-    \@tempswatrue
-  \else
-    \@tempswafalse
-  \fi
-  \null\vfil
-  \secdef\@part\@spart}
-\makeatother
+%\fancypagestyle{veryempty}{% no headers, no page numbers
+%  \fancyhf{} % remove everything
+%  \fancyfoot{}
+%  \renewcommand{\headrulewidth}{0pt} % remove lines as well
+%  \renewcommand{\footrulewidth}{0pt}
+%}
+%\makeatletter
+%\renewcommand\part{%
+%  \if@openright
+%    \cleardoublepage
+%  \else
+%    \clearpage
+%  \fi
+%  \thispagestyle{veryempty}%
+%  \if@twocolumn
+%    \onecolumn
+%    \@tempswatrue
+%  \else
+%    \@tempswafalse
+%  \fi
+%  \null\vfil
+%  \secdef\@part\@spart}
+%\makeatother
 
-\titleformat{\part}
-{\normalfont\rmfamily\bfseries\huge}
-{Part \thepart}{1em}{}
+%\titleformat{\part}
+%{\normalfont\rmfamily\bfseries\huge}
+%{Part \thepart}{1em}{}
 
 % End remove page numbers from the "Part I" pages
 
@@ -309,6 +301,8 @@
 
 
 \begin{document}
+\fancyfoot{} % clean all
+\fancyhead{}
 
 %\input{frontmatter/standard-cover-page}
 
@@ -369,13 +363,27 @@
 %\part{Introductory chapters}
 \pagenumbering{arabic}
 % Headers, footers
-\fancyfoot{}                  % clean all
-\fancyhead[RE]{\textit{\nouppercase{\rightmark}}}
-\fancyhead[RO]{\thepage}
-\fancyhead[LE]{\thepage}
-\fancyhead[LO]{\textit{\nouppercase{\leftmark}}}
+\fancyfoot{} % clean all
+\fancyhead{}
+\fancyfoot[RO, LE] {\thepage}                 
+\fancyhead[LE]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[RO]{\textit{\nouppercase{\rightmark}}}
 
 %  \begin{refsection}
+%Define the header
+\titlespacing{\chapter}{0pt}{-60pt}{2.0ex}
+\makeatletter
+\titleformat{\chapter}[display]
+  {\bfseries\Large}
+{\filleft\chaptertitlename \Huge \thechapter}
+{0.0ex}
+{\titlerule
+\vspace{1.0ex}%
+\filright}
+[\vspace{1.0ex}%
+\titlerule]
+\makeatother
+
 
 \include{kappa/body}
 \renewcommand\bibname{References}

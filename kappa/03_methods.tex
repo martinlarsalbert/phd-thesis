@@ -36,7 +36,7 @@ Therefore, the accurate manoeuvring model is both the input and output of the me
     \node (data) [io] {\footnotesize Model test data: $x$, $\delta$, thrust};
     
     \node (EKF) [process, right of=data, xshift=3.0cm] {\footnotesize EFK + RTS};
-    \node (predictor) [process, right of=EKF, xshift=2.0cm]{\footnotesize Predictor};
+    \node (predictor) [process, right of=EKF, xshift=1.5cm]{\footnotesize Predictor};
     \node (VMM) [io, right of=predictor, xshift=1.0cm] {\footnotesize initial model};
     
     \node (data_clean) [io, below of=EKF] {\footnotesize \(x,\dot{x},\ddot{x}, \delta, thrust\)};
@@ -52,7 +52,7 @@ Therefore, the accurate manoeuvring model is both the input and output of the me
     
     %
     %
-    \node (coefficients) [io, right of=black-box, xshift=2.0cm] {\footnotesize model$\left(Y_{uv},N_{\delta},...\right)$};
+    \node (coefficients) [io, right of=black-box, xshift=1.5cm] {\footnotesize model$\left(Y_{uv},N_{\delta},...\right)$};
     
     \draw [arrow] (data) -- (EKF);
     \draw [arrow] (predictor) -- (EKF);
