@@ -371,12 +371,12 @@
 
 %  \begin{refsection}
 %Define the header
-\titlespacing{\chapter}{0pt}{-60pt}{2.0ex}
+\titlespacing{\chapter}{0pt}{-50pt}{2.0ex}
 \makeatletter
 \titleformat{\chapter}[display]
   {\bfseries\Large}
-{\filleft\chaptertitlename \Huge \thechapter}
-{0.0ex}
+{\filleft\chaptertitlename~\Huge\thechapter}
+{1.0ex}
 {\titlerule
 \vspace{1.0ex}%
 \filright}
@@ -388,9 +388,8 @@
 \include{kappa/body}
 \renewcommand\bibname{References}
 \printbibliography[heading=bibintoc]
-
+\input{kappa/appendices}
 %  \end{refsection}
-
 \cleardoublepage
 
 %\printbibliography[heading=subbibintoc] % biblatex bibliography
