@@ -19,7 +19,7 @@ Ship manoeuvring is a simplified case of seakeeping. The encountering waves have
     \label{\detokenize{02.01_manoeuvring models:coordinate-system}}
 \end{figure}
 
-The manoeuvring equation can be described as \cite{fossen_handbook_2021},
+The manoeuvring equation can be described as \cite{fossen_handbook_2011},
 \begin{equation}\label{equation:02.01_manoeuvring models:eqqsystem}
 \begin{split}\displaystyle \left[\begin{matrix}- X_{\dot{u}} + m & 0 & 0\\0 & - Y_{\dot{v}} + m & - Y_{\dot{r}} + m x_{G}\\0 & - N_{\dot{v}} + m x_{G} & I_{z} - N_{\dot{r}}\end{matrix}\right] \left[\begin{matrix}\dot{u}\\\dot{v}\\\dot{r}\end{matrix}\right] = \left[\begin{matrix}m r^{2} x_{G} + m r v + \operatorname{X_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u + \operatorname{Y_{D}}{\left(u,v,r,\delta,thrust \right)}\\- m r u x_{G} + \operatorname{N_{D}}{\left(u,v,r,\delta,thrust \right)}\end{matrix}\right]\end{split}
 \end{equation}
