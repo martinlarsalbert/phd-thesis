@@ -16,25 +16,27 @@ Verification and comparisons between the models are carried out on the free sail
   \label{fig:methodology}
 \end{figure}
 It was investigated if the introduction of a deterministic semi-empirical rudder model in the PI model would reduce the multicollinearity and enhance the generalization.
+
+\FloatBarrier
 \subsection*{Results and Conclusions}
 
 \begin{figure}[h]
     \centering
-    \includegraphics{figures/results.ID_zigzag10.pdf}
+    \includegraphics{kappa/images/results.ID_zigzag10.pdf}
     \caption{ID estimations of $Y_D$ and $N_D$ during a zigzag10/10 model test compared with model predictions.}
     \label{fig:ID_zigzag10}
 \end{figure}
 
 \begin{figure}[h]
     \begin{center}
-        \includesvg{figures/results.hull_force_decomposition_zigzag20.svg}
+        \includesvg{kappa/images/results.hull_force_decomposition_zigzag20.svg}
         \caption{Decomposition of hull forces and moments during a zigzag20/20 test for parameters related to drift, yaw rate the prediction models.}
         \label{fig:ID_regression_N_decomposition}
     \end{center}
 \end{figure}
 
 \begin{figure}[h!]
-    \includegraphics{figures/result_wind_state.forces.pdf}
+    \includegraphics{kappa/images/result_wind_state.forces.pdf}
     \caption{Total sway force and yawing moment from the wPCC models at various drift angles.}
     \label{fig:result_wind_state}
 \end{figure}
