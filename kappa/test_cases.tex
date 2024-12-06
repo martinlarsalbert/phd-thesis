@@ -1,0 +1,31 @@
+\section{Test cases} \label{sec:test_cases}
+Two test cases have been studied in this paper. The wPCC test case is a ship that was designed for wind-assisted ship propulsion (WASP) and can alter between a fully sailing mode, and a fully motoring mode, and in between. 
+However, this paper only considers the motoring mode. Because of the WASP, the wPCC design differs slightly from conventional motoring cargo ship designs. The wPCC has two very large rudders, two to three times larger than needed for a conventional ship. The ship also has fins at the bilge to generate extra lift while sailing, as shown on the scale model in \autoref{fig:wPCC}.
+\autoref{tab:main_particulars} shows the main particulars of the scale model. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/5m2.jpg}
+    \caption{Scale model of the wPCC used in the model tests. Copyright RISE.}
+    \label{fig:wPCC}
+\end{figure}
+
+The Optiwse test case is an ordinary VLCC tanker but with a larger rudder size adopted for WASP as shown in the scale model in  \autoref{fig:optiwise}. \autoref{tab:main_particulars} shows the main particulars of the scale model. 
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\columnwidth]{figures/optiwise.jpg}
+    \caption{Scale model of the Optiwise used in the model tests. Copyright RISE.}
+    \label{fig:optiwise}
+\end{figure}
+\begin{table}[h]
+    \centering
+    \caption{Main particulars (SI units) of the wPCC scale model.}
+    \label{tab:main_particulars}
+    \pgfplotstabletypeset[col sep=comma, column type=r,
+        columns/Parameter/.style={column type=l,string type},
+        columns/Unit/.style={column type=l,string type,column name=~},
+        columns/Description/.style={column type=l,string type},
+        columns/Value/.style={column type=r, column name=~},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/test_cases.main_particulars.csv}
+\end{table}
