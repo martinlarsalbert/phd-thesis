@@ -3,57 +3,67 @@
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %________________________________________
-%CaRS Move I “Establish a territory” (Situation):
-% * Important area
-% * Introducing and reviewing items of previous  research <--(ToDO)
-Already before knowing it we as as human beings start to form models to understand our surroundings. A small child is for instance imitating its parents as role models. A model could also be a smaller physical copy of an object, like a model airplane or ship. A more scientific representation of a model will be investigated in this thesis as a simplified description of a system or process to assist in calculations and predictions for ship dynamics.
-\citet{ljungModelingIdentificationDynamic2021} describes a model as a tool we use to answer questions about the system without having to do an experiment.
+This Chapter begins with an introduction to the thesis, providing a brief overview of the background, and a discussion of current knowledge gaps, objectives, and limitations. The outline of the thesis is also presented at the end of this Chapter.
 
-%________________________________________
-%CaRS Move II “Establish a niche” (Problem):
-% * counter claim?
-% * gap?
-% * question       <------
-% * continuation?
+\section{Background}
+Already before knowing it we as as human beings start to form models to understand our surroundings. For a small child, the parents may for instance act as role models. A model could also be a smaller physical copy of an object, like a model airplane or ship. A more scientific representation of a model will be investigated in this thesis as a simplified description of a system or process to assist in calculations and predictions for ship dynamics.
+\textcite{ljung_modeling_2021} describes a model as a tool we use to answer questions about the system without having to do an experiment. This ability can me used in many ship applications:
+\vspace{0.3cm}
+\begin{itemize}
+    \item We can build a virtual prototype model to assess the performance before the ship has been built.
+    \item We can also build digital twin models for the existing ship to conduct experiments that might be too expensive or too dangerous to perform with the real ship.
+\end{itemize}
+\vspace{0.3cm}
+The ship itself can be thought of as the true model $\mathbf{S}$ which is impossible to fully describe mathematically. We can however make observations of the true model, by making measurements $y$ onboard the ship with some measurement error $\epsilon$:
+$$
+y = \mathbf{S} + \epsilon
+$$
+We want to create a model $\mathbf{m}$ that approximates the ship $\mathbf{S}$. There will be a difference between the model and the true model called process noise $w$:
+$$
+\mathbf{S} = \mathbf{m} + w
+$$
+which can be thought of as the error caused by the simplifying assumptions in the model. E.g., when approximating a non-linear function with a linear model.
+Finding the true model of the ship system is an unreachable goal, which is also an undesirable goal since we don't want to model everything about the ship, just the things relevant for the question at hand. The model $\mathbf{m}$ can be a mathematical model, but it could also be a scale model of the ship to be used in towing tanks experiments.
 
+It is very hard to fully assess if $\mathbf{m}$ is a good approximation of the true model $\mathbf{S}$, since the difference between measurement data and predicted data contains both process noise and measurement noise.
+$$
+y - \mathbf{m} = w + \epsilon
+$$
+Ways to find an approximate mathematical model of some aspects of the ship dynamics system will be explored in this thesis. The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
+The observations could also be from the regular operation with the ship, in natural experiments where the conditions are determined by nature or other factors outside the control of the researchers.
 
-%________________________________________
-%CaRS Move III “Occupy the niche” (Solution/Evaluation):
-% * outline purpose?                        <--
-% * list research questions?                <--
-% * announce principal findings?            
-% * stating the value of present research?
-% * article structure?                      <--
+\subsubsection{Multicollinearity and generalization of models} \label{sec:multicollinearity}
 
-\section{Old}
-%Section comments: Be mindful of using objective language. Avoid using general words like "good" or "special." It would also help to explain the example used for the Butterfly effect more.
-The use of twin models is not a new idea. NASA built twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
-The twin model could have been used as a reference object in case of a mishap during the mission.  
-The twin model concept has many other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. However, building a real twin ship as a reference object is not realistic. Instead, with data recorded aboard ships, it is possible to build a ship digital twin (SDT) to serve the same purpose.
-System identification methods of rigid body ship dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
+%\section{Old}
+%%Section comments: Be mindful of using objective language. Avoid using general words like "good" or "special." It would also help to explain the example used for the Butterfly effect more.
+%The use of twin models is not a new idea. NASA built twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
+%The twin model could have been used as a reference object in case of a mishap during the mission.  
+%The twin model concept has many other useful applications, not just for catastrophic scenarios with a failing space ship, but also for more ordinary applications for conventional ships. However, building a real twin ship as a reference object is not realistic. Instead, with data recorded aboard ships, it is possible to build a ship digital twin (SDT) to serve the same purpose.
+%System identification methods of rigid body ship dynamics are presented in this thesis, which can be used to build important sub-components/models in the SDTs. 
+%
+%Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments.
+%\begin{figure}[h]
+%    \centering
+%    \begin{subfigure}[b]{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{kappa/images/seakeeping.jpg}
+%         \caption{Seakeeping.}
+%         \label{fig:seakeeping}
+%     \end{subfigure}
+%     \hfill
+%     \begin{subfigure}[b]{0.45\textwidth}
+%         \centering
+%         \includegraphics[width=\textwidth]{kappa/images/manoeuvring.jpg}
+%         \caption{Manoeuvring.}
+%         \label{fig:manoeuvring}
+%     \end{subfigure}
+%     \hfill
+%    \caption{Seakeeping and manoeuvring model tests, copyright SSPA.}
+%    \label{fig:seakeeping_and_manoeuvring}
+%\end{figure}
+%This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of rigid body ship dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
+%The motivation and objective of this research are then stated, followed by the assumptions and limitations.
 
-Ship dynamics is a branch of ship hydrodynamics that concerns the ship's forces and motions when the ship is allowed to move and rotate in all directions. Seakeeping and Manoeuvring are the two major subfields (see \autoref{fig:seakeeping_and_manoeuvring}). Seakeeping studies the  behavior of a ship in a seaway while it is under the influence of external waves, currents, and wind. Calm water conditions, lacking the external waves, are further assumed in Manoeuvring, which is considered either an idealized and simplified case of Seakeeping or the true conditions in sheltered environments.
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{kappa/images/seakeeping.jpg}
-         \caption{Seakeeping.}
-         \label{fig:seakeeping}
-     \end{subfigure}
-     \hfill
-     \begin{subfigure}[b]{0.45\textwidth}
-         \centering
-         \includegraphics[width=\textwidth]{kappa/images/manoeuvring.jpg}
-         \caption{Manoeuvring.}
-         \label{fig:manoeuvring}
-     \end{subfigure}
-     \hfill
-    \caption{Seakeeping and manoeuvring model tests, copyright SSPA.}
-    \label{fig:seakeeping_and_manoeuvring}
-\end{figure}
-This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of rigid body ship dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
-The motivation and objective of this research are then stated, followed by the assumptions and limitations.
 \section{Background}
 With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
 industry \cite{stanic_toward_2018}.
