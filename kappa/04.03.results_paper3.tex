@@ -1,6 +1,6 @@
 \section{Summary of Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
-In order to expand the modelling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of the surge, sway, and yaw degrees of freedom is studied in Paper \ref{pap:pit}. The dynamics are assumed to be described by a ship manoeuvring model (\autoref{sec:manoeuvring model}). The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The models are developed using the process described in \autoref{sec:model_development_process}. Consequently, both test cases aim to predict turning circle maneuvers. The primary dimensions of the two case study ship models are listed in \autoref{tab:cases}, with explanations in \autoref{tab:nomenclature}. The wPCC is a wind-powered car carrier tested at SSPA Maritime center \cite{alexandersson_wpcc_2022}. This twin screw ship with large rudders has good course stability and symmetric hydrodynamic manoeuvring forces. The KVLCC2 model test data from the Hamburg ship model basin (HSVA) and Maritime research institute Netherlands (MARIN) was made available by the SIMMAN2008 conference \cite{stern_experience_2011}. This single screw ship has less course stability than the wPCC test case, and manoeuvring forces are unsymmetrical due to the single propeller. This instability makes it an appropriate second test case with parameter estimation on an unsymmetrical model.
+In order to expand the modelling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of the surge, sway, and yaw degrees of freedom is studied in Paper \ref{pap:pit}. The dynamics are assumed to be described by a ship manoeuvring model (\autoref{sec:manoeuvring model}). The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The models are developed using the process described in \autoref{sec:cross_validation}. Consequently, both test cases aim to predict turning circle maneuvers. The primary dimensions of the two case study ship models are listed in \autoref{tab:cases}, with explanations in \autoref{tab:nomenclature}. The wPCC is a wind-powered car carrier tested at SSPA Maritime center \cite{alexandersson_wpcc_2022}. This twin screw ship with large rudders has good course stability and symmetric hydrodynamic manoeuvring forces. The KVLCC2 model test data from the Hamburg ship model basin (HSVA) and Maritime research institute Netherlands (MARIN) was made available by the SIMMAN2008 conference \cite{stern_experience_2011}. This single screw ship has less course stability than the wPCC test case, and manoeuvring forces are unsymmetrical due to the single propeller. This instability makes it an appropriate second test case with parameter estimation on an unsymmetrical model.
 
 \begin{figure}[h!]
 \centering
@@ -34,7 +34,7 @@ In order to expand the modelling complexity and uncertainty from Paper \ref{pap:
 \subsection{The wPCC test case}
 \label{\detokenize{05.01_case_studies:the-wpcc-test-scenarios}}
 The wPCC test case focuses on predicting forces and moments from the ship hull and the rudders. The propeller force is not part of the prediction model; it is obtained from the model test measurements.
-In the model development process (\autoref{sec:model_development_process}), the model test data used for modelling is split into the training test, the validation test, and the test data sets (also presented in \autoref{fig:wpcc_datasets}), 
+In the model development process (\autoref{sec:cross_validation}), the model test data used for modelling is split into the training test, the validation test, and the test data sets (also presented in \autoref{fig:wpcc_datasets}), 
 \vspace{5pt}
 \begin{itemize}
     \setlength\itemsep{5pt}
@@ -86,7 +86,7 @@ Results from the turning circle prediction are also presented in  \autoref{\deto
 \label{\detokenize{05.01_case_studies:the-kvlcc2-test-scenarios}}
 The proposed system identification method is also validated using the KVLCC2 case study ship model.
 The propeller is in the manoeuvring model for this test case (instead of only the hull and rudders, as in the wPCC test case) so that the entire ship can be simulated without additional input.
-The model development process, which is described in \autoref{sec:model_development_process}, is applied to the KVLCC2 as well.
+The model development process, which is described in \autoref{sec:cross_validation}, is applied to the KVLCC2 as well.
 The data has been split into training, validation, and test data sets (also seen in \autoref{fig:kvlcc2_datasets}),
 \vspace{5pt}
 \begin{itemize}

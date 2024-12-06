@@ -4,7 +4,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Section comments: There were more changes related to objective language and directional words. There is a missing term near line 13.
 The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models is assumed as the most appropriate model from a collection of candidate models.
-The parameter estimations for roll motion and manoeuvring are presented in \autoref{sec:_roll} and \autoref{sec:_VMM}. The most appropriate models are selected in the model development process which is described in \autoref{sec:model_development_process}.
+The parameter estimations for roll motion and manoeuvring are presented in \autoref{sec:_roll} and \autoref{sec:_VMM}. The most appropriate models are selected in the model development process which is described in \autoref{sec:cross_validation}.
 
 \section{Roll model parameter estimation} \label{sec:_roll}
 \noindent Parameter estimation can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models from the previous chapter (\autoref{eq:roll_decay_equation_himeno_linear}, \autoref{eq:roll_decay_equation_himeno_quadratic_b} and \autoref{eq:roll_decay_equation_cubic}). These equations do not have unique solutions because each equation can be multiplied by an arbitrary factor to obtain a new valid solution. Inertia is therefore excluded to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$, as seen in \autoref{eq:roll_decay_nonedim_a44}, for the linear model.
@@ -189,7 +189,7 @@ The thrust coefficient \(X_T\) in the hydrodynamic function \(X_D\) in \autoref{
 \end{equation}
 
 \section{Model development process}
-\label{sec:model_development_process}
+\label{sec:cross_validation}
 The aim of developing a manoeuvring model with parameter estimation is to develop a model that can generalize outside the known data. The method presented in this thesis is assessed with the hold-out evaluation \cite{sammut_holdout_2017}. The data in this evaluation is divided into three sets: the training set, the validation set, and the test set as seen in \autoref{fig:model_development_process}.
 
 \begin{figure}[H]
