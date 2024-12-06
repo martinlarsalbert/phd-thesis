@@ -1,0 +1,26 @@
+\subsection{Prime system} \label{sec:prime_system}
+Some variables in the equations in this paper are expressed using nondimensional units with the prime system, denoted by the prime symbol ($'$). Variables are converted from SI units to the prime system using the denominators in \autoref{tab:prime_system} for the corresponding physical quantity, where $U$ and $L$ are the velocity and length between the perpendiculars of the ship, respectively, and $\rho$ is the water density.
+For the calculation of surge velocity $u'$, the perturbed velocity $(u-U_0)$ about a nominal speed $U_0$ is used, as in \autoref{eq:u_prime}, to avoid a $u'$ of 1 for all speeds when the ship is on a straight course (where $u=U$), as in a resistance or self-propulsion test. The usage of the perturbed velocity, therefore, allows for higher order resistance terms in the model, such as $X_{u}$, which are otherwise not possible. 
+\begin{equation}
+    \label{eq:u_prime}
+    u' = \frac{u-U_0}{U}
+\end{equation}
+For a nondimensional model, $U_0$ is instead expressed as a Froude number within the model (\autoref{eq:Fn0}), and this paper uses $F_{n0}=0.02$.
+\begin{equation}
+    \label{eq:Fn0}
+    F_{n0} = \frac{U_0}{\sqrt{g \cdot L}}
+\end{equation}
+\begin{table}[h]
+    \centering
+    \caption{Scalings with prime system.}
+    \label{tab:prime_system}
+    \pgfplotstabletypeset[col sep=comma,
+        columns={Physical quantity,SI unit,Denominator},
+        columns/SI unit/.style={string type},
+        columns/Physical quantity/.style={string type},
+        columns/Denominator/.style={string type},
+        column type=l,	% specify the align method
+        every head row/.style={before row=\hline,after row=\hline},	% style the first row
+        every last row/.style={after row=\hline},	% style the last row
+    ]{tables/prime_system.prime_system.csv"}
+\end{table}
