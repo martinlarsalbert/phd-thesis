@@ -1,7 +1,18 @@
 \section{Summary of Paper \ref{pap:physics}}
 \subsection*{"\nameref{pap:physics}"}
 \subsection*{Scope and Motivations}
-In Paper \ref{pap:pit}, multicollinearity (see \autoref{sec:multicollinearity}) was found to be a big problem for the parameter identification with inverse dynamics regression (see \autoref{sec:IDR}) on data from free running model tests. 
+It was shown in Paper \ref{pap:pit} that it is possible to identify a model from calm water free running model test with inverse dynamics regression (\autoref{sec:IDR}) together with a cross validation technique (\autoref{sec:cross_validation}) to unsure good generalization (\autoref{sec:generalization}) so that the model can predict other kinds of maneuvers with very good accuracy. It was however soon discovered that these models did not generalize well when wind forces were added to the simulations. This problem was addressed in Paper \ref{pap:physics}.
+
+System identification of a physics-informed (PI) and a -uninformed (PU) model was conducted with inverse dynamics regression. 
+The physical correctness of the force prediction models was assessed with a "physically correct" reference model identified with VCT (\autoref{sec:VCT}).
+\begin{figure}[h]
+  \centering
+  %\includesvg[width=\columnwidth, pretex=\scriptsize, height=12cm]{figures/methodology2.svg}
+  \includesvg[pretex=\centering\fontsize{7.5}{8}]{figures/methodology2.svg}
+  \caption{Research workflow, describing how the reference model is identified with regression of VCT data and the PI and PU models are identified with regression of inverse dynamics forces from model tests. Results are then gathered to assess the parameter drift, physical correctness and generalization of the models.}
+  \label{fig:methodology}
+\end{figure}
+
 
 \subsection*{Results and Conclusions}
 \subsection*{Comments}
