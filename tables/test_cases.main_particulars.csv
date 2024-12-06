@@ -1,0 +1,10 @@
+Parameter,wPCC,Optiwise,Description
+$\mathtt{\text{B}}$,0.9466019417475728,0.8823529411222136,Breadth
+$\mathtt{\text{D}}$,0.12135922330097086,0.15588235293159106,Propeller diameter
+$I_{zz}$,742.0462794081202,1471.5096397140396,Yaw moment of inertia around midship
+$\mathtt{\text{L}}$,5.014563106796117,4.77941176441199,Length between perpendiculars
+$T_{m}$,0.2063106796116504,0.30147058821675626,Mean draught
+$\mathtt{\text{m}}$,441.0267843660858,1008.7268469541564,Ship mass
+Scale factor,41.2,68.0000000041814,
+$t_{df}$,0.117,0.21,Thrust deduction factor
+$x_{G}$,-0.23989669902912625,0.17636764704797847,Longitudinal c.o.g.

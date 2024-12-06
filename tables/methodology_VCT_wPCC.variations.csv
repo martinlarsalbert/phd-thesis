@@ -1,0 +1,10 @@
+Test type,V,beta_deg,r,delta_deg,rev
+Circle,0.96,,-0.06 -- 0.06,,8.79
+Circle + Drift,0.96,-12 -- 12,-0.07 -- 0.07,,8.79
+Circle + Drift + rudder angle,0.78 -- 0.96,-13 -- 13,-0.07 -- 0.07,-20 -- 20,7.2 -- 8.8
+Circle + rudder angle,0.96,,-0.05 -- 0.05,-10 -- 10,8.79
+Drift angle,0.96,-15 -- 15,,,8.79
+Rudder and drift angle,0.96,-4 -- 4,,-10 -- 10,8.79
+Rudder angle,0.96,,,-15 -- 15,8.79
+Thrust variation,0.48 -- 0.96,,,-10 -- 10,3.8 -- 10.0
+self propulsion,0.48 -- 0.96,,,,4.6 -- 8.8

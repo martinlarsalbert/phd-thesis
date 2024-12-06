@@ -1,0 +1,35 @@
+LaTeX,Description,LaTeX1,Description1,LaTeX2,Description2
+,Rudder angle of attack,,Initial drag coeff. covered,,Rudder gap coefficient
+,Rudder inflow angle,,Initial drag coeff. tune,,Thrust
+,Rudder angle,,Initial drag coeff. uncovered,,Surge vel.
+,Rudder gap limit,,Rudder cross-flow drag,,Sway vel.
+,Yaw acceleration,,Friction coeff. covered,,Prop. slipstream
+,Surge acceleration,,Friction coeff. uncovered,,Apparent vel.
+,Sway acceleration,,Lift coeff.,,Rudder vel. covered
+,Prop. induced angle,,Rudder root choord,,Rudder vel. uncovered
+,Rudder initial inflow,,Thrust coeff.,,Axial vel. covered
+,Geometric inflow angle,,Rudder tip choord,,Axial vel. uncovered
+,$\kappa_r$ nonlinear,,lift diminished variable,,Rudder transverse vel.
+,$\kappa_r$ total,,Rudder drag,,Turbulent mixing
+,Yaw rate flow straightening,,Lift slope,,No turbulent mixing
+,$\kappa_v$ nonlinear,,Oswald efficiency factor,,No turbulent mixing
+,$\kappa_v$ total,,lift diminished variable,,Taylor wake
+,Drift flow straightening,,Yaw mass intertia,,Prop. to rudder
+,Rudder gap effec,,Lift covered part,,Surge added mass
+,limited radius of the prop. slipstream,,Lift uncovered part,,Surge damping force
+,Rudder taper ratio,,Rudder lift,,Center of gravity
+,Kinematic viscosity,,Ship mass,,Yaw rudder interaction
+,Rudder sweep angle,,Yaw added mass,,Hull surge force
+,Water density,,Yaw added mass,,Prop. surge force
+,Section lift curve slope,,Yaw damping moment,,Rudder lever
+,Sway rudder interaction,,Hull yawing moment,,Rudder surge force
+,Rudder area covered,,Prop. yawing moment,,Thrust deduction
+,Rudder area uncovered,,Rudder hull interaction,,Sway added mass
+,Rudder area,,Rudder yawing moment,,Sway added mass
+,Effective aspect ratio,,Yaw rate,,Sway damping force
+,Geometric aspect ratio,,Prop. radius,,Hull sway force
+,Rudder span,,Turbulent mixing,,Propeller lever
+,Rudder chord,,Prop. slipstream,,Propeller sway force
+,Drag coeff. covered,,Prop. slipstream at rudder,,Rudder hull interaction
+,Drag coeff. tunnig,,Reynold number covered,,Rudder sway force
+,Drag coeff. uncovered,,Reynold number uncovered,,Rudder lever
