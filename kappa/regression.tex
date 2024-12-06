@@ -35,3 +35,26 @@ The thrust coefficient \(X_T\) in the hydrodynamic function \(X_D\) in \autoref{
 \begin{equation}\label{equation:03.01_inverse_dynamics:eqyr}
 \begin{split}\displaystyle Y_{R} = \frac{N_{R}}{x_{r'}}\end{split}
 \end{equation}
+
+\subsection{Inverse dynamics and regression}
+\label{\detokenize{03.01_inverse_dynamics:inverse-dynamics-and-regression}}\label{\detokenize{03.01_inverse_dynamics::doc}}
+
+Each manoeuvring model has some hydrodynamic functions \(X_D(u,v,r,\delta,thrust)\), \(Y_D(u,v,r,\delta,thrust)\), \(N_D(u,v,r,\delta,thrust)\) that are defined as polynomials. The hydrodynamic derivatives in these polynomials can be identified with force regression of measured forces and moments. The measured forces and moments are usually taken from captive model tests (CMT), planar motion mechanism (PMM) tests, or virtual captive tests (VCT). However, motions are recorded when the ship is free in all degrees of freedom. Hence, forces and moments causing ship motion must be estimated by solving the inverse dynamics problem.
+The inverse dynamics problem is solved by restructuring the system equation (\autoref{equation:02.01_manoeuvring models:eqacc}) to get the hydrodynamics functions on the left-hand side. If the mass and inertia of the ship with added masses: \(X_{\dot{u}}\), \(Y_{\dot{v}}\), \(Y_{\dot{r}}\), \(N_{\dot{v}}\), and \(N_{\dot{r}}\) are known; the forces in the Prime system can be calculated using \autoref{equation:03.01_inverse_dynamics:eqxd}, \autoref{equation:03.01_inverse_dynamics:eqyd}, and \autoref{equation:03.01_inverse_dynamics:eqnd}.
+These forces can be used to regress the hydrodynamic derivatives through the ordinary least square (OLS) method. If the added masses are unknown, they can be calculated using potential flow methods or semi-empirical methods (\autoref{app:initial_estimates}). 
+\begin{equation}\label{equation:03.01_inverse_dynamics:eqxd}
+\begin{split}\displaystyle \operatorname{X_{D}'}{\left(u',v',r',\delta,thrust' \right)} = - X_{\dot{u}}' \dot{u}' + \dot{u}' m' - m' r'^{2} x_{G}' - m' r' v'\end{split}
+\end{equation}\begin{equation}\label{equation:03.01_inverse_dynamics:eqyd}
+\begin{split}\displaystyle \operatorname{Y_{D}'}{\left(u',v',r',\delta,thrust' \right)} = - Y_{\dot{r}}' \dot{r}' - Y_{\dot{v}}' \dot{v}' + \dot{r}' m' x_{G}' + \dot{v}' m' + m' r' u'\end{split}
+\end{equation}\begin{equation}\label{equation:03.01_inverse_dynamics:eqnd}
+\begin{split}\displaystyle \operatorname{N_{D}'}{\left(u',v',r',\delta,thrust' \right)} = I_{z}' \dot{r}' - N_{\dot{r}}' \dot{r}' - N_{\dot{v}}' \dot{v}' + \dot{v}' m' x_{G}' + m' r' u' x_{G}'\end{split}
+\end{equation}
+
+An example that includes forces calculated with inverse dynamics from motions in a turning circle test can be seen in \hyperref[\detokenize{03.01_inverse_dynamics:fig-inverse}]{\autoref{\detokenize{03.01_inverse_dynamics:fig-inverse}}}. The forces have been converted to SI units.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{kappa/images/1.pdf}
+    \caption{Forces and moments calculated with inverse dynamics on data from a turning circle test.}
+    \label{\detokenize{03.01_inverse_dynamics:fig-inverse}}
+\end{figure}
