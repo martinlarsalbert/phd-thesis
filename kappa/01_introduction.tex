@@ -3,11 +3,11 @@
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %________________________________________
-This Chapter begins with an introduction to the thesis, providing a brief overview of the background, and a discussion of current knowledge gaps, objectives, and limitations. The outline of the thesis is also presented at the end of this Chapter.
+This Chapter begins with an introduction to the thesis, providing a brief overview of the background, and a discussion of current knowledge gaps, objectives, and limitations. The outline of the thesis is also presented at the end of this chapter.
 
 \section{Background}
 Already before knowing it we as as human beings start to form models to understand our surroundings. For a small child, the parents may for instance act as role models. A model could also be a smaller physical copy of an object, like a model airplane or ship. A more scientific representation of a model will be investigated in this thesis as a simplified description of a system or process to assist in calculations and predictions for ship dynamics.
-\textcite{ljung_modeling_2021} describes a model as a tool we use to answer questions about the system without having to do an experiment. This ability can me used in many ship applications:
+\textcite{ljung_modeling_2021} describes a model as a tool we use to answer questions about the system without having to do an experiment. This ability can be used in many ship applications:
 \vspace{0.3cm}
 \begin{itemize}
     \item We can build a virtual prototype model to assess the performance before the ship has been built.
@@ -29,7 +29,21 @@ It is very hard to fully assess if $\mathbf{m}$ is a good approximation of the t
 $$
 y - \mathbf{m} = w + \epsilon
 $$
-Ways to find an approximate mathematical model of some aspects of the ship dynamics system will be explored in this thesis. The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
+In this thesis, we will explore ways to find an approximate mathematical model of some aspects of the ship dynamics. The models can be categorized as white-, black-, or gray-boxes. 
+\vspace{5pt}
+\begin{itemize}
+    \setlength\itemsep{5pt}
+    \item White-box modeling \\
+    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifsson_grey-box_2008}.  
+
+    \item Black-box modeling \\
+    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskog_tools_1995}.
+    
+    \item Grey-box modeling \\
+    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
+\end{itemize}
+\vspace{5pt}
+The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
 The observations could also be from the regular operation with the ship, in natural experiments where the conditions are determined by nature or other factors outside the control of the researchers.
 
 \subsubsection{Multicollinearity and generalization of models} \label{sec:multicollinearity}
@@ -64,36 +78,36 @@ The observations could also be from the regular operation with the ship, in natu
 %This chapter first provides a background by defining the Internet of Ships (IoS), ship digital twins (SDT) and the modelling of rigid body ship dynamics with white-box, black-box, or grey-box models. A literature review of system identification is then presented.
 %The motivation and objective of this research are then stated, followed by the assumptions and limitations.
 
-\section{Background}
-With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
-industry \cite{stanic_toward_2018}.
-The emergence of the Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm \cite{liu_internet_2016-1}. 
-\begin{quote} 
-\vspace{0.1cm}
-``IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipment, the waterway environment, waterway facilities, shore-based facilities, and other navigation elements. The sensing objects are embedded with various sensor and heterogeneous network technologies that enable them to collect and exchange data.'' 
-\vspace{0.1cm}
-\end{quote}
-Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications of the IoS \cite{aslam_internet_2020}.
-A ship digital twin (SDT), which is a digital copy of a real ship, is one way to utilize all data within the IoS \cite{chen_review_2021}. 
-SDTs are data-driven in contrast to the alternative model-based virtual prototyping (VP) \cite{major_framework_2021}. An SDT is typically used as a model for an existing ship from which data can be collected; the VPs are  prototypes for future ships, in which no operational data is available.
-The models for VP and SDT are categorized as white-box, black-box, or grey-box models.White-box models are used in VP. Either black-box or grey-box models are used in the SDTs. 
-\vspace{5pt}
-\begin{itemize}
-    \setlength\itemsep{5pt}
-    \item White-box modeling \\
-    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifsson_grey-box_2008}.  
-
-    \item Black-box modeling \\
-    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskog_tools_1995}.
-    
-    \item Grey-box modeling \\
-    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
-\end{itemize}
-\vspace{5pt}
-
-\noindent The white and black component can be combined as a grey box model in several ways, using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in \autoref{fig:greycombinations}. 
-
-\input{kappa/fig_grey_combinations}
+%\section{Background}
+%With the principles of the Industry 4.0, Shipbuilding 4.0 will transform the design, manufacturing, operation, shipping, services, production systems, maintenance, and value chains in all aspects of the shipbuilding 
+%industry \cite{stanic_toward_2018}.
+%The emergence of the Internet-of-Things (IoT) has led to the introduction of the Internet of Ships (IoS) paradigm \cite{liu_internet_2016-1}. 
+%\begin{quote} 
+%\vspace{0.1cm}
+%``IoS is the interconnecting of sensing objects, such as ships, crews, cargoes, onboard equipment, the waterway environment, waterway facilities, shore-based facilities, and other navigation elements. The sensing objects are embedded with various sensor and heterogeneous network technologies that enable them to collect and exchange data.'' 
+%\vspace{0.1cm}
+%\end{quote}
+%Safety enhancements, route planning and optimization, energy efficiency, automatic berthing and autonomous shipping are some of the emerging applications of the IoS \cite{aslam_internet_2020}.
+%A ship digital twin (SDT), which is a digital copy of a real ship, is one way to utilize all data within the IoS \cite{chen_review_2021}. 
+%SDTs are data-driven in contrast to the alternative model-based virtual prototyping (VP) \cite{major_framework_2021}. An SDT is typically used as a model for an existing ship from which data can be collected; the VPs are  prototypes for future ships, in which no operational data is available.
+%The models for VP and SDT are categorized as white-box, black-box, or grey-box models.White-box models are used in VP. Either black-box or grey-box models are used in the SDTs. 
+%\vspace{5pt}
+%\begin{itemize}
+%    \setlength\itemsep{5pt}
+%    \item White-box modeling \\
+%    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifsson_grey-box_2008}.  
+%
+%    \item Black-box modeling \\
+%    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskog_tools_1995}.
+%    
+%    \item Grey-box modeling \\
+%    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifsson_grey-box_2008}. 
+%\end{itemize}
+%\vspace{5pt}
+%
+%\noindent The white and black component can be combined as a grey box model in several ways, using either a serial or parallel approach \cite{leifsson_grey-box_2008} as seen in \autoref{fig:greycombinations}. 
+%
+%\input{kappa/fig_grey_combinations}
 
 \section{Literature review}
 Ship digital twin (SDT) has a positive trend in the number of publications in recent years (2018-2021). Most of the papers concern ship equipment such as electric power systems, propulsion system, ship hull structure, and marine diesel engines. A small minority of the SDT applications handle ship trajectory, speed, and fuel consumption \cite{assani_ships_2022}.   
