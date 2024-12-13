@@ -6,94 +6,13 @@
 The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models is assumed as the most appropriate model from a collection of candidate models.
 The parameter estimations for roll motion and manoeuvring are presented in \autoref{sec:_roll} and \autoref{sec:_VMM}. The most appropriate models are selected in the model development process which is described in \autoref{sec:cross_validation}.
 
-\section{Roll model parameter estimation} \label{sec:_roll}
-\noindent Parameter estimation can be applied to identify the roll damping parameters ($B_1$, $B_2$, $B_3$) and stiffness parameters ($C_1$, $C_3$, $C_5$) in the parameterized roll motion models from the previous chapter (\autoref{eq:roll_decay_equation_himeno_linear}, \autoref{eq:roll_decay_equation_himeno_quadratic_b} and \autoref{eq:roll_decay_equation_cubic}). These equations do not have unique solutions because each equation can be multiplied by an arbitrary factor to obtain a new valid solution. Inertia is therefore excluded to obtain unique solutions. This is achieved by normalizing the equations by the total roll inertia $A_{44}$, as seen in \autoref{eq:roll_decay_nonedim_a44}, for the linear model.
-
-\input{equations/roll_decay_nonedim_A44}
-
-\noindent The identified normalized damping and stiffness parameters $B_{1A}$ and $C_{1A}$ can be expressed in dimensional units by multiplication with the normalization factor $A_{44}$. If $A_{44}$ is unknown before hand, it can be calculated using \autoref{eq:A_44_eq} \cite{piehl_ship_2016}, assuming that the meta center height $GM$ is known.
-\input{equations/A_44_eq}
-
-\noindent The frequency $\omega_0$ can be obtained with Fast Fourier transform (FFT) of the roll signal. 
-Two methods for parameter estimation have been investigated: the ``derivation approach'', referred to in \textcite{imo_1200_2006}, and the ``integration approach'' used in \textcite{soder_assessment_2019} which are both described in the next subsections. 
-
-\subsection{Derivation approach}\label{sec:derivation_approach}
-In the derivation approach, \autoref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ must be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ also must be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with the extended Kalman filter (EKF) in Paper \ref{pap:pit}).
-A least squares fit must be applied to the roll motion equation to identify the damping and stiffness parameters.
-
-\subsection{Integration approach}\label{sec:integration_approach}
-In the integration approach, \autoref{eq:roll_decay_nonedim_a44} is solved as an ordinary differential equation (ODE) for many estimated sets of parameters until the solution converges. This method is time-consuming, and convergence is not guaranteed. However, the advantage is that only roll angle $\phi$ is needed.
-
-\section{Manoeuvring model parameter estimation} \label{sec:_VMM}
-A new parameter estimation method is proposed in Paper \ref{pap:pit} for the remaining degrees of freedom. A manoeuvring model is used to solve the reversed manoeuvring problem. The problem may consist of predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the manoeuvring model can be identified through regression of the force polynomials on forces predicted with inverse dynamics (see \autoref{\detokenize{03.01_inverse_dynamics::doc}}).
-The measurement noise must be removed prior to the regression of hydrodynamic derivatives in the manoeuvring model. This is conducted by an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother (see \autoref{sec:datacleaning}). The EKF requires an accurate manoeuvring model as the predictor.
-Therefore, the accurate manoeuvring model is both the input and output of the method. As a solution to this dilemma, a linear manoeuvring model that includes hydrodynamic derivatives estimated with semi-empirical formulas (\autoref{app:initial_estimates}) is used as the initial predictor. Once the regressed manoeuvring model has been obtained, the parameter estimation can be refined, using the regressed manoeuvring model as the predictor model in the EKF, to improve the filter and obtain a more accurate manoeuvring model. The method is summarized in \autoref{fig:greyvmm} and can be repeated several times (indicated by the dashed arrow) for improved accuracy. 
-\begin{figure}[h]
-    
-    \centering
-    \begin{tikzpicture}[node distance=1.5cm]
-    %\draw (0,0) rectangle (10,10); %create a bounding box to reserve space
-    \node (data) [io] {\footnotesize Model test data: $x$, $\delta$, thrust};
-    
-    \node (EKF) [process, right of=data, xshift=3.0cm] {\footnotesize EFK + RTS};
-    \node (predictor) [process, right of=EKF, xshift=1.5cm]{\footnotesize Predictor};
-    \node (VMM) [io, right of=predictor, xshift=1.0cm] {\footnotesize initial model};
-    
-    \node (data_clean) [io, below of=EKF] {\footnotesize \(x,\dot{x},\ddot{x}, \delta, thrust\)};
-    
-    \node (black-box) [black-box, below of=data_clean] {\footnotesize Regression};
-    
-    \node (X_D) [io, left of=black-box, xshift=-0.70cm, yshift=0.7cm]{\footnotesize \(X_D\)};
-    \node (Y_D) [io, left of=black-box, xshift=-0.70cm, yshift=0cm]{\footnotesize \(Y_D\)};
-    \node (N_D) [io, left of=black-box, xshift=-0.70cm, yshift=-0.7cm]{\footnotesize \(N_D\)};
-    
-    \node (white-box) [white-box, left of=Y_D, xshift=-1.00cm] {\footnotesize Inverse dynamics};
-    
-    
-    %
-    %
-    \node (coefficients) [io, right of=black-box, xshift=1.5cm] {\footnotesize model$\left(Y_{uv},N_{\delta},...\right)$};
-    
-    \draw [arrow] (data) -- (EKF);
-    \draw [arrow] (predictor) -- (EKF);
-    \draw [arrow] (VMM) -- (predictor);
-    \draw [arrow] (EKF) -- (data_clean);
-    
-    \draw [arrow] (data_clean) -| (white-box);
-    \draw [arrow] (data_clean) -- (black-box);
-    
-    \draw [arrow] (white-box) -- (X_D);
-    \draw [arrow] (white-box) -- (Y_D);
-    \draw [arrow] (white-box) -- (N_D);
-    
-    \draw [arrow, shorten >=0.5cm] (X_D) -- (black-box);
-    \draw [arrow, shorten >=0.2cm] (Y_D)  -- (black-box);
-    \draw [arrow, shorten >=0.5cm] (N_D)  -- (black-box);
-    
-    
-    \draw [arrow] (black-box)  -- (coefficients);
-    \draw [arrow, dashed] (coefficients)  -- (predictor);
-    
-    \end{tikzpicture}
-    \caption{Method to estimate the manoeuvring model hydrodynamic derivatives.}
-    \label{fig:greyvmm}
-\end{figure}
-
-\noindent Using semi-empirical formulas (\autoref{app:initial_estimates}) for the initially estimated manoeuvring model adds prior knowledge about the ship dynamics to the regression. An example, with simulation results from the steps in the iteration, is presented in \hyperref[\detokenize{01.01_method:iterations}]{\autoref{\detokenize{01.01_method:iterations}}}.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\textwidth]{kappa/images/0.pdf}
-    \caption{Simulation with: initial model and first and second iteration of the parameter estimation method.}
-    \label{\detokenize{01.01_method:iterations}}
-\end{figure}
-
-\input{kappa/PIT}
-\input{kappa/regression}
-\input{kappa/EKF}
-\input{kappa/generalization}
-\input{kappa/model_development_process}
+\input{kappa/method Roll model parameter estimation}
 \input{kappa/VCT}
-\input{kappa/test_cases}
+\input{kappa/method Manoeuvring model parameter estimation}
+\input{kappa/method PIT}
+\input{kappa/method regression}
+\input{kappa/method EKF}
+\input{kappa/method generalization}
+\input{kappa/method model_development_process}
+\input{kappa/method test_cases}
 

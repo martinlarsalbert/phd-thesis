@@ -1,0 +1,64 @@
+\section{Manoeuvring model parameter estimation} \label{sec:_VMM}
+A new parameter estimation method is proposed in Paper \ref{pap:pit} for the remaining degrees of freedom. A manoeuvring model is used to solve the reversed manoeuvring problem. The problem may consist of predicting unknown forces from known manoeuvring model test data. The hydrodynamic derivatives in the manoeuvring model can be identified through regression of the force polynomials on forces predicted with inverse dynamics (see \autoref{\detokenize{03.01_inverse_dynamics::doc}}).
+The measurement noise must be removed prior to the regression of hydrodynamic derivatives in the manoeuvring model. This is conducted by an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother (see \autoref{sec:datacleaning}). The EKF requires an accurate manoeuvring model as the predictor.
+Therefore, the accurate manoeuvring model is both the input and output of the method. As a solution to this dilemma, a linear manoeuvring model that includes hydrodynamic derivatives estimated with semi-empirical formulas (\autoref{app:initial_estimates}) is used as the initial predictor. Once the regressed manoeuvring model has been obtained, the parameter estimation can be refined, using the regressed manoeuvring model as the predictor model in the EKF, to improve the filter and obtain a more accurate manoeuvring model. The method is summarized in \autoref{fig:greyvmm} and can be repeated several times (indicated by the dashed arrow) for improved accuracy. 
+\begin{figure}[h]
+    
+    \centering
+    \begin{tikzpicture}[node distance=1.5cm]
+    %\draw (0,0) rectangle (10,10); %create a bounding box to reserve space
+    \node (data) [io] {\footnotesize Model test data: $x$, $\delta$, thrust};
+    
+    \node (EKF) [process, right of=data, xshift=3.0cm] {\footnotesize EFK + RTS};
+    \node (predictor) [process, right of=EKF, xshift=1.5cm]{\footnotesize Predictor};
+    \node (VMM) [io, right of=predictor, xshift=1.0cm] {\footnotesize initial model};
+    
+    \node (data_clean) [io, below of=EKF] {\footnotesize \(x,\dot{x},\ddot{x}, \delta, thrust\)};
+    
+    \node (black-box) [black-box, below of=data_clean] {\footnotesize Regression};
+    
+    \node (X_D) [io, left of=black-box, xshift=-0.70cm, yshift=0.7cm]{\footnotesize \(X_D\)};
+    \node (Y_D) [io, left of=black-box, xshift=-0.70cm, yshift=0cm]{\footnotesize \(Y_D\)};
+    \node (N_D) [io, left of=black-box, xshift=-0.70cm, yshift=-0.7cm]{\footnotesize \(N_D\)};
+    
+    \node (white-box) [white-box, left of=Y_D, xshift=-1.00cm] {\footnotesize Inverse dynamics};
+    
+    
+    %
+    %
+    \node (coefficients) [io, right of=black-box, xshift=1.5cm] {\footnotesize model$\left(Y_{uv},N_{\delta},...\right)$};
+    
+    \draw [arrow] (data) -- (EKF);
+    \draw [arrow] (predictor) -- (EKF);
+    \draw [arrow] (VMM) -- (predictor);
+    \draw [arrow] (EKF) -- (data_clean);
+    
+    \draw [arrow] (data_clean) -| (white-box);
+    \draw [arrow] (data_clean) -- (black-box);
+    
+    \draw [arrow] (white-box) -- (X_D);
+    \draw [arrow] (white-box) -- (Y_D);
+    \draw [arrow] (white-box) -- (N_D);
+    
+    \draw [arrow, shorten >=0.5cm] (X_D) -- (black-box);
+    \draw [arrow, shorten >=0.2cm] (Y_D)  -- (black-box);
+    \draw [arrow, shorten >=0.5cm] (N_D)  -- (black-box);
+    
+    
+    \draw [arrow] (black-box)  -- (coefficients);
+    \draw [arrow, dashed] (coefficients)  -- (predictor);
+    
+    \end{tikzpicture}
+    \caption{Method to estimate the manoeuvring model hydrodynamic derivatives.}
+    \label{fig:greyvmm}
+\end{figure}
+
+\noindent Using semi-empirical formulas (\autoref{app:initial_estimates}) for the initially estimated manoeuvring model adds prior knowledge about the ship dynamics to the regression. An example, with simulation results from the steps in the iteration, is presented in \hyperref[\detokenize{01.01_method:iterations}]{\autoref{\detokenize{01.01_method:iterations}}}.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{kappa/images/0.pdf}
+    \caption{Simulation with: initial model and first and second iteration of the parameter estimation method.}
+    \label{\detokenize{01.01_method:iterations}}
+\end{figure}
