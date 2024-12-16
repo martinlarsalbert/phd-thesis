@@ -12,32 +12,7 @@ The dynamics of a ship comprise a variety of forces and motions in the six degre
     \caption{Mass-spring-damper model. Copyright Wikipedia.}
     \label{fig:enter-label}
 \end{figure}
-\section{Roll motion} \label{sec:roll}
-The roll motion without manoeuvres or external forces can be expressed by  \cite{himeno_prediction_1981},
-\input{equations/roll_decay_equation_general_himeno}
-\noindent where the static stability of the ship is expressed as the stiffness $C_{44}(\phi)$ with a function of the roll angle $\phi$, the damping $B_{44}(\dot{\phi})$ with a function of the roll velocity $\dot{\phi}$ and inertia $A_{44}$ connected to the roll acceleration $\ddot{\phi}$. The ship's roll motion can be observed under these conditions in a roll-decay test. The model is forced to an initial roll angle, as seen in \autoref{fig:rolldecay_initial}. The model is then released (\autoref{fig:rolldecay_free}) and rolls back to equilibrium (\autoref{fig:rolldecay_equilibrium}). The model will pass this static equilibrium point as a result of momentum and not stop until it has reached the end point on the other side (\autoref{fig:rolldecay_endpoint}). This motion starts a new cycle in which the model rolls back again. This new cycle results in oscillatory motion where potential energy is transferred to kinetic energy and back to potential energy.
-\input{kappa/images/rolldecay_test}
-\noindent This oscillation would never end if it was not for the roll damping. Interactions between the ship and the water, such as friction, wave generation, eddy generation, and hydrodynamic lift, will cause the ship to lose some of its energy. The energy loss means that the oscillation is decaying over time, as seen in \autoref{fig:rolldecay}, which displays the time series for the roll angle.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.7\linewidth]{kappa/images/rolldecay_example.pdf}
-    \caption{Example roll decay signal.}
-    \label{fig:rolldecay}
-\end{figure}
-
-\noindent The damping $B_{44}\left(\dot{\phi}\right)$ can be expressed as an expansion series:  
-\begin{equation}
-    B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n
-\end{equation}
- 
-\noindent This series can be truncated to be expressed as a ``linear model'' (\autoref{eq:roll_decay_equation_himeno_linear}), ``quadratic model'' (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and ``cubic model'' (\autoref{eq:roll_decay_equation_cubic}).
-
-\input{equations/roll_decay_equation_himeno_linear}
-\input{equations/roll_decay_equation_himeno_quadratic_b}
-\input{equations/roll_decay_equation_cubic}
-Models for the remaining degrees of freedom are presented in the next section.
-\vspace{-0.2cm}
+\input{kappa/model_roll}
 \input{kappa/VMM}
 \input{kappa/propeller_model}
 \input{kappa/prime_system}
