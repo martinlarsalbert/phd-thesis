@@ -1,0 +1,87 @@
+\section{Manoeuvring} \label{sec:manoeuvring}
+The ship manoeuvring dynamics is modeled as a state space model (\autoref{eq:state_space})
+\begin{equation}
+    \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{u})
+    \label{eq:state_space}
+\end{equation}
+where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the input vector $\mathbf{u}$ through the transition function $f(\mathbf{x},\mathbf{u})$. A state with the position and orientation, velocities and turning rate defines the state of the ship in 3 DOF (\autoref{eq:state}). 
+\begin{equation}
+    \mathbf{x} = [x0,y0,\Psi, u,v,r]^T
+    \label{eq:state}
+\end{equation}
+
+The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in the surge $X$, sway $Y$, and yaw $N$ degrees of freedom. The kinematics can be expressed as function of a velocity vector $\pmb{\bm{\upsilon}}$ (\autoref{eq:upsilon}), since the forces do not depend on the position ($x_0,y_0$) or heading $\Psi$, during the manoeuvre.
+\begin{figure}[h]
+    \centering
+    \includesvg{figures/reference_frames.svg}
+    \caption{Relations between the earth fixed and ship fixed reference frames, showing the velocities and forced in the ship fixed frame.}
+    \label{fig:reference_frames}
+\end{figure}
+\begin{equation}
+    \label{eq:upsilon}
+    %\input{equations/155.10_Fossen_model.upsilon}
+    \pmb{\bm{\upsilon}} = \left[\begin{matrix}u\\v\\r\end{matrix}\right]
+\end{equation}
+The equation of motion can thus be expressed as \autoref{eq:eom}
+\begin{equation}
+    \label{eq:eom}
+    \mathbf{F} = \mathbf{M}  \pmb{\bm{\dot{\upsilon}}} 
+\end{equation}
+where $\pmb{\bm{\dot{\upsilon}}}$ is the acceleration vector, $\mathbf{M}$ is the system inertia matrix and $\mathbf{F}$ is the total force vector.
+The velocity transition can thus be expressed as
+\begin{equation}
+    \label{eq:acc}
+    \pmb{\bm{\dot{\upsilon}}} = \mathbf{M}^{-1}\mathbf{F}
+\end{equation}
+The total forces can be divided into the Coriolis–centripetal matrix $\mathbf{C}$ and the damping force vector $\mathbf{D}$ \citep{fossenHandbookMarineCraft2011}. The control forces from the rudder and propeller are included in the $\mathbf{D}$ matrix.
+\begin{equation}
+    \label{eq:upsilon1d}
+\mathbf{F} = - \mathbf{C} \upsilon + \mathbf{D}
+\end{equation}
+$\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossen_handbook_2011} as shown in \autoref{eq:M_expanded} and \autoref{eq:C_expanded}. 
+\begin{equation}
+    \label{eq:M_expanded}
+    \input{equations/155.10_Fossen_model.M_expanded}
+\end{equation}
+\begin{equation}
+    \label{eq:C_expanded}
+    \input{equations/155.10_Fossen_model.C_expanded}
+\end{equation}
+where $X_{\dot{u}},Y_{\dot{v}},Y_{\dot{r}},N_{\dot{v}},N_{\dot{r}} < 0$. 
+For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass matrix $\mathbf{M}$ can be calculated as:
+\begin{equation}
+    \label{eq:M_inv}
+    \input{equations/155.10_Fossen_model.M_inv}
+\end{equation}
+with the helper variable $S$:
+\begin{equation}
+    \label{eq:S}
+    \input{equations/155.10_Fossen_model.S}
+\end{equation}
+If we introduce the damping forces vector:
+\begin{equation}
+    \label{eq:D}
+    \input{equations/155.10_Fossen_model.D}
+\end{equation}
+the total force vector $\mathbf{F}$ can now be expressed as:
+\begin{equation}
+    \label{eq:F_expanded}
+    %\input{equations/155.10_Fossen_model.F_expanded}
+\mathbf{F} = 
+\left[\begin{matrix}
+X \\
+Y \\
+N \\
+\end{matrix}\right]
+=
+\left[\begin{matrix}X_{D} - Y_{\dot{r}} r^{2} + m r^{2} x_{G} + r v \left(- Y_{\dot{v}} + m\right)\\Y_{D} + r u \left(X_{\dot{u}} - m\right)\\N_{D} + r u \left(Y_{\dot{r}} - m x_{G}\right) + \underbrace{u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)}_{\text{Munk moment}} \end{matrix}\right]
+\end{equation}
+\mynote{The yawing moment $N$ has the so called Munk moment \cite{fossen_handbook_2011}:
+$$
+u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)
+$$
+In many other manoeuvring models such as the Abkowitz \cite{abkowitz_ship_1964} or MMG model \cite{yasukawa_introduction_2015}, the Munk moment is not explicitly included in the equations. The Munk moment contribution will instead be included in some of the hull coefficients, typically $N_V$ or ideally $N_{uv}$ if such a coefficient exist in the model.}
+\newline
+\vspace{0.3cm}
+\mynote{The sway force $Y$ has the apparent centrifugal force from added mass and rigid body mass: 
+$$r u \left(X_{\dot{u}} - m\right)$$ where $X_{\dot{u}}<0$ so that both added mass and rigid body mass create the centrifugal force acting outward in the turn. Both the added mass and rigid body mass will thus act to starboard on a port turn.}

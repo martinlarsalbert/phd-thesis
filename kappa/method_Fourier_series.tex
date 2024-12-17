@@ -1,6 +1,6 @@
-\section{Fourier series method}
+\section{Added mass estimation with the Fourier series method}
 \label{sec:fourier}
-The yaw added mass $N_{\dot{r}}$ was determined with the Fourier series method \citep{sakamotoURANSSimulationsStatic2012} applied on a pure yaw test conducted in a a fully nonlinear potential flow (FNPF) panel method in ShipFlow Motions (Motions) \citep{kjellbergFullyNonlinearUnsteady2013}.
+The yaw added mass $N_{\dot{r}}$ was determined with the Fourier series method \cite{sakamoto_cfd_2021} applied on a pure yaw test conducted in a a fully nonlinear potential flow (FNPF) panel method in ShipFlow Motions (Motions) \cite{kjellberg_fully_2013}.
 During the pure yaw test the heading $\Psi$ was varied according to \autoref{eq:pure_yaw_psi} so that the yaw rate $r$ and yaw acceleration $\dot{r}$ were varied according to \autoref{eq:pure_yaw_r}, and \autoref{eq:pure_yaw_r1d}.
 \begin{equation}
     \Psi = - \Psi_{max} \cos{\left(t w \right)}
@@ -40,7 +40,15 @@ The time series for the yawing moment during the pure yaw test could thus be exp
 An example of the fitted Fourier series is shown in \autoref{fig:fourier}. The sway added mass $Y_{\dot{v}}$ was determined in a similar way, but instead by conducting a pure sway test. The coupled added masses $N_{\dot{v}}$, and $Y_{\dot{r}}$ were determined with strip theory calculations using Franks close fit method.
 \begin{figure}[h]
     \centering
-    \includesvg{figures/methodology_pure_yaw_no_FFT.reconstruction.svg}
-    \caption{Fourier series fit to the pure yaw Motions results to determine the yaw added mass for wPCC.}
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includesvg[width=0.99\textwidth]{figures/methodology_pure_yaw_no_FFT.track_plot.svg}
+        \caption{Track plot.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \includesvg[width=0.99\textwidth]{figures/methodology_pure_yaw_no_FFT.reconstruction.svg}
+        \caption{Fourier series fit.}
+    \end{subfigure}
+    \caption{Pure yaw ShipFlow Motions results to determine the yaw added mass.}
     \label{fig:fourier}
 \end{figure}

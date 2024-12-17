@@ -1,1 +1,60 @@
-\section{Virtual captive tests} \label{sec:VCT}
+\section{Parameter estimation from virtual captive tests} \label{sec:VCT}
+The manoeuvring performance of the ship is ultimately assessed during the sea trials, after the ship has been built. Earlier assessments are usually carried out in free running model tests (FRMT) or captive model tests (CMT). The performance can also be assessed with CFD. Direct CFD manoeuvring simulations is \cite{moctar} 
+
+is usually investigated with free running model tests (FRMT)  
+
+Direct CFD manoeuvring simulations can 
+
+The state space model representation (\autoref{eq:state_space}).
+
+
+
+
+VCT calculations are conducted by solving a set of static flow calculations with CFD. The VCT test matrices (\autoref{tab:VCT_wPCC}, \autoref{tab:VCT_optiwise}) are selected to have a good coverage of the states that the ship will have during the maneuver. How the combinations of drift angle and yaw rate have been selected is shown in \autoref{fig:phase_plots}, for the wPCC and Optiwise. 
+\begin{figure}[h]
+     \centering
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includesvg{figures/methodology_VCT_wPCC.phase_plot.svg}
+        \caption{wPCC.}
+        \label{fig:VCT_phase_plot_wPCC}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includesvg{figures/methodology_VCT_optiwise.phase_plot.svg}
+        \caption{Optiwise.}
+        \label{fig:VCT_phase_plot_optiwise}
+     \end{subfigure}
+        \caption{Phase plots of the zigzag tests together with the coverage of the VCTs and extra state VCTs.}
+        \label{fig:phase_plots}
+\end{figure}
+
+The forces from the VCT $X_{VCT}$, $Y_{VCT}$, and $N_{VCT}$ are recalculated with \autoref{eq:X_D} -- \autoref{eq:N_D}, to obtain the damping forces.
+\begin{equation}
+    \label{eq:X_D}
+    X_{D} = X_{VCT} + Y_{\dot{r}} r^{2} + Y_{\dot{v}} r v
+\end{equation}
+\begin{equation}
+    \label{eq:Y_D}
+    Y_{D} = - X_{\dot{u}} r u + Y_{VCT}
+\end{equation}
+\begin{equation}
+    \label{eq:N_D}
+    N_{D} = N_{VCT} + X_{\dot{u}} u v - Y_{\dot{r}} r u - Y_{\dot{v}} u v
+\end{equation}
+The mass $m$ has disappeared from \autoref{eq:F_expanded} to arrive at these expressions, because the ship is not moving in ShipFlow, instead the water is having an either oblique or circular inflow \citep{roychoudhuryCFDSimulationsSteady2017}.
+The hull forces are calculated by subtracting the rudder and propeller contributions from the total forces (\autoref{eq:X_H_VCT} -- \autoref{eq:N_H_VCT}).
+\begin{equation}
+    \label{eq:X_H_VCT}
+    X_H = X_D - X_R - X_P
+\end{equation}
+\begin{equation}
+    \label{eq:Y_H_VCT}
+    Y_H = Y_D - Y_R
+\end{equation}
+\begin{equation}
+    \label{eq:N_H_VCT}
+    N_H = N_D - N_R
+\end{equation}
+These forces are used together with the hull force model (\autoref{eq:X_H} -- \autoref{eq:N_H}) to define a linear regression problem that is solved with the ordinary least square (OLS) method. 

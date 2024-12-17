@@ -1,0 +1,12 @@
+\subsection{Modified quadratic MMG rudder model}
+A modified quadratic MMG rudder model is proposed in Paper \ref{pap:vct}, with two enhancements to the original MMG rudder model \cite{yasukawa_introduction_2015}. The first enhancement is to add the rudder initial inflow angle $\gamma_0$ to the calculation of the effective inflow angle to the rudder $\alpha_R$, by replacing equation 21 in \textcite{yasukawa_introduction_2015} with the modified equation (\autoref{eq:alpha_R2}). This allows the rudder model to produce a side force in the straight ahead condition, due to unsymmetrical flow from the propeller. 
+\begin{equation}
+    \label{eq:alpha_R2}
+    %\input{equations/mathematical_model_kinetics.alpha_R_semiempirical}
+    \alpha_{R} = \delta + \underbrace{\gamma_{0}}_{~} + \operatorname{atan}{\left(\frac{v_{R}}{u_{R}} \right)}
+\end{equation}
+The other enhancement is to allow for a quadratic relationship between the flow straightening coefficient $\gamma_R$ and the effective inflow angle $\beta_R$ by introducing two new coefficients $\gamma_{R2neg}$, and $\gamma_{R2pos}$ as shown in \autoref{eq:gamma_R2}. The $\gamma_R$ calculated by this expression can be used in the equation 23 in \textcite{yasukawa_introduction_2015} to calculate the rudder transverse velocity.  
+\begin{equation}
+    \label{eq:gamma_R2}
+    \input{equations/mathematical_model_kinetics.gamma_R_semiempirical}
+\end{equation}
