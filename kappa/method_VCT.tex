@@ -1,17 +1,62 @@
 \section{Parameter estimation from virtual captive tests} \label{sec:VCT}
-The manoeuvring performance of the ship is ultimately assessed during the sea trials, after the ship has been built. Earlier assessments are usually carried out in free running model tests (FRMT) or captive model tests (CMT). The performance can also be assessed with CFD. Direct CFD manoeuvring simulations is \cite{} 
+The manoeuvring performance of the ship is ultimately assessed during the sea trials, after the ship has been built. However, there are a need for earlier assessments, which are usually carried out in free running model tests (FRMT) or captive model tests (CMT). Performance can also be assessed with CFD. Direct CFD manoeuvring simulations in the time domain \cite{el_moctar_rans-based_2014} is the CFD equivalent to the FRMTs, which is potentially the most accurate way to assess manoeuvring with CFD. However, these calculations are very computationally expensive, and, like FRMTs, the results are case-specific and cannot be generalized to other scenarios. 
 
-is usually investigated with free running model tests (FRMT)  
+The computational cost of CFD calculations can be significantly reduced by assuming a memory-less state space model (\autoref{eq:state_space}) -- the Markov process assumption. This means that the forces acting on the ship at each time instant can be built up as a series of independent static flow calculations. 
+The independence means that the static flow calculations are independent of time, and the order in which they are calculated does no longer matter. The Markov process assumption opens up for a large gain in computational efficiency from the fact that the ship experiences the same state $\mathbf{x}$ and input $\mathbf{u}$, or very similar state and input, several times during a maneuver. This means that the same static flow result can be reused several times -- or at least conceptually, we can think of it that way. Concretely this is achieved by identifying a prediction model to the static flow results, the VCT data, so that forces for each state during the maneuver can be predicted. 
 
-Direct CFD manoeuvring simulations can 
+One of the challenges with VCT is to make a good selection of static flow calculations. This means having a VCT matrix that contains the most important states during the maneuver, filling the relevant parts of the state space.  
 
-The state space model representation (\autoref{eq:state_space}).
+The ship kinematics are defined by the velocity vector $\pmb{\bm{\upsilon}}$ and the input vector $\mathbf{u}$ so that the forces for each state can be uniquely defined by the velocities $u$, $v$, and $r$, and the input forces from the rudder and propeller. If these forces are then uniquely defined by the thrust and rudder angle, this means that the state space spans at least five dimensions, which would require a lot of VCT calculations to cover the whole state space.
 
+Another challenge with VCT is therefore to select a prediction model -- the manoeuvring model -- that resembles as much of the true hydrodynamics as possible, so that high accuracy can be obtained without having to span the whole state space.  
 
-
-
-VCT calculations are conducted by solving a set of static flow calculations with CFD. The VCT test matrices (\autoref{tab:VCT_wPCC}, \autoref{tab:VCT_optiwise}) are selected to have a good coverage of the states that the ship will have during the maneuver. How the combinations of drift angle and yaw rate have been selected is shown in \autoref{fig:phase_plots}, for the wPCC and Optiwise. 
-\begin{figure}[h]
+\autoref{tab:VCT_wPCC} and \autoref{tab:VCT_optiwise} show the VCT matrices for the wPCC and Optiwise test cases.
+The coverage of the yaw rate and drift angle space is shown by the phase plots in \autoref{fig:phase_plots}.
+% wPCC
+\begin{table}[h]
+    \centering
+    \small
+    \caption{State variations with VCT for wPCC.}
+    \label{tab:VCT_wPCC}
+    \pgfplotstabletypeset[col sep=comma, column type=c, style=string type,
+        columns/Test type/.style={column type=l,string type},
+        columns/V/.style={column type=c,string type, column name=$V$ [m/s]},
+        columns/beta_deg/.style={column type=c,string type, column name=$\beta$ [deg]},
+        columns/r/.style={column type=c,string type, column name=$r$ [rad/s]},
+        columns/delta_deg/.style={column type=c,string type, column name=$\delta$ [deg]},
+        columns/rev/.style={column type=c,string type, column name=rev [1/s]},
+        %columns/r/.style={column type=r,fixed,fixed zerofill,precision=2, column name=$r$ [rad/s]},
+        %columns/V_R/.style={fixed,fixed zerofill,precision=2, column name=$V_R$ [m/s]},
+        %columns/gamma_deg/.style={fixed,fixed zerofill,precision=1, column name=$\gamma$ [deg]},
+        %columns/Y_R/.style={fixed,fixed zerofill,precision=1, column name=$Y_R^{VCT}$ [N]},
+        %columns/Y_R_MMG/.style={fixed,fixed zerofill,precision=1, column name=$Y_R^{MMG}$ [N]},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/methodology_VCT_wPCC.variations.csv}
+\end{table}
+% Optiwise
+\begin{table}[h]
+    \centering
+    \small
+    \caption{State variations with VCT for Optiwise.}
+    \label{tab:VCT_optiwise}
+    \pgfplotstabletypeset[col sep=comma, column type=c, style=string type,
+        columns/Test type/.style={column type=l,string type},
+        columns/V/.style={column type=c,string type, column name=$V$ [m/s]},
+        columns/beta_deg/.style={column type=c,string type, column name=$\beta$ [deg]},
+        columns/r/.style={column type=c,string type, column name=$r$ [rad/s]},
+        columns/delta_deg/.style={column type=c,string type, column name=$\delta$ [deg]},
+        columns/rev/.style={column type=c,string type, column name=rev [1/s]},
+        %columns/r/.style={column type=r,fixed,fixed zerofill,precision=2, column name=$r$ [rad/s]},
+        %columns/V_R/.style={fixed,fixed zerofill,precision=2, column name=$V_R$ [m/s]},
+        %columns/gamma_deg/.style={fixed,fixed zerofill,precision=1, column name=$\gamma$ [deg]},
+        %columns/Y_R/.style={fixed,fixed zerofill,precision=1, column name=$Y_R^{VCT}$ [N]},
+        %columns/Y_R_MMG/.style={fixed,fixed zerofill,precision=1, column name=$Y_R^{MMG}$ [N]},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/methodology_VCT_optiwise.variations.csv}
+\end{table}
+\begin{figure}[H]
      \centering
      \begin{subfigure}[b]{0.49\textwidth}
          \centering
@@ -30,7 +75,8 @@ VCT calculations are conducted by solving a set of static flow calculations with
         \label{fig:phase_plots}
 \end{figure}
 
-The forces from the VCT $X_{VCT}$, $Y_{VCT}$, and $N_{VCT}$ are recalculated with \autoref{eq:X_D} -- \autoref{eq:N_D}, to obtain the damping forces.
+The hydrodynamic damping forces are calculated from the VCT results $X_{VCT}$, $Y_{VCT}$, and $N_{VCT}$ 
+with \autoref{eq:X_D} -- \autoref{eq:N_D}.
 \begin{equation}
     \label{eq:X_D}
     X_{D} = X_{VCT} + Y_{\dot{r}} r^{2} + Y_{\dot{v}} r v
@@ -43,7 +89,7 @@ The forces from the VCT $X_{VCT}$, $Y_{VCT}$, and $N_{VCT}$ are recalculated wit
     \label{eq:N_D}
     N_{D} = N_{VCT} + X_{\dot{u}} u v - Y_{\dot{r}} r u - Y_{\dot{v}} u v
 \end{equation}
-The mass $m$ has disappeared from \autoref{eq:F_expanded} to arrive at these expressions, because the ship is not moving in ShipFlow, instead the water is having an either oblique or circular inflow \citep{roychoudhuryCFDSimulationsSteady2017}.
+The mass $m$ has disappeared from \autoref{eq:F_expanded} to arrive at these expressions, because the ship is not moving in ShipFlow, instead the water is having an either oblique or circular inflow \citep{choud}.
 The hull forces are calculated by subtracting the rudder and propeller contributions from the total forces (\autoref{eq:X_H_VCT} -- \autoref{eq:N_H_VCT}).
 \begin{equation}
     \label{eq:X_H_VCT}
