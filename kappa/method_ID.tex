@@ -1,0 +1,25 @@
+\section{Inverse dynamics} \label{sec:ID}
+The forces acting on the ship during a maneuver can be estimated with inverse dynamics from the equation of motion (\autoref{eq:eom}) when the mass matrix $\mathbf{M}$ and the acceleration vector $\pmb{\bm{\dot{\upsilon}}}$ are known. The hydrodynamic damping forces can be calculated by inserting the total force $\mathbf{F}$ from \autoref{eq:F_expanded} into \autoref{eq:eom} and then solve for $X_D$, $Y_D$, and $N_D$ as shown in \autoref{eq:ID_X}-\autoref{eq:ID_N}.
+\begin{equation}
+    \label{eq:ID_X}
+    \input{equations/methodology_ID.X_D}
+\end{equation}
+\begin{equation}
+    \label{eq:ID_Y}
+    \input{equations/methodology_ID.Y_D}
+\end{equation}
+\begin{equation}
+    \label{eq:ID_N}
+    \input{equations/methodology_ID.N_D}
+\end{equation}
+These expressions are used to estimate the forces acting on the ship during FRMTs, for instance as shown for a turning circle test in \autoref{fig:ID}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{kappa/images/1.pdf}
+    \caption{Forces and moments calculated with inverse dynamics on data from a turning circle test.}
+    \label{fig:ID}
+\end{figure}
+
+The estimated inverse dynamics forces were used in Paper \ref{pap:pit} and \ref{pap:physics} as input to an inverse dynamics regression (see \autoref{sec:IDR}). 
+
+Inverse dynamics was also used in Paper \ref{pap:physics} and \ref{pap:vct} to estimate the forces acting on the ship during the FRMTs to be compared with the model force predictions. This is a more informative way to assess model performance than, for instance, using open-loop or closed-loop simulations. The benefit is that the model and experiment will always be at the same state, which is not the case when simulations are used.
