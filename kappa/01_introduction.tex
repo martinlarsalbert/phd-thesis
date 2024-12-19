@@ -46,8 +46,6 @@ In this thesis, we will explore ways to find an approximate mathematical model o
 The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
 The observations could also be from the regular operation with the ship, in natural experiments where the conditions are determined by nature or other factors outside the control of the researchers.
 
-\subsubsection{Multicollinearity and generalization of models} \label{sec:multicollinearity}
-
 %\section{Old}
 %%Section comments: Be mindful of using objective language. Avoid using general words like "good" or "special." It would also help to explain the example used for the Butterfly effect more.
 %The use of twin models is not a new idea. NASA built twin rockets for the Apollo missions, where one rocket went to the Moon and the other twin rocket stayed on Earth.
@@ -110,8 +108,7 @@ The observations could also be from the regular operation with the ship, in natu
 %\input{kappa/fig_grey_combinations}
 
 \input{kappa/literature_review}
-
-
+\input{kappa/terminology}
 
 
 
@@ -119,6 +116,9 @@ The observations could also be from the regular operation with the ship, in natu
 \section{Motivation and objective}
 \label{sec:motivation}
 % Motivation:
+\textcolor{red}{Knowledge gap? ...leading to the objectives}
+
+
 A profuse amount of data concerning the operation of ships in the oceans is collected daily. Many uses and potential applications of this data remains to be discovered. The use of SDTs (which are modelled as white-boxes, black-boxes, or grey-boxes) has potential .
 Black-box modeling is entirely data-driven, which means that no prior understanding of the system generating the data is needed. Therefore, it is an attractive option for the SDT modelling. One caveat is that the black-box modeling may provide infeasible models outside of the domain covered by the available data \cite{nielsen_machine_2022}. 
 
@@ -137,26 +137,39 @@ Rigid body ship dynamics at full scale sea conditions comprises uncertainties fr
 \end{itemize}
 \vspace{5pt}
 
-\noindent The simplification this thesis presents is limiting the uncertainties at full scale sea conditions by using model test data from a controlled laboratory environment. The main objective of this thesis is to:
+\noindent The simplification this thesis presents is limiting the uncertainties at full scale sea conditions by using model test data from a controlled laboratory environment. The main objective of this thesis is:
 % Objective: 
 % Objectives --> Conclusions!
-\begin{quote}
-\vspace{0.1cm}
-\objective \\
-\vspace{-0.3cm}
-\end{quote}
-To fulfill the research objective, the goals for this thesis have been formulated by following the step-by-step approach. The approach consists of reducing complexity and then gradually increasing the model complexity:
+\vspace{0.2cm}
+\begin{tcolorbox}[sharp corners,title=Objective]
+\objective
+\end{tcolorbox}
+\vspace{0.3cm}
+This main objective is divided into smaller research objectives given in the following:
+\begin{tabular}{p{10cm}}
+\centering
+\begin{enumerate}
+    \item Find a good method to estimate the parameters within a system mathematical model from time series data.
+    \vspace{0.2cm}
+    \item Propose suitable mathematical models to describe the calm water ship dynamics. What does the true model look like?
+    \vspace{0.2cm}
+    \item Assure the model generalization, for predictions outside of the domain covered by the available data.
+    \vspace{0.2cm}
+    \item Improve state of art rudder prediction models so that the multicollinearity between rudder and hull forces can be better handled in system identification.
+\end{enumerate}
+\end{tabular}
 
-\subsubsection*{\normalfont \color{black} \textbf{Roll motion model}}
-The first goal of the thesis is to develop a model for the calm water rigid body ship dynamics in the roll degree of freedom; it is based on model test data.
+%\subsubsection*{\normalfont \color{black} \textbf{Roll motion model}}
+%The first goal of the thesis is to develop a model for the calm water rigid body ship dynamics in the roll degree of freedom; it is based on model test data.
+%
+%\subsubsection*{\normalfont \color{black} \textbf{Manoeuvring model}}
+%The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom, which addresses the manoeuvring problem.
+%
+%\subsubsection*{\normalfont \color{black} \textbf{Model generalization}}
+%The third goal is a constraint. In order to be of practical use in the internet of ships (IoS) applications, the models must be able to make predictions outside of the domain covered by the available data.
+%
+%\section{Assumptions and limitations}
 
-\subsubsection*{\normalfont \color{black} \textbf{Manoeuvring model}}
-The second goal is to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom, which addresses the manoeuvring problem.
-
-\subsubsection*{\normalfont \color{black} \textbf{Model generalization}}
-The third goal is a constraint. In order to be of practical use in the internet of ships (IoS) applications, the models must be able to make predictions outside of the domain covered by the available data.
-
-\section{Assumptions and limitations}
 % Assumptions --> Future work
 %Calm waters...
 The calm water condition is used as a simplification of the real sea condition that a ship encounters. This condition does not account for the factors of wind, waves, and currents. These assumptions simplify the system identification by reducing the degrees of freedom to: surge, sway, yaw and, roll. 
