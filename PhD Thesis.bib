@@ -1921,7 +1921,7 @@ Publisher: Multidisciplinary Digital Publishing Institute},
 	author = {Sutulo, Serge and Guedes Soares, C.},
 	month = mar,
 	year = {2014},
-	keywords = {Genetic algorithm, Hausdorff's metric, Mathematical model, paper4, read, Ship manoeuvrability, System identification, White noise},
+	keywords = {System identification, read, Ship manoeuvrability, White noise, Genetic algorithm, Hausdorff's metric, Mathematical model, paper4},
 	pages = {10--25},
 	file = {ScienceDirect Full Text PDF:C\:\\Zotero\\storage\\WD85S9FS\\Sutulo and Guedes Soares - 2014 - An algorithm for offline identification of ship ma.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Zotero\\storage\\N8ZUE2L7\\S0029801814000080.html:text/html},
 }
@@ -2481,7 +2481,7 @@ Second part discusses validation of the mathematical model and presents particul
 	journal = {Engineering Applications of Computational Fluid Mechanics},
 	author = {Liu, Y. and Zou, L. and Zou, Z. and Guoa, H.},
 	year = {2018},
-	keywords = {Abkowitz model, Hydrodynamic derivatives, Maneuverability prediction, RANS, read, VCT, Virtual captive model tests},
+	keywords = {read, Hydrodynamic derivatives, Abkowitz model, Maneuverability prediction, RANS, Virtual captive model tests, VCT},
 	pages = {334--353},
 	file = {Full Text:C\:\\Zotero\\storage\\T9KDTJV6\\Liu et al. - 2018 - Predictions of ship maneuverability based on virtu.pdf:application/pdf;Snapshot:C\:\\Zotero\\storage\\EAWNBT79\\display.html:text/html},
 }
@@ -2575,7 +2575,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Skjetne, Roger and Smogeli, Øyvind N. and Fossen, Thor I.},
 	month = jan,
 	year = {2004},
-	keywords = {paper4, read},
+	keywords = {read, paper4},
 	pages = {3--27},
 	file = {Full Text PDF:C\:\\Zotero\\storage\\T6ZTCVHD\\Skjetne et al. - 2004 - A Nonlinear Ship Manoeuvering Model Identificatio.pdf:application/pdf},
 }
@@ -2592,7 +2592,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Wang, Zihao and Guedes Soares, C. and Zou, Zaojian},
 	month = jan,
 	year = {2020},
-	keywords = {Design of experiments, Input design, Modelling, paper4, read, Ship manoeuvring, System identification},
+	keywords = {System identification, read, Modelling, Ship manoeuvring, Design of experiments, Input design, paper4},
 	pages = {106778},
 	file = {ScienceDirect Snapshot:C\:\\Zotero\\storage\\I76MTU9A\\S0029801819308789.html:text/html;Wang et al. - 2020 - Optimal design of excitation signal for identifica.pdf:C\:\\Zotero\\storage\\T97MC9QL\\Wang et al. - 2020 - Optimal design of excitation signal for identifica.pdf:application/pdf},
 }
@@ -2647,6 +2647,70 @@ Second part discusses validation of the mathematical model and presents particul
 	month = jun,
 	year = {2023},
 	pages = {ISOPE--I--23--551},
+}
+
+@misc{mastalli_inverse-dynamics_2023,
+	title = {Inverse-{Dynamics} {MPC} via {Nullspace} {Resolution}},
+	url = {http://arxiv.org/abs/2209.05375},
+	doi = {10.48550/arXiv.2209.05375},
+	abstract = {Optimal control (OC) using inverse dynamics provides numerical benefits such as coarse optimization, cheaper computation of derivatives, and a high convergence rate. However, to take advantage of these benefits in model predictive control (MPC) for legged robots, it is crucial to handle efficiently its large number of equality constraints. To accomplish this, we first (i) propose a novel approach to handle equality constraints based on nullspace parametrization. Our approach balances optimality, and both dynamics and equality-constraint feasibility appropriately, which increases the basin of attraction to high-quality local minima. To do so, we (ii) modify our feasibility-driven search by incorporating a merit function. Furthermore, we introduce (iii) a condensed formulation of inverse dynamics that considers arbitrary actuator models. We also propose (iv) a novel MPC based on inverse dynamics within a perceptive locomotion framework. Finally, we present (v) a theoretical comparison of optimal control with forward and inverse dynamics and evaluate both numerically. Our approach enables the first application of inverse-dynamics MPC on hardware, resulting in state-of-the-art dynamic climbing on the ANYmal robot. We benchmark it over a wide range of robotics problems and generate agile and complex maneuvers. We show the computational reduction of our nullspace resolution and condensed formulation (up to 47.3\%). We provide evidence of the benefits of our approach by solving coarse optimization problems with a high convergence rate (up to 10 Hz of discretization). Our algorithm is publicly available inside CROCODDYL.},
+	urldate = {2024-05-30},
+	publisher = {arXiv},
+	author = {Mastalli, Carlos and Chhatoi, Saroj Prasad and Corbères, Thomas and Tonneau, Steve and Vijayakumar, Sethu},
+	month = mar,
+	year = {2023},
+	note = {arXiv:2209.05375 [cs, eess]},
+	keywords = {Computer Science - Computational Engineering, Finance, and Science, Computer Science - Robotics, Electrical Engineering and Systems Science - Systems and Control, Inverse dynamics},
+	file = {arXiv Fulltext PDF:C\:\\Zotero\\storage\\MTHK48AM\\Mastalli et al. - 2023 - Inverse-Dynamics MPC via Nullspace Resolution.pdf:application/pdf;arXiv.org Snapshot:C\:\\Zotero\\storage\\D472LYNP\\2209.html:text/html},
+}
+
+@misc{kurtz_inverse_2023,
+	title = {Inverse {Dynamics} {Trajectory} {Optimization} for {Contact}-{Implicit} {Model} {Predictive} {Control}},
+	url = {http://arxiv.org/abs/2309.01813},
+	doi = {10.48550/arXiv.2309.01813},
+	abstract = {Robots must make and break contact with the environment to perform useful tasks, but planning and control through contact remains a formidable challenge. In this work, we achieve real-time contact-implicit model predictive control with a surprisingly simple method: inverse dynamics trajectory optimization. While trajectory optimization with inverse dynamics is not new, we introduce a series of incremental innovations that collectively enable fast model predictive control on a variety of challenging manipulation and locomotion tasks. We implement these innovations in an open-source solver and present simulation examples to support the effectiveness of the proposed approach. Additionally, we demonstrate contact-implicit model predictive control on hardware at over 100 Hz for a 20-degree-of-freedom bi-manual manipulation task. Video and code are available at https://idto.github.io.},
+	urldate = {2024-05-30},
+	publisher = {arXiv},
+	author = {Kurtz, Vince and Castro, Alejandro and Önol, Aykut Özgün and Lin, Hai},
+	month = oct,
+	year = {2023},
+	note = {arXiv:2309.01813 [cs]},
+	keywords = {Computer Science - Robotics},
+	file = {arXiv Fulltext PDF:C\:\\Zotero\\storage\\NZKVNA9G\\Kurtz et al. - 2023 - Inverse Dynamics Trajectory Optimization for Conta.pdf:application/pdf;arXiv.org Snapshot:C\:\\Zotero\\storage\\LL3TQ5B4\\2309.html:text/html},
+}
+
+@article{sun_high-order_2023,
+	title = {High-order inverse dynamics of serial robots based on projective geometric algebra},
+	volume = {59},
+	issn = {1573-272X},
+	url = {https://doi.org/10.1007/s11044-023-09915-7},
+	doi = {10.1007/s11044-023-09915-7},
+	abstract = {The efficient algorithm for high-order inverse dynamics of serial robots is an essential need in design and model-based control of robots equipped with serial elastic joints. Although several efficient algorithms have been proposed, the introduction of new frameworks can lead to new understanding and further improvements. Based on the projective geometric algebra (PGA) for Euclidean geometry, this paper provides a recursive algorithm that is computationally efficient, intuitive, uniform, and coordinate invariant. In the PGA-based method, calculations of the exponential map and Lie brackets are simplified and rigid body motions are represented as vectors instead of matrices. All geometric elements used to model robots are represented as vectors uniformly, and all operations are modeled as algebraic operations with explicit geometric meaning. The validation of the algorithm is presented for the second-order inverse dynamics of the Franka Emika Panda using the algorithm based on PGA and the algorithm based on product of exponentials (POE) respectively. The proposed algorithm is 15\% faster than the POE-based algorithm with correct results. It turns out that the kinematics part of the algorithm saves 69.82\% multiplications and 73.58\% additions than that in the POE-based algorithm. The relation between PGA and other popular concepts in robotics, such as dual quaternions, is also discussed.},
+	language = {en},
+	number = {3},
+	urldate = {2024-05-30},
+	journal = {Multibody System Dynamics},
+	author = {Sun, Guangzhen and Ding, Ye},
+	month = nov,
+	year = {2023},
+	keywords = {High-order inverse dynamics, Projective geometric algebra, Serial robots},
+	pages = {337--362},
+	file = {Full Text PDF:C\:\\Zotero\\storage\\7RX8962T\\Sun and Ding - 2023 - High-order inverse dynamics of serial robots based.pdf:application/pdf},
+}
+
+@misc{haninger_nonparametric_2019,
+	title = {Nonparametric {Inverse} {Dynamic} {Models} for {Multimodal} {Interactive} {Robots}},
+	url = {http://arxiv.org/abs/1901.03872},
+	doi = {10.48550/arXiv.1901.03872},
+	abstract = {Direct design of a robot's rendered dynamics, such as in impedance control, is now a well-established control mode in uncertain environments. When the physical interaction port variables are not measured directly, dynamic and kinematic models are required to relate the measured variables to the interaction port variables. A typical example is serial manipulators with joint torque sensors, where the interaction occurs at the end-effector. As interactive robots perform increasingly complex tasks, they will be intermittently coupled with additional dynamic elements such as tools, grippers, or workpieces, some of which should be compensated and brought to the robot side of the interaction port, making the inverse dynamics multimodal. Furthermore, there may also be unavoidable and unmeasured external input when the desired system cannot be totally isolated. Towards semi-autonomous robots, capable of handling such applications, a multimodal Gaussian process regression approach to manipulator dynamic modelling is developed. A sampling-based approach clusters different dynamic modes from unlabelled data, also allowing the seperation of perturbed data with significant, irregular external input. The passivity of the overall approach is shown analytically, and experiments examine the performance and safety of this approach on a test actuator.},
+	urldate = {2024-05-30},
+	publisher = {arXiv},
+	author = {Haninger, Kevin and Tomizuka, Masayoshi},
+	month = jan,
+	year = {2019},
+	note = {arXiv:1901.03872 [cs]},
+	keywords = {Computer Science - Robotics, Electrical Engineering and Systems Science - Systems and Control},
+	file = {arXiv Fulltext PDF:C\:\\Zotero\\storage\\KFNIE4M7\\Haninger and Tomizuka - 2019 - Nonparametric Inverse Dynamic Models for Multimoda.pdf:application/pdf;arXiv.org Snapshot:C\:\\Zotero\\storage\\3W3BXP7G\\1901.html:text/html},
 }
 
 @article{alexandersson_system_2024,
@@ -2721,7 +2785,7 @@ Second part discusses validation of the mathematical model and presents particul
 	year = {2014},
 	note = {Publisher: Taylor \& Francis
 \_eprint: https://doi.org/10.1179/str.2014.61.3.003},
-	keywords = {Direct Maneuvering Simulation, Engine Dynamics, RANS},
+	keywords = {RANS, Direct Maneuvering Simulation, Engine Dynamics},
 	pages = {142--161},
 	file = {Full Text PDF:C\:\\Zotero\\storage\\QYW3W3Z8\\el Moctar et al. - 2014 - RANS-Based Simulated Ship Maneuvering Accounting f.pdf:application/pdf},
 }
@@ -2738,7 +2802,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Li, Songlong and Liu, Chenguang and Chu, Xiumin and Zheng, Mao and Wang, Ziping and Kan, Jinyu},
 	month = nov,
 	year = {2022},
-	keywords = {Body force method, Captive model test, CFD, Free-running test, Ship maneuverability modeling},
+	keywords = {CFD, Body force method, Captive model test, Free-running test, Ship maneuverability modeling},
 	pages = {112454},
 	file = {Li et al. - 2022 - Ship maneuverability modeling and numerical predic.pdf:C\:\\Zotero\\storage\\6M28HCRI\\Li et al. - 2022 - Ship maneuverability modeling and numerical predic.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Zotero\\storage\\DABEDKW9\\S0029801822017371.html:text/html},
 }
@@ -2757,7 +2821,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Du, Peng and Cheng, Lu and Tang, Zi-jian and Ouahsine, A. and Hu, Hai-bao and Hoarau, Y.},
 	month = apr,
 	year = {2022},
-	keywords = {captive model test (CMT), computational fluid dynamics (CFD), Hydrodynamic derivatives, Maneuvering simulation, system dynamics},
+	keywords = {Hydrodynamic derivatives, captive model test (CMT), computational fluid dynamics (CFD), Maneuvering simulation, system dynamics},
 	pages = {259--276},
 	file = {Full Text PDF:C\:\\Zotero\\storage\\C47BH4CC\\Du et al. - 2022 - Ship maneuvering prediction based on virtual capti.pdf:application/pdf},
 }
@@ -2774,7 +2838,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Zhang, Song and Wu, Qing and Liu, Jialun and He, Yangying and Li, Shijie},
 	month = feb,
 	year = {2023},
-	keywords = {ASD tug, Free-running tests, Hydrodynamic derivatives, Pod steering force, RANS, Thruster performance},
+	keywords = {Hydrodynamic derivatives, RANS, ASD tug, Free-running tests, Pod steering force, Thruster performance},
 	pages = {113489},
 	file = {ScienceDirect Snapshot:C\:\\Zotero\\storage\\QP5XWA5G\\S002980182202772X.html:text/html;Zhang et al. - 2023 - Twin-screw ASD tug maneuvering prediction based on.pdf:C\:\\Zotero\\storage\\7EHBU4TY\\Zhang et al. - 2023 - Twin-screw ASD tug maneuvering prediction based on.pdf:application/pdf},
 }
@@ -2794,7 +2858,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Sakamoto, Nobuaki and Carrica, Pablo M. and Stern, Frederick},
 	month = dec,
 	year = {2012},
-	keywords = {Automotive Engineering, PMM, URANS, VCT, Verification and validation},
+	keywords = {VCT, Automotive Engineering, PMM, URANS, Verification and validation},
 	pages = {422--445},
 	file = {Full Text PDF:C\:\\Zotero\\storage\\659NRYHC\\Sakamoto et al. - 2012 - URANS simulations of static and dynamic maneuverin.pdf:application/pdf},
 }
@@ -2821,7 +2885,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Yasukawa, H. and Hasnan, M. A. A. and Matsuda, A.},
 	month = dec,
 	year = {2021},
-	keywords = {Automotive Engineering, Drifting indices, Free-running test, Regular waves, Ship turning, Turning indices},
+	keywords = {Free-running test, Automotive Engineering, Drifting indices, Regular waves, Ship turning, Turning indices},
 	pages = {1096--1111},
 	file = {Full Text PDF:C\:\\Zotero\\storage\\PDQ2HKQ5\\Yasukawa et al. - 2021 - Validation of 6-DOF motion simulations for ship tu.pdf:application/pdf},
 }
@@ -2847,7 +2911,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Zhang, Yu-xin and Chen, Kang and Jiang, Da-peng},
 	month = apr,
 	year = {2020},
-	keywords = {Oblique flow, Propeller lateral loads, Scale effects, Thrust eccentricity, URANS},
+	keywords = {URANS, Oblique flow, Propeller lateral loads, Scale effects, Thrust eccentricity},
 	pages = {107153},
 	file = {ScienceDirect Snapshot:C\:\\Zotero\\storage\\IUKE5GC5\\S0029801820302134.html:text/html;Zhang et al. - 2020 - CFD analysis of the lateral loads of a propeller i.pdf:C\:\\Zotero\\storage\\RACQQWES\\Zhang et al. - 2020 - CFD analysis of the lateral loads of a propeller i.pdf:application/pdf},
 }
@@ -2864,7 +2928,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {RoyChoudhury, Seemontini and Dash, Anil Kumar and Nagarajan, Vishwanath and Sha, Om Prakash},
 	month = sep,
 	year = {2017},
-	keywords = {CFD, Deep and shallow water, Pressure distribution, ShipFlow, Steady motions, Tanker hull, Turbulent kinetic energy},
+	keywords = {CFD, Deep and shallow water, Pressure distribution, Steady motions, Tanker hull, Turbulent kinetic energy, ShipFlow},
 	pages = {161--184},
 	file = {RoyChoudhury et al. - 2017 - CFD simulations of steady drift and yaw motions in.pdf:C\:\\Zotero\\storage\\8A98XK33\\RoyChoudhury et al. - 2017 - CFD simulations of steady drift and yaw motions in.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Zotero\\storage\\UJZMSC9R\\S0029801817303621.html:text/html},
 }
@@ -2907,7 +2971,7 @@ Second part discusses validation of the mathematical model and presents particul
 	author = {Yoon, Hyeon Kyu and Rhee, Key Pyo},
 	month = dec,
 	year = {2003},
-	keywords = {Estimation-Before-Modeling technique, Hydrodynamic coefficient, Input scenario, Sea trial},
+	keywords = {Hydrodynamic coefficient, Estimation-Before-Modeling technique, Input scenario, Sea trial},
 	pages = {2379--2404},
 	file = {PDF:C\:\\Zotero\\storage\\TPNKFZ2E\\Yoon and Rhee - 2003 - Identification of hydrodynamic coefficients in ship maneuvering equations of motion by Estimation-Be.pdf:application/pdf;ScienceDirect Snapshot:C\:\\Zotero\\storage\\T4VBAV7N\\S0029801803001069.html:text/html},
 }
