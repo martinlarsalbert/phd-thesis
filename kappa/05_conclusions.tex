@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Discussion and conclusions\label{ch:conclusions}}
+\chapter{Conclusions\label{ch:conclusions}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The conclusions of the stated objectives...
 
@@ -38,15 +38,15 @@ The method to use inverse dynamics in combination with the state VCTs was in Pap
 \begin{tcolorbox}[sharp corners,title=RO4]
 Mitigate the system identification multicollinearity.
 \end{tcolorbox}
-Multicollinearity was a significant problem with the AVMM for both the wPCC and KVLCC2 data. Consequently, some of the regressed hydrodynamic derivatives in the AVMM have unphysically large values and substantial uncertainties. The model is still mathematically correct, where the regressed polynomials fit the training data well. The regressed polynomial is the sum of large counteracting coefficients.
+Multicollinearity (see \autoref{sec:multicollinearity}) was a significant problem for system identification in Paper \ref{pap:pit} when a complete Abkowitz model was used on data from IMO standard maneuvers. Consequently, some of the regressed hydrodynamic derivatives had unphysically large values and substantial uncertainties in the regressed polynomials with sums of large counteracting coefficients. However, the models were still mathematically correct, where the regressed polynomials fitted the training data well. The model worked as long as the states were similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives could be disturbed, giving significant extrapolation errors very quickly.
 
-The model works as long as the states are similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives is disturbed, giving significant extrapolation errors very quickly.
+However, multicollinearity is not necessarily a sign that the model structure is wrong, it is rather a sign that the data used do not follow the aspect of persistence of excitation. This means that the structure of the model could be correct, but the data used for identification do not contain enough information to identify all parameters correctly.
 
-adopting the complexity of the manoeuvring model by reducing the number of hydrodynamic derivatives are all contributing to the improved performance.
+Reducing the number of hydrodynamic derivatives, to obtain a more identifiable model structure, is one way to mitigate the multicollinearity that was successfully employed in Paper \ref{pap:pit}. Minimizing the number of derivatives is often a good idea to avoid overfitting irrelevant data, following the prejudice approach that ''Nature is simple'' \cite{ljung_perspectives_2010}. However, this could also lead to model structures with limited applicability, as certain regression terms may only become significant in special conditions like sailing in wind \cite{abkowitz_measurement_1980}.
 
-This might be the correct model, but the data we use prevents us to see it... instead we reduce the number of coefficients to get a model where the coefficients are identifiable.
+Using more informative data for the system identification is a better way to handle multicollinearity. Instead of using data from zigzag tests, more informative manoeuvres can be employed such as the optimized pseudo-random binary sequences \cite{yoon_identification_2003,wang_optimal_2020}. This was however outside the scope of this present thesis.
 
-Another problem with a too complex model is that the standard manoeuvres used in this paper does not follow the aspect of persistence of excitation, so that some of the hydrodynamic derivatives might not be identifiable (Revestido Herrero and Velasco González, 2012). During zigzag tests, the model is for instance exposed to only two rudder angles for a majority of the data. A series of step responses as used in Miller (2021) gives a better excitation, but requires a lot of space, which is possible at lake experiments, but not in a narrow basin.
+More informative data can however also be ................
 
 Introducing a semi-empirical rudder model seems to have guided the identification toward a more physically correct model, with lower multicollinearity and better generalization from calm water zigzag tests to wind conditions.
 
