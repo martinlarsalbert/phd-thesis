@@ -6,43 +6,48 @@
 
 The main conclusions are presented in this section with respect to the main objective of this thesis:
 % Objective: 
-\begin{quote} 
-\vspace{0.1cm}
-\objective \\
-\vspace{-0.3cm}
-\end{quote}
+\begin{tcolorbox}[sharp corners,title=Objective]
+\objective
+\end{tcolorbox}
+\vspace{0.3cm}
 \noindent The conclusions are categorized by the goals that comprise this objective.
 
-\subsubsection*{\normalfont \color{black} \textbf{Roll model}}
-The first goal of the thesis was to use model test data to develop a model for the calm water rigid body ship dynamics in the roll degree of freedom. 
-Three candidate models were considered:
-\vspace{5pt}
-\begin{itemize}
-    \setlength\itemsep{5pt}
-    \item the linear roll motion model
-    \item the quadratic roll motion model
-    \item the cubic roll motion model
-\end{itemize}
-\vspace{5pt}
-\noindent Data from 250 roll decay tests obtained from SSPA were used to evaluate these models. The linear model was not as accurate as the nonlinear models. The quadratic model was almost as accurate as the cubic model and is expected to have a higher degree of generalization with fewer parameters in the model. Therefore,  the quadratic model is the best description for the roll motion. 
+% RO1
+\begin{tcolorbox}[sharp corners,title=RO1]
+Establish roll motion and manoeuvring model structures that are very similar to the true model.
+\end{tcolorbox}
+In Paper \ref{pap:rolldamping} it was attempted to establish a physics-informed model for ship roll motion by combining a semi-empirical deterministic roll damping model with a data-driven model identified on a large number of roll decay tests. However, this was a failed attempt, mainly because most of the investigated ships were outside the limits of the semi-empirical model used.  
 
-Predictions with the original Ikeda's method were also conducted for some of the ships that exceeded the limits of the simplified Ikeda's method. These predictions were in much better agreement with the dampings from the model tests. These results indicate that the observed deviations with the simplified Ikeda's method are the result of extrapolation rather than errors inherent 
-to the original Ikeda's method.
+Using potential flow calculations as the physics-informed part together with semi-empirical formulas for the viscous parts of the roll damping was shown in Paper \ref{pap:ikeda} to be a very efficient way to accurately predict the ship roll motion.
 
-A grey-box correction model of the simplified Ikeda's method and a complete black-box model to predict ship roll damping were proposed in Paper \ref{pap:rolldamping}. The proposed models yield better predictions than the simplified Ikeda's method outside its limits and worse predictions within its limits. Applying corrections to the simplified Ikeda's method outside its limits is therefore not enough for obtaining useful roll damping predictions for modern ships; an additional course of action is necessary. Further research efforts must focus on updating and improving the simplified Ikeda's method.
+A thorough investigation with VCT and FRMTs inverse dynamics in Paper \ref{pap:vct} showed that the used simulation model could well describe the hull and rudder forces as well as the ship dynamics for a ship with large rudder such as the Optiwise test case where the exclusion of wave generation and the use of only three degrees of freedom were valid assumptions. 
 
-\subsubsection*{\normalfont \color{black} \textbf{Manoeuvring model}}
-The second goal of this thesis was to increase the complexity and uncertainty of the modelling by adding the surge, sway, and yaw degrees of freedom. This goal addresses the manoeuvring problem. 
+% RO2
+\begin{tcolorbox}[sharp corners,title=RO2]
+Develop system identification of roll motion and ship manoeuvring from FRMTs.
+\end{tcolorbox}
+Two different parameter identification techniques were attempted in Paper \ref{pap:rolldamping} to identify the damping terms, where the so called ''derivation approach'' turned out to be the best. In this approach the differential equations of the models were just treated as a linear regression problem. The identification technique was later referred to as inverse dynamics (ID) regression. A problem with ID is that the whole state of the system must be known; In this case the roll angle including its first and second time derivatives ($\theta,\dot{\theta},\ddot{\theta}$ ) must be known, which is often not the case for model test or ship operational data. Instead, velocity and acceleration needs to be estimated by numerical differentiation or other method.
 
-It is demonstrated in Paper \ref{pap:pit} that the hydrodynamic derivatives within a manoeuvring model can be identified exactly in ideal conditions with no measurement noise and a perfect estimator. Such a result appears during the identification of parameters in a manoeuvring model on data from simulations with the same manoeuvring model.
-System identification on actual model tests has the challenge of handling the measurement noise and the model uncertainty. A new system identification method has been proposed in Paper \ref{pap:pit}, where a preprocessor with an EKF and an RTS smoother are run in iteration for a set of candidate manoeuvring models to handle both the measurement noise and model uncertainty. System identification with the proposed pre-processor has higher accuracy than when low-pass filters are applied. Parameter estimation with no filter or a low-pass filter with the wrong settings result in inaccurate estimations. 
+% RO3
+\begin{tcolorbox}[sharp corners,title=RO3]
+Develop a method to analyse identified models with FRMTs.
+\end{tcolorbox}
+The method to use inverse dynamics in combination with the state VCTs was in Paper \ref{pap:vct} found to be a useful tool to test the identified models and see if errors origin from the model structure or are inherent in the VCT data. It was for instance shown that the state VCT did not agree well with the wPCC inverse dynamics forces, which indicates that there was something missing in the wPCC VCT data. This could, for instance, be the lack of wave generation or heeled cases in the VCT data, which might be too much of a simplification for the wPCC. For Optiwise on the other hand, which was run at much lower Froude number and little heel, the state VCT agreed much better with the inverse dynamics forces and better agreement was obtained in the closed loop simulations.
 
-The linearization in the EKF may threaten stability, which can be a problem for sparse time series with longer time steps. This was not a problem for the present test cases, with very high frequency data (100 Hz). 
-Using the unscented Kalman filter (UKF) instead of the EKF can resolve stability issues . This resolution has not been examined further in this thesis.
+% RO4
+\begin{tcolorbox}[sharp corners,title=RO4]
+Mitigate the system identification multicollinearity.
+\end{tcolorbox}
+Multicollinearity was a significant problem with the AVMM for both the wPCC and KVLCC2 data. Consequently, some of the regressed hydrodynamic derivatives in the AVMM have unphysically large values and substantial uncertainties. The model is still mathematically correct, where the regressed polynomials fit the training data well. The regressed polynomial is the sum of large counteracting coefficients.
 
-Multicollinearity was a significant problem with the AVMM for both the wPCC and KVLCC2 data. Consequently, some of the regressed hydrodynamic derivatives in the AVMM have unphysically large values and substantial uncertainties. The model is still mathematically correct; the regressed polynomials fit the training data well. The regressed polynomial could be the sum of large counteracting coefficients. The model is effective when the states are similar to the training data. When extrapolating, the balance between these massive derivatives may be disturbed, which quickly yields significant extrapolation errors. This behavior occurred for the wPCC test case when predicting forces and moments with the AVMM on unseen validation data; it is a documented problem \cite{ittc_maneuvering_2008}.
-The MAVMM has fewer hydrodynamic derivatives with lower multicollinearity and minor extrapolation errors. Including propeller thrust in the manoeuvring model made it possible to obtain high accuracy with fewer hydrodynamic derivatives. An additional concern with a high number of parameters in a model is that the standard manoeuvres used in this paper do not follow the aspect of persistence of excitation. As a result, some of the hydrodynamic derivatives might not be identifiable \cite{revestido_herrero_two-step_2012}. For instance, the model is exposed to only two rudder angles in the majority of the data during the zigzag tests. A series of step responses used in \cite{miller_ship_2021} provides a better excitation, but requires a large amount of space. Wider space is possible during lake experiments, but not in a narrow basin. The model generalization therefore must be addressed, as seen in the next section.
+The model works as long as the states are similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives is disturbed, giving significant extrapolation errors very quickly.
 
-\subsubsection*{Model generalization} 
-The third goal of this thesis was model generalization. In order to be of practical use in an Internet of Ships (IoS) application, the models must be able to make predictions outside the domain covered by the available data. A model development process for manoeuvring models with a high degree of generalization was proposed in Paper \ref{pap:pit}.
-The process was executed along with the proposed parameter estimation technique on the wPCC and KVLCC2 test cases. Turning circles where predicted with high accuracy on models trained on zigzag tests. This result indicates that the models have a high degree of generalization because the turning circles have much larger rudder angles, drift angles, and yaw rates compared to the training zigzag tests. 
+adopting the complexity of the manoeuvring model by reducing the number of hydrodynamic derivatives are all contributing to the improved performance.
+
+This might be the correct model, but the data we use prevents us to see it... instead we reduce the number of coefficients to get a model where the coefficients are identifiable.
+
+Another problem with a too complex model is that the standard manoeuvres used in this paper does not follow the aspect of persistence of excitation, so that some of the hydrodynamic derivatives might not be identifiable (Revestido Herrero and Velasco González, 2012). During zigzag tests, the model is for instance exposed to only two rudder angles for a majority of the data. A series of step responses as used in Miller (2021) gives a better excitation, but requires a lot of space, which is possible at lake experiments, but not in a narrow basin.
+
+Introducing a semi-empirical rudder model seems to have guided the identification toward a more physically correct model, with lower multicollinearity and better generalization from calm water zigzag tests to wind conditions.
+
+The semi-empirical rudder seems to have helped in reducing the multicollinearity between the hull and rudder, but the multicollinearity between the drift ang yaw rate remain when the zigzag test data is used, which may explain why the PI model did not find perfect agreement with the Reference model. Addressing this part of the multicollinearity problem is more related to test design – to get data with better [[persistence of excitation]] such as the [[optimized pseudo-random binary sequences|PRBS]] or using CMT or VCT.
