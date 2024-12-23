@@ -1,6 +1,15 @@
 \section{Summary of Paper \ref{pap:physics}}
 \subsection*{"\nameref{pap:physics}"}
 \subsection*{Scope and motivations}
+
+\textcolor{ref}{
+Minimizing the number of derivatives is often a good idea to avoid overfitting irrelevant data, following the prejudice approach that ''Nature is simple'' \cite{ljung_perspectives_2010}. However, this could also lead to model structures with limited applicability, as certain regression terms may only become significant in special conditions like sailing in wind \cite{abkowitz_measurement_1980}.
+}
+
+\textcolor{ref}{
+High correlation between yaw rate and drift \cite{yoon_identification_2003}.
+}
+
 It was shown in Paper \ref{pap:pit} that it is possible to identify a model from calm water free running model test with inverse dynamics regression (\autoref{sec:IDR}) together with a cross validation technique (\autoref{sec:cross_validation}) to unsure good generalization (\autoref{sec:generalization}) so that the model can predict other kinds of maneuvers with very good accuracy. However, it was soon discovered that these models did not generalize well when wind forces were added to the simulations. This problem was addressed in Paper \ref{pap:physics}.
 
 Paper \ref{pap:physics} uses two modular manoeuvring models. One of the models is a physics uninformed (PU) model which is a completely data driven model, similarly to the models used in the previous paper (Paper \ref{pap:pit}).
@@ -49,6 +58,10 @@ However, when the ship is exposed to wind so that the drift changes, an erroneou
     \caption{Total sway force and yawing moment from the wPCC models at various drift angles.}
     \label{fig:result_wind_state}
 \end{figure}
+
+\textcolor{red}{
+Using more informative data for the system identification is a better way to handle multicollinearity. Instead of using data from zigzag tests, more informative manoeuvres can be employed such as the optimized pseudo-random binary sequences \cite{yoon_identification_2003,wang_optimal_2020}. This was however outside the scope of this present thesis.
+}
 
 \FloatBarrier
 %\subsection*{Comments}

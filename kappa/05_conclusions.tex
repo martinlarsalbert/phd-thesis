@@ -3,6 +3,9 @@
 \chapter{Conclusions\label{ch:conclusions}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % The conclusions of the stated objectives...
+% it was found that...
+% it was shown that...
+% it was proposed that...
 
 The main conclusions are presented in this section with respect to the main objective of this thesis:
 % Objective: 
@@ -38,16 +41,13 @@ The method to use inverse dynamics in combination with the state VCTs was in Pap
 \begin{tcolorbox}[sharp corners,title=RO4]
 Mitigate the system identification multicollinearity.
 \end{tcolorbox}
-Multicollinearity (see \autoref{sec:multicollinearity}) was a significant problem for system identification in Paper \ref{pap:pit} when a complete Abkowitz model was used on data from IMO standard maneuvers. Consequently, some of the regressed hydrodynamic derivatives had unphysically large values and substantial uncertainties in the regressed polynomials with sums of large counteracting coefficients. However, the models were still mathematically correct, where the regressed polynomials fitted the training data well. The model worked as long as the states were similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives could be disturbed, giving significant extrapolation errors very quickly.
+In Paper \ref{pap:pit} multicollinearity was found to be a significant problem for system identification on data from IMO standard maneuvers, especially for complex models such as the Abkowitz model structure. Consequently, some of the regressed hydrodynamic derivatives had unphysically large values and substantial uncertainties in the regressed polynomials with sums of large counteracting coefficients. However, the models were still mathematically correct, where the regressed polynomials fit the training data well. The model worked as long as the states were similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives could be disturbed, giving significant extrapolation errors very quickly.
 
-However, multicollinearity is not necessarily a sign that the model structure is wrong, it is rather a sign that the data used do not follow the aspect of persistence of excitation. This means that the structure of the model could be correct, but the data used for identification do not contain enough information to identify all parameters correctly.
+%However, multicollinearity is not necessarily a sign that the model structure is wrong, it is rather a sign that the data used do not follow the aspect of persistence of excitation. This means that the structure of the model could be correct, but the data used for identification do not contain enough information to identify all parameters correctly.
 
-Reducing the number of hydrodynamic derivatives, to obtain a more identifiable model structure, is one way to mitigate the multicollinearity that was successfully employed in Paper \ref{pap:pit}. Minimizing the number of derivatives is often a good idea to avoid overfitting irrelevant data, following the prejudice approach that ''Nature is simple'' \cite{ljung_perspectives_2010}. However, this could also lead to model structures with limited applicability, as certain regression terms may only become significant in special conditions like sailing in wind \cite{abkowitz_measurement_1980}.
+It was shown in Paper \ref{pap:pit} that the multicollinearity can be mitigated by reducing the number of hydrodynamic derivatives so that the model could generalize from the zigzag training data to predict turning circles with less than 5\% error in advance and tactical diameter for the two investigated test cases.
 
-Using more informative data for the system identification is a better way to handle multicollinearity. Instead of using data from zigzag tests, more informative manoeuvres can be employed such as the optimized pseudo-random binary sequences \cite{yoon_identification_2003,wang_optimal_2020}. This was however outside the scope of this present thesis.
+However, in Paper \ref{pap:physics}, it was shown that the identified models in Paper \ref{pap:pit} would not generalize well when the ship was exposed to external wind forces. The high correlation between the yaw rates and the drift angles during the maneuvers prevented a correct split between the yaw rate and the drift-dependent coefficients.
 
-More informative data can however also be ................
-
-Introducing a semi-empirical rudder model seems to have guided the identification toward a more physically correct model, with lower multicollinearity and better generalization from calm water zigzag tests to wind conditions.
-
-The semi-empirical rudder seems to have helped in reducing the multicollinearity between the hull and rudder, but the multicollinearity between the drift ang yaw rate remain when the zigzag test data is used, which may explain why the PI model did not find perfect agreement with the Reference model. Addressing this part of the multicollinearity problem is more related to test design – to get data with better [[persistence of excitation]] such as the [[optimized pseudo-random binary sequences|PRBS]] or using CMT or VCT.
+It was also shown in Paper \ref{pap:physics} that identification was unable to make a correct separation between the hull and the rudder forces when only the total force of the inverse dynamics was available. 
+A deterministic semi-empirical rudder model was proposed instead of the data driven rudder model to alleviate this part of the multicollinearity problem. It was shown that this guided the identification toward a more physically correct model, with lower multicollinearity and better generalization to the wind conditions. There were, however, still problems with multicollinearity from yaw rate and drift which needs to be resolved in other ways, typically with more informative data. 
