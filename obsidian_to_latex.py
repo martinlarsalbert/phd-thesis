@@ -4,6 +4,12 @@ import os.path
 replacements = {
 }
 
+rename_references = {
+    "chenOnlineModelingPrediction2023a":"chenOnlineModelingPrediction2023",
+    
+}
+
+
 def convert_references(s:str)-> str:
     
     s_latex = str(s)
