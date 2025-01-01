@@ -11,7 +11,7 @@ was investigated in Paper \ref{pap:rolldamping}
 \subsection*{Results and concluding remarks}
 
 
-System identification of ship roll motion, which includes roll damping and stiffness, is developed in Paper \ref{pap:rolldamping}. Parametric roll was observed by \textcite{froude_rolling_1861} and has been a focus of the marine research community since the early 1950s \parencite{galeazzi_early_2013}; it has received even more attention since \textcite{france_investigation_2001} demonstrated that the APL China casualty in 1998, where a post-Panamax C11 class container ship lost almost a third of its containers, was most likely caused by head sea parametric rolling. The damping of roll motion plays an important role in these phenomena. Previous literature demonstrates that the relatively small difference in the roll damping prediction obtained with small method variation may contribute to the difference between severe roll angles and much less noticeable motions \cite{soder_ikeda_2019}.
+System identification of ship roll motion, which includes roll damping and stiffness, is developed in Paper \ref{pap:rolldamping}. Parametric roll was observed by \textcite{froudeRollingShips1861} and has been a focus of the marine research community since the early 1950s \parencite{galeazziEarlyDetectionParametric2013}; it has received even more attention since \textcite{franceInvestigationHeadSeaParametric2001} demonstrated that the APL China casualty in 1998, where a post-Panamax C11 class container ship lost almost a third of its containers, was most likely caused by head sea parametric rolling. The damping of roll motion plays an important role in these phenomena. Previous literature demonstrates that the relatively small difference in the roll damping prediction obtained with small method variation may contribute to the difference between severe roll angles and much less noticeable motions \cite{soderIkedaRevisited2019}.
 
 The objective of Paper \ref{pap:rolldamping} was to improve the roll damping predictions for modern ships. The roll damping was studied using time series data from 250 (see \autoref{fig:ship_types}) roll decay tests (see \autoref{sec:roll}) assembled by the Maritime Dynamics Laboratory at RISE SSPA Maritime center. The work was divided into the following sub tasks (also summarized in \autoref{fig:paper1_overview}): 
 \vspace{5pt}
@@ -70,7 +70,7 @@ The objective of Paper \ref{pap:rolldamping} was to improve the roll damping pre
     \caption{Overview of the work conducted for Paper \ref{pap:rolldamping}.}
     \label{fig:paper1_overview}
 \end{figure}
-System identification on the time series from the roll decay database was performed with the linear (\autoref{eq:roll_decay_equation_himeno_linear}), quadratic (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and cubic models (\autoref{eq:roll_decay_equation_cubic}). Estimated roll damping parameters were used to build a roll damping database. The database could be compared to corresponding predictions with the simplified Ikeda's method \cite{kawahara_simple_2011}, which is the state of art prediction for ship roll damping.
+System identification on the time series from the roll decay database was performed with the linear (\autoref{eq:roll_decay_equation_himeno_linear}), quadratic (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and cubic models (\autoref{eq:roll_decay_equation_cubic}). Estimated roll damping parameters were used to build a roll damping database. The database could be compared to corresponding predictions with the simplified Ikeda's method \cite{kawaharaSimplePredictionFormula2011}, which is the state of art prediction for ship roll damping.
 The generic roll damping model was developed as a grey-box model and a black-box model.
 \subsection{Best mathematical model for the roll motion}
 System identification on the linear, quadratic, and cubic models was conducted using both the \say{integration approach} (\autoref{sec:integration_approach}) and the \say{derivation approach} (\autoref{sec:derivation_approach}) where the best parameter estimations were obtained using the ``integration approach''.
@@ -107,11 +107,11 @@ R^2=1-\frac{\sum\limit_{i=1}^{n}(\phi_{i}-\hat{\phi}_i)^2}{\sum\limit_{i=1}^{n}(
 where $\phi_i$ is the model test roll angle at time step $i$, $\bar \phi$ is the mean roll angle from the model test, and $\hat{\phi}_i$ is the predicted roll angle (with the linear, quadratic, or cubic model). The average goodness of fit $R^2$ was 0.995 for the cubic model, 0.993 for the quadratic model, and 0.986 for the linear model. These values indicate that the quadratic model is almost as useful as the cubic model for describing the roll motion. The quadratic model, with fewer parameters than the cubic model, is expected to have a higher level of generalization at the same accuracy and is therefore selected as the best mathematical model for the roll motion. 
 
 \subsection{Comparison with Ikeda's method}
-The hydrodynamic analysis requires the ship's exact hull geometry. Building the geometry model and performing the strip-theory based hydrodynamic analysis are time-consuming. A ship's hull geometry is not always available for such purposes. A simplified Ikeda's method (SI-method) proposed by \textcite{kawahara_simple_2011} is used in Paper \ref{pap:rolldamping} to calculate all the damping components, which include the eddy component $B_E$ and the wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$, as described in \textcite{ikeda_velocity_1979}, giving a function: 
+The hydrodynamic analysis requires the ship's exact hull geometry. Building the geometry model and performing the strip-theory based hydrodynamic analysis are time-consuming. A ship's hull geometry is not always available for such purposes. A simplified Ikeda's method (SI-method) proposed by \textcite{kawaharaSimplePredictionFormula2011} is used in Paper \ref{pap:rolldamping} to calculate all the damping components, which include the eddy component $B_E$ and the wave component $B_W$. The semi-empirical formulas describe four of the five roll damping components at motion frequency $\omega$ for a given roll amplitude $\phi_a$ at zero ship speed. A speed dependency was introduced by adding a fifth damping term $B_L$ and a speed correction to $B_W$ and $B_E$, as described in \textcite{ikedaVelocityFieldShip1979}, giving a function: 
 \input{equations/simplified_ikeda_equation}
 
-\noindent The formulas within $f$ can be expressed as \textcite{ikeda_velocity_1979, kawahara_simple_2011} with the implementation in \textcite{alexandersson_rolldecay-estimators_2022}.
-It should be noted that this method is only efficient for the estimation of the roll damping of ships within the boundaries \parencite{kawahara_simple_2011}:
+\noindent The formulas within $f$ can be expressed as \textcite{ikedaVelocityFieldShip1979, kawaharaSimplePredictionFormula2011} with the implementation in \textcite{alexanderssonRolldecayestimators2022}.
+It should be noted that this method is only efficient for the estimation of the roll damping of ships within the boundaries \parencite{kawaharaSimplePredictionFormula2011}:
 \begin{equation}
     \label{eq:SI_limits}
      \left\{
@@ -129,10 +129,10 @@ It should be noted that this method is only efficient for the estimation of the 
     \right.
 \end{equation}
 
-\noindent The total roll damping is predicted as the sum (\autoref{eq:ikeda}) of the damping contributions (\autoref{eq:simplified_ikeda_equation}). This damping can be compared with the linearized equivalent damping $B_e$, which is calculated for a certain roll angle $\phi_a$ with the identified roll damping parameters $B_1$ and $B_2$ \cite{himeno_prediction_1981},
+\noindent The total roll damping is predicted as the sum (\autoref{eq:ikeda}) of the damping contributions (\autoref{eq:simplified_ikeda_equation}). This damping can be compared with the linearized equivalent damping $B_e$, which is calculated for a certain roll angle $\phi_a$ with the identified roll damping parameters $B_1$ and $B_2$ \cite{himenoPredictionShipRoll1981},
 \input{equations/B_e_equation}
 
-\noindent The $B_e$ non-dimensional form of the coefficient can be used according to \textcite{himeno_prediction_1981}. The non-dimensional equivalent for the linear damping coefficient is $\hat{B_e}$. This form is more convenient when comparing roll damping for different ships,
+\noindent The $B_e$ non-dimensional form of the coefficient can be used according to \textcite{himenoPredictionShipRoll1981}. The non-dimensional equivalent for the linear damping coefficient is $\hat{B_e}$. This form is more convenient when comparing roll damping for different ships,
 \begin{equation} \label{eq:be_eqvalent}
     \hat{B_e} = \frac{B_e}{\rho \bigtriangledown Beam^2} \sqrt{\frac{Beam}{2g}},
 \end{equation}
@@ -175,7 +175,7 @@ It should be noted that this method is only efficient for the estimation of the 
 \label{sec:genericrolldampingmodel}
 A serial grey-box model for ship roll damping (see \autoref{fig:greyrolldamping}) is also developed in Paper \ref{pap:rolldamping}. 
 This is expanding the system identification by not only focusing on one ship, but all modern ships. 
-The simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white-box model, which is combined with the following black-box correction model.
+The simplified Ikeda's method \cite{kawaharaSimplePredictionFormula2011} is used as the white-box model, which is combined with the following black-box correction model.
 
 \begin{figure}[H]
     
@@ -216,9 +216,9 @@ The simplified Ikeda's method \cite{kawahara_simple_2011} is used as the white-b
 
 \noindent Major corrections to the skin friction damping $\hat{B_F}$ and wave damping $\hat{B_W}$ are included in this expression. The corrections are included because the simplified Ikeda's method is not very accurate for this dataset; most of the ships in the dataset exceeded the limits of the method. A pure black-box model is also developed in Paper \ref{pap:rolldamping} (see \autoref{eq:polynom_complex}),
 \input{equations/polynom_complex}
-\noindent where non-dimensional frequency $\hat{\omega_0}$ is calculated with \autoref{eq:omega0_hat_equation} \cite{himeno_prediction_1981},
+\noindent where non-dimensional frequency $\hat{\omega_0}$ is calculated with \autoref{eq:omega0_hat_equation} \cite{himenoPredictionShipRoll1981},
 \input{equations/omega0_hat_equation}
-Over-fitting data is a concern when constructing a regression model from a data set. Including too many parameters or allowing the order of the model to be too high would provide a very accurate representation of the present roll damping data. However, such a representation would be accompanied by major extrapolation errors when the model is used for other data. The generalization of the model can be assessed with a hold-out evaluation by using K-fold cross validation \cite{mosteller_handbook_1968} (\autoref{fig:k-fold}).\input{kappa/fig_k-fold} The data has been divided into five smaller sets (folds). Four of the folds are used to train the model, and the fifth fold is used for testing (validation). Validation consists of calculating the coefficient of determination $R^2$ for the fitted model. Validation is completed for all five possible train-test combinations. 
+Over-fitting data is a concern when constructing a regression model from a data set. Including too many parameters or allowing the order of the model to be too high would provide a very accurate representation of the present roll damping data. However, such a representation would be accompanied by major extrapolation errors when the model is used for other data. The generalization of the model can be assessed with a hold-out evaluation by using K-fold cross validation \cite{mostellerHandbookSocialPsychology1968} (\autoref{fig:k-fold}).\input{kappa/fig_k-fold} The data has been divided into five smaller sets (folds). Four of the folds are used to train the model, and the fifth fold is used for testing (validation). Validation consists of calculating the coefficient of determination $R^2$ for the fitted model. Validation is completed for all five possible train-test combinations. 
 The folds are randomly constructed with the restriction that all data for a particular ship must be in the same fold. Five folds are randomly generated 20 times, which gives 100 values of $R^2$ from the train-test-procedure for each model. The mean values and standard deviation of these 100 values of $R^2$ are displayed in Table \ref{tab:crossvalidation}. The mean and standard deviation of $R^2$ simplified Ikeda's method in this table were calculated directly instead of using cross validation because they do not rely on the SSPA data.
 \input{equations/cross_validation}
 \clearpage
