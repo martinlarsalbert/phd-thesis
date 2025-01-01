@@ -38,7 +38,7 @@ The total forces can be divided into the Coriolis–centripetal matrix $\mathbf{
     \label{eq:upsilon1d}
 \mathbf{F} = - \mathbf{C} \upsilon + \mathbf{D}
 \end{equation}
-$\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossen_handbook_2011} as shown in \autoref{eq:M_expanded} and \autoref{eq:C_expanded}. 
+$\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossenHandbookMarineCraft2011} as shown in \autoref{eq:M_expanded} and \autoref{eq:C_expanded}. 
 \begin{equation}
     \label{eq:M_expanded}
     \input{equations/155.10_Fossen_model.M_expanded}
@@ -76,11 +76,11 @@ N \\
 =
 \left[\begin{matrix}X_{D} - Y_{\dot{r}} r^{2} + m r^{2} x_{G} + r v \left(- Y_{\dot{v}} + m\right)\\Y_{D} + r u \left(X_{\dot{u}} - m\right)\\N_{D} + r u \left(Y_{\dot{r}} - m x_{G}\right) + \underbrace{u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)}_{\text{Munk moment}} \end{matrix}\right]
 \end{equation}
-\mynote{The yawing moment $N$ has the so called Munk moment \cite{fossen_handbook_2011}:
+\mynote{The yawing moment $N$ has the so called Munk moment \cite{fossenHandbookMarineCraft2011}:
 $$
 u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)
 $$
-In many other manoeuvring models such as the Abkowitz \cite{abkowitz_ship_1964} or MMG model \cite{yasukawa_introduction_2015}, the Munk moment is not explicitly included in the equations. The Munk moment contribution will instead be included in some of the hull coefficients, typically $N_V$ or ideally $N_{uv}$ if such a coefficient exist in the model.}
+In many other manoeuvring models such as the Abkowitz \cite{abkowitzShipHydrodynamicsSteering1964} or MMG model \cite{yasukawaIntroductionMMGStandard2015}, the Munk moment is not explicitly included in the equations. The Munk moment contribution will instead be included in some of the hull coefficients, typically $N_V$ or ideally $N_{uv}$ if such a coefficient exist in the model.}
 \newline
 \vspace{0.3cm}
 \mynote{The sway force $Y$ has the apparent centrifugal force from added mass and rigid body mass: 
