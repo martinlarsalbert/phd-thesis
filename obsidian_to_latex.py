@@ -47,6 +47,19 @@ def convert_quotes(s:str)->str:
         s_latex = s_latex.replace(result.group(0),quote_latex)
 
     return s_latex
+
+def convert_headings(s:str)->str:
+    
+    s_latex = str(s)
+    
+    for result in re.finditer('#+ *(.+)',s):
+        
+        heading_latex = fr"\subsection{{{result.group(1)}}}"
+        
+        s_latex = s_latex.replace(result.group(0),heading_latex)
+
+    return s_latex
+
     
 if __name__ == '__main__':
     
@@ -57,6 +70,7 @@ if __name__ == '__main__':
     s_latex = remove_links(s=s_latex)
     s_latex = remove_highlight(s=s_latex)
     s_latex = convert_quotes(s=s_latex)
+    s_latex = convert_headings(s=s_latex)
     
     save_path = os.path.join("kappa","")     
     with open("./kappa/literature_review_obsidian.tex", encoding="utf8", mode='w') as file:
