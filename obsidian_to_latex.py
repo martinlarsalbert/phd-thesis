@@ -16,7 +16,9 @@ def convert_references(s:str)-> str:
     
     for result in re.finditer(r"\[\[\@([^\]]+)]]",s):
         
-        ref_latex = fr"\cite{{{result.group(1)}}}"
+        reference = rename_references.get(result.group(1),result.group(1))
+        
+        ref_latex = fr"\cite{{{reference}}}"
         
         s_latex = s_latex.replace(result.group(0),ref_latex)
 
