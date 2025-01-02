@@ -1,0 +1,42 @@
+%"Critic" to what has been done before
+\section{Motivation and objective}
+\label{sec:motivation}
+% Motivation:
+System identifications of parametric models has been conducted since the late 1970s from free running tests, and for even longer times from captive tests. The first papers about non-parametric models were published in the late 1990s, with an increasing popularity during the past 15 years, especially within the field of autonomous vessels. Today there are still papers being published about both these approaches, so there seems to be no consensus which one is the better and there are still new findings how to improve the models and also how to combine them in the hybrid models.
+Further progress within machine learning can definitely be expected within the coming years, so there is a bright future for the non-parametric models and the hybrid approaches. The lack of informative data and persistence of excitation will however remain a big challenge. One aspect of indirect informative data that is often overlooked is the prior knowledge about ship hydrodynamics from previous experimental works and other physical insights. This indirect informative data are often embedded in the parametric model structures; Which parameters should be included or excluded from a model have often been chosen with careful consideration from experimental works or physical reasoning. There are also semi-empirical formulas in the literature that could potentially be used to add more informative data. This is a subject that needs further investigation, and the research question of this thesis has therefore been formulated in the following way: 
+% Objective: 
+% Objectives --> Conclusions!
+% Objective + in order to...
+%\vspace{0.2cm}
+\begin{tcolorbox}[sharp corners,title=Research question]
+    \emph{\researchquestion}
+%    \tcblower
+\end{tcolorbox}
+To provide a clear path through this research, the research question has been broken down into the following research objectives:
+\begin{tcolorbox}[sharp corners,title=Objective A]
+    \emph{
+        Parametric model structure for roll motion dynamics.
+    }
+    \tcblower
+    As an initial simplification, only one degree of freedom in ship roll motion is first studied. A parametric model structure with good generalization is established through extensive investigation that contains 250 roll decay model tests.
+\end{tcolorbox}
+
+\begin{tcolorbox}[sharp corners,title=Objective B]
+    \emph{Parameter identification of roll motion dynamics.}
+    \tcblower
+     Various methods to identify the the parameters within the parametric roll motions model structure are investigated.
+\end{tcolorbox}
+
+\begin{tcolorbox}[sharp corners,title=Objective C]
+    \emph{
+        Parametric model structure for ship manoeuvring.
+    }
+    \tcblower
+    Prior knowledge about the ship dynamics during manoeuvres is embedded in the model structure and semi-empirical formulas. The ability of the parametric model structures to give a correct representation of the underlying hydrodynamics is investigated with extensive CFD calculations and inverse dynamics from model test experiments. 
+\end{tcolorbox}
+
+\begin{tcolorbox}[sharp corners,title=Objective D]
+    \emph{Parameter identification for ship manoeuvring.}
+    \tcblower
+     The problem with multicollinearity is addressed by investigating how the model structure selection can increase the generalization of the models. It is also investigated whether reduced multicollinearity by adding semi-empirical formulas from the literature can give more physically correct models with better generalization.
+\end{tcolorbox}

@@ -6,6 +6,16 @@
 % Biblatex \fullcite{Voronov2011} would work, but it uses maxcitenames, not maxbibnames, and there is no obvious way to change maxbibnames locally and change it back afterwards.
 %\item[Paper~\ref{pap:rolldamping}]
 
+% Getting all names in fullcite:
+\makeatletter
+\DeclareCiteCommand{\fullcite}
+  {\defcounter{maxnames}{\blx@maxbibnames}%
+    \usebibmacro{prenote}}
+  {\usedriver
+     {\DeclareNameAlias{sortname}{default}}
+     {\thefield{entrytype}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
 
 \begin{tabular}{ l p{11.0cm} }
 \textbf{Paper~\ref{pap:rolldamping}} & \fullcite{alexanderssonAnalysisRollDamping2021}. \vspace{0.5cm} \\
@@ -13,15 +23,45 @@
 \textbf{Paper~\ref{pap:pit}} & \fullcite{alexanderssonSystemIdentificationVessel2022}. \vspace{0.5cm} \\
 \textbf{Paper~\ref{pap:physics}} & \fullcite{alexanderssonSystemIdentificationPhysicsinformed2024b}. \vspace{0.5cm} \\
 \textbf{Paper~\ref{pap:vct}} & Identification of manoeuvring models for wind-assisted ships with large rudders using virtual captive tests (Not submitted yet). \\
-
-
-
 \end{tabular}
+\subsubsection*{Authors’ contributions (CRediT):} 
+\begin{tabular}{p{0.27\textwidth} p{0.68\textwidth}}
+     Martin Alexandersson & 
+     Conceptualization, 
+     Methodology, 
+     Software, 
+     Validation, 
+     Formal analysis, 
+     Investigation, 
+     Resources, 
+     Writing - Original Draft, 
+     Writing - Review \& Editing, 
+     Visualization. 
+     \vspace{0.25 cm}
+     \\
+     Wengang Mao &
+     Writing - Review \& Editing, 
+     Supervision,
+     Project administration,
+     Funding acquisition.
+     \vspace{0.25 cm}
+     \\
+     Jonas W. Ringsberg &
+     Writing - Review \& Editing, 
+     Supervision.
+     \vspace{0.25 cm}
+     \\
+     Martin Kjellberg &
+     Resources (Paper \ref{pap:ikeda}, \ref{pap:physics}, and \ref{pap:vct})
+\end{tabular}
+
+
 
 \newpage
 \subsection*{\normalfont \color{black} \textbf{Other relevant publications co-authored by Martin Alexandersson:}} 
 
 \begin{tabular}{ l p{11.0cm} }
+\textbf{Paper} & \fullcite{marimongiovannettiEffectsHydrodynamicForces2020}. \vspace{0.5cm} \\
 \textbf{Paper} & \fullcite{alexanderssonComparisonShipManoeuvrability2022}. \vspace{0.5cm} \\
 \textbf{Paper} & \fullcite{vergaraPowerAllocationInfluence2023}. \vspace{0.5cm} \\
 %\textbf{Paper} & \fullcite{alexandersson_prediction_2021}. \\

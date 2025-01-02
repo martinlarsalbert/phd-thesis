@@ -1,0 +1,40 @@
+\section{Background}
+Already before knowing it we as as human beings start to form models to understand our surroundings. For a small child, the parents may for instance act as role models. A model could also be a smaller physical copy of an object, like a model airplane or ship. A more scientific representation of a model will be investigated in this thesis as a simplified description of a system or process to assist in calculations and predictions for ship dynamics.
+\textcite{ljungModelingIdentificationDynamic2021} describes a model as a tool we use to answer questions about the system without having to do an experiment. This ability can be used in many ship applications:
+\vspace{0.3cm}
+\begin{itemize}
+    \item We can build a virtual prototype model to assess the performance before the ship has been built.
+    \item We can also build digital twin models for the existing ship to conduct experiments that might be too expensive or too dangerous to perform with the real ship.
+\end{itemize}
+\vspace{0.3cm}
+The ship itself can be thought of as the true model $\mathbf{S}$ which is impossible to fully describe mathematically. We can however make observations of the true model, by making measurements $y$ onboard the ship with some measurement error $\epsilon$:
+$$
+y = \mathbf{S} + \epsilon
+$$
+We want to create a model $\mathbf{m}$ that approximates the ship $\mathbf{S}$. There will be a difference between the model and the true model called process noise $w$:
+$$
+\mathbf{S} = \mathbf{m} + w
+$$
+which can be thought of as the error caused by the simplifying assumptions in the model. E.g., when approximating a non-linear function with a linear model.
+Finding the true model of the ship system is an unreachable goal, which is also an undesirable goal since we don't want to model everything about the ship, just the things relevant for the question at hand. The model $\mathbf{m}$ can be a mathematical model, but it could also be a scale model of the ship to be used in towing tanks experiments.
+
+It is very hard to fully assess if $\mathbf{m}$ is a good approximation of the true model $\mathbf{S}$, since the difference between measurement data and predicted data contains both process noise and measurement noise.
+$$
+y - \mathbf{m} = w + \epsilon
+$$
+In this thesis, we will explore ways to find an approximate mathematical model of some aspects of the ship dynamics. The models can be categorized as white-, black-, or gray-boxes. 
+\vspace{5pt}
+\begin{itemize}
+    \setlength\itemsep{5pt}
+    \item White-box modeling \\
+    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifssonGreyboxModelingOcean2008}.  
+
+    \item Black-box modeling \\
+    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskogToolsSemiphysicalModelling1995}.
+    
+    \item Grey-box modeling \\
+    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifssonGreyboxModelingOcean2008}. 
+\end{itemize}
+\vspace{5pt}
+The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
+The observations could also be from the regular operation with the ship, in natural experiments where the conditions are determined by nature or other factors outside the control of the researchers.

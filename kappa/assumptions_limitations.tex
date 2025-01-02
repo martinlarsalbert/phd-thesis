@@ -1,0 +1,34 @@
+\section{Assumptions and limitations}
+% Assumptions --> Future work
+%Calm waters...
+The calm water condition is used as a simplification of the real sea condition that a ship encounters. This condition does not account for the factors of wind, waves, and currents. These assumptions simplify the system identification by reducing the degrees of freedom to: surge, sway, yaw and, roll. 
+The rigid body assumption simplifies the ship to a stiff body that does not transform under the influence of forces. 
+It is important to note that all results are not necessarily directly transferable to the full scale when model scale data is used considering potential scale effects. 
+
+\section{Reproducibility}
+The research for this thesis has been conducted with the aim of having a high degree of reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as \entryneedsurl{bollen_social_2015}\cite{bollenSocialBehavioralEconomic2015}:
+\begin{quote}
+\vspace{0.2cm}
+\say{Reproducibility refers to the ability of a researcher to duplicate the results of a prior study using the same materials and procedures as were used by the original investigator. ...  Reproducibility is a minimum necessary condition for a finding to be believable and informative.}
+\vspace{0.2cm}
+\end{quote}
+To ensure adequate reproducibility, all code developed in this research has been made available as open source. In addition, the used data has been published as open data, as seen in the references in \autoref{tab:reproducibility}. Publishing the roll decay data from Paper \ref{pap:rolldamping} as open data was not possible due to intellectual property (IP) rights.
+
+\begin{table}[H]
+    \centering
+    \caption{References for reproducibility.}
+    \label{tab:reproducibility}
+    \begin{tabular}{ c l l}
+        \toprule
+         Paper &  Code & Data \\
+         \hline
+         \ref{pap:rolldamping} & \textcite{alexanderssonRolldecayestimators2022} & Unpublished due to IP rights\\
+         \ref{pap:pit} & \textcite{alexanderssonCodePaperSystem2022} & \textcite{alexanderssonWPCCManoeuvringModel2022a}, \textcite{sternExperienceSIMMAN20082011} \\
+         \bottomrule
+    \end{tabular}
+\end{table}
+
+\section{Outline of the thesis}
+Chapter \ref{ch:models} presents the models for rigid body ship dynamics used in this thesis. The models for roll motion are introduced in \autoref{sec:roll}, and the manoeuvring motion models are introduced in  \autoref{sec:manoeuvring model}. These models represent the physical principles and thereby the white-box component of the developed grey-box models.
+Parameter estimations, representing the black-box component, are used to regress the parameters of the white-box models. The parameter estimations are introduced in \autoref{ch:methods} for the roll motion and the manoeuvring motion in \autoref{sec:_roll} and \autoref{sec:_VMM}. 
+A summary of the appended papers, which includes research activities and a selection of the most relevant results, is presented in \autoref{ch:results}, followed by the conclusions in \autoref{ch:conclusions} and plans for future work in \autoref{ch:future_work}.
