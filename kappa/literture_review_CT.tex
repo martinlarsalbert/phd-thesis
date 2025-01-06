@@ -1,9 +1,17 @@
 \subsection{Captive test papers} \label{sec:CT}
-Identifying a manoeuvring model from CMT or VCT is a great challenge, or as \textcite{sutuloAlgorithmOfflineIdentification2014} says that \say{All practical manoeuvring mathematical models are highly schematised and although in principle can be tuned to provide a satisfactory reproduction of the true motion, there are no simple theoretical methods for estimating their parameters}.
-
+Identifying a manoeuvring model from CMT or VCT is a great challenge \say{All practical manoeuvring mathematical models are highly schematised and although in principle can be tuned to provide a satisfactory reproduction of the true motion, there are no simple theoretical methods for estimating their parameters} \cite{sutuloAlgorithmOfflineIdentification2014}.
+\textcite{sutuloSynthesisExperimentalDesigns2004} developed a computer code for planning captive tests with D-optimized experimental designs so that the most precise estimates of model parameters can be obtained with the least number of experimental runs.
+\textcite{sakamotoURANSSimulationsStatic2012} showed how the added masses could be obtained from dynamics PMM simulations with unsteady Reynolds averaged Navier–Stokes (URANS) computations. \textcite{elmoctarRANSBasedSimulatedShip2014} used a similar approach to determine the added masses. 
+However, \textcite{sakamotoURANSSimulationsStatic2012} strongly recommended using static tests for damping coefficients, instead of the single-run method applied on dynamic PMM tests.
+\textcite{elmoctarRANSBasedSimulatedShip2014} identified an Abkowitz model from VCT for a twin-screw dock ship. Simulations with the VCT model were compared to CFD direct manoeuvring simulations and FRMT. Two different ways to model the propeller were investigated; the MRF approach was 50 times faster than the SI approach, but less accurate. The VCT model was found to be very efficient and results showed satisfactory agreement. However, the direct simulations showed better agreement.
+\textcite{hajivandVirtualSimulationManeuvering2015} identified an Abkowitz model from VCT for the DTMB 5512 model ship. The coefficients were determined from VCT with a test program according to \textcite{yoonBenchmarkCFDValidation2015c} that included oblique towing tests, with drift angle variations at three speeds, and PMM tests of pure sway and pure yaw.
+Simulations could not be compared with FRMT since such tests were not available for the DTMB 5512 model ship. 
+Instead, a comparison between simulations with models identified from VCT or captive model tests conducted by \textcite{yoonBenchmarkCFDValidation2015c} was made which were found to be in very good agreement.
+\textcite{liuPredictionsShipManeuverability2018} identified an Abkowitz model from VCT for the KCS container ship. Zigzag simulations with this model (VCT A) were compared to the corresponding FRMT \cite{simmanWorkshopVerificationValidation2014}. The simulations were also compared to the simulations conducted by \textcite{simonsenKCSPMMTests2014} with a different model structure identified from both VCT (VCT B) and standard PMM tests (PMM B). The results of this comparison are summarized in this thesis in \autoref{tab:liu2018}. The table shows the under prediction of the simulations compared to the FRMT overshoot angles as the averaged value between port- and starboard maneuvers. 
+The all positive values in this table, show that all of the simulations under predicted the FRMT overhoot angles. 
 \begin{table}[h]
     \centering
-    \caption{Averaged overhoot results from \cite{liuPredictionsShipManeuverability2018}}
+    \caption{Averaged under predictions of the simulations compared to FRMT overshoot angles as reported in \cite{liuPredictionsShipManeuverability2018}}
     \label{tab:liu2018}
     \pgfplotstabletypeset[col sep=comma, column type=c,
         columns/Overshoot/.style={column type=c,string type},
@@ -15,3 +23,4 @@ Identifying a manoeuvring model from CMT or VCT is a great challenge, or as \tex
         every last row/.style={after row=\hline}
     ]{tables/liu2018.csv}
 \end{table}
+It would be reasonable to assume that the PMM model tests have the ability to give a correct physical representation of the hydrodynamics in the FRMT. But still there was not perfect agreement between the PMM B simulations and the FRMT. It seems that the accuracy of the model does not only depend on the accuracy of the CT data, but could also depend on which model structure is used and how the states are varied to identify the parameters.

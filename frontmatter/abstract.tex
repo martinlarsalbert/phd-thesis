@@ -1,22 +1,20 @@
-
 % -- Importance, background/motivation
-It is common today that operational data is recorded onboard ships within the Internet of Ships (IoS) paradigm. This enables the possibility to build ship digital twins as digital copies of the real ships. Predicting the ship's motions with ship dynamics could be an important sub-component of these ship digital twins. A model for the ship's dynamics can be identified based on observations of the ship's motions. 
-The identified model will have model uncertainty due to imperfections and idealizations made in physical model formulations as well as uncertainty from errors in the measurement data, which can be very pronounced when using full scale operational data. It is easier to develop accurate models with low model uncertainty using data obtained in a controlled laboratory environment where the measurement errors are much lower, especially in calm water conditions. The prediction model should be able to describe scenarios that a ship has never encountered before, which is possible if much of the underlying physics has been identified. Grey-box modelling is a technique which combines operational data with physical principles to achieve this. 
- 
-The objective of this thesis is to 
 % -- Objective/scope
-\noindent \objective 
+This thesis investigates the enhancement of ship manoeuvring models through the integration of prior knowledge embedded in parametric model structures and semi-empirical formulas. The research is driven by the question: How can prior knowledge be used to enhance the generalization of ship manoeuvring models?
 
 % -- Method, developed method, setting
-A model development procedure is proposed to handle the model uncertainty through the selection of candidate models based on a hold-out evaluation procedure. The measurement noise is handled by an iterative preprocessor, which uses an extended Kalman filter (EKF) and a Rauch Tung Striebel (RTS) smoother that uses an initially estimated predictor model from semi-empirical formulas.
+The study begins with a prestudy focusing on one degree of freedom in ship roll motion, aiming to develop parameter identification techniques and propose a parametric model structure with good generalization. This knowledge is then extended to the manoeuvring problem, with objectives including the development of parameter identification techniques for ship manoeuvring models, proposing a generalizable parametric model structure, mitigating multicollinearity, and identifying added masses for test cases.
+
+Methodologically, the research employs various parametric model structures for roll motion and manoeuvring, investigated through free running model tests and virtual captive tests (VCT). A novel parameter identification method combining inverse dynamics with an extended Kalman filter (EKF) is proposed. Additionally, a deterministic semi-empirical rudder model is introduced to address multicollinearity issues.
 
 % -- Results example
-It is demonstrated that the ship's roll motion with high accuracy can be described using a quadratic damping model. For the more complex manoeuvring models, multicollinearity is a large problem where the appropriate complexity needs to be selected with the bias-variance trade-off between underfitting or overfitting the data. 
-Hold-out turning circle tests were predicted with high accuracy for the wPCC and KVLCC2 test case ships with models from the proposed development procedure and parameter estimation method.
-
 % -- Conclusion 
-The proposed methods can produce prediction models with high generalization given that a suitable model structure has been selected from the candidate models and an appropriate split in the hold-out evaluation of the model development process has been applied. 
+Key findings indicate that inverse dynamics regression is an efficient method for parameter identification in parametric models. The proposed quadratic model structure for roll motion demonstrates good generalization, and the new parameter identification method accurately predicts manoeuvring models from standard maneuvers. However, challenges with multicollinearity and the need for more informative data are highlighted. The study concludes that semi-empirical formulas can guide identification towards more physically correct models, and VCT can provide the necessary data for accurate model identification.
+
+% Implications
+The implications of this research suggest that integrating semi-empirical rudder models and utilizing VCT can significantly enhance the accuracy and generalization of ship manoeuvring models, contributing to more reliable and physically accurate simulations in maritime engineering.
+
 
 \vspace{0.3cm}
-\noindent\textbf{Keywords:} Extended Kalman filter, Inverse dynamics, Multicollinearity, RTS smoother, Ship digital twin, Ship manoeuvring, System identification
+\noindent\textbf{Keywords:} Manoeuvring, Roll damping, System identification, Extended Kalman filter, Inverse dynamics, Multicollinearity
 \cleardoublepage
