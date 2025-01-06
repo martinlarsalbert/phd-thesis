@@ -13,30 +13,26 @@ Further progress within machine learning can definitely be expected within the c
 %    \tcblower
 \end{tcolorbox}
 To provide a clear path through this research, the research question has been broken down into the following research objectives:
-\begin{tcolorbox}[sharp corners,title=Objective A]
-    \emph{
-        Parametric model structure for roll motion dynamics.
-    }
-    \tcblower
-    As an initial simplification, only one degree of freedom in ship roll motion is first studied. A parametric model structure with good generalization is established through extensive investigation that contains 250 roll decay model tests.
-\end{tcolorbox}
 
-\begin{tcolorbox}[sharp corners,title=Objective B]
-    \emph{Parameter identification of roll motion dynamics.}
-    \tcblower
-     Various methods to identify the the parameters within the parametric roll motions model structure are investigated.
-\end{tcolorbox}
+\noindent A prestudy with the initial simplification to only consider one degree of freedom in ship roll motion is first conducted with the following two objectives:
+\begin{enumerate}[label=(\Alph*),itemsep=1mm]
 
-\begin{tcolorbox}[sharp corners,title=Objective C]
-    \emph{
-        Parametric model structure for ship manoeuvring.
-    }
-    \tcblower
-    Prior knowledge about the ship dynamics during manoeuvres is embedded in the model structure and semi-empirical formulas. The ability of the parametric model structures to give a correct representation of the underlying hydrodynamics is investigated with extensive CFD calculations and inverse dynamics from model test experiments. 
-\end{tcolorbox}
+    \item Develop parameter identification techniques for roll motion models from FT data.
+    
+    \item Propose a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests. 
 
-\begin{tcolorbox}[sharp corners,title=Objective D]
-    \emph{Parameter identification for ship manoeuvring.}
-    \tcblower
-     The problem with multicollinearity is addressed by investigating how the model structure selection can increase the generalization of the models. It is also investigated whether reduced multicollinearity by adding semi-empirical formulas from the literature can give more physically correct models with better generalization.
-\end{tcolorbox}
+\end{enumerate}
+
+\vspace{0.1 cm}
+\noindent The knowledge gained from the prestudy is then expanded to the manoeuvring problem with the following objectives: 
+\begin{enumerate}[label=(\Alph*),itemsep=1mm]
+    \setcounter{enumi}{2}
+
+    \item Develop parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.
+
+    \item Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure is based on physical insights from CFD and FRMT inverse dynamics.
+
+    \item Mitigate multicollinearity and enhance generalization by introducing semi-empirical formulas.
+
+    \item Identify the added masses for the test cases.    
+\end{enumerate}

@@ -1,40 +1,18 @@
 \section{Background}
-Already before knowing it we as as human beings start to form models to understand our surroundings. For a small child, the parents may for instance act as role models. A model could also be a smaller physical copy of an object, like a model airplane or ship. A more scientific representation of a model will be investigated in this thesis as a simplified description of a system or process to assist in calculations and predictions for ship dynamics.
-\textcite{ljungModelingIdentificationDynamic2021} describes a model as a tool we use to answer questions about the system without having to do an experiment. This ability can be used in many ship applications:
-\vspace{0.3cm}
-\begin{itemize}
-    \item We can build a virtual prototype model to assess the performance before the ship has been built.
-    \item We can also build digital twin models for the existing ship to conduct experiments that might be too expensive or too dangerous to perform with the real ship.
-\end{itemize}
-\vspace{0.3cm}
-The ship itself can be thought of as the true model $\mathbf{S}$ which is impossible to fully describe mathematically. We can however make observations of the true model, by making measurements $y$ onboard the ship with some measurement error $\epsilon$:
-$$
-y = \mathbf{S} + \epsilon
-$$
-We want to create a model $\mathbf{m}$ that approximates the ship $\mathbf{S}$. There will be a difference between the model and the true model called process noise $w$:
-$$
-\mathbf{S} = \mathbf{m} + w
-$$
-which can be thought of as the error caused by the simplifying assumptions in the model. E.g., when approximating a non-linear function with a linear model.
-Finding the true model of the ship system is an unreachable goal, which is also an undesirable goal since we don't want to model everything about the ship, just the things relevant for the question at hand. The model $\mathbf{m}$ can be a mathematical model, but it could also be a scale model of the ship to be used in towing tanks experiments.
+A controllable ship and the knowledge how to control it are essential for a safe voyage.
+There are formal manoeuvring requirements that ships greater than 100 meters must meet \cite{imoStandardsShipManoeuvrability2002}, which are ultimately demonstrated during sea trials. Earlier assessments are often performed before the ship has been built, by building a model of the ship. Building a physical scale model to conduct free-running model tests (FRMT) is still today recognized as the most reliable way \cite{ittcManeuveringCommitteeITTC2008}. Besides the physical scale model, there are also more abstract types of models such as mental models, statistical models, machine learning models, mathematical models, etc.
+\say{Loosely speaking a model is a tool we use to answer questions about the system without having to do an experiment} \cite{ljungModelingIdentificationDynamic2021}.
+There are many situations where an experiment with the ship is not a desirable option; for instance, it could be too expensive, too slow, too dangerous, or the ship does not exist yet.  
+Computational fluid dynamics (CFD) has been developed to describe the hydrodynamics of ships based on the fundamental principles of physics. However, there are many situations where this is not a feasible model. The calculations could be too expensive or perhaps the geometries, calculation domain, or boundary conditions cannot be defined with sufficient accuracy. There are therefore many situations where the lack of a complete physical understanding of the system must be accepted; instead, a data-driven model is used, which mimics the system behavior from observations. These data-driven models will be explored for manoeuvring in this thesis.  
 
-It is very hard to fully assess if $\mathbf{m}$ is a good approximation of the true model $\mathbf{S}$, since the difference between measurement data and predicted data contains both process noise and measurement noise.
-$$
-y - \mathbf{m} = w + \epsilon
-$$
-In this thesis, we will explore ways to find an approximate mathematical model of some aspects of the ship dynamics. The models can be categorized as white-, black-, or gray-boxes. 
-\vspace{5pt}
-\begin{itemize}
-    \setlength\itemsep{5pt}
-    \item White-box modeling \\
-    involves applying physical principles to ensure that no observed data is required. One example is computational fluid dynamics (CFD). Semi-empirical models, in which unknown physical constants have been derived from historical experiments, could also be considered white-box models \cite{leifssonGreyboxModelingOcean2008}.  
+Model structures for manoeuvring are often categorized in the literature as being either parametric models or non-parametric models. A third category, hybrid models, which combines the parametric models with the non-parametric models, is also often used. 
+The following definitions have therefore been adopted in this thesis;
+if the model structure is defined by explicit mathematical formulas that have parameters in it, it is categorized as a parametric model; all other model structures are categorized as either non-parametric or hybrid models. 
 
-    \item Black-box modeling \\
-    means that parameters do not have physical significance and that the objective is to find an effective model that fits the observed data \cite{lindskogToolsSemiphysicalModelling1995}.
-    
-    \item Grey-box modeling \\
-    is using a combination of white-box and black-box modeling methods to ensure that both a physical model and data are used. This concept is also referred to as semi-physical modeling, hybrid modeling, or semi-mechanistic modeling in the literature \cite{leifssonGreyboxModelingOcean2008}. 
-\end{itemize}
-\vspace{5pt}
-The fundamental way of system identification is to conduct experiments and then make observations to find a mathematical model. 
-The observations could also be from the regular operation with the ship, in natural experiments where the conditions are determined by nature or other factors outside the control of the researchers.
+There are mainly two types of data to identify the models: the captive test (CT) or the free-running test (FT) which will both be covered in this thesis. Captive model tests (CMT) are the classical way of captive tests which can be conducted in various ways: with a XY-carriage, rotating arm, or planar motion mechanism (PMM). CT can also be performed with CFD in virtual captive tests (VCT). 
+FT data are collected from either: model tests, full-scale tests, or in some cases direct CFD \cite{arakiEstimatingManeuveringCoefficients2012}.
+CT data is generally more applicable in virtual prototyping, when assessing the manoeuvring performance before ships are built. The FT data, on the other hand, are generally more applicable for existing ships, in a digital twin context. 
+
+The success of system identification methods depends on both the chosen model structure and the quality of the data in terms of measurement accuracy and amount of information. 
+There are many papers in the literature that handle system identification of parametric models from simulated data. However, this has been considered an irrelevant scenario in this thesis, since the model structure that generated the data is already known before hand; \say{we identify real objects, not its mathematical model} \cite{millerShipModelIdentification2021}. However, it is still relevant to use simulated data to study the non-parametric models' abilities to find a good model structure.
+
