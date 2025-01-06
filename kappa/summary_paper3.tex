@@ -5,9 +5,7 @@ In order to expand the modeling complexity and uncertainty from Paper \ref{pap:r
 The objective was to find parametric model structures with good generalization and to develop parameter identification techniques  from FRMT data.
 
 The dynamics were assumed to be described by an Abkowitz or truncated Abkowitz model. 
-
-
-The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The model structures were developed using the process described in \autoref{sec:cross_validation}. Consequently, both test cases aimed to predict turning circle maneuvers. 
+The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The parameters were identified with the recursive inverse dynamics regression (see \autoref{sec:RIDR}) and the model structures were developed using the process described in \autoref{sec:cross_validation}. Consequently, both test cases aimed to predict turning circle maneuvers. 
 
 \begin{figure}[h!]
 \centering
@@ -33,14 +31,6 @@ The system identification method proposed in Paper \ref{pap:pit} was validated o
 
 
 \subsection*{Results and concluding remarks}
-
-
-
-\noindent The parameter estimation method requires an initial guessed linear manoeuvring model. The initial models for the two test cases have hydrodynamic derivatives (\autoref{tab:initial}) that are calculated with semi-empirical formulas (\autoref{app:initial_estimates}) sourced from \textcite{brixManoeuvringTechnicalManual1993}. 
-\input{kappa/table_initial}
-\clearpage
-\subsection{The wPCC test case}
-\label{\detokenize{05.01_case_studies:the-wpcc-test-scenarios}}
 The wPCC test case focuses on predicting forces and moments from the ship hull and the rudders. The propeller force is not part of the prediction model; it is obtained from the model test measurements.
 In the model development process (\autoref{sec:cross_validation}), the model test data used for modelling is split into the training test, the validation test, and the test data sets (also presented in \autoref{fig:wpcc_datasets}), 
 \vspace{5pt}
