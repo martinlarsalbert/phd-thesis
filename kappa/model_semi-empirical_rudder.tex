@@ -1,5 +1,5 @@
 \subsection{Semi-empirical rudder model} \label{sec:semi-empirical}
-The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting line model similar to \textcite{kjellberg_sailing_2023}, \textcite{matusiak_dynamics_2021}, and \textcite{hughes_tempest_2011} that is primarily based on the rudder wind tunnel tests conducted by \textcite{whicker_free-stream_1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
+The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting line model similar to \textcite{kjellbergSailingPerformanceWindPowered2023}, \textcite{matusiakDynamicsRigidShip2021}, and \textcite{hughesTEMPESTLevel0Theory2011} that is primarily based on the rudder wind tunnel tests conducted by \textcite{whickerFreeStreamCharacteristicsFamily1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
 This angle is the sum of the initial inflow to the rudder at a straight course $\gamma_0$ and the inflow to the rudder $\gamma$ due to propeller-induced speed, drift angle, and yaw rate of the ship, as shown in \autoref{eq:gamma_semiempirical}.
 %
 \begin{figure}[h]
@@ -59,7 +59,7 @@ The yawing moment is modeled as the sway force multiplied by the lever arm $x_R$
 %
 \subsubsection{Rudder lift}
 \label{sec:rudder lift}
-With inspiration from the work of \textcite{villa_numerical_2020}, the total rudder lift is calculated as the sum of the lift at the rudder areas that are covered by the propeller $L_{RC}$ and that at the uncovered area $L_{RU}$, as shown in \autoref{eq:L_R_semiempirical} and \autoref{fig:rudder_coverage}.
+With inspiration from the work of \textcite{villaNumericalAnalysisRudder2020}, the total rudder lift is calculated as the sum of the lift at the rudder areas that are covered by the propeller $L_{RC}$ and that at the uncovered area $L_{RU}$, as shown in \autoref{eq:L_R_semiempirical} and \autoref{fig:rudder_coverage}.
 \begin{equation}
     \label{eq:L_R_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_semiempirical}
@@ -72,7 +72,7 @@ With inspiration from the work of \textcite{villa_numerical_2020}, the total rud
     \label{fig:rudder_coverage}
 \end{figure}
 %
-The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (\autoref{eq:lambda_R_semiempirical}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brix_manoeuvring_1993} (See \autoref{sec:rudder_models} for further details).
+The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (\autoref{eq:lambda_R_semiempirical}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993} (See \autoref{sec:rudder_models} for further details).
 \begin{equation}
     \label{eq:L_R_U_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_U_semiempirical}
@@ -83,7 +83,7 @@ The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq
     \input{equations/mathematical_model_kinetics.L_R_C_semiempirical}
 \end{equation}
 The velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ parts of the rudder are calculated according to \ref{sec:velocity_outside_the_propeller_slip_stream} and \ref{sec:velocity_in_the_propeller_slip_stream}.
-For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whicker_free-stream_1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
+For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
 \begin{equation}
     \label{eq:C_L_semiempirical}
     \input{equations/mathematical_model_kinetics.C_L_semiempirical}
@@ -93,8 +93,8 @@ For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to 
     \label{eq:alpha_semiempirical}
     \input{equations/mathematical_model_kinetics.alpha_semiempirical}
 \end{equation}
-The effective aspect ratio $AR_e$ accounts for the mirror image effect when the rudder is flush with the hull, and it is typically assumed to be twice the geometric aspect ratio $AR_g$ (\autoref{eq:AR_e_semiempirical} and \autoref{eq:AR_g_semiempirical}) \cite{hughes_tempest_2011}.
-However, The wPCC rudder is not flush with the hull, so a gap is created between the rudder and rudder horn at larger rudder angles, reducing the pressure difference between the high- and low-pressure sides in the upper part of the rudder. \textcite{matusiak_dynamics_2021} proposed that the gap effect can be modeled as a reduced aspect ratio. Instead, this paper opts for a more straightforward approach based on experience. A factor $K_{gap}$ is introduced, calculated according to \autoref{eq:lambda_gap_semiempirical}. The gap effect is only activated above a threshold rudder angle $\delta_{lim}$, and the strength of the gap effect is modeled by a factor $s$, as in \autoref{fig:gap}.
+The effective aspect ratio $AR_e$ accounts for the mirror image effect when the rudder is flush with the hull, and it is typically assumed to be twice the geometric aspect ratio $AR_g$ (\autoref{eq:AR_e_semiempirical} and \autoref{eq:AR_g_semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}.
+However, The wPCC rudder is not flush with the hull, so a gap is created between the rudder and rudder horn at larger rudder angles, reducing the pressure difference between the high- and low-pressure sides in the upper part of the rudder. \textcite{matusiakDynamicsRigidShip2021} proposed that the gap effect can be modeled as a reduced aspect ratio. Instead, this paper opts for a more straightforward approach based on experience. A factor $K_{gap}$ is introduced, calculated according to \autoref{eq:lambda_gap_semiempirical}. The gap effect is only activated above a threshold rudder angle $\delta_{lim}$, and the strength of the gap effect is modeled by a factor $s$, as in \autoref{fig:gap}.
 %
 \begin{equation}
     \label{eq:AR_g_semiempirical}
