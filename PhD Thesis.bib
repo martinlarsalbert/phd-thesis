@@ -262,6 +262,7 @@
   abstract = {Predicting ship maneuverings in calm water is an important topic; however, it is very expensive to run numerous maneuvering simulations using CFD. Despite its short computation time, system-based simulations need many captive model tests to estimate the hydrodynamic and rudder maneuvering coefficients used in the system-based mathematical model and the results have difficulty to achieve quantitative agreement with experimental data. Herein system identification techniques (extended Kalman filtering and constrained least square method using generalized reduced gradient algorithm) are used to predict the maneuvering coefficients from several EFD, systems based and CFD free-running trials. CFD gives not only the ship motions but also the total and component hydrodynamic forces/moments during the free-running simulations, which is helpful for estimating the maneuvering coefficients. Several types of free-running (turning circle, zigzag and large angle zigzag) tests are conducted using EFD and CFD to examine which free-running trial gives the best maneuvering coefficients using system identification. Also several free-running data are combined together for parallel processing. The set of maneuvering coefficients estimated by the constrained least square method using combined CFD free-running trial data show the most generalized results which covers a wide range of maneuvers.},
   langid = {english},
   keywords = {CFD,EFD,Free-running trial data,SI,System identification,Systems based,VCT},
+  annotation = {99 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\V5699FQX\\Araki et al. - 2012 - Estimating maneuvering coefficients using system i.pdf;C\:\\Zotero\\storage\\BP8TMB2A\\S002980181200162X.html}
 }
 
@@ -458,6 +459,25 @@
   file = {C:\Zotero\storage\XI26KS3D\display.html}
 }
 
+@article{carricaTurnZigzagManeuvers2013,
+  title = {Turn and Zigzag Maneuvers of a Surface Combatant Using a {{URANS}} Approach with Dynamic Overset Grids},
+  author = {Carrica, Pablo M. and Ismail, Farzad and Hyman, Mark and Bhushan, Shanti and Stern, Frederick},
+  year = {2013},
+  month = jun,
+  journal = {Journal of Marine Science and Technology},
+  volume = {18},
+  number = {2},
+  pages = {166--181},
+  issn = {1437-8213},
+  doi = {10.1007/s00773-012-0196-8},
+  urldate = {2025-01-02},
+  abstract = {Unsteady Reynolds averaged Navier--Stokes (URANS) computations of standard maneuvers are performed for a surface combatant at model and full scale. The computations are performed using CFDShip-Iowa v4, a free surface solver designed for 6DOF motions in free and semi-captive problems. Overset grids and a hierarchy of bodies allow the deflection of the rudders while the ship undergoes 6DOF motions. Two types of maneuvers are simulated: steady turn and zigzag. Simulations of steady turn at 35{$^\circ$} rudder deflection and zigzag 20/20 maneuvers for Fr~=~0.25 and 0.41 using constant RPM propulsion are benchmarked against experimental time histories of yaw, yaw rate and roll, and trajectories, and also compared against available integral variables. Differences between CFD and experiments are mostly within 10~\% for both maneuvers, highly satisfactory given the degree of complexity of these computations. Simulations are performed also with waves, and with propulsion at either constant RPM or torque. 20/20 zigzag maneuvers are simulated at model and full scale for Fr~=~0.41. The full scale case produces a thinner boundary layer profile compared to the model scale with different reaction times and handling needed for maneuvering. Results indicate that URANS computations of maneuvers are feasible, though issues regarding adequate modeling of propellers remain to be solved.},
+  langid = {english},
+  keywords = {6DOF,Automotive Engineering,Dynamic overset grids,Ship maneuvers,Surface combatant,URANS,VCT},
+  annotation = {102 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\DWDJR46H\Carrica et al. - 2013 - Turn and zigzag maneuvers of a surface combatant using a URANS approach with dynamic overset grids.pdf}
+}
+
 @article{casadoIdentificationNonlinearShip2005,
   title = {Identification of the Nonlinear Ship Model Parameters Based on the Turning Test Trial and the Backstepping Procedure},
   author = {Casado, Manuel Haro and Ferreiro, Ram{\'o}n},
@@ -491,6 +511,27 @@
   abstract = {This paper presents a complete procedure for sensor compatibility correction of a fixed-wing Unmanned Air Vehicle (UAV). The sensors consist of a differential air pressure transducer for airspeed measurement, two airdata vanes installed on an airdata probe for angle of attack (AoA) and angle of sideslip (AoS) measurement, and an Attitude and Heading Reference System (AHRS) that provides attitude angles, angular rates, and acceleration. The procedure is mainly based on a two pass algorithm called the Rauch-Tung-Striebel (RTS) smoother, which consists of a forward pass Extended Kalman Filter (EKF) and a backward recursion smoother. On top of that, this paper proposes the implementation of the Wiener Type Filter prior to the RTS in order to avoid the complicated process noise covariance matrix estimation. Furthermore, an easy to implement airdata measurement noise variance estimation method is introduced. The method estimates the airdata and subsequently the noise variances using the ground speed and ascent rate provided by the Global Positioning System (GPS). It incorporates the idea of data regionality by assuming that some sort of statistical relation exists between nearby data points. Root mean square deviation (RMSD) is being employed to justify the sensor compatibility. The result shows that the presented procedure is easy to implement and it improves the UAV sensor data compatibility significantly.},
   langid = {english},
   file = {C:\Zotero\storage\DCJJYDHB\Chan and Hsiao - 2011 - Implementation of the Rauch-Tung-Striebel Smoother.pdf}
+}
+
+@article{chenAssessmentCFDBasedShip2022,
+  title = {Assessment of {{CFD-Based Ship Maneuvering Predictions Using Different Propeller Modeling Methods}}},
+  author = {Chen, Changzhe and Zou, Lu and Zou, Zaojian and Guo, Haipeng},
+  year = {2022},
+  month = aug,
+  journal = {Journal of Marine Science and Engineering},
+  volume = {10},
+  number = {8},
+  pages = {1131},
+  publisher = {Multidisciplinary Digital Publishing Institute},
+  issn = {2077-1312},
+  doi = {10.3390/jmse10081131},
+  urldate = {2025-01-02},
+  abstract = {Propeller modeling in virtual captive model tests is crucial to the prediction accuracy of ship maneuvering motion. In the present study, the Computational Fluid Dynamics (CFD) method with two propeller modeling methods, Sliding Mesh (SM) and Multiple Reference Frames (MRF), was used to simulate the captive model tests for a KVLCC2 tanker model. The virtual captive model tests, including for resistance, self-propulsion, rudder force, oblique towing, circular motion, oblique towing and steady turning tests with rudder angle, were conducted by solving the Reynolds-averaged Navier--Stokes (RANS) equations. The computed hydrodynamic forces, hydrodynamic derivatives, and hull-propeller-rudder interaction coefficients were validated against the available captive model test data and the CFD results obtained by a Body Force (BF) method in the literature. Then the standard turning circle and zig-zag maneuvers were simulated by using the MMG (Maneuvering Modeling Group) model with the computed hydrodynamic derivatives and hull-propeller-rudder interaction coefficients, and the results were validated against available free-running model test data. The most satisfactory agreement in terms of the ship hydrodynamic forces and maneuvering parameters and the most accurate rudder normal force were obtained by the SM method rather than by the MRF or the BF methods, while the lateral forces and yaw moments obtained by the SM and the MRF methods were all in good agreement with the model test data.},
+  copyright = {http://creativecommons.org/licenses/by/3.0/},
+  langid = {english},
+  keywords = {MMG model,MRF method,propeller modeling,ship maneuvering,SM method,VCT,virtual captive model tests},
+  annotation = {2 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\VG58V6KD\Chen et al. - 2022 - Assessment of CFD-Based Ship Maneuvering Predictions Using Different Propeller Modeling Methods.pdf}
 }
 
 @article{chenOnlineModelingPrediction2023,
@@ -542,6 +583,25 @@
   file = {C:\Zotero\storage\455D6GE3\uuid2a5671ac-a502-43e1-9683-f27c50de3570.html}
 }
 
+@article{collegeofshipbuildingengineeringharbinengineeringuniversityharbin150001chinaEXPERIMENTALNUMERICALINVESTIGATION2021,
+  title = {{{EXPERIMENTAL AND NUMERICAL INVESTIGATION ON MANEUVERING PERFORMANCE OF SMALL WATERPLANE AREA TWIN HULL}}},
+  author = {{College of Shipbuilding Engineering, Harbin Engineering University, Harbin 150001, China} and Dai, Kun and Li, Yunbo and {College of Ocean Science and Engineering, Shanghai Maritime University, Shanghai 201306, China}},
+  year = {2021},
+  month = jun,
+  journal = {Brodogradnja},
+  volume = {72},
+  number = {2},
+  pages = {93--114},
+  issn = {0007215X, 18455859},
+  doi = {10.21278/brod72206},
+  urldate = {2025-01-02},
+  abstract = {Free running model tests and a system-based method are employed to evaluate maneuvering performance for a Small Waterplane Area Twin Hull (SWATH) ship in this paper. A 3 degrees of freedom Maneuvering Modeling Group (MMG) model is implemented to numerically simulate the maneuvering motions in calm water. Virtual captive model tests are performed by using a Reynolds-averaged Navier-Stokes (RANS) method to acquire hydrodynamic derivatives, after a convergence study to check the numerical accuracy. The turning and zigzag maneuvers are simulated by solving the maneuvering motion model and the predicted results agree well with the experimental data. Moreover, free running model tests are carried out for three lateral separations and the influence of the lateral separations on maneuvering performance is investigated. The research results of this paper will be helpful for the maneuvering prediction of the small waterplane area twin hull ship.},
+  langid = {english},
+  keywords = {VCT},
+  annotation = {4 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\7LPMM7E5\College of Shipbuilding Engineering, Harbin Engineering University, Harbin 150001, China et al. - 2021 - EXPERIMENTAL AND NUMERICAL INVESTIGATION ON MANEUVERING PERFORMANCE OF SMALL WATERPLANE AREA TWIN HU.pdf}
+}
+
 @article{committeeFinalReportRecommendations2005,
   title = {Final Report and Recommendations to the 24th {{ITTC}}},
   author = {Committee, International Towing Tank Conference Resistance},
@@ -581,7 +641,8 @@
   pages = {16--26},
   doi = {10.2478/pomr-2019-0062},
   abstract = {This paper describes the application of computational fluid dynamics rather than a towing tank test for the prediction of hydrodynamic derivatives using a RANS-based solver. Virtual captive model tests are conducted, including an oblique towing test and circular motion test for a bare model scale KVLCC2 hull, to obtain linear and nonlinear hydrodynamic derivatives in the 3rd-order MMG model. A static drift test is used in a convergence study to verify the numerical accuracy. The computed hydrodynamic forces and derivatives are compared with the available captive model test data, showing good agreement overall. Simulations of standard turning and zigzag manoeuvres are carried out with the computed hydrodynamic derivatives and are compared with available experimental data. The results show an acceptable level of prediction accuracy, indicating that the proposed method is capable of predicting manoeuvring motions.},
-  keywords = {SI},
+  keywords = {SI,VCT},
+  annotation = {7 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\8STXXUPK\Dai and Li - 2019 - Manoeuvring Prediction of KVLCC2 with Hydrodynamic.pdf}
 }
 
@@ -714,7 +775,8 @@
   urldate = {2024-10-02},
   abstract = {The maneuvering simulation is carried out through the continuous captive model test and the system dynamics approach. The mathematical maneuvering group (MMG) model is implemented in the virtual captive model tests by using the computational fluid dynamics (CFD) techniques. The oblique towing test (OTT), the circular motion test (CMT), the rudder force test and the open water test are performed to obtain the hydrodynamic derivatives of the hull, the rudder and the propeller, and the results are validated by experimental data. By designing the tests, the number of cases is reduced to a low level, to allow us to evaluate the maneuverability with a low cost and in a short time. Using these obtained coefficients, the system-based maneuvering simulations are conducted to calculate the position and the attitude of the ship, with results in agreement with the free running test results. This procedure can also be used for other hull forms, with reduced workload and with convenience for maneuvering simulation tasks.},
   langid = {english},
-  keywords = {captive model test (CMT),computational fluid dynamics (CFD),Hydrodynamic derivatives,Maneuvering simulation,system dynamics},
+  keywords = {captive model test (CMT),computational fluid dynamics (CFD),Hydrodynamic derivatives,Maneuvering simulation,system dynamics,VCT},
+  annotation = {8 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\C47BH4CC\Du et al. - 2022 - Ship maneuvering prediction based on virtual capti.pdf}
 }
 
@@ -732,7 +794,8 @@
   doi = {10.1179/str.2014.61.3.003},
   urldate = {2024-10-02},
   abstract = {Model-scale measurements and full-scale sea trials were compared to numerical simulations of different ship maneuvers. Simulations were performed using codes that solve the Reynolds-Averaged Navier-Stokes (RANS) equations coupled with the nonlinear rigid body equations of motion. Different time scales existing between ship motions and fluid flow as well as diverging spatial discretizations of hull and propulsor in conjunction with the propulsor's rotation increased the required computational efforts, rendering the model unsuitable for comprehensive parametric investigations. To overcome these difficulties, a mixture between mesh morphing for small-scale motions and global displacement of the mesh for large-scale motions was developed. Previous investigations mostly replicated captive model tests or resolved the viscous flow more precisely to explore various dedicated effects. RANS simulations offer valuable insight into scale effects involved in maneuvering prediction as they allow the study of both ship and model scale flows. This paper explores the reliability of both direct maneuvering simulation (using a combination of a freely moving ship including the rotating propulsor) and simulations based upon the virtual replication of captive model tests (using Taylor-series expansions to model the external hydrodynamic forces). The influence of engine-propulsor interaction in maneuvering motion behavior and scale effects is discussed. Predictions are compared to model tests and sea trials.},
-  keywords = {Direct Maneuvering Simulation,Engine Dynamics,RANS},
+  keywords = {Direct Maneuvering Simulation,Engine Dynamics,RANS,VCT},
+  annotation = {18 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\QYW3W3Z8\el Moctar et al. - 2014 - RANS-Based Simulated Ship Maneuvering Accounting f.pdf}
 }
 
@@ -797,8 +860,25 @@
   abstract = {The purpose of this paper is to present a benchmark program for comparing hydrodynamic coefficients calculated by manoeuvring prediction software with measurements taken from model tests. For every ship that is to be tested an input file must be provided, containing the main particulars and information on the propulsion and steering system, together with an offset file describing her geometry. The experimental data as well should be set-up in an input file. The benchmark automatically creates input files for the chosen manoeuvring software, runs the software and manages the output files. It reads from these outputs, collects the model test measurements and plots the results. Some test-cases are presented in the paper, showing the potentialities and flexibility of the benchmark. To this purpose a manoeuvring prediction program is used as example and its theory briefly explained. Its simulations are then compared with the benchmark of experimental data.},
   isbn = {978-1-138-02727-5 978-1-315-73159-9},
   langid = {english},
-  keywords = {not read},
+  keywords = {read},
   file = {C:\Zotero\storage\HQYJA2KJ\Ferrari and Quadvlieg - 2014 - A benchmark program for comparing hydrodynamic coe.pdf}
+}
+
+@article{foroushaniDeterminationHydrodynamicDerivatives2021,
+  title = {Determination of Hydrodynamic Derivatives of an Ocean Vehicle Using Cfd Analyses of Synthetic Standard Dynamic Tests},
+  author = {Foroushani, Javad Amini and Sabzpooshani, Majid},
+  year = {2021},
+  month = mar,
+  journal = {Applied Ocean Research},
+  volume = {108},
+  pages = {102539},
+  issn = {0141-1187},
+  doi = {10.1016/j.apor.2021.102539},
+  urldate = {2025-01-02},
+  abstract = {A synthetic method of dynamic test for identifying hydrodynamic coefficients (HCs) of an ocean vehicle has been proposed. The methodology consists of simulating various planar motion mechanism (PMM) tests simultaneously in a single numerical analysis. As a technical method, a stationary numerical domain has been used. Therefore, non-inertial forms of the fluid flow governing equations have been solved for simulating sinusoidal tests in a stationary numerical domain. Consequently, the quality of the grids has been preserved during the analyses. With considering of the well-known underwater geometry of DARPA-SUBOFF, validation of the numerical simulation results has been done with the computing of the pure sway and the pure yaw tests. The PMM maneuvers were induced to the numerical analyses by using a user-defined function augmented to the solver. The current results are in good agreement with the experimental ones reported in the literature. Based on the superposition rule which can be used for combining dynamic tests, a synthetic test has been designed consisted of the pure sway and the pure yaw tests. It has been developed to form more advanced synthetic tests consisted of the various PMM tests as well. The test has the capability to use for deriving non-linear HCs as well as the liner ones. The efficiency of the proposed method has been compared with the other methods, which shows it is comparable to the other approaches.},
+  keywords = {Computational fluid dynamics,Hydrodynamic coefficients,Ocean vehicle,PMM test,VCT},
+  annotation = {14 citations (Crossref/DOI) [2025-01-05]},
+  file = {C\:\\Zotero\\storage\\D6KSVLI6\\Foroushani and Sabzpooshani - 2021 - Determination of hydrodynamic derivatives of an ocean vehicle using cfd analyses of synthetic standa.pdf;C\:\\Zotero\\storage\\7HG3SP3N\\S014111872100016X.html}
 }
 
 @article{fossenFiveStateExtendedKalman2021,
@@ -857,6 +937,23 @@
   pages = {24},
   langid = {english},
   file = {C:\Zotero\storage\MVVBULNB\France et al. - 2001 - An Investigation of Head-Sea Parametric Rolling an.pdf}
+}
+
+@article{franceschiDevelopmentAssessmentCFD2022,
+  title = {Development and Assessment of {{CFD}} Methods to Calculate Propeller and Hull Impact on the Rudder Inflow for a Twin-Screw Ship},
+  author = {Franceschi, Andrea and Piaggio, Benedetto and Villa, Diego and Viviani, Michele},
+  year = {2022},
+  month = aug,
+  journal = {Applied Ocean Research},
+  volume = {125},
+  pages = {103227},
+  issn = {0141-1187},
+  doi = {10.1016/j.apor.2022.103227},
+  urldate = {2025-01-02},
+  abstract = {The purpose of this study is to investigate the feasibility of a simple but robust approach for the identification of the main interaction effect of hull and propeller on the rudder inflow in a conventional manoeuvring simulator. The manoeuvring simulator adopts a modular/MMG based approach in which the hull, the rudders and the propellers are described by separate mathematical models which take into account the interaction phenomena. The propeller--rudder interaction factor is examined by means of a numerical model developed in OpenFOAM for the prediction of the performance of a rudder in behind propeller condition. Differently the hull--rudder interaction factor is numerically obtained by means of two different approaches. The proposed kinematic method shows the minimum additional computational cost without loss of accuracy. It is based on the analysis of rudder inflow fields (in a PIV fashioned), therefore It can be carried out in a post-processing phase of CFD simulations adopted to extract the hydrodynamic coefficients. This study validates the method by comparing it with the classical approach also used in the experimental campaign, based on the analysis of rudder forces from virtual captive tests. The approaches demonstrate to improve the overall accuracy of the main manoeuvring parameters with respect to the ones obtained by means of a calibrated semi-empirical model.},
+  keywords = {Manoeuvrability,OpenFOAM,Reynolds average Navier-Stokes (RANS),Rudder-propeller interaction,Straightening coefficients,VCT},
+  annotation = {12 citations (Crossref/DOI) [2025-01-05]},
+  file = {C\:\\Zotero\\storage\\W45L8SS7\\Franceschi et al. - 2022 - Development and assessment of CFD methods to calculate propeller and hull impact on the rudder inflo.pdf;C\:\\Zotero\\storage\\M37MZRKP\\S0141118722001651.html}
 }
 
 @article{froudeRollingShips1861,
@@ -922,7 +1019,8 @@
   doi = {10.1515/ijnaoe-2015-0060},
   urldate = {2024-10-02},
   abstract = {Hydrodynamic derivatives or coefficients are required to predict the maneuvering characteristics of a marine vehicle. These derivatives are obtained numerically for a DTMB 5512 model ship by virtual simulating of captive model tests in a CFD environment. The computed coefficients are applied to predict the turning circle and zigzag maneuvers of the model ship. The comparison of the simulated results with the available experimental data shows a very good agreement among them. The simulations show that the CFD is precise and affordable tool at the preliminary design stage to obtain maneuverability performance of a marine vehicles.},
-  keywords = {Computational fluid dynamics (CFD),Hydrodynamic derivatives,Maneuvering,Oblique towing test (OTT),Planar motion mechanism (PMM)},
+  keywords = {Computational fluid dynamics (CFD),Hydrodynamic derivatives,Maneuvering,Oblique towing test (OTT),Planar motion mechanism (PMM),VCT},
+  annotation = {29 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\YPA6ZDBH\\Hajivand and Mousavizadegan - 2015 - Virtual simulation of maneuvering captive tests fo.pdf;C\:\\Zotero\\storage\\B3UWWCTJ\\S2092678216300279.html}
 }
 
@@ -1442,7 +1540,8 @@
   urldate = {2022-03-30},
   abstract = {There are three different well-known methods for predicting the manoeuvrability of ships: (1) free running model test, (2) direct manoeuvring simulation using CFD and (3) system-based manoeuvring simulation. In this paper, the manoeuvrability of the KVLCC2 was estimated using CFD with rigid body motion and body force propeller method. The free running manoeuvre at the different time steps were also simulated. The yaw checking ability and the turning ability of KVLCC2 were predicted using CFD and could have been confirmed that the IMO criteria was satisfied. When the results were compared with the model test and system-based method, the free running simulation showed better agreement to that of the model test. It could also be confirmed that the results vary depending on the time step. Overall, the CFD results using the body force propeller method estimated most accurately the test results.},
   langid = {english},
-  keywords = {Calm water,Computational fluid dynamics,Manoeuvrability,Manoeuvring test,SI,Virtual disk},
+  keywords = {Calm water,Computational fluid dynamics,Manoeuvrability,Manoeuvring test,SI,VCT,Virtual disk},
+  annotation = {17 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\JWFZGCXC\\Kim et al. - 2021 - Estimation of the manoeuvrability of the KVLCC2 in.pdf;C\:\\Zotero\\storage\\K9I4DE7J\\S2092678221000303.html}
 }
 
@@ -1573,20 +1672,6 @@
 
 @article{liShipManeuverabilityModeling2022,
   title = {Ship Maneuverability Modeling and Numerical Prediction Using {{CFD}} with Body Force Propeller},
-  author = {Li, S. and Liu, C. and Chu, X. and Zheng, M. and Wang, Z. and Kan, J.},
-  year = {2022},
-  journal = {Ocean Engineering},
-  volume = {264},
-  issn = {0029-8018},
-  doi = {10.1016/j.oceaneng.2022.112454},
-  abstract = {To obtain an accurate ship maneuverability model for motion prediction and autonomous navigation, a ship maneuverability modeling and numerical prediction method is proposed based on Computational Fluid Dynamics (CFD). A Mathematical Model Group (MMG) model is utilized to describe the ship maneuverability with data from virtual captive model and free-running tests. Static Oblique Towing Test (OTT) and dynamic Circular Motion Test (CMT) are both performed to acquire necessary data for the MMG model identification. The forces and moments acting on ship hull are predicted by solving unsteady Reynolds-Averaged Navier--Stokes (RANS) equations. The MMG hydrodynamic derivatives are obtained with the results of captive model tests. In the free-running simulations, to reduce the computational cost of considerable propeller grids, a body force propeller method is introduced to provide thrust forces directly, and the ship motion is handled by overset grids of ship hull and rudder. A 3-degree of freedom MMG model is identified with numerical simulation results, i.e., the self-propulsion test, rudder angle 35{$^\circ$}turning test and 15/1 zig-zag test, for a standard KRISO Container Ship (KCS). These tests show that the motion prediction and free-running maneuvering results can agree with the standard experimental data well. {\copyright} 2022 Elsevier Ltd},
-  langid = {english},
-  keywords = {Body force method,Captive model test,CFD,Free-running test,Ship maneuverability modeling},
-  file = {C:\Zotero\storage\TAE7LR8M\display.html}
-}
-
-@article{liShipManeuverabilityModeling2022a,
-  title = {Ship Maneuverability Modeling and Numerical Prediction Using {{CFD}} with Body Force Propeller},
   author = {Li, Songlong and Liu, Chenguang and Chu, Xiumin and Zheng, Mao and Wang, Ziping and Kan, Jinyu},
   year = {2022},
   month = nov,
@@ -1597,7 +1682,8 @@
   doi = {10.1016/j.oceaneng.2022.112454},
   urldate = {2024-10-02},
   abstract = {To obtain an accurate ship maneuverability model for motion prediction and autonomous navigation, a ship maneuverability modeling and numerical prediction method is proposed based on Computational Fluid Dynamics (CFD). A Mathematical Model Group (MMG) model is utilized to describe the ship maneuverability with data from virtual captive model and free-running tests. Static Oblique Towing Test (OTT) and dynamic Circular Motion Test (CMT) are both performed to acquire necessary data for the MMG model identification. The forces and moments acting on ship hull are predicted by solving unsteady Reynolds-Averaged Navier--Stokes (RANS) equations. The MMG hydrodynamic derivatives are obtained with the results of captive model tests. In the free-running simulations, to reduce the computational cost of considerable propeller grids, a body force propeller method is introduced to provide thrust forces directly, and the ship motion is handled by overset grids of ship hull and rudder. A 3-degree of freedom MMG model is identified with numerical simulation results, i.e., the self-propulsion test, rudder angle 35{$^\circ$}turning test and 15/1 zig-zag test, for a standard KRISO Container Ship (KCS). These tests show that the motion prediction and free-running maneuvering results can agree with the standard experimental data well.},
-  keywords = {Body force method,Captive model test,CFD,Free-running test,Ship maneuverability modeling},
+  keywords = {Body force method,Captive model test,CFD,Free-running test,Ship maneuverability modeling,VCT},
+  annotation = {17 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\6M28HCRI\\Li et al. - 2022 - Ship maneuverability modeling and numerical predic.pdf;C\:\\Zotero\\storage\\DABEDKW9\\S0029801822017371.html}
 }
 
@@ -1669,7 +1755,27 @@
   abstract = {Maneuverability is an important hydrodynamic performance of a ship, and should be taken into account during the ship design stage. The present study of Computational Fluid Dynamic (CFD) calculations aims to offer a numerical tool for maneuvering prediction with high accuracy. The virtual captive model tests for a model scale KCS container ship are conducted using unsteady Reynolds-averaged Navier-Stokes (RANS) computation to obtain the full set of linear and nonlinear hydrodynamic derivatives in the 3rd-order Abkowitz model. The numerical uncertainty analysis is carried out for the pure sway and yaw-drift tests to verify the numerical accuracy. It is concluded that the lower order Fourier coefficients are preferred in the computation of the hydrodynamic derivatives. Moreover, part of the computed hydrodynamic forces and moments are compared with the available captive model test data, and good agreement is obtained. By substituting the computed hydrodynamic derivatives into the mathematical model, the standard turning and zigzag maneuvers are predicted. By comparing the predicted maneuvering results with the available experimental data and the prediction results by others, it is demonstrated that acceptable prediction accuracy can be achieved with the present method, which shows the effectiveness of the present method in predicting ship maneuverability. {\copyright} 2018 The Author(s).},
   langid = {english},
   keywords = {Abkowitz model,Hydrodynamic derivatives,Maneuverability prediction,RANS,read,VCT,Virtual captive model tests},
+  annotation = {9 citations (Crossref/DOI) [2025-01-05]\\
+9 citations (Crossref/DOI) [2025-01-05]\\
+9 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\T9KDTJV6\\Liu et al. - 2018 - Predictions of ship maneuverability based on virtu.pdf;C\:\\Zotero\\storage\\EAWNBT79\\display.html}
+}
+
+@article{liuVirtualPMMCaptive2023,
+  title = {Virtual {{PMM}} Captive Tests Using {{OpenFOAM}} to Estimate Hydrodynamic Derivatives and Vessel Maneuverability},
+  author = {Liu, Jing and Chua, Kie Hian and Taskar, Bhushan and Liu, Daniel and Magee, Alan R.},
+  year = {2023},
+  month = oct,
+  journal = {Ocean Engineering},
+  volume = {286},
+  pages = {115654},
+  issn = {0029-8018},
+  doi = {10.1016/j.oceaneng.2023.115654},
+  urldate = {2025-01-02},
+  abstract = {This study reveals the significance of hydrodynamic derivatives derived at the different Froud number (Fr) in accurately predicting of a vessel's turning-circle maneuvers through solving the maneuvering modeling group (MMG) model. The computed turning-circle diameter showed a good agreement with the model test results, with less than 4\% difference observed when using the hydrodynamic derivatives derived at Fr~=~0.201. However, at Fr~=~0.26, a significant difference was observed, which could be attributed to the use of lower values of maximum sway amplitude ymax and maximum yaw rate rmax{$\prime$}. The hydrodynamic characteristics of a maneuvering vessel may not be fully reflected, with the high displacement of the straight surging motion dominating the results. In this study, a set of virtual planar motion mechanism (PMM) captive tests is numerically conducted on a bare container ship hull model using an open-source code OpenFOAM. The virtual PMM captive test cases involve different maximum sway amplitude, maximum yaw rates, and Fr, achieved by varying sway amplitudes, heading angles, and the carriage speeds, respectively. The obtained numerical results are reconstructed as Fourier series (FS) equations to derive hydrodynamic derivatives employing the single run (SR) method. A system-based method is adopted to predict vessel's turning-circle maneuverability in calm water by employing the MMG mathematical model.},
+  keywords = {Captive model tests,KCS,OpenFOAM,PMM,Pure yaw,System-based,VCT,Yaw and drift},
+  annotation = {1 citations (Crossref/DOI) [2025-01-05]},
+  file = {C\:\\Zotero\\storage\\KPV5BWNS\\Liu et al. - 2023 - Virtual PMM captive tests using OpenFOAM to estimate hydrodynamic derivatives and vessel maneuverabi.pdf;C\:\\Zotero\\storage\\4RAUCZHM\\S0029801823020383.html}
 }
 
 @article{ljungConvergenceAnalysisParametric1978,
@@ -1790,6 +1896,24 @@
   file = {C:\Zotero\storage\FVV4DHGM\Luo et al. - 2016 - Parameter Identification of Ship Maneuvering Model.pdf}
 }
 
+@inproceedings{maiInvestigationManeuveringCharacteristics2022,
+  title = {Investigation of {{Maneuvering Characteristics}} of {{High-Speed Catamaran Using CFD Simulation}}},
+  booktitle = {Modern {{Mechanics}} and {{Applications}}},
+  author = {Mai, Thi Loan and Jeon, Myungjun and Lim, Seung Hyeon and Yoon, Hyeon Kyu},
+  editor = {Tien Khiem, Nguyen and Van Lien, Tran and Xuan Hung, Nguyen},
+  year = {2022},
+  pages = {546--559},
+  publisher = {Springer},
+  address = {Singapore},
+  doi = {10.1007/978-981-16-3239-6_41},
+  abstract = {Many studies have been done to estimate the maneuvering characteristics of commercial ships. Studies on a high-speed catamaran, there was a great number of theoretical, numerical studies, and experimental investigation, most of them have focused on the resistance performance. In addition, a CFD (Computational Fluid Dynamics) method has become a possible tool to predict hydrodynamics. This study focuses on predicting hydrodynamic maneuvering characteristics of high-speed catamaran by utilizing RANS (Reynold-Averaged Navier-Stokes) solver. The Delft 372 catamaran model was selected as the target hull to analyze hydrodynamic characteristics. Due to the high-speed condition and changeable attitude, the motion of the catamaran was complex. The comparisons of the obtained CFD results including the free surface effects in resistance performance with experimental data were shown a relatively good agreement and it could demonstrate that the presented method could be used for predicting hydrodynamic coefficients of high-speed catamaran. Then virtual captive model tests were performed to obtain hydrodynamic coefficients. The lower-order Fourier coefficients were applied to get the hydrodynamic coefficients in dynamic motion. The linear fitting to Fourier coefficients was observed very well using least square method in the harmonic motion.},
+  isbn = {978-981-16-3239-6},
+  langid = {english},
+  keywords = {Delft 372 catamaran,High-speed,Hydrodynamic characteristics,Maneuvering simulation,RANS solver,VCT,Virtual captive model test},
+  annotation = {1 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\V5T2FH46\Mai et al. - 2022 - Investigation of Maneuvering Characteristics of High-Speed Catamaran Using CFD Simulation.pdf}
+}
+
 @article{majorFastVirtualPrototyping,
   title = {Fast {{Virtual Prototyping}} a Case Study with the {{RV Gunnerus}} Reaseach Vessel},
   author = {Major, Pierre},
@@ -1853,6 +1977,24 @@
   abstract = {In the first part, theoretical background and mathematical models making up an entity capable to describe ship non-linear behavior in sea waves combined with the maneuvering are presented. Numerical implementation of the models, in a form of LaiDyn computer program, is discussed. Internal loads acting on a rigid hull girder in waves including the non-linear effects are discussed. Also the effect of hull flexibility on the girder internal loads and response to wave loading is reviewed. Second part discusses validation of the mathematical model and presents particular applications of the method.},
   isbn = {978-952-64-0398-4},
   file = {C:\Zotero\storage\KKPC6L5M\Matusiak - 2021 - Dynamics of a Rigid Ship - with applications, 3rd .pdf}
+}
+
+@article{millerEffectAmplitudesFrequencies2023,
+  title = {Effect of Amplitudes and Frequencies on {{Virtual Planar Motion Mechanism}} of {{AUVs}}, {{Part I}}: {{Forces}}, Moments and Hydrodynamic Derivatives},
+  shorttitle = {Effect of Amplitudes and Frequencies on {{Virtual Planar Motion Mechanism}} of {{AUVs}}, {{Part I}}},
+  author = {Miller, Lakshmi Madhavan and Brizzolara, Stefano},
+  year = {2023},
+  month = oct,
+  journal = {Ocean Engineering},
+  volume = {286},
+  pages = {115512},
+  issn = {0029-8018},
+  doi = {10.1016/j.oceaneng.2023.115512},
+  urldate = {2025-01-02},
+  abstract = {Planar motion mechanism tests have been widely used in the virtual form for ocean craft, especially for underwater vehicles. These tests involve a pre-determined sinusoidal trajectory for the AUV. While there are general guidelines for the choice of amplitude and frequency for such trajectories in existing literature, there are minimal to none for smaller submerged ocean craft such as autonomous underwater vehicles. This series of articles analyzes VPMM from the perspective of AUVs and the significance of variation in these parameters. The results in Part I of this series are discussed in terms of forces and moments reconstructed using hydrodynamic derivatives obtained through RANSE. This includes variation in forces and moments, and the possible non-linear effects that cause such variation. The resultant hydrodynamic damping derivatives show upto 50\% variation based on parameters that signify pure sway and pure yaw simulations. The resultant added mass derivatives do not vary much among the various VPMM simulations attempted ({$<$}2\%). The inflow angle to the craft is found to be significant in characterizing pure sway simulations. The results in Part II are discussed in terms of implemented dynamic maneuvers through RANSE and in field.},
+  keywords = {-turbulence model,AUV,Captive maneuvers,CFD,Hydrodynamics,Maximum inflow angle,PMM,Sway,Underwater vehicles,VCT,VPMM,Yaw},
+  annotation = {4 citations (Crossref/DOI) [2025-01-05]},
+  file = {C\:\\Zotero\\storage\\MGT5Y38E\\Miller and Brizzolara - 2023 - Effect of amplitudes and frequencies on Virtual Planar Motion Mechanism of AUVs, Part I Forces, mom.pdf;C\:\\Zotero\\storage\\5I8WTTHD\\S0029801823018966.html}
 }
 
 @article{millerShipModelIdentification2021,
@@ -1950,7 +2092,8 @@
   doi = {10.1016/j.oceaneng.2010.01.009},
   urldate = {2024-03-11},
   abstract = {The results of numerical and experimental investigations on the manoeuvring performance of a fishing vessel, typical for Mediterranean Sea, are here presented. PMM experiments were used for evaluating hydrodynamic derivatives and implementing the theoretical model. The simulation model was validated, both with zig-zag and spiral experimental model tests results in still water and compared with Tribon Initial Design module results.},
-  keywords = {Computer simulation,Fishing vessel,Manoeuvring,Model tests,paper4,read},
+  keywords = {Computer simulation,Fishing vessel,Manoeuvring,Model tests,paper4,read,VCT},
+  annotation = {17 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\NL23N7YA\Obreja et al. - 2010 - Identification of hydrodynamic coefficients for ma.pdf}
 }
 
@@ -2069,6 +2212,24 @@
   annotation = {ADS Bibcode: 1965AIAAJ...3.1445R}
 }
 
+@inproceedings{rayEvaluationLinearNonlinear2009,
+  title = {Evaluation of {{Linear}} and {{Nonlinear Hydrodynamic Coefficients}} of {{Underwater Vehicles Using CFD}}},
+  booktitle = {Volume 4: {{Ocean Engineering}}; {{Ocean Renewable Energy}}; {{Ocean Space Utilization}}, {{Parts A}} and {{B}}},
+  author = {Ray, Amit and Singh, S. N. and Seshadri, V.},
+  year = {2009},
+  month = jan,
+  pages = {257--265},
+  publisher = {ASMEDC},
+  address = {Honolulu, Hawaii, USA},
+  doi = {10.1115/OMAE2009-79374},
+  urldate = {2025-01-02},
+  abstract = {Hydrodynamic coefficients (HDCs) in the equations of motion for trajectory simulation of any underwater vehicle are inherent characteristics of the body geometry. At the concept design stage of underwater vehicles, there is a requirement for affordable and efficient use of general-purpose CFD tools to get a first estimate of the HDCs, with greater accuracy than empirical methods, but at lesser cost and time than model testing. This paper reports the prediction of values of straight-line and rotary HDCs for a submerged axisymmetric body of revolution using a general-purpose RANSE solver and with modest, readily available computational facilities. Various alternatives for grid generation and grid size have been compared and a solution strategy evolved to optimize requirements of accuracy, time and computational resources. Linear and nonlinear HDCs for straight-line and rotary motions were obtained by curve-fitting of the forces and moments plotted against angle of attack and angular velocity. To compute rotary HDCs, an approach was evolved to define a circular domain and effectively simulate the motion of a model in Rotating Arm captive model tests. Results were compared with experimental results from Planar Motion Mechanism tests of the same body. The trends in variation of forces and moments are captured well by computations. Accuracy obtained for yaw moment HDCs is comparable to the uncertainty levels from model tests. It is shown that CFD techniques offer flexibility for computing nonlinear coefficients as well, by simulating combinations of linear and angular velocities.},
+  isbn = {978-0-7918-4344-4},
+  keywords = {VCT},
+  annotation = {6 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\38ZIK59W\Ray et al. - 2009 - Evaluation of Linear and Nonlinear Hydrodynamic Coefficients of Underwater Vehicles Using CFD.pdf}
+}
+
 @article{revestidoherreroTwostepIdentificationNonlinear2012,
   title = {Two-Step Identification of Non-Linear Manoeuvring Models of Marine Vessels},
   author = {Revestido Herrero, El{\'i}as and Velasco Gonz{\'a}lez, Francisco J.},
@@ -2148,7 +2309,7 @@
   author = {Sakamoto, Nobuaki and Kobayashi, Hiroshi and Ohashi, Kunihide},
   year = {2021},
   month = jun,
-  keywords = {not read},
+  keywords = {not read,VCT},
   file = {C:\Zotero\storage\LKP2S9ME\Sakamoto et al. - 2021 - CFD Based Turning Circle Maneuvering Simulation fo.pdf}
 }
 
@@ -2164,7 +2325,8 @@
   doi = {10.1016/j.oceaneng.2019.106257},
   urldate = {2024-03-11},
   abstract = {Captive model experiments are completely replaced by viscous CFD simulations in the present study aiming to obtain all the necessary parameters for mathematical model to predict yaw checking ability of KVLCC2 by zig-zag manoeuvring simulations. Present CFD simulations successfully determine all the necessary manoeuvring parameters. It is also figured out that accurate estimation in sway-related linear hydrodynamic coefficient Y'v, hull-rudder interaction coefficient aH and flow-straitening coefficient {$\gamma$}R are the key for the present manoeuvring predictions. The present study is of its first kind 1) to identify all the necessary parameters for modular-type mathematical model by viscous CFD with overset grid interface, and 2) all the computational results, e.g. forces and moment coefficients of hull and rudder, available local flows and the ship's kinematic parameters (trajectories and ship/rudder motions) in zig-zag motions are rigorously validated with the available experimental data.},
-  keywords = {Captive model tests,Manoeuvring,Modular-type mathematical model,paper4,Viscous CFD},
+  keywords = {Captive model tests,Manoeuvring,Modular-type mathematical model,paper4,VCT,Viscous CFD},
+  annotation = {13 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\KX3WWRSC\Sakamoto et al. - 2019 - Identification of KVLCC2 manoeuvring parameters fo.pdf}
 }
 
@@ -2237,6 +2399,25 @@
   file = {C:\Zotero\storage\S8S6TKXR\5e7d743c7606e644efca90c6ccae5f082221.pdf}
 }
 
+@article{shenoiStudyManoeuvrabilityContainer2016,
+  title = {Study of Manoeuvrability of Container Ship by Static and Dynamic Simulations Using a {{RANSE-based}} Solver},
+  author = {Shenoi, R. Rajita and Krishnankutty, P. and Panneer Selvam, R.},
+  year = {2016},
+  month = apr,
+  journal = {Ships and Offshore Structures},
+  volume = {11},
+  number = {3},
+  pages = {316--334},
+  publisher = {Taylor \& Francis},
+  issn = {1744-5302},
+  doi = {10.1080/17445302.2014.987439},
+  urldate = {2025-01-02},
+  abstract = {The numerical study of manoeuvrability of surface ships necessitates the determination of the hydrodynamic derivatives in the equations of motion. Standard manoeuvring tests are simulated to evaluate the ship's manoeuvring qualities. This paper deals with the estimation of linear, nonlinear and roll-coupled hydrodynamic derivatives of a container ship by numerically simulating static and dynamic tests at different roll angles using a RANSE solver. The mathematical model suitable for the nonlinear roll-coupled steering model for high-speed container ships is considered here. In order to include the effect of roll on the ship, the roll-dependent derivatives are estimated by using static and dynamic tests numerically performed at discrete heel angles. Standard definitive manoeuvres such as turning circle and zig-zag tests are numerically simulated by solving the equations of motion and the results are verified with those obtained by using experimental values.},
+  keywords = {container ship (S175),hydrodynamic derivatives,planar motion mechanism (PMM),RANSE,ship manoeuvring,VCT},
+  annotation = {17 citations (Crossref/DOI) [2025-01-05]},
+  file = {C:\Zotero\storage\JSM6T47R\Shenoi et al. - 2016 - Study of manoeuvrability of container ship by static and dynamic simulations using a RANSE-based sol.pdf}
+}
+
 @article{shiIdentificationShipManeuvering2009,
   title = {Identification of {{Ship Maneuvering Model Using Extended Kalman Filters}}},
   author = {Shi, C and Zhao, D and Peng, J and Shen, C},
@@ -2251,6 +2432,22 @@
   file = {C:\Zotero\storage\5R9DSAVN\Shi et al. - Identification of Ship Maneuvering Model Using Ext.pdf}
 }
 
+@inproceedings{simmanWorkshopVerificationValidation2014,
+  title = {Workshop on Verification and Validation of Ship Manoeuvring Simulation Methods},
+  author = {SIMMAN},
+  year = {2014},
+  address = {Copenhagen, Denmark}
+}
+
+@inproceedings{simonsenKCSPMMTests2014,
+  title = {{{KCS PMM}} Tests with Appended Hull},
+  booktitle = {Proceedings of  {{Workshop}} on {{Verification}} and {{Validation}} of {{Ship Manoeuvring Simulation Methods}}},
+  author = {Simonsen, C. D.},
+  year = {2014},
+  month = dec,
+  address = {Copenhagen, Denmark}
+}
+
 @article{skjetneNonlinearShipManoeuvering2004,
   title = {A {{Nonlinear Ship Manoeuvering Model}}: {{Identification}} and Adaptive Control with Experiments for a Model Ship},
   shorttitle = {A {{Nonlinear Ship Manoeuvering Model}}},
@@ -2263,7 +2460,8 @@
   doi = {10.4173/mic.2004.1.1},
   urldate = {2024-03-11},
   langid = {american},
-  keywords = {paper4,read},
+  keywords = {paper4,read,VCT},
+  annotation = {160 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\T6ZTCVHD\Skjetne et al. - 2004 - A Nonlinear Ship Manoeuvering Model Identificatio.pdf}
 }
 
@@ -2384,7 +2582,8 @@
   urldate = {2024-12-30},
   abstract = {An approach to synthesizing D-optimized experimental designs for an arbitrary number of factors was developed and tested on a third-order polynomial regression model with 5--8 factors. Three options were envisaged for the internal optimization procedure: an exhaustive search, a quasirandom search with the help of the Sobol sequences, and a genetic algorithm. The calculations performed have shown the pronounced superiority of the variant involving a genetic algorithm. Captive-model tests with a catamaran model with varying Froude number, drift angle, rate of yaw, sinkage, trim, and heel are presented as an example of the practical synthesis of the experimental design. The linear regression model constructed is a third-order 5-factor polynomial with respect to all factors except the Froude number. The influence of the latter is accounted for by representing the polynomial's regression coefficients as functions of the Froude number represented as a truncated Fourier series with a linear term added.},
   langid = {english},
-  keywords = {Automotive Engineering,Captive-model tests,Genetic search,Multiple linear regression,Optimized experimental design,Quasirandom search,Ship maneuvering mathematical model},
+  keywords = {Automotive Engineering,Captive-model tests,Genetic search,Multiple linear regression,Optimized experimental design,Quasirandom search,Ship maneuvering mathematical model,VCT},
+  annotation = {10 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\RALHLPFW\Sutulo and Soares - 2004 - Synthesis of experimental designs of maneuvering captive-model tests with a large number of factors.pdf}
 }
 
@@ -2401,7 +2600,8 @@
   urldate = {2021-04-23},
   abstract = {We present a modular mathematical model and a reference technique for the rapid estimation of maneuvering trajectories and motion time histories of single- and twin-screw propulsion ships. Heave, roll and pitch radiation damping are estimated from a non-linear unified seakeeping/maneuvering time-domain tool using numerical decay tests and then implemented to a 6--DoF model in the form of critical damping and natural period. Short waves are idealised by numerical integration along the vessel's waterline profile and associated hydrodynamic actions are implemented in a response curve format. For the rapid assessment of hull in-plane hydrodynamic forces, derivatives are implemented via semi-empirical methods, CFD or model test data. Results are validated against experiments available for zig-zag and turning cycle trajectories of vessels with different hull forms and propulsion configurations. It is concluded that the approach presented is feasible for the prediction of maneu\- vering trajectories of existing or new-build vessels and for estimating the evasive velocity in way of contact before grounding.},
   langid = {english},
-  keywords = {not read,SI},
+  keywords = {not read,SI,VCT},
+  annotation = {50 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\DNV295ZD\Taimuri et al. - 2020 - A 6-DoF maneuvering model for the rapid estimation.pdf}
 }
 
@@ -2421,6 +2621,24 @@
   langid = {english},
   keywords = {Manoeuvring,not read,SI},
   file = {C:\Zotero\storage\JSX46L49\Tiano and Blanke - 1997 - Multivariable identification of ship steering and .pdf}
+}
+
+@article{toxopeusInvestigationWaterDepth2013,
+  title = {Investigation of Water Depth and Basin Wall Effects on {{KVLCC2}} in Manoeuvring Motion Using Viscous-Flow Calculations},
+  author = {Toxopeus, S. L. and Simonsen, C. D. and Guilmineau, E. and Visonneau, M. and Xing, T. and Stern, F.},
+  year = {2013},
+  month = dec,
+  journal = {Journal of Marine Science and Technology},
+  volume = {18},
+  number = {4},
+  pages = {471--496},
+  issn = {1437-8213},
+  doi = {10.1007/s00773-013-0221-6},
+  urldate = {2025-01-05},
+  abstract = {The objective of the NATO AVT-161 working group is to assess the capability of computational tools to aid in the design of air, land and sea vehicles. For sea vehicles, a study has been initiated to validate tools that can be used to simulate the manoeuvrability or seakeeping characteristics of ships. This article is part of the work concentrating on manoeuvring in shallow water. As benchmark case for the work, the KVLCC2 tanker from MOERI was selected. At INSEAN, captive PMM manoeuvring tests were conducted with a scale model of the vessel for various water depths. Several partners in the AVT group have conducted RANS calculations for a selected set of manoeuvring conditions and water depths for the bare hull. Each partner was asked to use their best practice and own tools to prepare the computations and run their flow codes. Specific instructions on the post-processing were given such that the results could be compared easily. The present article discusses these results. Detailed descriptions of the approach, assumptions, and verification and validation studies are given. Comparisons are made between the computational results and with the experiments. Furthermore, flow features are discussed.},
+  langid = {english},
+  keywords = {Automotive Engineering,KVLCC2,Manoeuvring,Shallow water,VCT,Viscous flow,Wall effects},
+  file = {C:\Zotero\storage\YF8RN3EP\Toxopeus et al. - 2013 - Investigation of water depth and basin wall effects on KVLCC2 in manoeuvring motion using viscous-fl.pdf}
 }
 
 @article{triantafyllouMANEUVERINGCONTROLMARINE2003,
@@ -2454,6 +2672,8 @@
   volume = {30},
   doi = {10.4173/mic.2009.1.1},
   abstract = {This article describes a Matlab toolbox for parametric identification of fluid-memory models associated with the radiation forces ships and offshore structures. Radiation forces are a key component of force-to- motion models used in simulators, motion control designs, and also for initial performance evaluation of wave-energy converters. The software described provides tools for preparing non-parmatric data and for identification with automatic model-order detection. The identification problem is considered in the frequency domain.},
+  keywords = {VCT},
+  annotation = {131 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\RQCWFZPZ\Tristan and Fossen - 2009 - A Matlab Toolbox for Parametric Identification of .pdf}
 }
 
@@ -2499,6 +2719,8 @@
   doi = {10.1016/j.oceaneng.2018.12.041},
   urldate = {2021-11-25},
   langid = {english},
+  keywords = {VCT},
+  annotation = {11 citations (Crossref/DOI) [2025-01-05]},
   file = {C:\Zotero\storage\ZEZ9W7RJ\van der Kolk et al. - 2019 - Part 1 Experimental validation of a RANS-CFD meth.pdf}
 }
 
@@ -2840,8 +3062,26 @@
   doi = {10.1016/j.oceaneng.2015.09.046},
   urldate = {2024-03-11},
   abstract = {Part II of this two-part paper presents computational fluid dynamics (CFD) benchmark local flow field measurements for a surface combatant in dynamic planar-motion-mechanism (PMM) maneuvers. Phase-averaged stereoscopic particle-image-velocimetry (PIV) measurements are performed for pure sway and pure yaw maneuvers. The geometry is David Taylor Model Basin (DTMB) model 5512, a 3.048m geosim of DTMB model 5415. The experiments are done in a 100m{\texttimes}3m{\texttimes}3m towing tank. The measurement system is a custom-designed towing tank maneuvering test flow-mapping system, which features a PMM for captive model testing with an integrated stereoscopic PIV. Statistical convergence error is defined and monitored by using the confidence intervals of the mean and variance. The quality of data is also assessed by following standard uncertainty assessment procedures. The present experimental data are cross-referenced with computational simulations for identification of the major vortices in the flow. The core locations and trajectories of the major vortices are traced and the flow variables at the core locations are analyzed. The tests of both Parts I and II are sufficiently documented and detailed to be useful as experimental benchmark data for validation of CFD codes. Part I presents the force/moment/motion measurements.},
-  keywords = {paper4,Planar motion mechanism,Ship maneuvering,Statistical convergence,Stereoscopic particle-image-velocimetry,Uncertainty assessment,Vortex core analysis},
+  keywords = {paper4,Planar motion mechanism,Ship maneuvering,Statistical convergence,Stereoscopic particle-image-velocimetry,Uncertainty assessment,VCT,Vortex core analysis},
+  annotation = {25 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\6H3IBUKW\\Yoon et al. - 2015 - Benchmark CFD validation data for surface combatan.pdf;C\:\\Zotero\\storage\\VDJ7QIVZ\\S0029801815005181.html}
+}
+
+@article{yoonBenchmarkCFDValidation2015c,
+  title = {Benchmark {{CFD}} Validation Data for Surface Combatant 5415 in {{PMM}} Maneuvers -- {{Part I}}: {{Force}}/Moment/Motion Measurements},
+  shorttitle = {Benchmark {{CFD}} Validation Data for Surface Combatant 5415 in {{PMM}} Maneuvers -- {{Part I}}},
+  author = {Yoon, Hyunse and Simonsen, Claus D. and Benedetti, Lanfranco and Longo, Joseph and Toda, Yasuyuki and Stern, Frederick},
+  year = {2015},
+  month = nov,
+  journal = {Ocean Engineering},
+  volume = {109},
+  pages = {705--734},
+  issn = {0029-8018},
+  doi = {10.1016/j.oceaneng.2015.04.087},
+  urldate = {2025-01-06},
+  abstract = {Part I of this two-part paper presents benchmark CFD validation force/moment/motion measurements for surface combatant 5415 in planar-motion-mechanism (PMM) maneuvers. The experiments are conducted in the IIHR towing tank as part of an international collaboration for development/application of uncertainty analysis procedures and assessment of scale effects and facility biases. Stationarity and normality tests and statistical convergence errors, single and multiple run methods for obtaining the maneuvering mathematical model hydrodynamic derivatives, and the effects of heave, pitch and roll motions and fixed/free mount conditions are assessed. Assessment of the methods for obtaining the hydrodynamic derivatives is based on reconstructions of the measured force and moment time histories. Part 2 presents phase-averaged stereo PIV flow field measurements. The data is used as a test case at the SIMMAN 2008 and 2014 workshops on verification and validation of ship maneuvering simulation methods.},
+  keywords = {Hydrodynamic derivative,Mathematical modeling,Planar motion mechanism,Ship maneuvering,Statistical convergence,Uncertainty analysis},
+  file = {C\:\\Zotero\\storage\\PQX2PC89\\Yoon et al. - 2015 - Benchmark CFD validation data for surface combatant 5415 in PMM maneuvers – Part I Forcemomentmot.pdf;C\:\\Zotero\\storage\\PZRNT37F\\S002980181500181X.html}
 }
 
 @article{yoonIdentificationHydrodynamicCoefficients2003,
@@ -2947,7 +3187,8 @@
   doi = {10.1016/j.oceaneng.2022.113489},
   urldate = {2024-10-02},
   abstract = {Azimuth-Stern-Drive tugs have relatively simple hull form, great propulsive performance and maneuverability, and these characteristics provide study advantages over cargo ships and other ship forms. At the pre-processing stage, ship maneuvering prediction based on CFD codes solving the RANSE are with successful applications. However, the work of obtaining the hydrodynamic derivatives and maneuvering coefficients needs to deal with water surface effects and propeller rotating motion, which is very time-consuming. Thereby, it is necessary to explore an appropriate CFD application strategy for ship maneuvering prediction, to balance the numerical accuracy and time costs. In this paper, a self-built low-speed ship motion control experimental platform, 'QiuXin V', modified from a harbor tug, is studied. Double-body assumption combined with discretized propeller method is adopted to perform series of virtual captive model tests and self propulsion tests, to obtain the hydrodynamic derivatives, thruster performance, and maneuvering coefficients in straight moving conditions, while the flow attributes associated with the ducted thruster are predicted with empirical methods. Moreover, a modified steering force model is introduced to improve the maneuvering model accuracy. Non-disturbance turning and zigzag maneuvers are performed and compared with free-running model tests. Results show acceptable model accuracy and confirm the feasibility of the adopted integrated method in predicting the ASD ship maneuverability under low-speed conditions.},
-  keywords = {ASD tug,Free-running tests,Hydrodynamic derivatives,Pod steering force,RANS,Thruster performance},
+  keywords = {ASD tug,Free-running tests,Hydrodynamic derivatives,Pod steering force,RANS,Thruster performance,VCT},
+  annotation = {2 citations (Crossref/DOI) [2025-01-05]},
   file = {C\:\\Zotero\\storage\\7EHBU4TY\\Zhang et al. - 2023 - Twin-screw ASD tug maneuvering prediction based on.pdf;C\:\\Zotero\\storage\\QP5XWA5G\\S002980182202772X.html}
 }
 
