@@ -1,0 +1,17 @@
+\subsection{Captive test papers} \label{sec:CT}
+Identifying a manoeuvring model from CMT or VCT is a great challenge, or as \textcite{sutuloAlgorithmOfflineIdentification2014} says that \say{All practical manoeuvring mathematical models are highly schematised and although in principle can be tuned to provide a satisfactory reproduction of the true motion, there are no simple theoretical methods for estimating their parameters}.
+
+\begin{table}[h]
+    \centering
+    \caption{Averaged overhoot results from \cite{liuPredictionsShipManeuverability2018}}
+    \label{tab:liu2018}
+    \pgfplotstabletypeset[col sep=comma, column type=c,
+        columns/Overshoot/.style={column type=c,string type},
+        %columns/Parameter/.style={column type=l,string type},
+        %columns/Unit/.style={column type=l,string type,column name=~},
+        %columns/Description/.style={column type=l,string type},
+        %columns/Value/.style={column type=r, column name=~},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/liu2018.csv}
+\end{table}
