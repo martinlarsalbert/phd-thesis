@@ -1,11 +1,13 @@
 \section{Summary of Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
 \subsection*{Scope and motivations}
+In order to expand the modeling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of manoeuvring by adding the the surge, sway, and yaw degrees of freedom was studied in Paper \ref{pap:pit}. 
+The objective was to find parametric model structures with good generalization and to develop parameter identification techniques  from FRMT data.
 
-\subsection*{Results and concluding remarks}
+The dynamics were assumed to be described by an Abkowitz or truncated Abkowitz model. 
 
 
-In order to expand the modelling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of the surge, sway, and yaw degrees of freedom was studied in Paper \ref{pap:pit}. The dynamics are assumed to be described by a ship manoeuvring model (\autoref{sec:manoeuvring model}). The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The models are developed using the process described in \autoref{sec:cross_validation}. Consequently, both test cases aim to predict turning circle maneuvers. The primary dimensions of the two case study ship models are listed in \autoref{tab:cases}, with explanations in \autoref{tab:nomenclature}. The wPCC is a wind-powered car carrier tested at SSPA Maritime center \cite{alexanderssonWPCCManoeuvringModel2022a}. This twin screw ship with large rudders has good course stability and symmetric hydrodynamic manoeuvring forces. The KVLCC2 model test data from the Hamburg ship model basin (HSVA) and Maritime research institute Netherlands (MARIN) was made available by the SIMMAN2008 conference \cite{sternExperienceSIMMAN20082011}. This single screw ship has less course stability than the wPCC test case, and manoeuvring forces are unsymmetrical due to the single propeller. This instability makes it an appropriate second test case with parameter estimation on an unsymmetrical model.
+The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC (\autoref{fig:wpcc-mdl}) and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The model structures were developed using the process described in \autoref{sec:cross_validation}. Consequently, both test cases aimed to predict turning circle maneuvers. 
 
 \begin{figure}[h!]
 \centering
@@ -30,8 +32,9 @@ In order to expand the modelling complexity and uncertainty from Paper \ref{pap:
 \end{figure}
 
 
-\input{kappa/table_cases}
-\input{kappa/table_nomenclature}
+\subsection*{Results and concluding remarks}
+
+
 
 \noindent The parameter estimation method requires an initial guessed linear manoeuvring model. The initial models for the two test cases have hydrodynamic derivatives (\autoref{tab:initial}) that are calculated with semi-empirical formulas (\autoref{app:initial_estimates}) sourced from \textcite{brixManoeuvringTechnicalManual1993}. 
 \input{kappa/table_initial}
