@@ -208,3 +208,8 @@ where \(d_n\) is the euclidean distance for each time step between the model tes
 \includegraphics[width=1.0\textwidth]{kappa/images/6.pdf}
 \caption{Average simulation error with MAVMM fitted on wPCC model test data using low-pass filters with various cutoff frequencies or EKF.}\label{\detokenize{06.31_results_noise:fig-lowpass-accuracy}}\end{figure} 
 \noindent The simulations show that high accuracy can be obtained using a low-pass filter as the preprocessor if an optimal cutoff frequency is selected. The low-pass filter's accuracy decreases quickly at lower or higher frequencies. Higher cutoff frequencies result in too much measurement error in the data, which causes the OLS regression to perform poorly. In extreme cases, it is similar to having no filter. An extremely low cutoff frequency removes too much, including parts of the actual signal. The results show that the low-pass filter with a 7 Hz cutoff frequency has the lowest error rate among the low-pass filters. The EKF + RTS method in the parameter estimation has an even lower error rate, which is why it is used as the preprocessor in the proposed parameter estimation.
+
+\textcolor{red}{
+It was proposed to run the two-step method \cite{yoonIdentificationHydrodynamicCoefficients2003} iteratively.    
+In the first step of the two-step method, velocities and accelerations were estimated using an EKF with a manoeuvring model as predictor. In the second step, the inverse dynamics regression was applied to the EKF estimated states.
+}

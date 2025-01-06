@@ -7,47 +7,54 @@
 % it was shown that...
 % it was proposed that...
 
-The main conclusions are presented in this section with respect to the main objective of this thesis:
+%...short summary 
+The main conclusions are presented in this section with respect to the objectives of this thesis:
 % Objective: 
-\begin{tcolorbox}[sharp corners,title=Objective]
-\objective
+\begin{tcolorbox}[sharp corners,title=Research question]
+\researchquestion
 \end{tcolorbox}
 \vspace{0.3cm}
-\noindent The conclusions are categorized by the goals that comprise this objective.
+\noindent The conclusions are organized according to the objectives of this thesis.
 
-% RO1
-\begin{tcolorbox}[sharp corners,title=RO1]
-Establish roll motion and manoeuvring model structures that are very similar to the true model.
-\end{tcolorbox}
-In Paper \ref{pap:rolldamping} it was attempted to establish a physics-informed model for ship roll motion by combining a semi-empirical deterministic roll damping model with a data-driven model identified on a large number of roll decay tests. However, this was a failed attempt, mainly because most of the investigated ships were outside the limits of the semi-empirical model used.  
+\subsection*{Develop parameter identification techniques for roll motion models from FT data.}
+In Paper \ref{pap:rolldamping}  the inverse dynamics regression (which was called the derivation approach in that paper) was found to be the most efficient way to identify parameters in parametric roll motion models. 
 
-Using potential flow calculations as the physics-informed part together with semi-empirical formulas for the viscous parts of the roll damping was shown in Paper \ref{pap:ikeda} to be a very efficient way to accurately predict the ship roll motion.
+\subsection*{Propose a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests.}
+It was shown in Paper \ref{pap:rolldamping} that 250 investigated roll decay tests were well described by the quadratic model structure. This model structure was therefore proposed as a good structure for the system identification of roll motion with good generalization.  
 
-A thorough investigation with VCT and FRMTs inverse dynamics in Paper \ref{pap:vct} showed that the used simulation model could well describe the hull and rudder forces as well as the ship dynamics for a ship with large rudder such as the Optiwise test case where the exclusion of wave generation and the use of only three degrees of freedom were valid assumptions. 
+\subsection*{Develop parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.}
+The inverse dynamics regression investigated in Paper \ref{pap:rolldamping} was used as the core component in a new parameter identification method proposed in Paper \ref{pap:pit} for manoeuvring model structures which combines the inverse dynamics with an EKF in a two-step approach \cite{yoonIdentificationHydrodynamicCoefficients2003} which was run in iteration.
+The new method was shown to be capable of identifying manoeuvring models that predicted the FT model test data with very high accuracy.
+To assess generalization, it was shown that with the new method it was possible to identify models from zigzag tests that could predict the completely different turning circle test with less than 5\% error in advance and tactical diameter for two investigated ships.
 
-% RO2
-\begin{tcolorbox}[sharp corners,title=RO2]
-Develop system identification of roll motion and ship manoeuvring from FRMTs.
-\end{tcolorbox}
-Two different parameter identification techniques were attempted in Paper \ref{pap:rolldamping} to identify the damping terms, where the so called ''derivation approach'' turned out to be the best. In this approach the differential equations of the models were just treated as a linear regression problem. The identification technique was later referred to as inverse dynamics (ID) regression. A problem with ID is that the whole state of the system must be known; In this case the roll angle including its first and second time derivatives ($\theta,\dot{\theta},\ddot{\theta}$ ) must be known, which is often not the case for model test or ship operational data. Instead, velocity and acceleration needs to be estimated by numerical differentiation or other method.
+\subsection*{Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure is based on physical insights from CFD and FRMT inverse dynamics.}
+It was shown in Paper \ref{pap:pit}  that a very complex manoeuvring model structure with many parameters such as the Abkowitz model cannot be identified from standard maneuvers, due to multicollinearity.  
+It was also shown that multicollinearity can be mitigated by selecting the model structure to reduce the number of hydrodynamic derivatives.
 
-% RO3
-\begin{tcolorbox}[sharp corners,title=RO3]
-Develop a method to analyse identified models with FRMTs.
-\end{tcolorbox}
-The method to use inverse dynamics in combination with the state VCTs was in Paper \ref{pap:vct} found to be a useful tool to test the identified models and see if errors origin from the model structure or are inherent in the VCT data. It was for instance shown that the state VCT did not agree well with the wPCC inverse dynamics forces, which indicates that there was something missing in the wPCC VCT data. This could, for instance, be the lack of wave generation or heeled cases in the VCT data, which might be too much of a simplification for the wPCC. For Optiwise on the other hand, which was run at much lower Froude number and little heel, the state VCT agreed much better with the inverse dynamics forces and better agreement was obtained in the closed loop simulations.
+However, in Paper \ref{pap:physics}, it was shown that the identified models in Paper \ref{pap:pit} would not generalize well when the ship was exposed to external wind forces. 
+It was also shown that the identification method was unable to make a correct separation between the hull and the rudder forces when only the total force of the inverse dynamics was available. 
+A deterministic semi-empirical rudder model was proposed instead of the data-driven rudder model to alleviate this part of the multicollinearity problem. It was shown that this guided the identification toward a more physically correct model, with lower multicollinearity and better generalization to the wind conditions. 
 
-% RO4
-\begin{tcolorbox}[sharp corners,title=RO4]
-Mitigate the system identification multicollinearity.
-\end{tcolorbox}
-In Paper \ref{pap:pit} multicollinearity was found to be a significant problem for system identification on data from IMO standard maneuvers, especially for complex models such as the Abkowitz model structure. Consequently, some of the regressed hydrodynamic derivatives had unphysically large values and substantial uncertainties in the regressed polynomials with sums of large counteracting coefficients. However, the models were still mathematically correct, where the regressed polynomials fit the training data well. The model worked as long as the states were similar to the training data. However, when extrapolating, it is easy to imagine that the balance between these massive derivatives could be disturbed, giving significant extrapolation errors very quickly.
+However, there were still problems with multicollinearity due to the high correlation between yaw rate and drift during standard maneuvers which prevented the identification of perfectly physically correct models in Paper \ref{pap:physics} despite the added semi-empirical rudder. More informative data would be needed to resolve this issue. There are other kinds of maneuver that give a better persistence of excitation. However, more informative data can also be obtained from CFD calculations, which was investigated in Paper \ref{pap:vct} . Extensive VCT calculations were performed for two ships according to a proposed test matrix that explored the state space during standard maneuvers.
+It was shown that the identified model from VCT could well predict the zigzag model tests for one of the ships. From this it was concluded that a physically correct model could be identified from the proposed model structure if provided with correct and informative data. Or, as \textcite{revestidoherreroTwostepIdentificationNonlinear2012} puts it \say{the parametric model structures provide a suitable set of models in which it can be assumed that a true model belongs}.
+The results for the other ship were not as good.  However, it was shown from the inverse dynamics analysis that this was probably due to false assumptions in the VCT data for this ship, rather than in the model structure or the identification method.  
 
-%However, multicollinearity is not necessarily a sign that the model structure is wrong, it is rather a sign that the data used do not follow the aspect of persistence of excitation. This means that the structure of the model could be correct, but the data used for identification do not contain enough information to identify all parameters correctly.
+The method of using inverse dynamics in combination with state VCTs was found to be a useful tool to test the identified models and to see if the errors originate from the model structure or were inherent in the VCT data. 
 
-It was shown in Paper \ref{pap:pit} that the multicollinearity can be mitigated by reducing the number of hydrodynamic derivatives so that the model could generalize from the zigzag training data to predict turning circles with less than 5\% error in advance and tactical diameter for the two investigated test cases.
+\subsection*{Mitigate multicollinearity and enhance generalization by introducing semi-empirical formulas from the literature.}
+There are many semi-empirical formulas available in the literature, containing prior knowledge about hydrodynamics that could potentially help in identifying models.       
+Semi-empirical methods to predict roll damping were investigated in Paper \ref{pap:rolldamping} . Predictions with Ikeda's method, including 2D potential flow strip calculations, were in fair agreement with roll decay tests for 15 investigated ships. 
+A more in-depth analysis of roll damping was conducted for the KVLCC2 test case in Paper \ref{pap:ikeda}. The 2D potential flow strip calculation was here replaced by a more modern potential flow code. The combined method produced roll motion prediction with high accuracy. It was thereby concluded that Ikeda's method provides a good semi-empirical method for predicting the viscous roll damping.
 
-However, in Paper \ref{pap:physics}, it was shown that the identified models in Paper \ref{pap:pit} would not generalize well when the ship was exposed to external wind forces. The high correlation between the yaw rates and the drift angles during the maneuvers prevented a correct split between the yaw rate and the drift-dependent coefficients.
+In Paper \ref{pap:physics}, a new semi-empirical rudder model was proposed for the twin rudder wPCC test case based on various semi-empirical formulas from the literature. The model was in good agreement with the VCT data in Paper \ref{pap:physics} and \ref{pap:vct}. 
+A modified quadratic version of the MMG semi-empirical rudder model was proposed in Paper \ref{pap:vct}. 
+It was shown that this model could well predict the VCT data and also the measured rudder forces during zigzag model tests for the single rudder Optiwise test case. 
+The semi-empirical rudder model from Paper \ref{pap:physics} and the modified quadratic MMG rudder model from Paper \ref{pap:vct} belong to the same family of semi-empirical rudder models which was shown to be very capable of describing the true forces from the rudder/rudders during standard manoeuvres.  
 
-It was also shown in Paper \ref{pap:physics} that identification was unable to make a correct separation between the hull and the rudder forces when only the total force of the inverse dynamics was available. 
-A deterministic semi-empirical rudder model was proposed instead of the data driven rudder model to alleviate this part of the multicollinearity problem. It was shown that this guided the identification toward a more physically correct model, with lower multicollinearity and better generalization to the wind conditions. There were, however, still problems with multicollinearity from yaw rate and drift which needs to be resolved in other ways, typically with more informative data. 
+\subsection*{Identify the added masses for the test cases.}    
+The yaw and sway added masses were identified with the Fourier series method \cite{sakamotoURANSSimulationsStatic2012} from pure yaw and pure sway test simulated with a fully nonlinear potential flow (FNPF) panel method. 
+The inverse dynamics forces calculated with the identified added masses, agreed well with the force prediction models and the state VCTs for Optiwise, which suggests that this is an accurate way to determine the added masses. 
+
+
+
+

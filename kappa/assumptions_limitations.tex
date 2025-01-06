@@ -1,9 +1,23 @@
 \section{Assumptions and limitations}
 % Assumptions --> Future work
 %Calm waters...
-The calm water condition is used as a simplification of the real sea condition that a ship encounters. This condition does not account for the factors of wind, waves, and currents. These assumptions simplify the system identification by reducing the degrees of freedom to: surge, sway, yaw and, roll. 
-The rigid body assumption simplifies the ship to a stiff body that does not transform under the influence of forces. 
-It is important to note that all results are not necessarily directly transferable to the full scale when model scale data is used considering potential scale effects. 
+In this thesis, the following assumptions are made.
+\begin{enumerate}[label=(\Roman*),itemsep=1mm]
+    \item The rigid body assumption simplifies the ship to a stiff body that does not transform under the influence of forces.
+
+    \item Calm water with no external waves is assumed within manoeuvring. The models in this thesis can therefore be described by state space models with Markov property, which means that the fluid memory effects have been neglected \cite{fossenHandbookMarineCraft2011}. 
+
+    \item The maneuvers are assumed to have low-frequency motions so that the added masses can be simplified to have constant values \cite{fossenHandbookMarineCraft2011}.
+    
+    \item In this paper, the accuracy of the CFD methods used to calculate the VCT data is not investigated. The VCT data is instead assumed to be correct, so that the thesis can instead focus on the system identification given this assumption. Free surface effects were neglected in the VCT calculations assuming that the wave generation is small or has little influence on the manoeuvring performance.
+
+    \item Three degrees of freedom are assumed sufficient to describe the manoeuvring dynamics, neglecting influence of roll, heave, and pitch. 
+
+    \item Only data from standard test types such as turning circles or zigzag tests are used in this thesis, since they are commonly available for ships. 
+        
+\end{enumerate}
+
+
 
 \section{Reproducibility}
 The research for this thesis has been conducted with the aim of having a high degree of reproducibility. The U.S. National Science Foundation (NSF) subcommittee on replicability in science defines reproducibility as \entryneedsurl{bollen_social_2015}\cite{bollenSocialBehavioralEconomic2015}:
