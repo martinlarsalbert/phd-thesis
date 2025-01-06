@@ -30,7 +30,7 @@ This angle is the sum of the initial inflow to the rudder at a straight course $
 \end{equation}
 
 The transverse velocity at the rudder $V_{Ry}$ is calculated by multiplying the ship's yaw rate $r$ and transverse velocity $v$ by their flow straightening values $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). The flow straightening values have linear and nonlinear dependencies of the geometric inflow angle $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so that the flow straightening may vary for different inflow angles, which is an enhancement of the MMG model.
-The axial velocity at the rudder $V_{RxC}$, including the velocity of the propeller race, is presented in \autoref{sec:velocity_in_the_propeller_slip_stream}.
+The axial velocity at the rudder $V_{RxC}$, including the velocity of the propeller race, is presented in Paper \ref{physics}.
 \begin{equation}
     \label{eq:V_R_y_semiempirical}
     \input{equations/mathematical_model_kinetics.V_R_y_semiempirical}
@@ -72,7 +72,7 @@ With inspiration from the work of \textcite{villaNumericalAnalysisRudder2020}, t
     \label{fig:rudder_coverage}
 \end{figure}
 %
-The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (\autoref{eq:lambda_R_semiempirical}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993} (See \autoref{sec:rudder_models} for further details).
+The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (see Paper \autoref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993} (See \autoref{sec:rudder_models} for further details).
 \begin{equation}
     \label{eq:L_R_U_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_U_semiempirical}
@@ -82,8 +82,7 @@ The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq
     \label{eq:L_R_C_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_C_semiempirical}
 \end{equation}
-The velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ parts of the rudder are calculated according to \ref{sec:velocity_outside_the_propeller_slip_stream} and \ref{sec:velocity_in_the_propeller_slip_stream}.
-For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
+See Paper \autoref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
 \begin{equation}
     \label{eq:C_L_semiempirical}
     \input{equations/mathematical_model_kinetics.C_L_semiempirical}
@@ -117,7 +116,7 @@ However, The wPCC rudder is not flush with the hull, so a gap is created between
     \label{fig:gap}
 \end{figure}
 
-The lift slope of the rudder $\frac{\partial C_L}{\partial \alpha}$ is calculated using \autoref{eq:dC_L_dalpha_semiempirical}, where $a_0$ is the section lift curve slope (\autoref{eq:a_0_semiempirical}) and $\Omega$ is the sweep angle of the quarter chord line \cite{lewis_principles_1989}.
+The lift slope of the rudder $\frac{\partial C_L}{\partial \alpha}$ is calculated using \autoref{eq:dC_L_dalpha_semiempirical}, where $a_0$ is the section lift curve slope (\autoref{eq:a_0_semiempirical}) and $\Omega$ is the sweep angle of the quarter chord line \cite{lewisPrinciplesNavalArchitecture1989}.
 \begin{equation}
     \label{eq:dC_L_dalpha_semiempirical}
     \input{equations/mathematical_model_kinetics.dC_L_dalpha_semiempirical}
@@ -129,7 +128,7 @@ The lift slope of the rudder $\frac{\partial C_L}{\partial \alpha}$ is calculate
     \input{equations/mathematical_model_kinetics.a_0_semiempirical}
 \end{equation}
 %
-Additionally, a small nonlinear part to $C_L$ is modeled by the cross-flow drag coefficient $C_{DC}$, which is calculated for a rudder with squared tip using \autoref{eq:C_D_crossflow_semiempirical}, where the taper ratio $\lambda$ is the ratio between the chords at the tip and the root of the rudder (\autoref{eq:lambda__semiempirical}) \cite{hughes_tempest_2011}. 
+Additionally, a small nonlinear part to $C_L$ is modeled by the cross-flow drag coefficient $C_{DC}$, which is calculated for a rudder with squared tip using \autoref{eq:C_D_crossflow_semiempirical}, where the taper ratio $\lambda$ is the ratio between the chords at the tip and the root of the rudder (\autoref{eq:lambda__semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}. 
 \begin{equation}
     \label{eq:C_D_crossflow_semiempirical}
     \input{equations/mathematical_model_kinetics.C_D_crossflow_semiempirical}
@@ -148,5 +147,5 @@ The total rudder drag $D_R$ is calculated as a sum of the contributions from the
     \label{eq:D_R_semiempirical}
     \input{equations/mathematical_model_kinetics.D_R_semiempirical}
 \end{equation}
-The drag coefficients $C_{DC}$ and $C_{DU}$ are calculated with semi-empirical formulas according to \ref{sec:CD}.
+See Paper \autoref{pap:physics} for further details how the drag coefficients $C_{DC}$ and $C_{DU}$ are calculated.
 
