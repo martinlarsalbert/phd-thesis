@@ -9,10 +9,9 @@ The objective of Paper \ref{pap:rolldamping} was to develop parameter identifica
 
 The roll damping was studied using time series data from 250 roll decay tests (see \autoref{sec:roll}) assembled by RISE at the Maritime Dynamics Laboratory, SSPA Maritime Center.
 
-System identification was conducted on linear, quadratic, and cubic models. Results from the simulations with the identified models (from one of the roll-decay tests) are presented in \autoref{fig:roll_decay_compare}. The cubic and quadratic models reproduced the model test well, but the linear model was too simple to provide an accurate representation for both smaller and larger roll angles. The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can be visualized, as seen in \autoref{fig:roll_decay}.
-
+System identification was conducted on linear, quadratic, and cubic models. Results from the simulations with the identified models (from one of the roll-decay tests) are presented in \autoref{fig:roll_decay_compare}. The cubic and quadratic models reproduced the model test well, but the linear model was too simple to provide an accurate representation for both smaller and larger roll angles. 
+The amplitude decrement $\phi_a$ and roll damping $B$ for each oscillation can be visualized, as seen in \autoref{fig:roll_decay}.
 \begin{figure}[h!] \centering \includegraphics[width=\linewidth]{kappa/images/roll_decay_model_compare.pdf} \caption{Roll decay estimation with identified cubic, quadratic, and linear models.} \label{fig:roll_decay_compare} \end{figure}
-
 \begin{figure}[h!] \begin{subfigure}[b]{0.45\textwidth} \centering \includegraphics[width=0.9\linewidth]{kappa/images/roll_decay_amplitude.pdf} \caption{Amplitude decrements.} \label{fig:roll_decay_amplitude} \end{subfigure} ~ %add desired spacing between images, e.g., ~, \quad, \qquad, \hfill etc. %(or a blank line to force the subfigure onto a new line) 
 \begin{subfigure}[b]{0.45\textwidth} \centering \includegraphics[width=0.9\linewidth]{kappa/images/roll_decay_damping.pdf} \caption{Dampings.} \label{fig:roll_decay_damping} \end{subfigure} \caption{Roll decay model test, linear-, quadratic-, and cubic-model.} \label{fig:roll_decay} \end{figure}
 

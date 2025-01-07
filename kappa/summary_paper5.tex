@@ -25,6 +25,7 @@ Propeller and rudder forces were measured during the FRMTs for Optiwise. It was 
     \caption{Rudder force during the VCT tests as a function of the effective inflow angle for the original MMG model and the modified quadratic MMG model.}
     \label{fig:MMG_quadratic}
 \end{figure}
+
 \autoref{fig:rudder_forces}  shows a comparison of rudder forces predicted with the models, measurements, and state VCT calculations which agree well. 
 \begin{figure}[h]
     \centering
@@ -44,6 +45,7 @@ Propeller and rudder forces were measured during the FRMTs for Optiwise. It was 
     \caption{Rudder forces during the zigzag tests compared to predictions with the MMG models.}
     \label{fig:rudder_forces}
 \end{figure}
+
 The total forces during the zigzag tests, including the hull and rudder predictions are shown in \autoref{fig:ID_optiwise20} which also show good agreement with the inverse dynamics forces (FRMT).
 
 \begin{figure}[h]
@@ -65,7 +67,10 @@ The total forces during the zigzag tests, including the hull and rudder predicti
     \label{fig:ID_optiwise20}
 \end{figure}
 
-Closed loop simulations were also conducted as shown in \autoref{fig:sim_optiwise} with very good agreement for the zigzag20/20 tests and a bit less agreement for the zigzag10/10 tests. 
+Closed loop simulations were also conducted as shown in \autoref{fig:sim_optiwise} with very good agreement for the zigzag20/20 tests and a bit less agreement for the zigzag10/10 tests.
+For Optiwise it can therefore be concluded that
+the VCT data contained correct damping forces during the maneuvers, which were well
+described by the chosen model structure including the proposed rudder model, and also that the method used to determine added masses gave reasonable values.
 \begin{figure}[h]
      \centering
      \begin{subfigure}[b]{0.49\textwidth}
@@ -101,7 +106,4 @@ Closed loop simulations were also conducted as shown in \autoref{fig:sim_optiwis
         \caption{Comparison of zigzag tests between Optiwise experiments (black) and simulations with the MMG original (cyan) and MMG quadratic (purple).}
         \label{fig:sim_optiwise}
 \end{figure}
-For Optiwise it can therefore be concluded that
-the VCT data contained correct damping forces during the maneuvers, which were well
-described by the chosen model structure including the proposed rudder model, and also that the method used to determine added masses gave reasonable values.
 \clearpage

@@ -64,14 +64,6 @@ With inspiration from the work of \textcite{villaNumericalAnalysisRudder2020}, t
     \label{eq:L_R_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_semiempirical}
 \end{equation}
-%
-\begin{figure}[h]
-    \centering
-    \includesvg{figures/rudder_coverage.svg}
-    \caption{Rudder areas covered and uncovered by the propeller.}
-    \label{fig:rudder_coverage}
-\end{figure}
-%
 The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (see Paper \ref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993}.
 \begin{equation}
     \label{eq:L_R_U_semiempirical}
@@ -82,7 +74,15 @@ The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq
     \label{eq:L_R_C_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_C_semiempirical}
 \end{equation}
-See Paper \ref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
+See Paper \ref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. 
+\begin{figure}[h]
+    \centering
+    \includesvg{figures/rudder_coverage.svg}
+    \caption{Rudder areas covered and uncovered by the propeller.}
+    \label{fig:rudder_coverage}
+\end{figure}
+
+For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
 \begin{equation}
     \label{eq:C_L_semiempirical}
     \input{equations/mathematical_model_kinetics.C_L_semiempirical}
@@ -115,6 +115,7 @@ However, The wPCC rudder is not flush with the hull, so a gap is created between
     \caption{Rudder lift is reduced by the gap between the rudder and rudder horn for larger rudder angles.}
     \label{fig:gap}
 \end{figure}
+\FloatBarrier
 
 The lift slope of the rudder $\frac{\partial C_L}{\partial \alpha}$ is calculated using \autoref{eq:dC_L_dalpha_semiempirical}, where $a_0$ is the section lift curve slope (\autoref{eq:a_0_semiempirical}) and $\Omega$ is the sweep angle of the quarter chord line \cite{lewisPrinciplesNavalArchitecture1989}.
 \begin{equation}
