@@ -12,10 +12,9 @@
 \say{\researchquestion}
 The conclusions of this thesis have been organized according to its objectives as presented below.
 
-\subsection*{Develop parameter identification techniques for roll motion models from FT data.}
-In Paper \ref{pap:rolldamping}  the inverse dynamics regression (which was called the derivation approach in that paper) was found to be the most efficient way to identify parameters in parametric roll motion models. 
+\subsection*{Parametric model structure and parameter identification techniques for roll motion dynamics with good generalization based on prior knowledge from model tests.}
+In Paper \ref{pap:rolldamping}  the inverse dynamics regression (which was called the derivation approach in that paper) is the most efficient way to identify parameters in parametric roll motion models. 
 
-\subsection*{Propose a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests.}
 It was shown in Paper \ref{pap:rolldamping} that 250 investigated roll decay tests were well described by the quadratic model structure. This model structure was therefore proposed as a good structure for the system identification of roll motion with good generalization.  
 
 \subsection*{Develop parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.}
@@ -23,7 +22,7 @@ The inverse dynamics regression investigated in Paper \ref{pap:rolldamping} was 
 The new method was shown to be capable of identifying manoeuvring models that predicted the FT model test data with very high accuracy.
 To assess generalization, it was shown that with the new method it was possible to identify models from zigzag tests that could predict the completely different turning circle test with less than 5\% error in advance and tactical diameter for two investigated ships.
 
-\subsection*{Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure is based on physical insights from CFD and FRMT inverse dynamics.}
+\subsection*{Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure should be based on physical insights from CFD and FRMT inverse dynamics.}
 It was shown in Paper \ref{pap:pit}  that a very complex manoeuvring model structure with many parameters such as the Abkowitz model cannot be identified from standard maneuvers, due to multicollinearity.  
 It was also shown that multicollinearity can be mitigated by selecting the model structure to reduce the number of hydrodynamic derivatives.
 
@@ -46,11 +45,3 @@ In Paper \ref{pap:physics}, a new semi-empirical rudder model was proposed for t
 A modified quadratic version of the MMG semi-empirical rudder model was proposed in Paper \ref{pap:vct}. 
 It was shown that this model could well predict the VCT data and also the measured rudder forces during zigzag model tests for the single rudder Optiwise test case. 
 The semi-empirical rudder model from Paper \ref{pap:physics} and the modified quadratic MMG rudder model from Paper \ref{pap:vct} belong to the same family of semi-empirical rudder models which was shown to be very capable of describing the true forces from the rudder/rudders during standard manoeuvres.  
-
-\subsection*{Identify the added masses for the test cases.}    
-The yaw and sway added masses were identified with the Fourier series method \cite{sakamotoURANSSimulationsStatic2012} from pure yaw and pure sway test simulated with a fully nonlinear potential flow (FNPF) panel method. 
-The inverse dynamics forces calculated with the identified added masses, agreed well with the force prediction models and the state VCTs for Optiwise, which suggests that this is an accurate way to determine the added masses. 
-
-
-
-
