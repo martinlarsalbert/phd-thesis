@@ -1,5 +1,5 @@
 \subsection{Semi-empirical rudder model} \label{sec:semi-empirical}
-The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting line model similar to \textcite{kjellbergSailingPerformanceWindPowered2023}, \textcite{matusiakDynamicsRigidShip2021}, and \textcite{hughesTEMPESTLevel0Theory2011} that is primarily based on the rudder wind tunnel tests conducted by \textcite{whickerFreeStreamCharacteristicsFamily1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
+The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting line model similar to \textcite{hughesTEMPESTLevel0Theory2011}, \textcite{matusiakDynamicsRigidShip2021}, and \textcite{kjellbergSailingPerformanceWindPowered2023} that is primarily based on the rudder wind tunnel tests conducted by \textcite{whickerFreeStreamCharacteristicsFamily1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
 This angle is the sum of the initial inflow to the rudder at a straight course $\gamma_0$ and the inflow to the rudder $\gamma$ due to propeller-induced speed, drift angle, and yaw rate of the ship, as shown in \autoref{eq:gamma_semiempirical}.
 %
 \begin{figure}[h]
@@ -30,7 +30,7 @@ This angle is the sum of the initial inflow to the rudder at a straight course $
 \end{equation}
 
 The transverse velocity at the rudder $V_{Ry}$ is calculated by multiplying the ship's yaw rate $r$ and transverse velocity $v$ by their flow straightening values $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). The flow straightening values have linear and nonlinear dependencies of the geometric inflow angle $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so that the flow straightening may vary for different inflow angles, which is an enhancement of the MMG model.
-The axial velocity at the rudder $V_{RxC}$, including the velocity of the propeller race, is presented in Paper \ref{physics}.
+The axial velocity at the rudder $V_{RxC}$, including the velocity of the propeller race, is presented in Paper \ref{pap:physics}.
 \begin{equation}
     \label{eq:V_R_y_semiempirical}
     \input{equations/mathematical_model_kinetics.V_R_y_semiempirical}
@@ -72,7 +72,7 @@ With inspiration from the work of \textcite{villaNumericalAnalysisRudder2020}, t
     \label{fig:rudder_coverage}
 \end{figure}
 %
-The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (see Paper \autoref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993} (See \autoref{sec:rudder_models} for further details).
+The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (see Paper \ref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993}.
 \begin{equation}
     \label{eq:L_R_U_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_U_semiempirical}
@@ -82,7 +82,7 @@ The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq
     \label{eq:L_R_C_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_C_semiempirical}
 \end{equation}
-See Paper \autoref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
+See Paper \ref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
 \begin{equation}
     \label{eq:C_L_semiempirical}
     \input{equations/mathematical_model_kinetics.C_L_semiempirical}
@@ -147,5 +147,5 @@ The total rudder drag $D_R$ is calculated as a sum of the contributions from the
     \label{eq:D_R_semiempirical}
     \input{equations/mathematical_model_kinetics.D_R_semiempirical}
 \end{equation}
-See Paper \autoref{pap:physics} for further details how the drag coefficients $C_{DC}$ and $C_{DU}$ are calculated.
+See Paper \ref{pap:physics} for further details how the drag coefficients $C_{DC}$ and $C_{DU}$ are calculated.
 
