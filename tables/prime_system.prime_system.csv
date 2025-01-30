@@ -3,7 +3,7 @@ length,m,$L$
 volume,m\textsuperscript{3},$L^{3}$
 mass,kg,$\frac{L^{3} \rho}{2}$
 density,kg/m\textsuperscript{3},$\frac{\rho}{2}$
-inertia moment,kg\cdot m\textsuperscript{2},$\frac{L^{5} \rho}{2}$
+inertia moment,kg m\textsuperscript{2},$\frac{L^{5} \rho}{2}$
 time,s,$\frac{L}{U}$
 frequency,1/s,$\frac{U}{L}$
 area,m\textsuperscript{2},$L^{2}$
