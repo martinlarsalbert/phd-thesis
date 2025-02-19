@@ -4,13 +4,13 @@ volume,m\textsuperscript{3},$L^{3}$
 mass,kg,$\frac{L^{3} \rho}{2}$
 density,kg/m\textsuperscript{3},$\frac{\rho}{2}$
 inertia moment,kg m\textsuperscript{2},$\frac{L^{5} \rho}{2}$
-time,s,$\frac{L}{U}$
-frequency,1/s,$\frac{U}{L}$
+time,s,$\frac{L}{V}$
+frequency,1/s,$\frac{V}{L}$
 area,m\textsuperscript{2},$L^{2}$
 angle,rad,$1$
-linear velocity,m/s,$U$
-angular velocity,rad/s,$\frac{U}{L}$
-linear acceleration,m/s\textsuperscript{2},$\frac{U^{2}}{L}$
-angular acceleration,rad/s\textsuperscript{2},$\frac{U^{2}}{L^{2}}$
-force,N,$\frac{L^{2} U^{2} \rho}{2}$
-moment,Nm,$\frac{L^{3} U^{2} \rho}{2}$
+linear velocity,m/s,$V$
+angular velocity,rad/s,$\frac{V}{L}$
+linear acceleration,m/s\textsuperscript{2},$\frac{V^{2}}{L}$
+angular acceleration,rad/s\textsuperscript{2},$\frac{V^{2}}{L^{2}}$
+force,N,$\frac{L^{2} V^{2} \rho}{2}$
+moment,Nm,$\frac{L^{3} V^{2} \rho}{2}$
