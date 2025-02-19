@@ -3,7 +3,7 @@ The spring-mass-damper system as shown in \autoref{fig:spring_mass_damper} is a 
 \begin{figure}[h]
     \centering
     \includesvg[width=0.3\linewidth]{figures/Mass_spring_damper.svg}
-    \caption{Mass-spring-damper model structure. Copyright Wikipedia.}
+    \caption{Mass-spring-damper model structure.}
     \label{fig:spring_mass_damper}
 \end{figure}
 \begin{equation} \label{eq:spring_mass_damper}
@@ -12,7 +12,7 @@ m\ddot{x} + c\dot{x} + kx = 0
 
 Roll motion without manoeuvres or external forces can be expressed by a nonlinear spring-mass-damper system \cite{himenoPredictionShipRoll1981},
 \input{equations/roll_decay_equation_general_himeno}
-where the static stability of the ship is expressed as the stiffness $C_{44}(\phi)$ with a function of the roll angle $\phi$, the damping $B_{44}(\dot{\phi})$ with a function of the roll velocity $\dot{\phi}$ and inertia $A_{44}$ connected to the roll acceleration $\ddot{\phi}$. The ship's roll motion can be observed under these conditions in a roll-decay test. The model is forced to an initial roll angle, as seen in \autoref{fig:rolldecay_initial}. The model is then released (\autoref{fig:rolldecay_free}) and rolls back to equilibrium (\autoref{fig:rolldecay_equilibrium}). The model will pass this static equilibrium point as a result of momentum and not stop until it has reached the end point on the other side (\autoref{fig:rolldecay_endpoint}). This motion starts a new cycle in which the model rolls back again. This new cycle results in oscillatory motion where potential energy is transferred to kinetic energy and back to potential energy.
+where the subscript 44 indicates forces in the roll degree of freedom and the static stability of the ship is expressed as the stiffness $C_{44}(\phi)$ with a function of the roll angle $\phi$, the damping $B_{44}(\dot{\phi})$ with a function of the roll velocity $\dot{\phi}$ and inertia $A_{44}$ connected to the roll acceleration $\ddot{\phi}$. The ship's roll motion can be observed under these conditions in a roll-decay test. The model is forced to an initial roll angle, as seen in \autoref{fig:rolldecay_initial}. The model is then released (\autoref{fig:rolldecay_free}) and rolls back to equilibrium (\autoref{fig:rolldecay_equilibrium}). The model will pass the static water line as a result of momentum and not stop until it has reached the end point on the other side (\autoref{fig:rolldecay_endpoint}). This motion starts a new cycle in which the model rolls back again. This new cycle results in oscillatory motion where potential energy is transferred to kinetic energy and back to potential energy.
 This oscillation would never end if it was not for the roll damping. Interactions between the ship and the water, such as friction, wave generation, eddy generation, and hydrodynamic lift, will cause the ship to lose some of its energy. The energy loss means that the oscillation is decaying over time, as seen in \autoref{fig:rolldecay}, which displays the time series for the roll angle.
 \input{kappa/images/rolldecay_test}
 \begin{figure}[H]
@@ -21,13 +21,12 @@ This oscillation would never end if it was not for the roll damping. Interaction
     \caption{Example roll decay signal.}
     \label{fig:rolldecay}
 \end{figure}
-
 The damping $B_{44}\left(\dot{\phi}\right)$ can be expressed as an expansion series:  
 \begin{equation}
     B_{44}\left(\dot{\phi}\right) = B_1\cdot\dot{\phi} + B_2\cdot\dot{\phi}\left|\dot{\phi}\right| + B_3\cdot\dot{\phi}^3 + ... + B_n\cdot\dot{\phi}^n
 \end{equation}
  
-\noindent This series can be truncated to be expressed as a ``linear model'' (\autoref{eq:roll_decay_equation_himeno_linear}), \say{quadratic model} (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and ``cubic model'' (\autoref{eq:roll_decay_equation_cubic}).
+\noindent This series can be truncated to be expressed as a ``linear model'' (\autoref{eq:roll_decay_equation_himeno_linear}), \say{quadratic model} (\autoref{eq:roll_decay_equation_himeno_quadratic_b}), and ``cubic model'' (\autoref{eq:roll_decay_equation_cubic}). The stiffness function $C_{44}(\phi)$ has been expanded in a similar way, only keeping the first term for the linear and quadratic models and the first three terms for the cubic model. 
 \input{equations/roll_decay_equation_himeno_linear}
 \input{equations/roll_decay_equation_himeno_quadratic_b}
 \input{equations/roll_decay_equation_cubic}
