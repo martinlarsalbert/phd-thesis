@@ -59,6 +59,22 @@ with the helper variable $S$:
     \label{eq:S}
     \input{equations/155.10_Fossen_model.S}
 \end{equation}
+
+\begin{table}[h]
+    \centering
+    \small
+    \caption{State variations with VCT for Optiwise.}
+    \label{tab:VCT_optiwise}
+    \pgfplotstabletypeset[col sep=comma, column type=c, 
+        columns/part/.style={column type=c,string type},
+        columns/sign/.style={column type=c,string type, column name=sign},
+        columns/exponent/.style={column type=c,string type, column name=exponent},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/155.10_Fossen_model.determinant.csv}
+\end{table}
+
+
 If we introduce the damping forces vector:
 \begin{equation}
     \label{eq:D}
