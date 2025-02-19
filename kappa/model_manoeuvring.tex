@@ -54,11 +54,13 @@ For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass ma
     \label{eq:M_inv}
     \input{equations/155.10_Fossen_model.M_inv}
 \end{equation}
-with the helper variable $S$:
+with the helper variable $S$ which can be calculated according to \autoref{eq:S}.  
 \begin{equation}
     \label{eq:S}
     \input{equations/155.10_Fossen_model.S}
 \end{equation}
+
+For ships, $S$ is always none zero, so that inverse of the mass matrix can always be calculated. 
 
 \begin{table}[h]
     \centering
