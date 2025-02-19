@@ -1,0 +1,17 @@
+part,sign,exponent
+$I_{z} m^{2}$,1,-7
+$- I_{z} Y_{\dot{v}} m$,1,-7
+$- N_{\dot{r}} m^{2}$,1,-7
+$N_{\dot{r}} Y_{\dot{v}} m$,1,-7
+$- I_{z} X_{\dot{u}} m$,1,-8
+$I_{z} X_{\dot{u}} Y_{\dot{v}}$,1,-8
+$N_{\dot{r}} X_{\dot{u}} m$,1,-8
+$- N_{\dot{r}} X_{\dot{u}} Y_{\dot{v}}$,1,-8
+$- m^{3} x_{G}^{2}$,-1,-9
+$N_{\dot{v}} m^{2} x_{G}$,-1,-9
+$Y_{\dot{r}} m^{2} x_{G}$,-1,-9
+$- N_{\dot{v}} Y_{\dot{r}} m$,-1,-9
+$X_{\dot{u}} m^{2} x_{G}^{2}$,-1,-10
+$- N_{\dot{v}} X_{\dot{u}} m x_{G}$,-1,-10
+$- X_{\dot{u}} Y_{\dot{r}} m x_{G}$,-1,-10
+$N_{\dot{v}} X_{\dot{u}} Y_{\dot{r}}$,-1,-10
