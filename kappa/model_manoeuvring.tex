@@ -48,33 +48,7 @@ $\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossenHandbo
     \label{eq:C_expanded}
     \input{equations/155.10_Fossen_model.C_expanded}
 \end{equation}
-where $X_{\dot{u}},Y_{\dot{v}},Y_{\dot{r}},N_{\dot{v}},N_{\dot{r}} < 0$. 
-For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass matrix $\mathbf{M}$ can be calculated as:
-\begin{equation}
-    \label{eq:M_inv}
-    \input{equations/155.10_Fossen_model.M_inv}
-\end{equation}
-with the helper variable $S$ which can be calculated according to \autoref{eq:S}. The sign and order of magnitude of the components within this expression for a typical ship is expressed in a non-dimensional form in \autoref{tab:S}.    
-\begin{equation}
-    \label{eq:S}
-    \input{equations/155.10_Fossen_model.S}
-\end{equation}
-\begin{equation}
-    \label{eq:S}
-    \input{equations/155.10_Fossen_model.eq_S_sign}
-\end{equation}
-\begin{table}[h]
-    \centering
-    \small
-    \caption{Signs and magnitudes of the components within helper variable $S$ for a typical ship in non-dimensional form.}
-    \label{tab:S}
-    \pgfplotstabletypeset[col sep=comma, column type=c, 
-        columns/part/.style={column type=r,string type},
-        columns/magnitude/.style={column type=r,string type, column name=magnitude},
-        every head row/.style={before row=\hline,after row=\hline},
-        every last row/.style={after row=\hline}
-    ]{tables/155.10_Fossen_model.determinant.csv}
-\end{table}
+where the added masses $X_{\dot{u}},Y_{\dot{v}},Y_{\dot{r}},N_{\dot{v}},N_{\dot{r}} < 0$. 
 
 If we introduce the damping forces vector:
 \begin{equation}
@@ -103,3 +77,33 @@ In many other manoeuvring models such as the Abkowitz \cite{abkowitzShipHydrodyn
 \vspace{0.3cm}
 \mynote{The sway force $Y$ has the apparent centrifugal force from added mass and rigid body mass: 
 $$r u \left(X_{\dot{u}} - m\right)$$ where $X_{\dot{u}}<0$ so that both added mass and rigid body mass create the centrifugal force acting outward in the turn. Both the added mass and rigid body mass will thus act to starboard on a port turn.}
+
+For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass matrix $\mathbf{M}$ can be calculated as:
+\begin{equation}
+    \label{eq:M_inv}
+    \input{equations/155.10_Fossen_model.M_inv}
+\end{equation}
+with the helper variable $S$ which can be calculated according to \autoref{eq:S}. 
+\begin{equation}
+    \label{eq:S}
+    \input{equations/155.10_Fossen_model.S}
+\end{equation}
+$S=0$ would however mean that the mass matrix would not be invertible. The sign of each component in \autoref{eq:S} is shown in \autoref{eq:S_sign}.  
+\begin{equation}
+    \label{eq:S_sign}
+    \input{equations/155.10_Fossen_model.eq_S_sign}
+\end{equation}
+The magnitude of these components for a typical ship is expressed in a non-dimensional form in \autoref{tab:S}. The negative components are much larger than the positive ones, so $S$ will be nonzero and the mass matrix of a ship is thus always invertible.      
+\begin{table}[h]
+    \centering
+    \small
+    \caption{Signs and magnitudes of the components within helper variable $S$ for a typical ship in non-dimensional form.}
+    \label{tab:S}
+    \pgfplotstabletypeset[col sep=comma, column type=c, 
+        columns/part/.style={column type=r,string type},
+        columns/magnitude/.style={column type=r,string type, column name=magnitude},
+        every head row/.style={before row=\hline,after row=\hline},
+        every last row/.style={after row=\hline}
+    ]{tables/155.10_Fossen_model.determinant.csv}
+\end{table}
+\FloatBarrier

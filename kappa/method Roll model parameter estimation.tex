@@ -11,7 +11,7 @@ Two methods for parameter estimation have been investigated: the \say{derivation
 
 \subsection{Inverse dynamics regression}\label{sec:derivation_approach}
 In inverse dynamics regression (called derivation approach in Paper \ref{pap:rolldamping}), \autoref{eq:roll_decay_nonedim_a44} is treated as a linear regression problem, where the states ($\phi$, $\dot{\phi}$, $\ddot{\phi}$) are known and the parameters $B_1$ and $C_1$ must be regressed. Only roll angle $\phi$ is known from the experimental data, which means that the velocity and acceleration $\dot{\phi}$, $\ddot{\phi}$ also must be estimated (note that this is done with numerical differentiation in Paper \ref{pap:rolldamping} and with the extended Kalman filter (EKF) in Paper \ref{pap:pit}).
-A least squares fit must be applied to the roll motion equation to identify the damping and stiffness parameters.
+A least squares fit is applied to the roll motion equation to identify the damping and stiffness parameters.
 
 \subsection{Integration approach}\label{sec:integration_approach}
 In the integration approach, \autoref{eq:roll_decay_nonedim_a44} is solved as an ordinary differential equation (ODE) for many estimated sets of parameters until the solution converges. This method is time-consuming, and convergence is not guaranteed. However, the advantage is that only roll angle $\phi$ is needed.
