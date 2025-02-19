@@ -1,9 +1,9 @@
-part,sign,exponent
-$- I_{z} m$,-1,-5
-$I_{z} Y_{\dot{v}}$,-1,-5
-$N_{\dot{r}} m$,-1,-5
-$- N_{\dot{r}} Y_{\dot{v}}$,-1,-5
-$m^{2} x_{G}^{2}$,1,-7
-$- N_{\dot{v}} m x_{G}$,1,-7
-$- Y_{\dot{r}} m x_{G}$,1,-7
-$N_{\dot{v}} Y_{\dot{r}}$,1,-7
+part,magnitude
+$- \left|{I_{z} Y_{\dot{v}}}\right|$,-1e-05
+$- \left|{I_{z} m}\right|$,-1e-05
+$- \left|{N_{\dot{r}} Y_{\dot{v}}}\right|$,-1e-05
+$- \left|{N_{\dot{r}} m}\right|$,-1e-05
+$\left|{N_{\dot{v}} Y_{\dot{r}}}\right|$,1e-07
+$\left|{m^{2} x_{G}^{2}}\right|$,1e-07
+$\left|{N_{\dot{v}} m x_{G}}\right|$,1e-07
+$\left|{Y_{\dot{r}} m x_{G}}\right|$,1e-07
