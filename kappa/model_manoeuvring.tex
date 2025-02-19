@@ -1,12 +1,13 @@
 \section{Manoeuvring} \label{sec:manoeuvring}
 The ship manoeuvring dynamics is modeled as a state space model (\autoref{eq:state_space})
 \begin{equation}
-    \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{u})
+    \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{u}) + q(t)
     \label{eq:state_space}
 \end{equation}
-where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the input vector $\mathbf{u}$ through the transition function $f(\mathbf{x},\mathbf{u})$. A state with the position and orientation, velocities and turning rate defines the state of the ship in three degrees of freedom (\autoref{eq:state}). 
+where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the input vector $\mathbf{u}$ through the transition function $f(\mathbf{x},\mathbf{u})$ and the process noise $q(t)$.  Process noise is considered when the model is used for filtering. However,  during deterministic simulations, it is usually set to zero $q(t)=0$.
+A state with position and orientation, velocities, and turning rate defines the state of the ship in three degrees of freedom (\autoref{eq:state}). 
 \begin{equation}
-    \mathbf{x} = [x0,y0,\Psi, u,v,r]^T
+    \mathbf{x} = [x_0,y_0,\Psi, u,v,r]^T
     \label{eq:state}
 \end{equation}
 The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in the surge $X$, sway $Y$, and yaw $N$ degrees of freedom. The kinematics can be expressed as function of a velocity vector $\pmb{\bm{\upsilon}}$ (\autoref{eq:upsilon}), since the forces do not depend on the position ($x_0,y_0$) or heading $\Psi$, during the manoeuvre.
