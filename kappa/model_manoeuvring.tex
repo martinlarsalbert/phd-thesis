@@ -54,28 +54,27 @@ For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass ma
     \label{eq:M_inv}
     \input{equations/155.10_Fossen_model.M_inv}
 \end{equation}
-with the helper variable $S$ which can be calculated according to \autoref{eq:S}.  
+with the helper variable $S$ which can be calculated according to \autoref{eq:S}. The sign and order of magnitude of the components within this expression for a typical ship is expressed in a non-dimensional form in \autoref{tab:S}.    
 \begin{equation}
     \label{eq:S}
     \input{equations/155.10_Fossen_model.S}
 \end{equation}
-
-For ships, $S$ is always none zero, so that inverse of the mass matrix can always be calculated. 
-
+\begin{equation}
+    \label{eq:S}
+    \input{equations/155.10_Fossen_model.eq_S_sign}
+\end{equation}
 \begin{table}[h]
     \centering
     \small
-    \caption{State variations with VCT for Optiwise.}
-    \label{tab:VCT_optiwise}
+    \caption{Signs and magnitudes of the components within helper variable $S$ for a typical ship in non-dimensional form.}
+    \label{tab:S}
     \pgfplotstabletypeset[col sep=comma, column type=c, 
-        columns/part/.style={column type=c,string type},
-        columns/sign/.style={column type=c,string type, column name=sign},
-        columns/exponent/.style={column type=c,string type, column name=exponent},
+        columns/part/.style={column type=r,string type},
+        columns/magnitude/.style={column type=r,string type, column name=magnitude},
         every head row/.style={before row=\hline,after row=\hline},
         every last row/.style={after row=\hline}
     ]{tables/155.10_Fossen_model.determinant.csv}
 \end{table}
-
 
 If we introduce the damping forces vector:
 \begin{equation}
