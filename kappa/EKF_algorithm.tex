@@ -1,27 +1,25 @@
-\label{04.01_EK:ek-algorithm}
-\begin{sphinxadmonition}{note}{Algorithm 3.1 (Discrete\sphinxhyphen{}time extended Kalman filter)}
-
-
-
-
-\sphinxstylestrong{Inputs} Initial values: \(x_0\), \(P_0\), \(C_d\), \(R_d\), \(Q_d\), \(E_d\)
-
-
-\sphinxstylestrong{Output} Estimated states: \(\hat{x}\), estimated state covariances \(\hat{P}\)
+\label{04.01_EK:ek-algorithm} 
+\noindent\begin{sphinxadmonition}{note}{Algorithm 3.1 (Discrete\sphinxhyphen{}time extended Kalman filter)} \\
+\sphinxstylestrong{Inputs} \\
+\hspace*{0.5cm} Initial values: \(\mathbf{x_0}\), \(\mathbf{P_0}\) \\
+\hspace*{0.5cm} Filter parameters: \(\mathbf{C_d}\), \(\mathbf{R_d}\), \(\mathbf{Q_d}\), \(\mathbf{E_d}\) \\
+\hspace*{0.5cm} Data: \(\mathbf{y}\), \(\mathbf{u}\) \\
+\sphinxstylestrong{Output} \\
+\hspace*{0.5cm} Estimated states: \(\mathbf{\hat{x}}\), estimated state covariances \(\mathbf{\hat{P}}\)
+\vspace{0.2cm}
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumi}{enumii}{}{.}%
 \item {} 
-
 Initial values:
 \begin{enumerate}
 \sphinxsetlistlabels{\arabic}{enumii}{enumiii}{}{.}%
 \item {} 
 
-\(\hat{x}[0] = x_0\)
+\(\mathbf{\hat{x}}[0] = \mathbf{x_0}\)
 
 \item {} 
 
-\(\hat{P}[0] = P_0\)
+\(\mathbf{\hat{P}}[0] = \mathbf{P_0}\)
 
 \end{enumerate}
 
@@ -37,11 +35,11 @@ KF gain
 \sphinxsetlistlabels{\arabic}{enumiii}{enumiv}{}{.}%
 \item {} 
 
-\(K[k]=\hat{P}[k] C_d^T \left(C_d \hat{P}[k] C_d^T + R_d\right)^{-1}\)
+\(\mathbf{K}[k]=\mathbf{\hat{P}}[k] \mathbf{C_d}^T \left(\mathbf{C_d} \mathbf{\hat{P}}[k] \mathbf{C_d}^T + \mathbf{R_d}\right)^{-1}\)
 
 \item {} 
 
-\(I_{KC} = I_n - K[k] C_d\)
+\(\mathbf{I_{KC}} = \mathbf{I_n} - \mathbf{K}[k] \mathbf{C_d}\)
 
 \end{enumerate}
 
@@ -53,12 +51,12 @@ Update
 \item {} 
 
 State corrector
-\(\hat{x}[k] = \hat{x}[k] + K[k] (y - C_d \hat{x}[k]) \)
+\(\mathbf{\hat{x}}[k] = \mathbf{\hat{x}}[k] + \mathbf{K}[k] (\mathbf{y} - \mathbf{C_d} \mathbf{\hat{x}}[k]) \)
 
 \item {} 
 
 Covariance corrector
-\(\hat{P}[k] = I_{KC} \cdot \hat{P}[k] I_{KC}^T + K[k] R_d K^T \)
+\(\mathbf{\hat{P}}[k] = \mathbf{I_{KC}} \cdot \mathbf{\hat{P}}[k] \mathbf{I_{KC}}^T + \mathbf{K}[k] \mathbf{R_d} \mathbf{K}^T \)
 
 \end{enumerate}
 
@@ -70,12 +68,12 @@ Predict
 \item {} 
 
 State predictor
-\(\hat{x}[k+1] = \hat{x}[k] + h \cdot \hat{f}(\hat{x}[k], c[k])\)
+\(\mathbf{\hat{x}}[k+1] = \mathbf{\hat{x}}[k] + h \cdot \mathbf{\hat{f}}(\mathbf{\hat{x}}[k], \mathbf{u}[k])\)
 
 \item {} 
 
 Covariance predictor
-\(\hat{P}[k+1] = A_d[k]  \hat{P}[k] A_d[k]^T + E_d Q_d E_d^T \)
+\(\mathbf{\hat{P}}[k+1] = \mathbf{A_d}[k]  \mathbf{\hat{P}}[k] \mathbf{A_d}[k]^T + \mathbf{E_d} \mathbf{Q_d} \mathbf{E_d}^T \)
 
 \end{enumerate}
 

@@ -10,22 +10,22 @@ A state with position and orientation, velocities, and turning rate defines the 
     \mathbf{x} = [x_0,y_0,\Psi, u,v,r]^T
     \label{eq:state}
 \end{equation}
-The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in the surge $X$, sway $Y$, and yaw $N$ degrees of freedom. The kinematics can be expressed as function of a velocity vector $\pmb{\bm{\upsilon}}$ (\autoref{eq:upsilon}), since the forces do not depend on the position ($x_0,y_0$) or heading $\Psi$, during the manoeuvre.
+The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in the surge $X$, sway $Y$, and yaw $N$ degrees of freedom. The kinematics can be expressed as function of a velocity vector $\pmb{\upsilon}$ (\autoref{eq:upsilon}), since the forces do not depend on the position ($x_0,y_0$) or heading $\Psi$, during the manoeuvre.
 \begin{equation}
     \label{eq:upsilon}
     %\input{equations/155.10_Fossen_model.upsilon}
-    \pmb{\bm{\upsilon}} = \left[\begin{matrix}u\\v\\r\end{matrix}\right]
+    \pmb{\upsilon} = \left[\begin{matrix}u\\v\\r\end{matrix}\right]
 \end{equation}
 The equation of motion can thus be expressed as \autoref{eq:eom}
 \begin{equation}
     \label{eq:eom}
-    \mathbf{F} = \mathbf{M}  \pmb{\bm{\dot{\upsilon}}} 
+    \mathbf{F} = \mathbf{M}  \pmb{\dot{\upsilon}} 
 \end{equation}
-where $\pmb{\bm{\dot{\upsilon}}}$ is the acceleration vector, $\mathbf{M}$ is the system inertia matrix and $\mathbf{F}$ is the total force vector.
+where $\pmb{\dot{\upsilon}}$ is the acceleration vector, $\mathbf{M}$ is the system inertia matrix and $\mathbf{F}$ is the total force vector.
 The velocity transition can thus be expressed as
 \begin{equation}
     \label{eq:acc}
-    \pmb{\bm{\dot{\upsilon}}} = \mathbf{M}^{-1}\mathbf{F}
+    \pmb{\dot{\upsilon}} = \mathbf{M}^{-1}\mathbf{F}
 \end{equation}
 \begin{figure}[h]
     \centering
@@ -33,11 +33,10 @@ The velocity transition can thus be expressed as
     \caption{Relations between the earth fixed and ship fixed reference frames, showing the velocities and forced in the ship fixed frame.}
     \label{fig:reference_frames}
 \end{figure}
-
 The total forces can be divided into the Coriolis–centripetal matrix $\mathbf{C}$ and the damping force vector $\mathbf{D}$ \cite{fossenHandbookMarineCraft2011}. The control forces from the rudder and propeller are included in the $\mathbf{D}$ matrix.
 \begin{equation}
     \label{eq:upsilon1d}
-\mathbf{F} = - \mathbf{C} \upsilon + \mathbf{D}
+\mathbf{F} = - \mathbf{C} \pmb{\upsilon} + \mathbf{D}
 \end{equation}
 $\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossenHandbookMarineCraft2011} as shown in \autoref{eq:M_expanded} and \autoref{eq:C_expanded}. 
 \begin{equation}
