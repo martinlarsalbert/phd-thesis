@@ -3,7 +3,7 @@
 \sphinxstylestrong{Inputs} \\
 \hspace*{0.5cm} Initial values: \(\mathbf{x_0}\), \(\mathbf{P_0}\) \\
 \hspace*{0.5cm} Filter parameters: \(\mathbf{C_d}\), \(\mathbf{R_d}\), \(\mathbf{Q_d}\), \(\mathbf{E_d}\) \\
-\hspace*{0.5cm} Data: \(\mathbf{y}\), \(\mathbf{u}\) \\
+\hspace*{0.5cm} Data: \(\mathbf{y}\), \(\mathbf{c}\) \\
 \sphinxstylestrong{Output} \\
 \hspace*{0.5cm} Estimated states: \(\mathbf{\hat{x}}\), estimated state covariances \(\mathbf{\hat{P}}\)
 \vspace{0.2cm}
@@ -68,7 +68,7 @@ Predict
 \item {} 
 
 State predictor
-\(\mathbf{\hat{x}}[k+1] = \mathbf{\hat{x}}[k] + h \cdot \mathbf{\hat{f}}(\mathbf{\hat{x}}[k], \mathbf{u}[k])\)
+\(\mathbf{\hat{x}}[k+1] = \mathbf{\hat{x}}[k] + h \cdot \mathbf{\hat{f}}(\mathbf{\hat{x}}[k], \mathbf{c}[k])\)
 
 \item {} 
 
