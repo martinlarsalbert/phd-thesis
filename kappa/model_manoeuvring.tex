@@ -1,28 +1,28 @@
 \section{Manoeuvring} \label{sec:manoeuvring}
-The ship manoeuvring dynamics is modeled as a state space model (\autoref{eq:state_space})
+The ship manoeuvring dynamics is modeled as a state space model,
 \begin{equation}
-    \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{u}) + q(t)
+    \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{c}) + q(t)
     \label{eq:state_space}
 \end{equation}
-where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the input vector $\mathbf{u}$ through the transition function $f(\mathbf{x},\mathbf{u})$ and the process noise $q(t)$.  Process noise is considered when the model is used for filtering. However,  during deterministic simulations, it is usually set to zero $q(t)=0$.
-A state with position and orientation, velocities, and turning rate defines the state of the ship in three degrees of freedom (\autoref{eq:state}). 
+where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the control input vector $\mathbf{c}$ through the transition function $f(\mathbf{x},\mathbf{c})$ and the process noise $q(t)$.  Process noise is considered when the model is used for filtering. However,  during deterministic simulations, it is usually set to zero $q(t)=0$.
+A state with position and orientation, velocities, and turning rate defines the state of the ship in three degrees of freedom: 
 \begin{equation}
     \mathbf{x} = [x_0,y_0,\Psi, u,v,r]^T
     \label{eq:state}
 \end{equation}
-The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in degrees of freedom of surge, sway and yaw with forces $X$, $Y$, and moment $N$ and the velocities $u$, $v$, and $r$. Kinematics can be expressed as a function of a velocity vector $\pmb{\upsilon}$ (\autoref{eq:upsilon}), since forces do not depend on position ($x_0,y_0$) or direction $\Psi$, during the maneuver.
+The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in degrees of freedom of surge, sway and yaw with forces $X$, $Y$, and moment $N$ and the velocities $u$, $v$, and $r$. Kinematics can be expressed as a function of a velocity vector $\pmb{\upsilon}$, since forces do not depend on position ($x_0,y_0$) or direction $\Psi$, during the maneuver:
 \begin{equation}
     \label{eq:upsilon}
     %\input{equations/155.10_Fossen_model.upsilon}
     \pmb{\upsilon} = \left[\begin{matrix}u\\v\\r\end{matrix}\right]
 \end{equation}
-The equation of motion can thus be expressed as \autoref{eq:eom}
+The equation of motion can thus be expressed as:
 \begin{equation}
     \label{eq:eom}
     \mathbf{F} = \mathbf{M}  \pmb{\dot{\upsilon}} 
 \end{equation}
 where $\pmb{\dot{\upsilon}}$ is the acceleration vector, $\mathbf{M}$ is the system inertia matrix and $\mathbf{F}$ is the total force vector.
-The velocity transition can thus be expressed as
+The velocity transition can thus be expressed as:
 \begin{equation}
     \label{eq:acc}
     \pmb{\dot{\upsilon}} = \mathbf{M}^{-1}\mathbf{F}
@@ -38,7 +38,7 @@ The total forces can be divided into the Coriolis–centripetal matrix $\mathbf{
     \label{eq:upsilon1d}
 \mathbf{F} = - \mathbf{C} \pmb{\upsilon} + \mathbf{D}
 \end{equation}
-$\mathbf{M}$ and $\mathbf{C}$ are calculated according to \textcite{fossenHandbookMarineCraft2011} as shown in \autoref{eq:M_expanded} and \autoref{eq:C_expanded}. 
+$\mathbf{M}$ and $\mathbf{C}$ are calculated as shown below: 
 \begin{equation}
     \label{eq:M_expanded}
     \input{equations/155.10_Fossen_model.M_expanded}
@@ -82,12 +82,12 @@ For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass ma
     \label{eq:M_inv}
     \input{equations/155.10_Fossen_model.M_inv}
 \end{equation}
-with the helper variable $S$ which can be calculated according to \autoref{eq:S}. 
+with the helper variable $S$ which can be calculated according to: 
 \begin{equation}
     \label{eq:S}
     \input{equations/155.10_Fossen_model.S}
 \end{equation}
-$S=0$ would however mean that the mass matrix would not be invertible. The sign of each component in \autoref{eq:S} is shown in \autoref{eq:S_sign}.  
+$S=0$ would however mean that the mass matrix would not be invertible. The sign of each component in \autoref{eq:S} is shown in:
 \begin{equation}
     \label{eq:S_sign}
     \input{equations/155.10_Fossen_model.eq_S_sign}
