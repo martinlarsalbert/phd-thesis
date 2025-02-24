@@ -1,22 +1,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Parameter identification}\label{ch:methods}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Section comments: There were more changes related to objective language and directional words. There is a missing term near line 13.
-\noindent The system identification of rigid body ship dynamics can be simplified into parameter estimation if parameterized physical models is assumed as the most appropriate model from a collection of candidate models.
-The parameter estimations for roll motion and manoeuvring are presented in \autoref{sec:_roll} and \autoref{sec:RIDR}. The most appropriate models are selected in the model development process described in \autoref{sec:cross_validation}.
+\chapter{Parameter estimation}\label{ch:methods}
+\noindent The system identification of rigid body ship dynamics can be simplified into parameter estimation if a parametric model is assumed to be the most appropriate model from a collection of candidate models. Estimating the parameters within the manoeuvring model structure involves estimating the damping parameters within the hull and rudder models, presented in the previous chapter, together with the added masses, so that the equation of motion (\autoref{eq:eom}) can be evaluated.
 
-\input{kappa/method Roll model parameter estimation}
-\input{kappa/method_VCT}
-\input{kappa/method_ID}
-\input{kappa/method_IDR}
-\input{kappa/method_Fourier_series}
+A method for estimating added masses is presented in \autoref{sec:fourier}. The damping parameters can be estimated directly from the VCT forces as presented in \autoref{sec:VCT}. However, this method cannot be used in the FT time series, where the forces cannot be obtained directly. Instead, the forces are estimated with inverse dynamics, which is first introduced for the one degree of freedom roll motion in \autoref{sec:_roll} and then expanded to three degrees of freedom manoeuvring in \autoref{sec:ID} and \autoref{sec:IDR}. The inverse dynamics requires a very accurate description of the acceleration, which can be estimated by a Kalman filter as shown in \autoref{sec:datacleaning}. The filtering and inverse dynamics have been combined into a recursive method as presented in \autoref{sec:RIDR}. This chapter concludes with descriptions of the test cases and corresponding datasets used in this thesis in \autoref{sec:test_cases} and \ref{sec:datasets}.
+
+\input{kappa/method_VCT} % sec:VCT
+\input{kappa/method_Fourier_series} % sec:fourier
+\input{kappa/method Roll model parameter estimation} % sec:_roll
+\input{kappa/method_ID} % sec:ID
+\input{kappa/method_IDR} % sec:IDR
 %\input{kappa/method PIT}
 %\input{kappa/method regression}
-\input{kappa/method EKF}
-\input{kappa/method Manoeuvring model parameter estimation}
+\input{kappa/method EKF} % sec:datacleaning
+\input{kappa/method Manoeuvring model parameter estimation} % sec:RIDR
 %\input{kappa/method generalization}
 %\input{kappa/method model_development_process}
-\input{kappa/method test_cases}
-\input{kappa/datasets}
+\input{kappa/method test_cases} % sec:test_cases
+\input{kappa/datasets} % \autoref{sec:datasets}
 

@@ -8,22 +8,26 @@
 % it was proposed that...
 
 %...short summary 
-\noindent This thesis investigated the enhancement of ship manoeuvring models through the integration of prior knowledge embedded in parametric model structures and semi-empirical formulas. The major conclusions are that physically accurate models can be derived from parametric model structures when prior knowledge about ship hydrodynamics and semi-empirical formulas are embedded in the structure, provided that the observed data are correct and informative, as demonstrated with VCT data. Informative data should contain persistence of excitation including conditions in which the input signals used in system identification are sufficiently rich in frequency content to excite all modes of the system.
-It was also concluded that physically accurate models could not be identified from standard manoeuvers, which contained insufficient informative data. However, by adding a semi-empirical rudder model, the identification process was guided towards a more physically accurate model.
+\noindent This thesis investigated the enhancement of ship manoeuvring models through the
+integration of prior knowledge embedded in parametric model structures and semi-empirical
+formulas. The main conclusion is that physically accurate models
+can be derived from parametric model structures when prior knowledge about ship
+hydrodynamics and semi-empirical formulas are embedded in the structure, provided
+that the observed data are correct and informative, as demonstrated for the OPTIWISE test cases in Paper \ref{pap:vct}.
+It was also concluded that physically accurate models could not be identified from standard maneuvers, because they have insufficient informative data. However, by adding a semi-empirical rudder model, the identification process was guided towards a more physically accurate model.
 
-A summary of the remaining conclusions according to the objectives is presented below.
+Referring to the objectives listed in \autoref{sec:motivation}, detailed conclusions are presented below.
 
-\subsection*{Parametric model structure and parameter identification techniques for roll motion dynamics with good generalization based on prior knowledge from model tests.}
+\subsection*{A parametric model structure and parameter identification technique for roll motion}
 It was shown in Paper \ref{pap:rolldamping} that the inverse dynamics regression (which was called the derivation approach in that paper) is an efficient way to identify parameters in parametric roll motion models. 
-
 It was also shown that 250 investigated roll decay tests were well described by the quadratic model structure. This model structure was therefore proposed as a good structure for the system identification of roll motion with good generalization.  
 
-\subsection*{Developing parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.}
-The inverse dynamics regression investigated in Paper \ref{pap:rolldamping} was used as the core component in a new parameter identification method proposed in Paper \ref{pap:pit} for manoeuvring model structures which combines the inverse dynamics with an EKF in a two-step approach \cite{yoonIdentificationHydrodynamicCoefficients2003} which was run in iteration.
+\subsection*{System identification of ship manoeuvring that can generalize from simpler to more complicated maneuvers}
+The inverse dynamics regression investigated in Paper \ref{pap:rolldamping} was used as the core component in a new parameter identification method, proposed in Paper \ref{pap:pit}, for manoeuvring model structures that combine the inverse dynamics with an EKF in a two-step approach \cite{yoonIdentificationHydrodynamicCoefficients2003} that was run in iteration.
 The new method was shown to be capable of identifying manoeuvring models that predicted the FRMT data with very high accuracy.
 To assess generalization, it was shown that with the new method it was possible to identify models from zigzag tests that could predict the completely different turning circle test with less than 5\% error in advance and tactical diameter for two investigated ships.
 
-\subsection*{Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure should be based on physical insights from CFD and FRMT inverse dynamics.}
+\subsection*{A parametric manoeuvring model structure that is identifiable from standard maneuvers with good generalization}
 It was shown in Paper \ref{pap:pit}  that a very complex manoeuvring model structure with many parameters such as the Abkowitz model cannot be identified from standard maneuvers, due to multicollinearity.  
 It was also shown that multicollinearity can be mitigated by selecting the model structure to reduce the number of hydrodynamic derivatives.
 
@@ -31,13 +35,13 @@ However, in Paper \ref{pap:physics}, it was shown that the identified models in 
 It was also shown that the identification method was unable to make a correct separation between the hull and the rudder forces when only the total force of the inverse dynamics was available. 
 A deterministic semi-empirical rudder model was proposed instead of the data-driven rudder model to alleviate this part of the multicollinearity problem. It was shown that this guided the identification toward a more physically correct model, with lower multicollinearity and better generalization to the wind conditions. 
 
-However, there were still problems with multicollinearity due to the high correlation between yaw rate and drift during standard maneuvers which prevented the identification of perfectly physically correct models in Paper \ref{pap:physics} despite the added semi-empirical rudder. More informative data would be needed to resolve this issue. There are other kinds of maneuver that give a better persistence of excitation. However, more informative data can also be obtained from CFD calculations, which was investigated in Paper \ref{pap:vct} . Extensive VCT calculations were performed for two ships according to a proposed test matrix that explored the state space during standard maneuvers.
-It was shown that the identified model from VCT could well predict the zigzag model tests for one of the ships. From this it was concluded that a physically correct model could be identified from the proposed parametric model structure if provided with correct and informative data. Or, as \textcite{revestidoherreroTwostepIdentificationNonlinear2012} puts it \say{the parametric model structures provide a suitable set of models in which it can be assumed that a true model belongs}.
+However, there were still problems with multicollinearity due to the high correlation between yaw rate and drift during standard maneuvers which prevented the identification of perfectly physically correct models in Paper \ref{pap:physics} despite the added semi-empirical rudder. More informative data would be needed to resolve this issue. There are other types of maneuvers that give a better persistence of excitation. However, more informative data can also be obtained from CFD calculations, which was investigated in Paper \ref{pap:vct} . Extensive VCT calculations were performed for two ships according to a proposed test matrix that explored the state space during standard maneuvers.
+The identified model from VCT was shown to be able to predict the zigzag model tests for one of the ships. From this it was concluded that a physically correct model could be identified from the proposed parametric model structure if provided with correct and informative data. Or, as \textcite{revestidoherreroTwostepIdentificationNonlinear2012} puts it \say{the parametric model structures provide a suitable set of models in which it can be assumed that a true model belongs}.
 The results for the other ship were not as good.  However, it was shown from the inverse dynamics analysis that this was probably due to false assumptions in the VCT data for this ship, rather than in the model structure or the identification method.  
 
 The method of using inverse dynamics in combination with state VCTs was found to be a useful tool to test the identified models and to see if the errors originate from the model structure or were inherent in the VCT data. 
 
-\subsection*{Mitigate multicollinearity and enhance generalization by introducing semi-empirical formulas from the literature.}
+\subsection*{Semi-empirical formulas to mitigate multicollinearity and enhance generalization}
 There are many semi-empirical formulas available in the literature, containing prior knowledge about hydrodynamics that could potentially help in identifying models.       
 Semi-empirical methods to predict roll damping were investigated in Paper \ref{pap:rolldamping} . Predictions with Ikeda's method, including 2D potential flow strip calculations, were in fair agreement with roll decay tests for 15 investigated ships. 
 A more in-depth analysis of roll damping was conducted for the KVLCC2 test case in Paper \ref{pap:ikeda}. The 2D potential flow strip calculation was here replaced by a more modern potential flow code. The combined method produced roll motion prediction with high accuracy. It was thereby concluded that Ikeda's method provides a good semi-empirical method for predicting the viscous roll damping.

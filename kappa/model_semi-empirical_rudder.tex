@@ -29,8 +29,8 @@ This angle is the sum of the initial inflow to the rudder at a straight course $
     \input{equations/mathematical_model_kinetics.gamma_semiempirical}
 \end{equation}
 
-The transverse velocity at the rudder $V_{Ry}$ is calculated by multiplying the ship's yaw rate $r$ and transverse velocity $v$ by their flow straightening values $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). The flow straightening values have linear and nonlinear dependencies of the geometric inflow angle $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so that the flow straightening may vary for different inflow angles, which is an enhancement of the MMG model.
-The axial velocity at the rudder $V_{RxC}$, including the velocity of the propeller race, is presented in Paper \ref{pap:physics}.
+The transverse velocity in the rudder $V_{Ry}$ is calculated by multiplying the yaw rate of the ship $r$ and the transverse velocity $v$ by their flow straightening parameters $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). These parameters have linear and nonlinear dependencies of the geometric inflow angle $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so the flow straightening may vary for different inflow angles. Linear and nonlinear dependencies were determined from the VCT rudder forces.
+The detailed calculation of the axial velocity on the rudder $V_{RxC}$, including the propeller race velocity is presented in Paper \ref{pap:physics}.
 \begin{equation}
     \label{eq:V_R_y_semiempirical}
     \input{equations/mathematical_model_kinetics.V_R_y_semiempirical}
