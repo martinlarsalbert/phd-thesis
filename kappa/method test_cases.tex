@@ -20,22 +20,13 @@ The Optiwse test case is an ordinary VLCC tanker but with a larger rudder size a
     \centering
     \caption{Main particulars (SI units) of the wPCC scale model.}
     \label{tab:main_particulars}
-    \pgfplotstabletypeset[col sep=comma, column type=r,
+    \pgfplotstabletypeset[col sep=comma, column type=r, columns={Parameter,Unit, wPCC, Optiwise, Description},
         columns/Parameter/.style={column type=l,string type},
-        columns/Unit/.style={column type=l,string type,column name=Unit},
+        columns/Unit/.style={column type=l,string type, column name=~},
+        columns/wPCC/.style={column type=r},
+        columns/Optiwise/.style={column type=r},
         columns/Description/.style={column type=l,string type},
-        columns/Value/.style={column type=r, column name=~},
         every head row/.style={before row=\hline,after row=\hline},
         every last row/.style={after row=\hline}
-    ]{tables/test_cases.main_particulars.csv}
-\end{table}
-
-\begin{table}[h]
-    \centering
-    \caption{Main particulars (SI units) of the wPCC scale model.}
-    \label{tab:main_particulars}
-    \pgfplotstabletypeset[col sep=comma, column type=r,
-        columns/Parameter/.style={column type=l,string type},
-        columns/wPCC/.style={column type=l,string type},
     ]{tables/test_cases.main_particulars.csv}
 \end{table}
