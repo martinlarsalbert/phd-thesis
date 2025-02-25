@@ -1,8 +1,8 @@
 Parameter,wPCC,Optiwise,Description,Unit
-$A_R$,0.030095732397021395,0.034763084,Projected rudder area,m\textsuperscript{2}
+$A_R$,0.030095732397021395,0.034763084,Projected rudder area,
 $\mathtt{\text{B}}$,0.9466019417475728,0.8823529411222136,Breadth,m
 $\mathtt{\text{D}}$,0.12135922330097086,0.15588235293159106,Propeller diameter,m
-$I_{zz}$,742.0462794081202,1471.5096397140396,Yaw moment of inertia around L/2,kgm\textsuperscript{2}
+$I_{zz}$,742.0462794081202,1471.5096397140396,Yaw moment of inertia around L/2,
 $\mathtt{\text{L}}$,5.014563106796117,4.779411764,Length between perpendiculars,m
 $T_{m}$,0.2063106796116504,0.30147058821675626,Mean draught,m
 $b_R$,0.17427184466019416,0.2161764705749423,Rudder height,m
