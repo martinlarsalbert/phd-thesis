@@ -20,5 +20,22 @@ These expressions are used to estimate the forces acting on the ship during FRMT
     \label{fig:ID}
 \end{figure}
 
+\begin{figure}[h]
+     \centering
+     \begin{subfigure}[b]{0.49\textwidth}
+         \centering
+         \includesvg{figures/inverse_dynamics_forces.inverse_dynamics_circle.svg}
+        \caption{Zigzag10/10 to port.}
+        \label{fig:sim_optiwise_10_port}
+     \end{subfigure}
+     \hfill
+     \begin{subfigure}[b]{0.49\textwidth}
+         \includesvg{figures/inverse_dynamics_forces.inverse_dynamics_forces.svg}
+        \caption{Zigzag10/10 to starboard.}
+        \label{fig:sim_optiwise_10_stbd}
+     \end{subfigure}
+     
+\end{figure}
+
 The estimated inverse dynamics forces were used in Paper \ref{pap:pit} and \ref{pap:physics} as input to an inverse dynamics regression (see \autoref{sec:IDR}). 
 Inverse dynamics was also used in Paper \ref{pap:physics} and \ref{pap:vct} to estimate the forces acting on the ship during the FRMTs to be compared with the model force predictions. This is a more informative way to assess model performance than, for instance, using open-loop or closed-loop simulations. The benefit is that the model and the experiment will always be in the same state, which is not the case when simulations are used.
