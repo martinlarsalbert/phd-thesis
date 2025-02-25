@@ -6,6 +6,7 @@ EKF is an extension of the Kalman filter (KF) that is used to work on nonlinear 
 The system’s inverse dynamics require everything about the state (positions, velocities, and accelerations) to be known. Only positions are known from the measurements, but the velocities and accelerations are instead estimated by the EKF.
 
 The EKF is recursive and can be ran online; it continuously makes new estimates as new measurements arrive. The EKF uses passed measurements to estimate states in the near future. This property is commonly used for online applications such as autopilots or autonomous ships. This restriction is unnecessary for the estimation for already existing data, where an entire time series of existing measurements is available. The knowledge of both past and future data can be used to improve the filter. An EKF filter can include future time steps by adding the RTS smoother after the filter. The RTS smoother is an algorithm that runs the EKF backward to account for future time steps. The used EKF recursive algorithm used is summarized in the pseudo-code below \cite{brownIntroductionRandomSignals1997}.
+\clearpage
 \input{kappa/EKF_algorithm}
 Here, \(n\) is number of states (6 in this case), \(\mathbf{I_n}\) is an $n$ by $n$ identity matrix.
 The transition matrix is calculated for each iteration using a Jacobian of the transition model:
