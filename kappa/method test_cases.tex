@@ -36,10 +36,6 @@ The Optiwse test case is an ordinary VLCC tanker but with a larger rudder size a
     \label{tab:main_particulars}
     \pgfplotstabletypeset[col sep=comma, column type=r,
         columns/Parameter/.style={column type=l,string type},
-        columns/Unit/.style={column type=l,string type,column name=Unit},
-        columns/Description/.style={column type=l,string type},
-        columns/Value/.style={column type=r, column name=~},
-        every head row/.style={before row=\hline,after row=\hline},
-        every last row/.style={after row=\hline}
+        columns/wPCC/.style={column type=l,string type},
     ]{tables/test_cases.main_particulars.csv}
 \end{table}
