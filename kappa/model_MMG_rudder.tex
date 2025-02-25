@@ -5,9 +5,23 @@ A modified quadratic MMG rudder model is proposed in Paper \ref{pap:vct}, with t
     %\input{equations/mathematical_model_kinetics.alpha_R_semiempirical}
     \alpha_{R} = \delta + \underbrace{\gamma_{0}}_{\text{ proposed}} + \operatorname{atan}{\left(\frac{v_{R}}{u_{R}} \right)}
 \end{equation}
-The other enhancement is to allow for a quadratic relationship between the flow straightening coefficient $\gamma_R$ and the effective inflow angle $\beta_R$ by introducing two new coefficients $\gamma_{R2neg}$, and $\gamma_{R2pos}$ as shown in \autoref{eq:gamma_R2}. The $\gamma_R$ calculated by this expression can be used in the equation 23 in \textcite{yasukawaIntroductionMMGStandard2015} to calculate the rudder transverse velocity.  
+The rudder transverse velocity $v_R$ is calculated as:
 \begin{equation}
     \label{eq:gamma_R2}
-    \input{equations/mathematical_model_kinetics.gamma_R_semiempirical}
+    v_{R} = V \beta_{R} \gamma_{R}
+\end{equation}
+
+where $\beta_R$ the effective inflow angle to the rudder as function of both the drift angle $\beta$ and yaw rate $r$:
+\begin{equation}
+    \label{eq:beta_R}
+    \beta_{R} = \beta - \frac{l_{R} r}{V}
+\end{equation}
+where $l_R$ is a lever arm to the rudder that is treated as an experimental constant.
+The other enhancement is to allow for a quadratic relationship between the flow straightening coefficient $\gamma_R$ and the effective inflow angle $\beta_R$, by introducing two new coefficients $\gamma_{R2neg}$, and $\gamma_{R2pos}$ as shown in:  
+\begin{equation}
+    \label{eq:gamma_R2}
+    \gamma_{R} = \begin{cases} \overbrace{\gamma_{R2 neg} \left|{\beta_{R}}\right|}^{proposed} +   
+    \gamma_{R neg} & \text{for}\: \beta_{R} \leq 0 \\\gamma_{R2 pos} \left| 
+    {\beta_{R}}\right| + \gamma_{R pos} & \text{otherwise} \end{cases}
 \end{equation}
 \clearpage
