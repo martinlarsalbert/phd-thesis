@@ -10,30 +10,58 @@ One aspect of indirect informative data that is often overlooked is the prior kn
 % Objective + in order to...
 %\vspace{0.2cm}
 
+\vspace{0.1cm}
 \begin{tabular}{p{0.93\textwidth}}
     \emph{\researchquestion}
 \end{tabular}
+\vspace{0.1cm}
 
-To provide a clear path through this research, the research question has been broken down into the following research objectives:
-
-\noindent A prestudy with the initial simplification to only consider one degree of freedom in ship roll motion is first conducted with the following two objectives:
-\begin{enumerate}[label=(\Alph*),itemsep=1mm]
-
-    \item Develop parameter identification techniques for roll motion models from FT data.
+\noindent The research question has been broken down into research objectives in \autoref{tab:objectives} to provide a clear path through this study. The first two objectives (A--B) constitute a prestudy, initially simplifying the problem to consider only one degree of freedom in ship roll motion, which was addressed in Paper \ref{pap:rolldamping}. Objectives C--D expand this work to include identification and parametric models for the three degrees of freedom manoeuvring problem. Parameter identification techniques for VCT and FT data were developed in Papers \ref{pap:pit} and \ref{pap:vct}, respectively. Parametric model structures were proposed in Paper \ref{pap:pit}, focusing on generalizing from simpler to more complex manoeuvres. The ability of these models to generalize to wind conditions was studied in Paper \ref{pap:physics}. Further work to develop physically accurate models was carried out in Paper \ref{pap:vct}, involving extensive VCT calculations and FT inverse dynamics. Semi-empirical formulas were introduced in Paper \ref{pap:ikeda} for roll damping and in Paper \ref{pap:physics} for rudder forces. 
+%
+%\vspace{0.2cm}
+%\begin{enumerate}[label=(\Alph*),itemsep=1mm]
+%
+%    \item Develop parameter identification techniques for roll motion models from FT data.
+%    
+%    \item Propose a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests. 
+%    
+%    \item Developing parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.
+%
+%    \item Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure should be based on physical insights from CFD and FT inverse dynamics.
+%
+%    \item Introducing semi-empirical formulas to mitigate multicollinearity and enhance generalization.
+%    
+%\end{enumerate}
+\begin{table}[h]
+    \centering
+    \caption{Research objectives of this thesis A--E including sub objectives 1--3 and the appended papers 1--5 where the objectives are mainly addressed.}
+    \label{tab:objectives}
     
-    \item Propose a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests. 
+    \begin{tabular}{|w{c}{0.30cm}w{c}{0.01cm}p{9cm}|w{c}{0.01cm}|w{c}{0.01cm}|w{c}{0.01cm}|w{c}{0.01cm}|w{c}{0.01cm}|}
+     \hline
+     ~ & ~ & Objective & 1 & 2 & 3 & 4 & 5 \\
+     \hline
+     A & ~ & Developing parameter identification techniques for roll motion models from FT data. & \checkmark & ~ & ~ & ~ & ~ \\
+     
+     \hline
+     B & ~ &Proposing a parametric model structure for roll motion dynamics with good generalization based on prior knowledge from model tests. & \checkmark & ~ & ~ & ~ & ~ \\
 
-\end{enumerate}
+     \hline
+     C & ~ &Developing parameter identification techniques for ship manoeuvring models from: & ~ & ~ & ~ & ~ & ~ \\
+     ~ & 1 & \hspace{0.25cm} FT data. & ~ & ~ & \checkmark & ~ & ~ \\
+     ~ & 2 & \hspace{0.25cm} CT data. & ~ & ~ & ~ & ~ & \checkmark \\
+     
+     \hline
+     D & ~ &Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. & ~ & ~ & ~ & ~ & ~ \\
+     ~ & 1 & \hspace{0.25cm} Generalize from simpler to more complicated manoeuvres. & ~ & ~ & \checkmark & ~ & ~ \\
+     ~ & 2 & \hspace{0.25cm} Generalize to wind conditions. & ~ & ~ & ~ & \checkmark & ~ \\
+     ~ & 3 & \hspace{0.25cm} Physical insights from CFD and FT inverse dynamics. & ~ & ~ & ~ & ~ & \checkmark \\
 
-\vspace{0.1 cm}
-\noindent The knowledge gained from the prestudy is then expanded to the manoeuvring problem with the following objectives: 
-\begin{enumerate}[label=(\Alph*),itemsep=1mm]
-    \setcounter{enumi}{2}
+     \hline
+     E & ~ & Introducing semi-empirical formulas to mitigate multicollinearity and enhance generalization. & ~ & \checkmark & ~ & \checkmark & ~ \\
+     
+     
+     \hline
+    \end{tabular}
 
-    \item Developing parameter identification techniques for ship manoeuvring models from FT data that can generalize from simpler to more complicated maneuvers.
-
-    \item Propose a parametric model structure with good generalization that is identifiable from standard maneuvers. The model structure should be based on physical insights from CFD and FRMT inverse dynamics.
-
-    \item Introducing semi-empirical formulas to mitigate multicollinearity and enhance generalization.
-    
-\end{enumerate}
+\end{table}
