@@ -13,7 +13,7 @@ integration of prior knowledge embedded in parametric model structures and semi-
 formulas. The main conclusion is that physically accurate models
 can be derived from parametric model structures when prior knowledge about ship
 hydrodynamics and semi-empirical formulas are embedded in the structure, provided
-that the observed data are correct and informative, as demonstrated for the OPTIWISE test case in Paper \ref{pap:vct}.
+that the observed data are correct and informative, as demonstrated for the Optiwise test case in Paper \ref{pap:vct}.
 It was also concluded that physically accurate models could not be identified from standard maneuvers, because they have insufficient informative data. However, by adding a semi-empirical rudder model, the identification process was guided towards a more physically accurate model.
 
 Referring to the objectives listed in \autoref{sec:motivation}, detailed conclusions are presented below.
@@ -26,7 +26,7 @@ This thesis proposes parameter identification techniques for both FT and CT (VCT
 
 For FT data, inverse dynamics regression was utilized as the core component in a new parameter identification method, as proposed in Paper \ref{pap:pit}. This method combines inverse dynamics with an EKF in a two-step iterative approach \cite{yoonIdentificationHydrodynamicCoefficients2003}. Paper \ref{pap:pit} revealed that complex manoeuvring model structures, such as the Abkowitz model, cannot be identified from standard maneuvers due to multicollinearity. However, multicollinearity can be mitigated by selecting a model structure that reduces the number of hydrodynamic derivatives. The new method demonstrated the capability to identify manoeuvring models that accurately predicted the FRMT data.
 
-A method was also proposed for CT data, with its novelty lying in the design of the VCT matrix to include the most critical states during maneuvers, covering the relevant parts of the state space. The proposed identification procedure for CT data proved to be highly effective, as demonstrated by the OPTIWISE test case.
+A method was also proposed for CT data, with its novelty lying in the design of the VCT matrix to include the most critical states during maneuvers, covering the relevant parts of the state space. The proposed identification procedure for CT data proved to be highly effective, as demonstrated by the Optiwise test case.
 
 \subsection*{Parametric model structure with good generalization identifiable from standard maneuvers}
 To assess generalization from simpler to more complex maneuvers, the new identification method for FT data demonstrated the ability to identify models from zigzag tests that could predict the results of significantly different turning circle tests with less than 5\% error, including the tactical diameter for two investigated ships. Consequently, it was concluded that a model identified from standard maneuvers using the proposed method is capable of simulating other standard maneuvers with reasonably good accuracy.
