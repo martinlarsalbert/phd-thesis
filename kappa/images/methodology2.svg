@@ -2,9 +2,9 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="2.5824075in"
-   height="3.3in"
-   viewBox="0 0 129.12038 165.00001"
+   width="2.5824072in"
+   height="3.2809422in"
+   viewBox="0 0 129.12037 164.04712"
    version="1.1"
    id="svg5"
    inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
@@ -25,13 +25,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="3.846482"
-     inkscape:cx="150.13719"
-     inkscape:cy="186.01413"
-     inkscape:window-width="3840"
-     inkscape:window-height="2054"
-     inkscape:window-x="2869"
-     inkscape:window-y="-11"
+     inkscape:zoom="1.923241"
+     inkscape:cx="23.917959"
+     inkscape:cy="110.49057"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      inkscape:lockguides="false">
@@ -40,7 +40,7 @@
        id="grid132"
        empspacing="10"
        originx="-1.6928415"
-       originy="-61.228699"
+       originy="-60.982304"
        spacingy="1"
        spacingx="1"
        units="mm"
@@ -218,7 +218,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(4.6702284,-37.245669)">
+     transform="translate(4.6702284,-36.999275)">
     <g
        id="g12"
        transform="translate(2.0513674,4.0093968)">
@@ -496,12 +496,6 @@
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:5.20833px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.265"
          x="70.379478"
          y="40.926594">System Identification</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.520833px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 172.15747,205.68604 v 0"
-       id="path1207"
-       inkscape:connector-type="polyline"
-       inkscape:connector-curvature="0" />
     <g
        id="g5255">
       <text
@@ -512,9 +506,9 @@
          id="text1"><tspan
            x="20.310547"
            y="52.912085"
-           id="tspan2"><tspan
+           id="tspan22"><tspan
              style="stroke-width:0.265"
-             id="tspan1">VCT</tspan></tspan></text>
+             id="tspan21">VCT</tspan></tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -543,11 +537,11 @@
          id="text1-8"><tspan
            x="20.310547"
            y="52.912085"
-           id="tspan4">Free sailing 
+           id="tspan23">Free sailing 
 </tspan><tspan
            x="20.310547"
            y="59.422499"
-           id="tspan7">model tests</tspan></text>
+           id="tspan24">model tests</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -576,7 +570,7 @@
          id="text1-8-5"><tspan
            x="35.697266"
            y="60.312476"
-           id="tspan11">EKF</tspan></text>
+           id="tspan25">EKF</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -613,7 +607,7 @@
          transform="translate(1.0597664)"><tspan
            x="44.736328"
            y="66.056616"
-           id="tspan13">PI, PU models</tspan></text>
+           id="tspan26">PI, PU models</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -643,7 +637,7 @@
          id="text1-8-5-2-7"><tspan
            x="26.654297"
            y="66.470679"
-           id="tspan14">Reference model</tspan></text>
+           id="tspan27">Reference model</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -674,7 +668,7 @@
          transform="translate(0.63766392)"><tspan
            x="26.650391"
            y="66.468726"
-           id="tspan15">Results</tspan></text>
+           id="tspan28">Results</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -704,7 +698,7 @@
          id="text1-8-5-2-7-9-3-6-5-4-5-3"><tspan
            x="26.654297"
            y="66.470679"
-           id="tspan16">Generalization</tspan></text>
+           id="tspan29">Generalization</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -787,11 +781,11 @@
          id="text1-8-7"><tspan
            x="20.310547"
            y="52.912085"
-           id="tspan17">Physical 
+           id="tspan30">Physical 
 </tspan><tspan
            x="20.310547"
            y="59.422499"
-           id="tspan18">correctness</tspan></text>
+           id="tspan31">correctness</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
@@ -836,11 +830,11 @@
          id="text2"><tspan
            x="20.310547"
            y="52.912085"
-           id="tspan19">Parameter
+           id="tspan32">Parameter
 </tspan><tspan
            x="20.310547"
            y="59.422499"
-           id="tspan20"> drift</tspan></text>
+           id="tspan33"> drift</tspan></text>
       <path
          style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:none;stroke-width:0.26378;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;-inkscape-stroke:none;paint-order:markers fill stroke;stop-color:#000000;stop-opacity:1"
          sodipodi:type="inkscape:offset"
