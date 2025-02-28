@@ -4,7 +4,7 @@
 \subsection*{Scope and motivations}
 The initial step in this research project was to simplify the system identification of the ship dynamics to a single degree of freedom, specifically the roll motion. However, this is still a very important subject where accurate modeling of roll motion is crucial, as \textcite{franceInvestigationHeadSeaParametric2001} demonstrated in their investigation of the APL China casualty in 1998. In this incident, a post-Panamax C11 class container ship lost nearly a third of its containers, most likely due to head sea parametric rolling.
 
-\subsection*{Results and concluding remarks}
+\subsection*{Results and main findings}
 The objective of Paper \ref{pap:rolldamping} was to develop parameter identification techniques for roll motion models derived from roll decay model tests. Additionally, it aimed to propose a parametric model structure for roll motion dynamics that generalizes well, based on prior knowledge from these model tests.
 
 The roll damping was studied using time series data from 250 roll decay tests assembled by RISE at the SSPA Maritime Center Maritime Dynamics Laboratory.
@@ -20,8 +20,8 @@ The average $R^2$ of all tests was calculated for each model, giving: 0.995 for 
 \begin{figure}[h!] \centering \includegraphics[width=\linewidth]{kappa/images/roll_decay_model_compare.pdf} 
     \begin{minipage}[t]{5.25in}
     \caption{Roll decay estimation with identified cubic, quadratic, and linear models.}
+    \label{fig:roll_decay_compare}
     \end{minipage}
-    \label{fig:roll_decay_compare} 
 \end{figure}
 \begin{figure}[h!] \begin{subfigure}[b]{0.45\textwidth} \centering \includegraphics[width=0.9\linewidth]{kappa/images/roll_decay_amplitude.pdf} \caption{Amplitude decrements.} \label{fig:roll_decay_amplitude} \end{subfigure} ~ %add desired spacing between images, e.g., ~, \quad, \qquad, \hfill etc. %(or a blank line to force the subfigure onto a new line) 
 \begin{subfigure}[b]{0.45\textwidth} \centering \includegraphics[width=0.9\linewidth]{kappa/images/roll_decay_damping.pdf} \caption{Dampings.} \label{fig:roll_decay_damping} \end{subfigure} \caption{Roll decay model test, linear-, quadratic-, and cubic-model.} \label{fig:roll_decay} \end{figure}
