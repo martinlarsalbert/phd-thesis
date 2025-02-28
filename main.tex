@@ -28,7 +28,7 @@
 \usepackage[,numfigreset=1,mathnumfig]{sphinx}
 %\makenomenclature
 
-\usepackage{lipsum}           % generating fill-in text for this thesis template
+%\usepackage{lipsum}           % generating fill-in text for this thesis template
 
 \usepackage{ifthen}           % if-then-else (to choose PhD/Lic titles)
 
@@ -254,18 +254,18 @@
 
 % \newenvironment{env-name}[optional-number-of-args][default-args]{insert-before}{insert-after}
 
-\newenvironment{abstract}{
-  \begin{center}
-    {\bfseries Abstract\par}  % \bfseries - some bold font, \par - end of paragraph (as empty line)
-  \end{center}
-  \quotation                  % extra indent from left and right
-  \noindent
-}
-{\par\endquotation}
-
-\newenvironment{keywords}%
-{{\bfseries Keywords:}}%
-{\par}%
+%\newenvironment{abstract}{
+%  \begin{center}
+%    {\bfseries Abstract\par}  % \bfseries - some bold font, \par - end of paragraph (as empty line)
+%  \end{center}
+%  \quotation                  % extra indent from left and right
+%  \noindent
+%}
+%{\par\endquotation}
+%
+%\newenvironment{keywords}%
+%{{\bfseries Keywords:}}%
+%{\par}%
 % % % End new environments
 
 
@@ -337,8 +337,8 @@
 
 
 \begin{document}
-\fancyfoot{} % clean all
-\fancyhead{}
+%\fancyfoot{} % clean all
+%\fancyhead{}
 
 %\input{frontmatter/standard-cover-page}
 
@@ -387,14 +387,15 @@
 %\addcontentsline{toc}{chapter}{Nomenclature}  % add toc line with target at the 
 %\input{nomenclature}
 %Nomenclature
-\thispagestyle{empty} % To avoid page numbers in blank pages
+%\thispagestyle{empty} % To avoid page numbers in blank pages
 \cleardoublepage \addcontentsline{toc}{chapter}{Nomenclature}
-\thispagestyle{plain}
+%\thispagestyle{plain}
 \input{nomenclature}
-\cleardoublepage              % advance the pages
+%\cleardoublepage              % advance the pages
 \phantomsection               % put pdf anchor
 \addcontentsline{toc}{chapter}{List of acronyms}  % add toc line with target at the last anchor
 \chapter*{List of acronyms}
+\vspace{-1.0cm}
 \input{frontmatter/acronyms}
 
 
