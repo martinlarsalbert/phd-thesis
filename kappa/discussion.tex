@@ -1,0 +1,56 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Discussion\label{ch:discussion}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+It has been shown in this thesis that identification of parametric manoeuvring models from standard manoeuvres has problems with high multicollinearity between many of the parameters within the models.
+This is a well known issue; \textcite{yoonIdentificationHydrodynamicCoefficients2003} mentioned the difficulties in finding regression coefficients separately and \textcite{wangQuantifyingMulticollinearityShip2018} discussed how multicollinearity can lead to parameter drift which has been shown in this thesis to lead to unphysical models.
+
+\autoref{fig:handle_multicollinearity} shows a proposed flowchart for possible ways to mitigate the multicollinearity from the inability to make a correct split between hull and rudder forces, as well as the inability to make a correct split between drift and yaw rate dependent forces.
+It was shown in Paper \ref{pap:physics}  that a more correct split between hull and rudder forces could be obtained by introducing a deterministic semi-empirical rudder model, which gave a more physically correct model. Another option is to measure the rudder forces, which gave very good results for the Optiwise test case in Paper \ref{pap:vct}. 
+\begin{figure}[h]
+    
+    \centering
+        \begin{tikzpicture}[node distance=1.5cm]
+    
+    \node (multicollinearity) [problem] {\footnotesize multicollinearity};
+    \node (hull_vs_rudder) [item, below left of=multicollinearity, xshift=-1.5cm] {\footnotesize hull vs. rudder};
+    \node (beta_vs_r) [item, below right of=multicollinearity, xshift=1.0cm] {\footnotesize $\beta$ vs. $r$};
+    
+    \node (semi_empirical) [solution, below left of=hull_vs_rudder, xshift=-1.75cm] {\footnotesize semi-empirical};
+    \node (rudder_measure) [solution, below left of=hull_vs_rudder, xshift=1cm] {\footnotesize measure};
+    \node (reduce) [solution, below left of=beta_vs_r, xshift=-1.5cm] {\footnotesize reduce};
+
+    \node (generalization) [problem, below left of=reduce, xshift=-0.25cm] {\footnotesize generalization};
+
+    \node (more_data) [wish, below left of=beta_vs_r, xshift=1cm] {\footnotesize more data};
+    \node (future) [future, below right of=beta_vs_r, xshift=1.5cm] {\footnotesize ?};
+        
+    \node (informative_manoeuvres) [solution, below left of=more_data, xshift=0.25cm, yshift=-0.25cm, align=left] {\footnotesize informative \\ \footnotesize manoeuvres};
+    \node (VCT) [solution, below right of=more_data, xshift=0.50cm] {\footnotesize VCT};
+    
+    
+    %Connect
+    \draw [arrow] (multicollinearity) -- (hull_vs_rudder);
+    \draw [arrow] (multicollinearity) -- (beta_vs_r);
+
+    \draw [arrow] (hull_vs_rudder) -- (semi_empirical);
+    \draw [arrow] (hull_vs_rudder) -- (rudder_measure);
+    
+    \draw [arrow] (beta_vs_r) -- (reduce);
+    \draw [arrow] (beta_vs_r) -- (more_data);
+    \draw [arrow] (beta_vs_r) -- (future);
+
+    \draw [arrow] (more_data) -- (VCT);
+    \draw [arrow] (more_data) -- (informative_manoeuvres);
+    
+    \draw [arrow] (reduce) -- (generalization);
+        
+    
+    \end{tikzpicture}
+    \caption{Flowchart for mitigating multicollinearity based on the research presented in this thesis.}
+    \label{fig:handle_multicollinearity}
+\end{figure}
+The multicollinearity between drift and yaw rate dependent parameters during standard manoeuvres is harder to mitigate. \textcite{abkowitzMEASUREMENTHYDRODYNAMICCHARACTERISTICS1980}, \txettextcite{luoParameterIdentificationShip2016} \textcite{xuUncertaintyAnalysisHydrodynamic2019}, and \textcite{liuPhysicsinformedIdentificationMarine2024} reduced the multicollinearity by  truncating the polynomials, using various truncation methods that select which parameters that should be removed. This makes sense if the truncation method makes a correct selection of which parameters are identifiable from the data. However, the generalization of the model will inevitably suffer when removing parameters, as certain regression terms may only become significant in special conditions like sailing in wind \cite{abkowitzMEASUREMENTHYDRODYNAMICCHARACTERISTICS1980}. The truncated models may therefore work well when simulating similar conditions as the data, for instance when simulating other standard manoeuvres. But too much extrapolation of the conditions should be avoided, which was clearly shown in Paper \ref{pap:physics}. 
+
+
+

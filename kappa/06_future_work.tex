@@ -16,8 +16,8 @@ However, it does not solve the problem completely. More informative data is need
     \item More informative data can be obtained with other types of maneuvers, such as pseudo random binary sequence (PRBS) \cite{yoonIdentificationHydrodynamicCoefficients2003,wangOptimalDesignExcitation2020}. Studies of system identification on these kinds of informative maneuvers have mainly been conducted with simulated data. Collecting experimental data for these informative maneuvers would be a great contribution. The maneuvers require more space than is available in a model test basin. \textcite{millerShipModelIdentification2021} conducted such tests on a lake and pointed out that they are very difficult and time-consuming to carry out. 
 More work is needed to establish reliable experimental research data from maneuvers in which all modes of the manoeuvring dynamics of the ship are excited, which could perhaps be conducted with one of the more well-researched test cases, such as for instance KVLCC2. 
     
-    \item It was shown in Paper \ref{pap:physics} that due to the high correlation between yaw rate and drift, it is hard to make a correct split between the forces that depend on them. It would be good to establish some prior knowledge about how to make this split, based on earlier investigations for other ships, that can be used in a Bayesian way to propose the most likely split during the system identification for new ships.  
-        
+    \item It was shown in Paper \ref{pap:physics} that due to the high correlation between yaw rate and drift, it is hard to make a correct split between the forces that depend on them. It would be good to establish some prior knowledge about how to make this split, based on earlier investigations for other ships. 
+    If prior distributions for the hydrodynamics derivatives can be established, they can be used in a Bayesian model that could find physically reasonable values from the standard maneuvers, even if they are not informative enough.
 \end{enumerate}
 
 \subsection*{Calm water assumption}
