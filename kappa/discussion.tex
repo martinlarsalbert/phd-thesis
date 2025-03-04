@@ -2,11 +2,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Discussion\label{ch:discussion}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This thesis has shown that identification of parametric manoeuvring models from standard manoeuvres has problems with high multicollinearity between many of the parameters within the models.
-This is a well known issue; \textcite{yoonIdentificationHydrodynamicCoefficients2003} mentioned the difficulties in finding regression coefficients separately and \textcite{wangQuantifyingMulticollinearityShip2018} discussed how multicollinearity can lead to parameter drift which has been shown in this thesis to lead to unphysical models.
-\autoref{fig:handle_multicollinearity} shows a proposed flowchart for possible ways to mitigate the multicollinearity from the inability to make a correct split between hull and rudder forces, as well as the inability to make a correct split between drift and yaw rate dependent forces.
+This thesis has demonstrated that identifying parametric manoeuvring models from standard manoeuvres is challenged by high multicollinearity among many model parameters. This issue is well-documented; \textcite{yoonIdentificationHydrodynamicCoefficients2003} highlighted the difficulties in separately determining regression coefficients, and \textcite{wangQuantifyingMulticollinearityShip2018} discussed how multicollinearity can lead to parameter drift, resulting in unphysical models, as shown in this thesis.
 
-It was shown in Paper \ref{pap:physics}  that a more correct split between hull and rudder forces could be obtained by introducing a deterministic semi-empirical rudder model, which gave a more physically correct model. Another option is to measure the rudder forces, which gave very good results for the Optiwise test case in Paper \ref{pap:vct}. 
+\autoref{fig:handle_multicollinearity} presents a proposed flowchart for mitigating multicollinearity, addressing the challenges of correctly separating hull and rudder forces, as well as drift and yaw rate-dependent forces.
+It was shown in Paper \ref{pap:physics} that a more accurate separation between hull and rudder forces can be achieved by introducing a deterministic semi-empirical rudder model, resulting in a more physically accurate model. Another effective approach is to measure the rudder forces, which yielded excellent results for the Optiwise test case in Paper \ref{pap:vct}.
 \begin{figure}[h]
     
     \centering
@@ -18,9 +17,9 @@ It was shown in Paper \ref{pap:physics}  that a more correct split between hull 
     
     \node (semi_empirical) [solution, below left of=hull_vs_rudder, xshift=-1.75cm] {\footnotesize semi-empirical};
     \node (rudder_measure) [solution, below left of=hull_vs_rudder, xshift=1cm] {\footnotesize measure};
-    \node (reduce) [solution, below left of=beta_vs_r, xshift=-1.5cm] {\footnotesize reduce};
+    \node (truncate) [solution, below left of=beta_vs_r, xshift=-1.5cm] {\footnotesize truncate};
 
-    \node (generalization) [problem, below left of=reduce, xshift=-0.25cm] {\footnotesize generalization};
+    \node (generalization) [problem, below left of=truncate, xshift=-0.25cm] {\footnotesize generalization};
 
     \node (more_data) [wish, below left of=beta_vs_r, xshift=1cm] {\footnotesize more data};
     \node (future) [future, below right of=beta_vs_r, xshift=1.5cm] {\footnotesize ?};
@@ -36,26 +35,24 @@ It was shown in Paper \ref{pap:physics}  that a more correct split between hull 
     \draw [arrow] (hull_vs_rudder) -- (semi_empirical);
     \draw [arrow] (hull_vs_rudder) -- (rudder_measure);
     
-    \draw [arrow] (beta_vs_r) -- (reduce);
+    \draw [arrow] (beta_vs_r) -- (truncate);
     \draw [arrow] (beta_vs_r) -- (more_data);
     \draw [arrow] (beta_vs_r) -- (future);
 
     \draw [arrow] (more_data) -- (VCT);
     \draw [arrow] (more_data) -- (informative_manoeuvres);
     
-    \draw [arrow] (reduce) -- (generalization);
+    \draw [arrow] (truncate) -- (generalization);
         
     
     \end{tikzpicture}
     \caption{Flowchart for mitigating multicollinearity based on the research presented in this thesis.}
     \label{fig:handle_multicollinearity}
 \end{figure}
-The multicollinearity between drift and yaw rate dependent parameters during standard manoeuvres is harder to mitigate. \textcite{abkowitzMEASUREMENTHYDRODYNAMICCHARACTERISTICS1980}, \textcite{luoParameterIdentificationShip2016} \textcite{xuUncertaintyAnalysisHydrodynamic2019}, and \textcite{liuPhysicsinformedIdentificationMarine2024} reduced the multicollinearity by  truncating the polynomials, using various truncation methods that select which parameters that should be removed. This makes sense if the truncation method makes a correct selection of which parameters are identifiable from the data. However, the generalization of the model will inevitably suffer when removing parameters, as certain regression terms may only become significant in special conditions like sailing in wind \cite{abkowitzMEASUREMENTHYDRODYNAMICCHARACTERISTICS1980}. The truncated models may therefore work well when simulating similar conditions as the data, for instance when simulating other standard manoeuvres. But too much extrapolation of the conditions should be avoided, which was clearly shown in Paper \ref{pap:physics}. 
+Mitigating multicollinearity between drift and yaw rate-dependent parameters during standard manoeuvres is more challenging. \textcite{abkowitzMEASUREMENTHYDRODYNAMICCHARACTERISTICS1980}, \textcite{luoParameterIdentificationShip2016}, \textcite{xuUncertaintyAnalysisHydrodynamic2019}, \textcite{liuPhysicsinformedIdentificationMarine2024}, and Paper \ref{pap:pit} addressed this by truncating polynomials using various methods to select which parameters to remove. This approach is valid if the truncation method correctly identifies which parameters are identifiable from the data. However, model generalization inevitably suffers when parameters are removed, as certain regression terms may only become significant under specific conditions, such as sailing in wind. Truncated models may perform well when simulating conditions similar to the data, such as other standard manoeuvres, but excessive extrapolation should be avoided, as shown in Paper \ref{pap:physics}.
 
-More informative data are needed if multicollinearity is to be mitigated without reduced generalization of the models. \textcite{yoonIdentificationHydrodynamicCoefficients2003} discuss the importance of designing experiments that ensure persistence of excitation. They suggest using specific input scenarios that maximize the information content of the data, such as D-optimal designs where \textcite{wangOptimalDesignExcitation2020} and \textcite{millerShipModelIdentification2021} suggest that a pseudo-random sequence (PRS) can be conducted. These
-maneuvers require more space than is available in a model test basin, so they need to be conducted with the full scale ship at sea or a radio controlled model on a lake.
+To mitigate multicollinearity without reducing model generalization, more informative data are needed. \textcite{yoonIdentificationHydrodynamicCoefficients2003} emphasized the importance of designing experiments that ensure persistence of excitation. They suggested using specific input scenarios that maximize data information content, such as D-optimal designs. \textcite{wangOptimalDesignExcitation2020} and \textcite{millerShipModelIdentification2021} proposed using a pseudo-random sequence (PRS) for this purpose. These manoeuvres require more space than a model test basin provides, necessitating full-scale ship tests at sea or radio-controlled models on a lake.
 
-Another option to gather more informative data, is to conduct VCT calculations. It was shown in Paper \ref{pap:vct} that a physically correct model can be identified in this way. This is an efficient way to overcome the multicollinearity problem while maintaining a good generalization of the models. 
+Another option for gathering more informative data is conducting VCT calculations. Paper \ref{pap:vct} demonstrated that a physically accurate model can be identified in this way, effectively overcoming the multicollinearity problem while maintaining a good model generalization.
 
-If VCT is not a feasable option, prior knowledge about drift and yaw rate forces can perhaps be incorporated in a similar manner as how the semi-empirical rudder was introduced. \textcite{chillcceDatadrivenSystemIdentification2023} used constrained least squares algorithm, where the sign and boundaries of the hydrodynamic derivatives were defined beforehand, based on the prior knowledge from VCT calculations. \textcite{taimuri6DoFManeuveringModel2020} proposed a method where the hydrodynamic derivatives are calculated from semi-empirical formulas in combination with corrections with a reference ship.
-Bayesian modeling is a more refined way to express the prior knowledge as prior probability densities. \textcite{xueHydrodynamicParameterIdentification2020} used a Bayesian approach for identifying the parameter of the manoeuvring model. They used an optimizer to suggest the priors. A more correct way, yet much more demanding, would be to collect the hydrodynamic derivatives for many other ships and specify priors based on that, which will be further discussed in \autoref{ch:future_work}.
+If VCT is not feasible, prior knowledge about drift and yaw rate forces can be incorporated similarly to the semi-empirical rudder model. \textcite{chillcceDatadrivenSystemIdentification2023} used a constrained least squares algorithm, defining the sign and boundaries of the hydrodynamic derivatives based on prior knowledge from VCT. \textcite{taimuri6DoFManeuveringModel2020} proposed calculating hydrodynamic derivatives from semi-empirical formulas combined with corrections from a reference ship. Bayesian modeling offers a more refined way to express prior knowledge as prior probability densities. \textcite{xueHydrodynamicParameterIdentification2020} used a Bayesian approach for parameter identification in manoeuvring models, employing an optimizer to suggest priors. A more accurate, though demanding, method would be to collect hydrodynamic derivatives from many ships and specify priors based on that, which could be an interesting topic of future work, as discussed in further detail in \autoref{ch:future_work}.

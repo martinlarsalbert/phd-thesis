@@ -1,7 +1,59 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Summary of appended papers}\label{ch:results}
-\noindent This chapter presents a summary of the appended papers, which includes research activities and a selection of the most relevant results, also see \autoref{tab:objectives} in \autoref{sec:motivation} for a summary of how these papers connect to the research objectives of this thesis.
+\chapter{Summary of papers}\label{ch:results}
+\noindent This chapter presents a summary of the papers appended to this thesis, which includes research activities and a selection of the most relevant results. The relations between the papers are summarized in \autoref{fig:papers}. The first two papers focus on the roll motion, where the work with Ikeda's method in Paper \ref{pap:rolldamping} continued in Paper \ref{pap:ikeda}. 
+The work with inverse dynamics that started in the roll motion papers continued in the remaining manoeuvring papers.
+Multicollinearity was found to be a big problem in Paper \ref{pap:pit}, which was first handled by model truncation.
+However, the generalization of the models could suffer when model truncation is used, which was shown in Paper \ref{pap:physics}. Instead, the multicollinearity between the hull and rudder forces was mitigated by introducing a semi-empirical rudder model. The multicollinearity between the drift and yaw rate dependent forces was then addressed in Paper \ref{pap:vct}. Also, see \autoref{tab:objectives} in \autoref{sec:motivation} for a summary of how these papers are related to the research objectives of this thesis.
+\begin{figure}[h]
+    
+    \centering
+    \begin{tikzpicture}[node distance = 1.5cm]
+    
+    \node (Paper1) [paper] {\footnotesize Paper 1};
+    \node (Ikeda) [output, right of=Paper1, xshift=0] {\footnotesize Ikeda};
+    \node (Paper2) [paper, right of=Ikeda] {\footnotesize Paper 2};
+    \node (ID) [output, below of=Paper1, yshift=0.7cm] {\footnotesize inverse dynamics};
+    \node (Paper3) [paper, below of=ID, yshift=0.7cm] {\footnotesize Paper 3};
+    \node (multicollinearity) [output, below of=Paper3, yshift=0.7cm] {\footnotesize multicollinearity};
+    \node (hull_vs_rudder) [output, below left of=multicollinearity, xshift=-0.5cm] {\footnotesize hull vs. rudder};
+    \node (beta_vs_r) [output, below right of=multicollinearity, xshift=0.5cm] {\footnotesize $\beta$ vs. $r$};
+    \node (Paper4) [paper, below of=hull_vs_rudder, , yshift=0.7cm] {\footnotesize Paper 4};
+
+    \node (VCT) [output, below of=beta_vs_r, xshift=0, yshift=0.7cm] {\footnotesize VCT};
+    \node (truncate) [output, above right of=beta_vs_r, xshift=0] {\footnotesize truncation};
+
+    \node (Paper5) [paper, below of=VCT, , yshift=0.7cm] {\footnotesize Paper 5};
+
+    %\draw[red, thick] ($(Paper1.north west)+(-0.25cm,0.25cm)$) rectangle ($(Paper2.south east)+(0.25cm,-0.25cm)$);
+    %\draw[red, thick] ($(Paper3.north west)+(-2.15cm,0.25cm)$) rectangle ($(Paper5.south east)+(2.25cm,-0.25cm)$);
+
+    
+    \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}]
+  (-2.5cm,0.25cm) -- (-2.5cm,-0.50cm) node[midway, rotate=90, yshift=1cm]{\footnotesize roll};
+    
+    \draw [decorate,decoration={brace,amplitude=5pt,mirror,raise=4ex}]
+  (-2.5cm,-0.55cm) -- (-2.5cm,-5.25cm) node[midway, rotate=90, yshift=1cm]{\footnotesize manoeuvring};
+    
+    %Connect
+    \draw [arrow] (Paper1) -- (Ikeda);
+    \draw [arrow] (Ikeda) -- (Paper2);
+    \draw [arrow] (Paper1) -- (ID);
+    \draw [arrow] (ID) -- (Paper3);
+    \draw [arrow] (Paper3) -- (multicollinearity);
+    \draw [arrow] (multicollinearity) -| (hull_vs_rudder);
+    \draw [arrow] (hull_vs_rudder) -- (Paper4);
+    \draw [arrow] (multicollinearity) -| (beta_vs_r);
+    \draw [arrow] (beta_vs_r) -- (VCT);
+    \draw [arrow] (multicollinearity) -- (truncate);
+    \draw [arrow] (truncate) |- (Paper3);
+    \draw [arrow] (VCT) -- (Paper5);
+    \draw [arrow] (ID.west) -- ++(-1.5cm,0cm) |-  (Paper5.west);
+    
+    \end{tikzpicture}
+    \caption{Paper connections.}
+    \label{fig:papers}
+\end{figure}
 \input{kappa/summary_paper1}
 \input{kappa/summary_paper2}
 \input{kappa/summary_paper3}

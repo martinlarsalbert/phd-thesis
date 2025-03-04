@@ -10,37 +10,47 @@
 %...short summary 
 \noindent This thesis investigated the enhancement of ship manoeuvring models through the
 integration of prior knowledge embedded in parametric model structures and semi-empirical
-formulas. The main conclusion is that physically accurate models
-can be derived from parametric model structures when prior knowledge about ship
-hydrodynamics and semi-empirical formulas are embedded in the structure, provided
-that the observed data are correct and informative, as demonstrated for the Optiwise test case in Paper \ref{pap:vct}.
-It was also concluded that physically accurate models could not be identified from standard maneuvers, because they have insufficient informative data. However, by adding a semi-empirical rudder model, the identification process was guided towards a more physically accurate model.
+formulas together with additional VCT calculations. 
+The main findings and conclusions are presented below, as well as the impacts of the work.
 
-Referring to the objectives listed in \autoref{sec:motivation}, detailed conclusions are presented below.
-
+%Objective A,B
 \subsection*{A parametric model structure and parameter identification technique for roll motion}
 As demonstrated in Paper \ref{pap:rolldamping}, inverse dynamics regression (referred to as the derivation approach in that paper) is an efficient method for identifying parameters in parametric roll motion models. The study also showed that 250 roll decay tests were well described by the quadratic model structure. Consequently, this model structure was proposed as a robust framework for system identification of roll motion, offering good generalization.
 
+%Objective C
 \subsection*{Parameter identification techniques for ship manoeuvring models}
 This thesis proposes parameter identification techniques for both FT and CT (VCT) data.
 
-For FT data, inverse dynamics regression was utilized as the core component in a new parameter identification method, as proposed in Paper \ref{pap:pit}. This method combines inverse dynamics with an EKF in a two-step iterative approach \cite{yoonIdentificationHydrodynamicCoefficients2003}. Paper \ref{pap:pit} revealed that complex manoeuvring model structures, such as the Abkowitz model, cannot be identified from standard maneuvers due to multicollinearity. However, multicollinearity can be mitigated by selecting a model structure that reduces the number of hydrodynamic derivatives. The new method demonstrated the capability to identify manoeuvring models that accurately predicted the FRMT data.
+%C1
+For FT data, a new recursive inverse dynamics regression method was proposed in Paper \ref{pap:pit}. This method combines inverse dynamics with an EKF in a two-step iterative approach \cite{yoonIdentificationHydrodynamicCoefficients2003}. The initial input model for this method was a linear maneuvering model with hydrodynamic derivatives estimated using semi-empirical formulas from the literature. The new method was found to be capable of effectively handling measurement noise and estimating the parameters within the models. 
 
-A method was also proposed for CT data, with its novelty lying in the design of the VCT matrix to include the most critical states during maneuvers, covering the relevant parts of the state space. The proposed identification procedure for CT data proved to be highly effective, as demonstrated by the Optiwise test case.
+%C2
+A method was also proposed for CT data, with its novelty lying in the design of the VCT matrix to include the most critical states during maneuvers, thereby covering the relevant parts of the state space. The method successfully identified a model for the Optiwise test case that showed strong agreement with the measured rudder forces and inverse dynamics forces for the FRMTs. This model also demonstrated good consistency with corresponding closed-loop simulations. These results indicate that a physically accurate model with high prediction accuracy can be obtained using this proposed method, given accurate VCT data.  
 
+% Objective D
 \subsection*{Parametric model structure with good generalization identifiable from standard maneuvers}
-To assess generalization from simpler to more complex maneuvers, the new identification method for FT data demonstrated the ability to identify models from zigzag tests that could predict the results of significantly different turning circle tests with less than 5\% error, including the tactical diameter for two investigated ships. Consequently, it was concluded that a model identified from standard maneuvers using the proposed method is capable of simulating other standard maneuvers with reasonably good accuracy.
+% D1
+It was found in Paper \ref{pap:pit} that a very complex manoeuvring model such as the full Abkowitz model could not be identified from standard manoeuvres where high multicollinearity was observed between the hydrodynamic derivatives.  Model truncation was used to reduce the number of hydrodynamic derivatives to get more identifiable models with a lower multicollinearity between the remaining hydrodynamic derivatives.
 
-However, Paper \ref{pap:physics} showed that the identified models in Paper \ref{pap:pit} did not generalize well when the ship was exposed to external wind forces. The model was found to be physically incorrect, despite being mathematically correct. The identification method failed to correctly separate the hull and rudder forces when only the total force of the inverse dynamics was available. To address this, a deterministic semi-empirical rudder model was proposed instead of the data-driven rudder model, which helped guide the identification towards a more physically correct model with lower multicollinearity and better generalization to wind conditions.
+To assess model generalization from simpler to more complex maneuvers, the truncated models were identified from zigzag tests to predict significantly different turning circle tests. The advance and tactical diameter were predicted within 5\% error for two investigated ships. It was concluded that a truncated Abkowitz model identified from standard maneuvers is capable of simulating other standard maneuvers with satisfactory agreement.
 
-Despite these improvements, issues with multicollinearity persisted due to the high correlation between yaw rate and drift during standard maneuvers, preventing the identification of perfectly physically correct models in Paper \ref{pap:physics}. It was demonstrated that these problems could be resolved with additional VCT calculations to obtain more informative data.
+% D2
+However, Paper \ref{pap:physics} showed that the identified models in Paper \ref{pap:pit} did not generalize well when the ship was exposed to external wind forces. The model was found to be physically incorrect, despite being mathematically correct. The identification method failed to correctly separate the hull and rudder forces when only the total force of the inverse dynamics was available. To address this, a deterministic semi-empirical rudder model was proposed instead of the data-driven rudder model, which helped guide the identification towards a more physically correct model with lower multicollinearity and better generalization to wind conditions. This was found to be an efficient way to mitigate this part of the multicollinearity.
 
-\subsection*{Semi-empirical formulas to mitigate multicollinearity and enhance generalization}
+% D3
+Despite these improvements, issues with multicollinearity persisted due to the high correlation between yaw rate and drift during standard maneuvers, preventing the identification of perfectly physically correct models in Paper \ref{pap:physics}. It was demonstrated that these problems could be resolved with additional VCT calculations to obtain more informative data. This is a good way to handle this part of the multicollinearity, given that CFD calculations are a feasible option with good accuracy.
+
+% Objective E
+\subsection*{Semi-empirical formulas to improve generalization}
 There are many semi-empirical formulas available in the literature, containing prior knowledge about hydrodynamics that could potentially help in identifying models.       
 Semi-empirical methods to predict roll damping were investigated in Paper \ref{pap:rolldamping} . Predictions with Ikeda's method, including 2D potential flow strip calculations, were in fair agreement with roll decay tests for 15 investigated ships. 
 A more in-depth analysis of roll damping was conducted for the KVLCC2 test case in Paper \ref{pap:ikeda}. The 2D potential flow strip calculation was here replaced by a more modern potential flow code. The combined method produced roll motion prediction with high accuracy. It was thereby concluded that Ikeda's method provides a good semi-empirical method for predicting the viscous roll damping.
 
+The prior knowledge from semi-empirical formulas from the literature was used to estimate the initial input model for the recursive inverse dynamics regression method. This provided a reasonable prediction model of the EKF for the first iteration of this two-step method.
+
 In Paper \ref{pap:physics}, a new semi-empirical rudder model was proposed for the twin rudder wPCC test case based on various semi-empirical formulas from the literature. The model was in good agreement with the VCT data in Paper \ref{pap:physics} and \ref{pap:vct}. 
 A modified quadratic version of the MMG semi-empirical rudder model was proposed in Paper \ref{pap:vct}. 
 It was shown that this model could well predict the VCT data and also the measured rudder forces during zigzag model tests for the single rudder Optiwise test case. 
-The semi-empirical rudder model from Paper \ref{pap:physics} and the modified quadratic MMG rudder model from Paper \ref{pap:vct} belong to the same family of semi-empirical rudder models which was shown to be very capable of describing the true forces from the rudder/rudders during standard manoeuvres.  
+The semi-empirical rudder model from Paper \ref{pap:physics} and the modified quadratic MMG rudder model from Paper \ref{pap:vct} belong to the same family of semi-empirical rudder models which was shown to be very capable of describing the true forces from the rudder/rudders during standard manoeuvres. 
+
+These examples have demonstrated that incorporating prior knowledge about ship hydrodynamics by using existing semi-empirical formulas from the literature can enhance the identification of ship dynamics models. This approach is particularly beneficial for data with insufficient persistence of excitation, leading to more physically accurate models with improved generalization. 
