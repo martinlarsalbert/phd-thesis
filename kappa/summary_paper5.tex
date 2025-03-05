@@ -1,12 +1,13 @@
 \section{Summary of Paper \ref{pap:vct}}
 \subsection*{"\nameref{pap:vct}"}
 \subsection*{Scope and motivations}
-The objective of paper \ref{pap:vct} was to propose a parametric model structure based on physical insights from CFD and FRMT inverse dynamics. The reference model from Paper \ref{pap:physics} was assumed to be close to the physically correct true model of ship manoeuvring dynamics. This model was developed with VCT (see \ref{sec:VCT}), which is based on physical first principles through CFD calculations. Paper \ref{pap:vct} investigates the identification of manoeuvring with VCT more closely, with the aim of getting even closer to the true model.
+The objective of paper \ref{pap:vct} was to propose a parametric model structure based on physical insights from VCT and FT inverse dynamics. The reference model from Paper \ref{pap:physics} was assumed to be close to the physically correct true model of ship manoeuvring dynamics. This model was developed with VCT, which is based on physical first principles through CFD calculations. Paper \ref{pap:vct} investigated the identification of manoeuvring with VCT more closely, with the aim of getting even closer to the true model.
 
-Manoeuvring models were developed for two WAPS test cases with large rudders. The models were identified by conducting VCT to obtain hydrodynamic damping coefficients and by conducting pure yaw and pure sway tests in FNPF to obtain the added masses using the Fourier series method (see \autoref{sec:fourier}). The identified force models were compared with the inverse dynamics forces of the zigzag tests to identify possible weak spots within the models.
+Manoeuvring models were developed for the two WAPS test cases with large rudders. The models were identified by conducting VCT to obtain hydrodynamic damping coefficients and by conducting pure yaw and pure sway tests in FNPF to obtain the added masses using the Fourier series method (see \autoref{sec:fourier}). The identified force models were compared with the inverse dynamics forces of the zigzag tests to identify possible weak spots within the models.
 
 \subsection*{Results and main findings}
-Propeller and rudder forces were measured during the FRMTs for Optiwise. It was found that these measured forces together with forces predicted with a hull sub module, identified from VCT data, could recreate the estimated inverse dynamics forces during zigzag maneuvers with good agreement. Much effort was therefore devoted to find a rudder force prediction model that could recreate the rudder forces for Optiwise. A modified quadratic MMG rudder model was proposed as an improved version of the original model \cite{yasukawaIntroductionMMGStandard2015}. \autoref{fig:MMG_quadratic} shows how the proposed quadratic formulation improves the fit to the VCT rudder force data.  
+Propeller and rudder forces were measured during the FRMTs for Optiwise. It was found that these measured forces together with forces predicted with a hull sub module, identified from VCT data, could recreate the estimated inverse dynamics forces during zigzag maneuvers with good agreement. Much effort was therefore devoted to find a rudder force prediction model that could recreate the rudder forces for Optiwise. A modified quadratic MMG rudder model was proposed (see \autoref{sec:MMG_rudder}) as an improved version of the original model \cite{yasukawaIntroductionMMGStandard2015}. 
+\autoref{fig:MMG_quadratic} shows the Optiwise rudder force $Y_R$ for the various VCT test types (see \autoref{sec:VCT}) plotted against the effective rudder angle $\beta_R$. The original MMG rudder model has a constant flow straightening factor $\gamma_{Rpos}$ for positive $\beta_R$ and another constant flow straightening factor $\gamma_{Rneg}$ for negative $\beta_R$. The proposed quadratic formulation has two additional parameters $\gamma_{R2pos}$ and $\gamma_{R2neg}$ that allow the flow straightening to vary with $\beta_R$ that better fits the VCT data.
 \begin{figure}[h]
      \centering
      \begin{subfigure}[b]{0.49\textwidth}
@@ -26,7 +27,7 @@ Propeller and rudder forces were measured during the FRMTs for Optiwise. It was 
     \label{fig:MMG_quadratic}
 \end{figure}
 
-\autoref{fig:rudder_forces}  shows a comparison of rudder forces predicted with the models, measurements, and state VCT calculations which agree well. 
+The rudder forces during the Optiwise FRMTs were predicted and compared with the corresponding measured forces, as shown in \autoref{fig:rudder_forces}. There was good agreement between the predictions and measurements except for some minor deviations during the zigzag10/10 test. VCT calculations of some of the states during the manoeuvres have also been added to this comparison which also show good agreement.
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{\textwidth}
@@ -46,8 +47,8 @@ Propeller and rudder forces were measured during the FRMTs for Optiwise. It was 
     \label{fig:rudder_forces}
 \end{figure}
 
-The total forces during the zigzag tests, including the hull and rudder predictions are shown in \autoref{fig:ID_optiwise20} which also show good agreement with the inverse dynamics forces (FRMT).
-
+The total forces during the zigzag tests were also predicted, including the hull and rudder models. \autoref{fig:ID_optiwise20}  shows a comparison between the predicted forces and FRMT inverse dynamics forces. VCT calculations of some of the states during the manoeuvres have also been added to this figure, which agrees well with the model predictions.
+However, deviations were observed for the sway force $Y_D$ during about 3 seconds after the rudder changes at t = 11--14 s and t = 35--38 s, for the zigzag10/10 and t = 11--14 s, t = 35--38 s, t = 64 s, for the zigzag20/20. The model and state VCT calculations predict a more straight line in the $Y_D$ time series around these deviation points. No reasonable explanation for these deviations has been found, where filtration errors in the EKF were ruled out as a possible explanation.
 \begin{figure}[h]
     \centering
     \begin{subfigure}[b]{\textwidth}

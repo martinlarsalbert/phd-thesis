@@ -2,7 +2,7 @@
 \subsection*{"\nameref{pap:pit}"}
 \subsection*{Scope and motivations}
 In order to expand the modeling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of manoeuvring by adding the the surge, sway, and yaw degrees of freedom was studied in Paper \ref{pap:pit}. 
-The objective was to find parametric model structures with good generalization and to develop parameter identification techniques from FRMT data.
+The objective was to find parametric model structures with good generalization and to develop parameter identification techniques from FT data.
 
 The dynamics were assumed to be described by an Abkowitz or truncated Abkowitz model. 
 The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The parameters were identified with recursive inverse dynamics regression (see \autoref{sec:RIDR}).
@@ -104,9 +104,9 @@ Examples of this can be seen for the two test cases in \autoref{fig:wpcc_dataset
 
 \subsection*{Results and main findings}
 \autoref{fig:validation-forces} shows predictions of the wPCC validation set with the identified models. AVMM is a full Abkowitz model and MAVMM is a truncated Abkowitz model where model structure selection has been applied. The AVMM model over-predicted the forces by far. 
-This over-prediction was  explained by the high multicollinearity of the AVMM model structure for the wPCC data as shown in \autoref{fig:ncorr}  where the absolute correlation coefficient between the features in the wPCC yaw moment regression is presented.
+This over-prediction was  explained by the high multicollinearity of the AVMM model structure for the wPCC data as shown in \autoref{fig:ncorr}  where the absolute correlation coefficient between the regressor variables in the wPCC yaw moment regression is presented. Very black cells indicate a high correlation between the two intersecting regressor variables.
 Therefore, simulations of the validation cases were only possible using the MAVMM. 
-The MAVMM model was retrained on the joined test and validation data set to obtain the final prediction model which was used to predict the turning circle test data set as shown in \autoref{fig:track-plot-testing-sim}. Advance and tactical diameter \cite{imoStandardsShipManoeuvrability2002} from the prediction differs by 4\% and 1\%. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
+The MAVMM model was retrained on the joined test and validation data set to obtain the final prediction model which was used to predict the turning circle test data set as shown in \autoref{fig:wpcc_testing-sim}. Advance and tactical diameter \cite{imoStandardsShipManoeuvrability2002} from the prediction differs by 4\% and 1\%. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/7.pdf}
@@ -116,7 +116,7 @@ The MAVMM model was retrained on the joined test and validation data set to obta
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/10.pdf}
 
-    \caption{Absolute correlation between the features in the wPCC yaw moment regression of AVMM.}
+    \caption{Absolute correlation between the regressor variables in the wPCC yaw moment regression of AVMM.}
 
 \label{fig:ncorr}
 \end{figure}
@@ -134,7 +134,7 @@ The MAVMM model was retrained on the joined test and validation data set to obta
     \end{subfigure}
         
     \caption{Turning circle test case for wPCC from model test and simulations.}
-    \label{fig:enter-label}
+    \label{fig:wpcc_testing-sim}
 \end{figure}
 
 %\includegraphics[width=0.90\textwidth]{kappa/images/11.pdf}
