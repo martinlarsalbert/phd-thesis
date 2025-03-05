@@ -489,9 +489,12 @@
 
 \addtocontents{toc}{\cftpagenumbersoff{chapter}}
 
-\setcounter{part}{1}
-\part{Appended papers}        % in this part one chapter = one paper
-
+%\setcounter{part}{1}
+%\part{Appended papers}        % in this part one chapter = one paper
+\newcommand{\nocontentsline}[3]{}
+\let\origcontentsline\addcontentsline
+\newcommand\stoptoc{\let\addcontentsline\nocontentsline}
+\stoptoc
 % Example of using the command \paper defined above: 
 \paper{Analysis of roll damping model scale data}
       {~}
@@ -537,5 +540,7 @@
       {~}
 \newpage
 %\includepdf[pages=-]{paper2.pdf}
+
+
 
 \end{document}
