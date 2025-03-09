@@ -1,6 +1,11 @@
 \section{Rudder models} \label{sec:rudders}
-It has become evident during this investigation that an accurate rudder model is central to achieving high accuracy in the overall manoeuvring model. Polynomial rudder models were used in Paper \ref{pap:pit}, which well describe the rudder forces if a sufficiently high polynomial degree is used. However, these models introduce multicollinearity into the model, which poses a significant challenge in system identification, particularly when estimating parameters using inverse dynamics  (see \autoref{sec:IDR}). Since only the total force acting on the ship can be observed, it becomes difficult to separate hull-generated forces from rudder-induced forces. Instead of using a data-driven rudder model, a semi-empirical deterministic rudder model (see \autoref{sec:semi-empirical}) was therefore introduced in Paper \ref{pap:physics}. The rudder forces were calculated on the basis of the rudder's characteristics and established coefficients from the literature.
-
+It has become evident during this investigation that an accurate rudder model is central to achieving high accuracy in the overall manoeuvring model. Polynomial rudder models were used in Paper \ref{pap:pit}, which well describe the rudder forces if a sufficiently high polynomial degree is used. However, these models introduce multicollinearity into the model, which poses a significant challenge in system identification, particularly when estimating parameters using inverse dynamics  (see \autoref{sec:IDR}). Since only the total force acting on the ship can be observed, it becomes difficult to separate hull-generated forces from rudder-induced forces as shown in \autoref{fig:hull_rudder_forces}. Instead of using a data-driven rudder model, a semi-empirical deterministic rudder model (see \autoref{sec:semi-empirical}) was therefore introduced in Paper \ref{pap:physics}. The rudder forces were calculated on the basis of the rudder's characteristics and established coefficients from the literature.
+\begin{figure}[h]
+    \centering
+    \includesvg{figures/multicollinearity.svg}
+    \caption{Multicollinearity between hull and rudder forces.}
+    \label{fig:hull_rudder_forces}
+\end{figure}
 A third rudder model was introduced in Paper \ref{pap:vct} as a modified version of the MMG rudder model \cite{yasukawaIntroductionMMGStandard2015}. This model was found to be easier to adopt when very rich information about the rudder forces was available from the VCT data.
 \input{kappa/model_semi-empirical_rudder}
 \input{kappa/model_MMG_rudder}

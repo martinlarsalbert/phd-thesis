@@ -1,10 +1,11 @@
 \section{Propeller model} \label{sec:propeller}
-The surge forces from the propeller are taken as the propeller thrust multiplied by a thrust deduction factor $t_{df}$ (\autoref{eq:X_P}).
+The surge forces from the propeller are taken as the propeller thrust multiplied by a thrust deduction factor $t_{df}$:
 \begin{equation}
     \label{eq:X_P}
     X_P = (1-t_{df})T
 \end{equation}
 The propeller thrust $T$ is taken as the measured thrust from VCT or FRMTs in this thesis to reduce the uncertainty associated with the complex interactions involving the propeller, rudder, and hull. The propeller also generates side forces, especially for yaw rates, which have a small stabilizing effect on the ship. This stabilizing propeller moment can be approximately 5\% of the rudder yawing moment, as shown in \autoref{fig:propeller_size_force}.
+This effect is not explicitly modeled in this thesis, so that $Y_P=0$, $N_P=0$. Since the propeller side force is included in the VCT data, it is implicitly incorporated into the hull coefficients.
 \begin{figure}[h]
     \centering
     \includesvg{figures/model_propeller_side_force.propeller_size_force.svg}
@@ -16,4 +17,3 @@ The propeller thrust $T$ is taken as the measured thrust from VCT or FRMTs in th
     \end{minipage}
         
 \end{figure}
-This effect is not explicitly modeled in this thesis, so that $Y_P=0$, $N_P=0$. Since the propeller side force is included in the VCT data, it is implicitly incorporated into the hull coefficients.

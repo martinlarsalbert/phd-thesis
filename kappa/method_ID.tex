@@ -1,18 +1,16 @@
 \section{Inverse dynamics} \label{sec:ID}
-Inverse dynamics (ID) was found to be an efficient method for identifying the parameters within the roll motion models. ID is a widely used technique in robotics \cite{faberInverseDynamicsMechanical2018, haningerNonparametricInverseDynamic2019, mastalliInverseDynamicsMPCNullspace2023, sunHighorderInverseDynamics2023, kurtzInverseDynamicsTrajectory2023} that is also highly applicable to ship dynamics. It can be used to estimate the total forces that act on a ship during motion. The technique can be applied to data from free-model manoeuvring tests or real ship maneuvers. The forces acting on a ship during a maneuver can be estimated using inverse dynamics applied to the equation of motion (\autoref{eq:eom}) when the mass matrix $\mathbf{M}$ and the acceleration vector $\pmb{\dot{\upsilon}}$ are known. The hydrodynamic damping forces can be calculated by inserting the total force $\mathbf{F}$ from \autoref{eq:F_expanded} into \autoref{eq:eom} and then solving for $X_D$, $Y_D$, and $N_D$, as shown in \autoref{eq:ID_X}--\autoref{eq:ID_N}.
+Inverse dynamics (ID) was found to be an efficient method for identifying the parameters within the roll motion models. ID is a widely used technique in robotics \cite{faberInverseDynamicsMechanical2018, haningerNonparametricInverseDynamic2019, mastalliInverseDynamicsMPCNullspace2023, sunHighorderInverseDynamics2023, kurtzInverseDynamicsTrajectory2023} that is also highly applicable to ship dynamics. It can be used to estimate the total forces that act on a ship during motion. The technique can be applied to data from free-model manoeuvring tests or real ship maneuvers. The forces acting on a ship during a maneuver can be estimated using inverse dynamics applied to the equation of motion (\autoref{eq:eom}) when the mass matrix $\mathbf{M}$ and the acceleration vector $\pmb{\dot{\upsilon}}$ are known. The hydrodynamic damping forces can be calculated by inserting the total force $\mathbf{F}$ from \autoref{eq:F_expanded} into \autoref{eq:eom} and then solving for $X_D$, $Y_D$, and $N_D$, as shown in:
 \begin{equation}
-    \label{eq:ID_X}
-    \input{equations/methodology_ID.X_D}
-\end{equation}
-\begin{equation}
-    \label{eq:ID_Y}
-    \input{equations/methodology_ID.Y_D}
-\end{equation}
-\begin{equation}
-    \label{eq:ID_N}
-    \input{equations/methodology_ID.N_D}
+\label{eq:ID}
+\begin{aligned}
+    & \input{equations/methodology_ID.X_D} & \\
+    & \input{equations/methodology_ID.Y_D} & \\
+    & \input{equations/methodology_ID.N_D} & 
+\end{aligned}
 \end{equation}
 These expressions are used to estimate the forces acting on a ship during FRMTs, for example, as shown for a turning circle test in \autoref{fig:ID}.
+The estimated inverse dynamics forces were used in Paper \ref{pap:pit} and \ref{pap:physics} as inputs for an inverse dynamics regression (see \autoref{sec:IDR}). 
+An inverse dynamics approach was also used in Paper \ref{pap:physics} and \ref{pap:vct} to estimate the forces acting on the ship during the FRMTs, which were then compared with the model force predictions. This is a more informative approach to assessing model performance than, for instance, using open-loop or closed-loop simulations. The benefit is that the model and the experiment will always be in the same state, which is not the case when simulations are used.
 %\begin{figure}[H]
 %    \centering
 %    \includegraphics[width=\textwidth]{kappa/images/1.pdf}
@@ -36,5 +34,3 @@ These expressions are used to estimate the forces acting on a ship during FRMTs,
     \caption{Forces and moments calculated with inverse dynamics on data from a turning circle test.}
     \label{fig:ID}
 \end{figure}
-The estimated inverse dynamics forces were used in Paper \ref{pap:pit} and \ref{pap:physics} as inputs for an inverse dynamics regression (see \autoref{sec:IDR}). 
-An inverse dynamics approach was also used in Paper \ref{pap:physics} and \ref{pap:vct} to estimate the forces acting on the ship during the FRMTs, which were then compared with the model force predictions. This is a more informative approach to assessing model performance than, for instance, using open-loop or closed-loop simulations. The benefit is that the model and the experiment will always be in the same state, which is not the case when simulations are used.
