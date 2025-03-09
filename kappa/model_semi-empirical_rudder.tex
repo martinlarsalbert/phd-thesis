@@ -1,5 +1,5 @@
 \subsection{Semi-empirical rudder model} \label{sec:semi-empirical}
-The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting line model similar to \textcite{hughesTEMPESTLevel0Theory2011}, \textcite{matusiakDynamicsRigidShip2021}, and \textcite{kjellbergSailingPerformanceWindPowered2023} that is primarily based on the rudder wind tunnel tests conducted by \textcite{whickerFreeStreamCharacteristicsFamily1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
+The semi-empirical rudder model was proposed in Paper \ref{pap:physics}  as is a lifting-line model, similar to \textcite{hughesTEMPESTLevel0Theory2011}, \textcite{matusiakDynamicsRigidShip2021}, and \textcite{kjellbergSailingPerformanceWindPowered2023}, which is primarily based on the rudder wind tunnel tests conducted by \textcite{whickerFreeStreamCharacteristicsFamily1958}. The surge and sway forces are expressed as rudder lift $L_R$ and rudder drag $D_R$, which are projected on the ship through the rudder inflow angle $\alpha_f$ (see \autoref{eq:X_R_semiempirical}, \autoref{eq:Y_R_semiempirical}, and \autoref{fig:inflow}).
 This angle is the sum of the initial inflow to the rudder at a straight course $\gamma_0$ and the inflow to the rudder $\gamma$ due to propeller-induced speed, drift angle, and yaw rate of the ship, as shown in \autoref{eq:gamma_semiempirical}.
 %
 \begin{figure}[h]
@@ -29,8 +29,8 @@ This angle is the sum of the initial inflow to the rudder at a straight course $
     \input{equations/mathematical_model_kinetics.gamma_semiempirical}
 \end{equation}
 
-The transverse velocity in the rudder $V_{Ry}$ is calculated by multiplying the yaw rate of the ship $r$ and the transverse velocity $v$ by their flow straightening parameters $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). These parameters have linear and nonlinear dependencies of the geometric inflow angle $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so the flow straightening may vary for different inflow angles. Linear and nonlinear dependencies were determined from the VCT rudder forces.
-The detailed calculation of the axial velocity on the rudder $V_{RxC}$, including the propeller race velocity is presented in Paper \ref{pap:physics}.
+The transverse velocity in the rudder $V_{Ry}$ is calculated by multiplying the yaw rate of the ship $r$ and the transverse velocity $v$ by their flow straightening parameters $\kappa_{rtot}$ and $\kappa_{vtot}$ (\autoref{eq:V_R_y_semiempirical}). These parameters have linear and nonlinear dependencies on the geometric inflow angle, $\gamma_g$ (\autoref{eq:gamma_g_semiempirical}), as calculated in \autoref{eq:kappa_r_tot_semiempirical} with $\kappa_r,\kappa_{r \gamma g}$ and \autoref{eq:kappa_v_tot_semiempirical} with $\kappa_v,\kappa_{v \gamma g}$, respectively, so the flow straightening may vary for different inflow angles. Linear and nonlinear dependencies were determined from the VCT rudder forces.
+A detailed calculation of the axial velocity on the rudder $V_{RxC}$, including the propeller race velocity, is presented in Paper \ref{pap:physics}.
 \begin{equation}
     \label{eq:V_R_y_semiempirical}
     \input{equations/mathematical_model_kinetics.V_R_y_semiempirical}
@@ -59,12 +59,12 @@ The yawing moment is modeled as the sway force multiplied by the lever arm $x_R$
 %
 \subsubsection{Rudder lift}
 \label{sec:rudder lift}
-With inspiration from the work of \textcite{villaNumericalAnalysisRudder2020}, the total rudder lift is calculated as the sum of the lift at the rudder areas that are covered by the propeller $L_{RC}$ and that at the uncovered area $L_{RU}$, as shown in \autoref{eq:L_R_semiempirical} and \autoref{fig:rudder_coverage}.
+Inspired by work conducted by \textcite{villaNumericalAnalysisRudder2020}, the total rudder lift is calculated as the sum of the lift at the rudder areas that are covered by the propeller $L_{RC}$ and that at the uncovered area $L_{RU}$, as shown in \autoref{eq:L_R_semiempirical} and \autoref{fig:rudder_coverage}.
 \begin{equation}
     \label{eq:L_R_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_semiempirical}
 \end{equation}
-The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient $C_L$. These equations are essentially the same except that the lift at the covered part $L_{RC}$ is diminished by the factor $\lambda_R$ (see Paper \ref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993}.
+The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq:L_R_C_semiempirical}) with the lift coefficient, $C_L$. These equations are essentially the same except that the lift at the covered area, $L_{RC}$, is diminished by the factor $\lambda_R$ (see Paper \ref{pap:physics}) because of the limited radius of the propeller slipstream in the lateral direction \cite{brixManoeuvringTechnicalManual1993}.
 \begin{equation}
     \label{eq:L_R_U_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_U_semiempirical}
@@ -74,7 +74,7 @@ The lift forces are calculated (\autoref{eq:L_R_U_semiempirical} and \autoref{eq
     \label{eq:L_R_C_semiempirical}
     \input{equations/mathematical_model_kinetics.L_R_C_semiempirical}
 \end{equation}
-See Paper \ref{pap:physics}  for details how the velocities of the uncovered $V_{RU}$ and covered $V_{RC}$ are calculated. 
+See Paper \ref{pap:physics}  for details on the calculation of the uncovered $V_{RU}$ and covered $V_{RC}$ velocities.
 \begin{figure}[h]
     \centering
     \includesvg{figures/rudder_coverage.svg}
@@ -82,7 +82,7 @@ See Paper \ref{pap:physics}  for details how the velocities of the uncovered $V_
     \label{fig:rudder_coverage}
 \end{figure}
 
-For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958} with the additional parameter $K_{gap}$ as shown in \autoref{eq:C_L_semiempirical}.
+The lift coefficient, $C_L$, for a non-stalling rudder is calculated according to \textcite{whickerFreeStreamCharacteristicsFamily1958}, with the additional parameter $K_{gap}$, as shown in \autoref{eq:C_L_semiempirical}.
 \begin{equation}
     \label{eq:C_L_semiempirical}
     \input{equations/mathematical_model_kinetics.C_L_semiempirical}
@@ -92,8 +92,8 @@ For a nonstalling rudder, the lift coefficient $C_L$ is calculated according to 
     \label{eq:alpha_semiempirical}
     \input{equations/mathematical_model_kinetics.alpha_semiempirical}
 \end{equation}
-The effective aspect ratio $AR_e$ accounts for the mirror image effect when the rudder is flush with the hull, and it is typically assumed to be twice the geometric aspect ratio $AR_g$ (\autoref{eq:AR_e_semiempirical} and \autoref{eq:AR_g_semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}.
-However, the wPCC rudder is not flush with the hull, so a gap is created between the rudder and rudder horn at larger rudder angles, reducing the pressure difference between the high- and low-pressure sides in the upper part of the rudder. \textcite{matusiakDynamicsRigidShip2021} proposed that the gap effect can be modeled as a reduced aspect ratio. Instead, this thesis opts for a more straightforward approach based on experience. A factor $K_{gap}$ is introduced, calculated according to \autoref{eq:lambda_gap_semiempirical}. The gap effect is only activated above a threshold rudder angle $\delta_{lim}$, and the strength of the gap effect is modeled by a factor $s$, as in \autoref{fig:gap}.
+The effective aspect ratio, $AR_e$, accounts for the mirror image effect when the rudder is flush with the hull, and it is typically assumed to be twice the geometric aspect ratio, $AR_g$ (\autoref{eq:AR_e_semiempirical} and \autoref{eq:AR_g_semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}.
+However, the wPCC rudder is not flush with the hull, so a gap is created between the rudder and rudder horn at larger rudder angles, reducing the pressure difference between the high- and low-pressure sides in the upper region of the rudder. \textcite{matusiakDynamicsRigidShip2021} proposed that the gap effect can be modeled as a reduced aspect ratio. Instead, this thesis opts for a more straightforward approach based on experience. A factor, $K_{gap}$, is introduced, calculated according to \autoref{eq:lambda_gap_semiempirical}. The gap effect is only activated above a threshold rudder angle, $\delta_{lim}$, and the strength of the gap effect is modeled by a factor, $s$, as in \autoref{fig:gap}.
 %
 \begin{equation}
     \label{eq:AR_g_semiempirical}
@@ -129,7 +129,7 @@ The lift slope of the rudder $\frac{\partial C_L}{\partial \alpha}$ is calculate
     \input{equations/mathematical_model_kinetics.a_0_semiempirical}
 \end{equation}
 %
-Additionally, a small nonlinear part to $C_L$ is modeled by the cross-flow drag coefficient $C_{DC}$, which is calculated for a rudder with squared tip using \autoref{eq:C_D_crossflow_semiempirical}, where the taper ratio $\lambda$ is the ratio between the chords at the tip and the root of the rudder (\autoref{eq:lambda__semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}. 
+Additionally, a small nonlinear component of $C_L$ is modeled by the cross-flow drag coefficient $C_{DC}$, which is calculated for a rudder with a squared tip using \autoref{eq:C_D_crossflow_semiempirical}, where the taper ratio $\lambda$ is the ratio between the chords at the tip and the root of the rudder (\autoref{eq:lambda__semiempirical}) \cite{hughesTEMPESTLevel0Theory2011}. 
 \begin{equation}
     \label{eq:C_D_crossflow_semiempirical}
     \input{equations/mathematical_model_kinetics.C_D_crossflow_semiempirical}
@@ -143,10 +143,10 @@ Additionally, a small nonlinear part to $C_L$ is modeled by the cross-flow drag 
 %
 \subsubsection{Rudder drag}
 \label{sec:rudder_drag}
-The total rudder drag $D_R$ is calculated as a sum of the contributions from the parts covered and uncovered by the propeller, as in \autoref{eq:D_R_semiempirical}.
+The total rudder drag, $D_R$, is calculated as the sum of the contributions from the parts covered and uncovered by the propeller, as in \autoref{eq:D_R_semiempirical}.
 \begin{equation}
     \label{eq:D_R_semiempirical}
     \input{equations/mathematical_model_kinetics.D_R_semiempirical}
 \end{equation}
-See Paper \ref{pap:physics} for further details how the drag coefficients $C_{DC}$ and $C_{DU}$ are calculated.
+See Paper \ref{pap:physics} for a detailed explanation of the calculation of the drag coefficients, $C_{DC}$ and $C_{DU}$.
 

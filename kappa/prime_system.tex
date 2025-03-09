@@ -1,11 +1,11 @@
 \section{Prime system with perturbed surge velocity} \label{sec:prime_system}
 Some variables in the equations in this thesis are expressed using non-dimensional units with the prime system, denoted by the prime symbol ($'$). Variables are converted from SI units to the prime system using the denominators in \autoref{tab:prime-system-denominators} for the corresponding physical quantity, where $V$ and $L$ are the velocity and length between the perpendiculars of the ship, respectively, and $\rho$ is the water density.
-For the calculation of surge velocity $u'$, the perturbed velocity $(u-V_0)$ about a nominal speed $V_0$ is used, as in \autoref{eq:u_prime}, to avoid a $u'$ of 1 for all speeds when the ship is on a straight course (where $u=V$), as in a resistance or self-propulsion test. The usage of the perturbed velocity, therefore, allows for higher order resistance terms in the model, such as ${{dX}'/du}' = X_{u}$, which are otherwise not possible. 
+For the calculation of surge velocity, $u'$, the perturbed velocity, $(u-V_0)$, about a nominal speed, $V_0$, is used, as in \autoref{eq:u_prime}, to avoid a $u'$ of 1 for all speeds when the ship is on a straight course (where $u=V$), as in a resistance or self-propulsion test. The usage of the perturbed velocity, therefore, allows for higher-order resistance terms in the model, such as ${{dX}'/du}' = X_{u}$, which are otherwise not possible. 
 \begin{equation}
     \label{eq:u_prime}
     u' = \frac{u-V_0}{V}
 \end{equation}
-For a nondimensional model, $V_0$ is instead expressed as a Froude number within the model (\autoref{eq:Fn0}), and this thesis uses $F_{n0}=0.02$.
+For a non-dimensional model, $V_0$ is instead expressed as a Froude number within the model (\autoref{eq:Fn0}), and this thesis uses $F_{n0}=0.02$.
 \begin{equation}
     \label{eq:Fn0}
     F_{n0} = \frac{V_0}{\sqrt{g \cdot L}}

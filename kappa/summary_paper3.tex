@@ -1,14 +1,14 @@
 \section{Summary of Paper \ref{pap:pit}}
 \subsection*{"\nameref{pap:pit}"}
 \subsection*{Scope and motivations}
-In order to expand the modeling complexity and uncertainty from Paper \ref{pap:rolldamping}, system identification of manoeuvring by adding the the surge, sway, and yaw degrees of freedom was studied in Paper \ref{pap:pit}. 
-The objective was to find parametric model structures with good generalization and to develop parameter identification techniques from FT data.
+The modeling complexity and uncertainty from Paper \ref{pap:rolldamping} were addressed in Paper \ref{pap:pit}, in which system identification of manoeuvring through the addition of surge, sway, and yaw degrees of freedom was studied. 
+The objectives were to find parametric model structures with good generalization and to develop parameter identification techniques from FT data.
 
 The dynamics were assumed to be described by an Abkowitz or truncated Abkowitz model. 
-The system identification method proposed in Paper \ref{pap:pit} was validated on two case study ships: the wPCC and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The parameters were identified with recursive inverse dynamics regression (see \autoref{sec:RIDR}).
-The identification was carried out with cross validation using hold-out evaluation \cite{sammutHoldoutEvaluation2017}.
-The data in this evaluation were divided into three sets: the training set, the validation set and the test set as seen in \autoref{fig:model_development_process}.
-The purpose of the training set was to train all the candidate models using the proposed parameter estimation method. The validation set was used to select the most effective candidate model. The training and validation sets were joined to train the selected model as the final model. The final model was used for predicting the test set, which was used to evaluate the accuracy of the model. These three sets were not divided randomly;  they were divided to assess the model’s extrapolation ability. The data sets were therefore split to have the smallest yaw rates, drift-angles, and rudder-angles in the training set; the medium values in the validation set; and the largest values in the test set.
+The system identification method proposed in Paper \ref{pap:pit} was validated using two case study ships: the wPCC and the KVLCC2 (\autoref{fig:kvlcc2_hsva}). The parameters were estimated through recursive inverse dynamics regression (see \autoref{sec:RIDR}).
+Identification was performed via cross validation using a hold-out evaluation approach \cite{sammutHoldoutEvaluation2017}.
+The data in this evaluation were divided into three sets: the training set, the validation set and the test set, as seen in \autoref{fig:model_development_process}.
+The training set was used to fit all the candidate models using the proposed parameter estimation method, while the validation set was used to select the most effective model. The training and validation sets were subsequently combined to train the selected model, producing the final model, which was evaluated using the test set. Rather than being randomly partitioned, these three sets were structured to assess the model’s extrapolation ability. The data sets were split such that the smallest yaw rates, drift-angles, and rudder-angles formed the training set, the validation set contained the medium values, and the largest values formed the test set.
 Examples of this can be seen for the two test cases in \autoref{fig:wpcc_datasets} and \autoref{fig:kvlcc2_datasets}.
 %\begin{figure}[h!]
 %\centering
@@ -103,10 +103,10 @@ Examples of this can be seen for the two test cases in \autoref{fig:wpcc_dataset
 \end{figure}
 
 \subsection*{Results and main findings}
-\autoref{fig:validation-forces} shows predictions of the wPCC validation set with the identified models. AVMM is a full Abkowitz model and MAVMM is a truncated Abkowitz model where model structure selection has been applied. The AVMM model over-predicted the forces by far. 
-This over-prediction was  explained by the high multicollinearity of the AVMM model structure for the wPCC data as shown in \autoref{fig:ncorr}  where the absolute correlation coefficient between the regressor variables in the wPCC yaw moment regression is presented. Very black cells indicate a high correlation between the two intersecting regressor variables.
+\autoref{fig:validation-forces} shows the predictions of the wPCC validation obtained using the identified models. AVMM is a full Abkowitz model and MAVMM is a truncated Abkowitz model where model structure selection has been applied. The AVMM model severely over-predicted the forces. 
+This over-prediction was explained by the high multicollinearity of the AVMM model structure for the wPCC data, as shown in \autoref{fig:ncorr}  where the absolute correlation coefficient between the regressor variables in the wPCC yaw moment regression is presented. Very black cells indicate a high correlation between the two intersecting regressor variables.
 Therefore, simulations of the validation cases were only possible using the MAVMM. 
-The MAVMM model was retrained on the joined test and validation data set to obtain the final prediction model which was used to predict the turning circle test data set as shown in \autoref{fig:wpcc_testing-sim}. Advance and tactical diameter \cite{imoStandardsShipManoeuvrability2002} from the prediction differs by 4\% and 1\%. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
+The MAVMM model was retrained on the combined test and validation data to obtain the final prediction model, which was used to predict the turning circle test data as shown in \autoref{fig:wpcc_testing-sim}. The advance and tactical diameter \cite{imoStandardsShipManoeuvrability2002} from the prediction differ by 4\% and 1\%, respectively. Monte Carlo simulations with alternative realizations of the regression, considering the uncertainty in the regressed parameters, are also displayed in these figures. The alternative realizations have similar simulation results to the model with mean values of the regression (black line).
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{kappa/images/7.pdf}
@@ -146,8 +146,8 @@ The MAVMM model was retrained on the joined test and validation data set to obta
 %\caption{Turning circle test case for wPCC, time series from model test and simulation.}\label{\detokenize{06.10_results_wpcc:fig-testing-sim}}\end{figure}
 \FloatBarrier
 
-The corresponding final prediction of the turning circle test for the KVLCC2 test case is shown in \autoref{fig:fig-kvlcc2-track-plot-testing-sim}. The prediction was conducted using simulation with the MAVMM trained on the training and validation datasets. Monte Carlo simulations with alternative realizations of the regression are also displayed in this figure. The alternative realizations are very similar to the model with mean values of the regression (black line).
-The predicted advance and tactical diameters differ by 2\% and 5\%.
+The corresponding final prediction of the turning circle test for the KVLCC2 test case is shown in \autoref{fig:fig-kvlcc2-track-plot-testing-sim}. The prediction was conducted via simulation with the MAVMM trained on the training and validation data. Monte Carlo simulations with alternative realizations of the regression are also displayed in this figure. The alternative realizations are very similar to the simulation with mean values of the regression (black line).
+The predicted advance and tactical diameters differ by 2\% and 5\%, respectively.
 \begin{figure}[h]
     \centering
 

@@ -1,9 +1,9 @@
 \section{Parameter estimation from virtual captive tests} \label{sec:VCT}
-The computational cost of CFD calculations can be significantly reduced by assuming a memory-less state space model (\autoref{eq:state_space}), also known as the Markov process assumption \cite{yoonIdentificationHydrodynamicCoefficients2003}. This assumption implies that the forces acting on the ship at each time instant can be constructed as a series of independent static flow calculations.
+The computational cost of CFD calculations can be significantly reduced by assuming a memory-less state space model (\autoref{eq:state_space}), also known as the Markov process assumption \cite{yoonIdentificationHydrodynamicCoefficients2003}. This assumption implies that the forces acting on the ship at each time step can be constructed as a series of independent static flow calculations.
 The independence of these static flow calculations means they are not time-dependent, and their order of computation is irrelevant. The Markov process assumption allows for substantial computational efficiency gains because the ship experiences the same state $\mathbf{x}$ and control input $\mathbf{c}$ (or very similar states and inputs) multiple times during a maneuver. Consequently, the same static flow result can be reused several times, or at least conceptually, this reuse can be considered. Practically, this is achieved by identifying a prediction model for the static flow results, the VCT data, so that forces for each state during the maneuver can be predicted.
 
-One of the challenges with VCT is selecting the appropriate static flow calculations. This involves creating a VCT matrix that includes the most critical states during the maneuver and covers the relevant parts of the state space.
-The ship's kinematics are defined by the velocity vector $\pmb{\upsilon}$ and the control input vector $\mathbf{c}$, allowing the forces for each state to be uniquely defined by the velocities $u$, $v$, and $r$, as well as the control input forces from the rudder and propeller. If these forces are uniquely determined by the thrust and rudder angle, the state space spans at least five dimensions, which requires numerous VCT calculations to cover the entire state space. So a challenge with VCT is selecting a model structure that closely resembles the true hydrodynamics, ensuring high accuracy without having to span the entire state space.
+One of the challenges in VCT is selecting the appropriate static flow calculations. This involves creating a VCT matrix that includes the most critical states during the maneuver and covers the relevant parts of the state space.
+The ship's kinematics are defined by the velocity vector $\pmb{\upsilon}$ and the control input vector $\mathbf{c}$, allowing the forces for each state to be uniquely defined by the velocities $u$, $v$, and $r$, as well as the control input forces from the rudder and propeller. If these forces are uniquely determined by the thrust and rudder angle, the state space spans at least five dimensions, which requires numerous VCT calculations to cover the entire state space. As a result, it is difficult to select a model structure in a VCT that closely resembles the true hydrodynamics while ensuring high accuracy, without having to span the entire state space.
 \autoref{tab:VCT_wPCC} and \autoref{tab:VCT_optiwise} present the VCT matrices for the wPCC and Optiwise test cases. The coverage of the yaw rate and drift angle space is illustrated by the phase plots in \autoref{fig:phase_plots}.
 % wPCC
 \begin{table}[h]
@@ -68,8 +68,8 @@ The ship's kinematics are defined by the velocity vector $\pmb{\upsilon}$ and th
         \label{fig:phase_plots}
 \end{figure}
 
-The hydrodynamic damping forces are calculated from the VCT results $X_{VCT}$, $Y_{VCT}$ and $N_{VCT}$
-with \autoref{eq:X_D} -- \autoref{eq:N_D}.
+The hydrodynamic damping forces are calculated from the VCT results $X_{VCT}$, $Y_{VCT}$, and $N_{VCT}$
+with \autoref{eq:X_D}--\autoref{eq:N_D}.
 \begin{equation}
     \label{eq:X_D}
     X_{D} = X_{VCT} + Y_{\dot{r}} r^{2} + Y_{\dot{v}} r v
@@ -82,8 +82,8 @@ with \autoref{eq:X_D} -- \autoref{eq:N_D}.
     \label{eq:N_D}
     N_{D} = N_{VCT} + X_{\dot{u}} u v - Y_{\dot{r}} r u - Y_{\dot{v}} u v
 \end{equation}
-The mass $m$ has disappeared from \autoref{eq:F_expanded} to arrive at these expressions, because the ship is not moving in ShipFlow -- the CFD tool used in the static flow calculations -- instead the water is having an either oblique or circular inflow \cite{roychoudhuryCFDSimulationsSteady2017}.
-The hull forces are calculated by subtracting the contributions of the rudder and propeller from the total forces (\autoref{eq:X_H_VCT} -- \autoref{eq:N_H_VCT}).
+The mass $m$ has been eliminated in \autoref{eq:F_expanded} to arrive at these expressions, because the ship is stationary in ShipFlow -- the CFD tool used in the static flow calculations -- and the water experiences either oblique or circular inflow \cite{roychoudhuryCFDSimulationsSteady2017}
+The hull forces are calculated by subtracting the contributions of the rudder and propeller from the total forces (\autoref{eq:X_H_VCT}--\autoref{eq:N_H_VCT}).
 \begin{equation}
     \label{eq:X_H_VCT}
     X_H = X_D - X_R - X_P

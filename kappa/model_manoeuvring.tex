@@ -1,16 +1,16 @@
 \section{Manoeuvring} \label{sec:manoeuvring}
-The ship manoeuvring dynamics is modeled as a state space model,
+Ship manoeuvring dynamics can be expressed using a state-space model,
 \begin{equation}
     \dot{\mathbf{x}}=f(\mathbf{x},\mathbf{c}) + q(t)
     \label{eq:state_space}
 \end{equation}
-where the change of state $\dot{\mathbf{x}}$ is expressed as function of the current state vector $\mathbf{x}$ and the control input vector $\mathbf{c}$ through the transition function $f(\mathbf{x},\mathbf{c})$ and the process noise $q(t)$.  Process noise is considered when the model is used for filtering. However,  during deterministic simulations, it is usually set to zero $q(t)=0$.
+where the change of state, $\dot{\mathbf{x}}$, is expressed as a function of the current state vector, $\mathbf{x}$, and the control input vector, $\mathbf{c}$, through the transition function, $f(\mathbf{x},\mathbf{c})$, and the process noise $q(t)$.  Process noise is considered when the model is used for filtering. However, during deterministic simulations, it is usually set to zero ($q(t)=0$).
 A state with position and orientation, velocities, and turning rate defines the state of the ship in three degrees of freedom: 
 \begin{equation}
     \mathbf{x} = [x_0,y_0,\Psi, u,v,r]^T
     \label{eq:state}
 \end{equation}
-The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth fixed axis $x_0$ by the heading angle $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in degrees of freedom of surge, sway and yaw with forces $X$, $Y$, and moment $N$ and the velocities $u$, $v$, and $r$. Kinematics can be expressed as a function of a velocity vector $\pmb{\upsilon}$, since forces do not depend on position ($x_0,y_0$) or direction $\Psi$, during the maneuver:
+The ship’s kinematics are expressed amidship in a ship fixed reference frame, rotated around the Earth-fixed axis, $x_0$, by the heading angle, $\Psi$ (\autoref{fig:reference_frames}). Forces and motions are expressed in degrees of freedom of surge, sway, and yaw with forces $X$, $Y$, and moment $N$, as well as the velocities $u$, $v$, and $r$. Kinematics can be expressed as a function of a velocity vector $\pmb{\upsilon}$, since forces do not depend on position ($x_0,y_0$) or direction $\Psi$, during the maneuver:
 \begin{equation}
     \label{eq:upsilon}
     %\input{equations/155.10_Fossen_model.upsilon}
@@ -33,7 +33,7 @@ The velocity transition can thus be expressed as:
     \caption{Relations between the earth fixed and ship fixed reference frames, showing the velocities and forced in the ship fixed frame.}
     \label{fig:reference_frames}
 \end{figure}
-The total forces can be divided into the Coriolis–centripetal matrix $\mathbf{C}$ and the damping force vector $\mathbf{D}$ \cite{fossenHandbookMarineCraft2011}. The control forces of the rudder and propeller are included in the matrix $\mathbf{D}$.
+The total forces can be divided into the Coriolis–centripetal matrix, $\mathbf{C}$, and the damping force vector, $\mathbf{D}$ \cite{fossenHandbookMarineCraft2011}. The control forces of the rudder and propeller are included in the matrix $\mathbf{D}$.
 \begin{equation}
     \label{eq:upsilon1d}
 \mathbf{F} = - \mathbf{C} \pmb{\upsilon} + \mathbf{D}
@@ -54,7 +54,7 @@ If we introduce the damping forces vector:
     \label{eq:D}
     \input{equations/155.10_Fossen_model.D}
 \end{equation}
-the total force vector $\mathbf{F}$ can now be expressed as:
+the total force vector, $\mathbf{F}$, can now be expressed as:
 \begin{equation}
     \label{eq:F_expanded}
     %\input{equations/155.10_Fossen_model.F_expanded}
@@ -67,14 +67,14 @@ N \\
 =
 \left[\begin{matrix}X_{D} - Y_{\dot{r}} r^{2} + m r^{2} x_{G} + r v \left(- Y_{\dot{v}} + m\right)\\Y_{D} + r u \left(X_{\dot{u}} - m\right)\\N_{D} + r u \left(Y_{\dot{r}} - m x_{G}\right) + \underbrace{u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)}_{\text{Munk moment}} \end{matrix}\right]
 \end{equation}
-\mynote{The yawing moment $N$ has the so called Munk moment \cite{fossenHandbookMarineCraft2011}:
+\mynote{The yawing moment $N$ has the so-called Munk moment \cite{fossenHandbookMarineCraft2011}:
 $$
 u v \left(- X_{\dot{u}} + Y_{\dot{v}}\right)
 $$
-In many other manoeuvring models such as the Abkowitz \cite{abkowitzShipHydrodynamicsSteering1964} or MMG model \cite{yasukawaIntroductionMMGStandard2015}, the Munk moment is not explicitly included in the equations. The Munk moment contribution will instead be included in some of the hull coefficients, typically $N_V$ or ideally $N_{uv}$ if such a coefficient exist in the model.}
+In many other manoeuvring models, such as the Abkowitz model \cite{abkowitzShipHydrodynamicsSteering1964} or MMG model \cite{yasukawaIntroductionMMGStandard2015}, the Munk moment is not explicitly included in the equations. The Munk moment contribution is instead reflected in some of the hull coefficients, typically $N_V$ or ideally $N_{uv}$, if such coefficients exist in the model.}
 \newline
 \vspace{0.3cm}
-\mynote{The sway force $Y$ has the apparent centrifugal force from added mass and rigid body mass: 
+\mynote{The sway force $Y$ includes the apparent centrifugal force from added mass and rigid body mass: 
 $$r u \left(X_{\dot{u}} - m\right)$$ where $X_{\dot{u}}<0$ so that both added mass and rigid body mass create the centrifugal force acting outward in the turn. Both the added mass and rigid body mass will thus act to starboard on a port turn.}
 
 For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass matrix $\mathbf{M}$ can be calculated as:
@@ -82,17 +82,17 @@ For the calculation of acceleration \autoref{eq:acc}, the inverse of the mass ma
     \label{eq:M_inv}
     \input{equations/155.10_Fossen_model.M_inv}
 \end{equation}
-with the helper variable $S$ which can be calculated according to: 
+with the helper variable, $S$, which can be calculated according to: 
 \begin{equation}
     \label{eq:S}
     \input{equations/155.10_Fossen_model.S}
 \end{equation}
-$S=0$ would however mean that the mass matrix would not be invertible. The sign of each component in \autoref{eq:S} is shown in:
+Note that $S=0$ would mean that the mass matrix would not be invertible. The sign of each component in \autoref{eq:S} is shown in:
 \begin{equation}
     \label{eq:S_sign}
     \input{equations/155.10_Fossen_model.eq_S_sign}
 \end{equation}
-The magnitude of these components for a typical ship is expressed in a non-dimensional form in \autoref{tab:S}. The negative components are much larger than the positive ones, so $S$ will be nonzero and the mass matrix of a ship is thus always invertible.      
+The magnitude of these components for a typical ship is expressed in a non-dimensional form in \autoref{tab:S}. The negative components are much larger than the positive, so $S$ will be nonzero and the mass matrix of a ship is thus always invertible.      
 \begin{table}[h]
     \centering
     \small
